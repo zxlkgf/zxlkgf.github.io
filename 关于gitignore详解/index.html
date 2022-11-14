@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>创建Blog流程 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="创建Blog流程" />
-<meta property="og:description" content="使用hugo创建Blog 1.创建流程 1.1 下载 hugo //使用homebrew下载hugo brew install hugo 1.2 快速创建 hugo new site mysite 1.3 下载主题 //在刚刚创建的mysit" />
+        <title>关于.gitignore详解 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="关于.gitignore详解" />
+<meta property="og:description" content="1.什么是.gitignore 在一些项目中，我们不想让本地仓库的所有文件都上传到远程仓库, 比如:万恶的.DS_Store 2.使用规则 2.1 注释 #" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://zxlkgf.github.io/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" /><meta property="og:image" content="http://zxlkgf.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-11-13T20:19:14+09:00" />
-<meta property="article:modified_time" content="2022-11-13T20:19:14+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta property="og:url" content="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" /><meta property="og:image" content="http://zxlkgf.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-14T20:11:22+09:00" />
+<meta property="article:modified_time" content="2022-11-14T20:11:22+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://zxlkgf.github.io/logo.png"/>
 
-<meta name="twitter:title" content="创建Blog流程"/>
-<meta name="twitter:description" content="使用hugo创建Blog 1.创建流程 1.1 下载 hugo //使用homebrew下载hugo brew install hugo 1.2 快速创建 hugo new site mysite 1.3 下载主题 //在刚刚创建的mysit"/>
+<meta name="twitter:title" content="关于.gitignore详解"/>
+<meta name="twitter:description" content="1.什么是.gitignore 在一些项目中，我们不想让本地仓库的所有文件都上传到远程仓库, 比如:万恶的.DS_Store 2.使用规则 2.1 注释 #"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://zxlkgf.github.io/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" /><link rel="prev" href="http://zxlkgf.github.io/springboot%E9%A1%B9%E7%9B%AE-kaptcha/" /><link rel="next" href="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" /><link rel="prev" href="http://zxlkgf.github.io/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "创建Blog流程",
+        "headline": "关于.gitignore详解",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/zxlkgf.github.io\/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog\/"
-        },"genre": "posts","keywords": "hugo","wordcount":  508 ,
-        "url": "http:\/\/zxlkgf.github.io\/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog\/","datePublished": "2022-11-13T20:19:14+09:00","dateModified": "2022-11-13T20:19:14+09:00","publisher": {
+            "@id": "http:\/\/zxlkgf.github.io\/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3\/"
+        },"genre": "posts","keywords": "git","wordcount":  483 ,
+        "url": "http:\/\/zxlkgf.github.io\/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3\/","datePublished": "2022-11-14T20:11:22+09:00","dateModified": "2022-11-14T20:11:22+09:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,10 +116,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">创建Blog流程</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hugo%E4%BD%BF%E7%94%A8/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>hugo使用</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-13">2022-11-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;508 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">关于.gitignore详解</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/git%E4%BD%BF%E7%94%A8/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>git使用</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-14">2022-11-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;483 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -127,95 +127,93 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1创建流程">1.创建流程</a>
+    <li><a href="#1什么是gitignore">1.什么是.gitignore</a></li>
+    <li><a href="#2使用规则">2.使用规则</a>
       <ul>
-        <li><a href="#11-下载-hugo">1.1 下载 hugo</a></li>
-        <li><a href="#12-快速创建">1.2 快速创建</a></li>
-        <li><a href="#13-下载主题">1.3 下载主题</a></li>
-        <li><a href="#14-阅读主题demo或者文档">1.4 阅读主题demo或者文档</a></li>
-        <li><a href="#15-快速创建写作文档">1.5 快速创建写作文档</a></li>
-        <li><a href="#16-上传github">1.6 上传github</a></li>
-        <li><a href="#17-hugo基本使用">1.7 hugo基本使用</a></li>
+        <li><a href="#21-注释">2.1 注释</a></li>
+        <li><a href="#22-忽略特定的后缀">2.2 忽略特定的后缀</a></li>
+        <li><a href="#23-忽略整个文件夹">2.3 忽略整个文件夹</a></li>
+        <li><a href="#24-忽略文件和目录">2.4 忽略文件和目录</a></li>
+        <li><a href="#25-表示取反">2.5 !表示取反</a></li>
+        <li><a href="#26-glob通配符">2.6 glob通配符</a></li>
+        <li><a href="#27-双星号">2.7 双星号</a></li>
       </ul>
     </li>
+    <li><a href="#3-其他规则">3 其他规则</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="使用hugo创建blog">使用hugo创建Blog</h1>
+            </div><div class="content" id="content"><h2 id="1什么是gitignore">1.什么是.gitignore</h2>
+<p>在一些项目中，我们不想让本地仓库的所有文件都上传到远程仓库,
+比如:万恶的.DS_Store</p>
 <hr>
-<h2 id="1创建流程">1.创建流程</h2>
+<h2 id="2使用规则">2.使用规则</h2>
 <hr>
-<h3 id="11-下载-hugo">1.1 下载 hugo</h3>
-<pre tabindex="0"><code>//使用homebrew下载hugo
-brew install hugo
+<h3 id="21-注释">2.1 注释</h3>
+<pre tabindex="0"><code># this is .gitignore file.
+# 以下是忽略的文件
+.DS_Store
+</code></pre><p>上述例子中，#开头的就是注释</p>
+<hr>
+<h3 id="22-忽略特定的后缀">2.2 忽略特定的后缀</h3>
+<pre tabindex="0"><code># 忽略后缀为exe的文件
+*.exe
 </code></pre><hr>
-<h3 id="12-快速创建">1.2 快速创建</h3>
-<pre tabindex="0"><code>hugo new site mysite
+<h3 id="23-忽略整个文件夹">2.3 忽略整个文件夹</h3>
+<p>如果我们想要忽略某个路径下文件夹的所有内容<br>
+我们可以在该文件夹路径的后面加入/,如下</p>
+<pre tabindex="0"><code>folder/
 </code></pre><hr>
-<h3 id="13-下载主题">1.3 下载主题</h3>
-<pre tabindex="0"><code>//在刚刚创建的mysite/themes文件下打开终端
-//LoveIt为当前作者选择的主题
-git clone https://github.com/dillonzq/LoveIt.git LoveIt
+<h3 id="24-忽略文件和目录">2.4 忽略文件和目录</h3>
+<p>例如:folder 表示忽略folder文件和folder目录<br>
+会搜索多级目录，找到所有名为folder的文件</p>
+<pre tabindex="0"><code>folder
 </code></pre><hr>
-<h3 id="14-阅读主题demo或者文档">1.4 阅读主题demo或者文档</h3>
-<hr>
-<h3 id="15-快速创建写作文档">1.5 快速创建写作文档</h3>
-<p>执行以下命令，在mysite/content下创建posts/my-first-post.md文档</p>
-<pre tabindex="0"><code>hugo new posts/my-first-post.md
-</code></pre><p>按照想要你想要编辑的方式，去改写my-first-post.md文档<br>
-在启用drafts参数的条件下开启Hugo内置的服务器。</p>
-<pre tabindex="0"><code>hugo server -D
+<h3 id="25-表示取反">2.5 !表示取反</h3>
+<p>如果我们想要保留src/lib下的man.txt<br>
+那么我们可以写下如下内容</p>
+<pre tabindex="0"><code>!man.txt
 </code></pre><hr>
-<h3 id="16-上传github">1.6 上传github</h3>
-<p>在github创建后缀为github.io的仓库<br>
-将hugo的baseUrl设置为GitHub仓库的地址<br>
-并将主题设置为当前主题</p>
-<pre tabindex="0"><code>hugo --theme=LoveIt --baseUrl=&#34;http://zxlkgf.github.io/&#34; --buildDrafts
-</code></pre><p>再将public文件夹上传到github即可</p>
-<hr>
-<h3 id="17-hugo基本使用">1.7 hugo基本使用</h3>
-<p>使用方法:<br>
-hugo<br>
-hugo [flags]<br>
-hugo [command]<br>
-hugo [command] [flags]</p>
-<p>例如 command:<br>
-new         为你的站点创建新的内容<br>
-server      一个高性能的web服务器</p>
-<p>节选的 flags:<br>
--D, &ndash;buildDrafts                包括被标记为draft的文章<br>
--E, &ndash;buildExpired               包括已过期的文章<br>
--F, &ndash;buildFuture                包括将在未来发布的文章</p>
-<p>例子:<br>
-hugo -D                          生成静态文件并包括draft为true的文章<br>
-hugo new post/new-content.md     新建一篇文章<br>
-hugo new site mysite             新建一个称为mysite的站点<br>
-hugo server &ndash;buildExpired       启动服务器并包括已过期的文章</p>
-<hr>
+<h3 id="26-glob通配符">2.6 glob通配符</h3>
+<p>常用的通配符<br>
+(1) * :可以代表一切的字符串，可以是0个也可以是任意多个字符<br>
+(2) ? :匹配除了&rsquo;/&lsquo;以外的任意一个字符<br>
+(3) []:匹配多个列表中的字符<br>
+例如想要清除所有.txt文件</p>
+<pre tabindex="0"><code>*.txt
+</code></pre><p>如果想要清除目标文档下的所有.json文件</p>
+<pre tabindex="0"><code>src/*.json
+</code></pre><hr>
+<h3 id="27-双星号">2.7 双星号</h3>
+<p>斜杠后面紧跟两个连续的星号**,表示多级目录</p>
+<pre tabindex="0"><code>src/**/folder
+</code></pre><hr>
+<h2 id="3-其他规则">3 其他规则</h2>
+<p>(1) .gitignore 文件也会上传到远程仓库<br>
+(2) 如果本地仓库已被跟踪，那么即使在.gitignore中设置了忽略，也不起作用</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-11-13</span>
+                <span>Updated on 2022-11-14</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://zxlkgf.github.io/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" data-title="创建Blog流程" data-hashtags="hugo"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://zxlkgf.github.io/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" data-hashtag="hugo"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://zxlkgf.github.io/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" data-title="创建Blog流程"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://zxlkgf.github.io/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" data-title="创建Blog流程"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://zxlkgf.github.io/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" data-title="创建Blog流程"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-title="关于.gitignore详解" data-hashtags="git"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-hashtag="git"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-title="关于.gitignore详解"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-title="关于.gitignore详解"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-title="关于.gitignore详解"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hugo/">hugo</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/git/">git</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/springboot%E9%A1%B9%E7%9B%AE-kaptcha/" class="prev" rel="prev" title="SpringBoot项目-Kaptcha"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>SpringBoot项目-Kaptcha</a>
-            <a href="/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" class="next" rel="next" title="关于.gitignore详解">关于.gitignore详解<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" class="prev" rel="prev" title="创建Blog流程"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>创建Blog流程</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

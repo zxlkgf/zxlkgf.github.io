@@ -1,20 +1,29 @@
-# 使用hugo创建Blog流程
+# 创建Blog流程
 
 # 使用hugo创建Blog
+
 ---
+
 ## 1.创建流程
+
 ---
+
 ### 1.1 下载 hugo
+
 ```
 //使用homebrew下载hugo
 brew install hugo
 ```
+
 ---
+
 ### 1.2 快速创建
 ```
 hugo new site mysite
 ```
+
 ---
+
 ### 1.3 下载主题
 ```
 //在刚刚创建的mysite/themes文件下打开终端
@@ -22,19 +31,24 @@ hugo new site mysite
 git clone https://github.com/dillonzq/LoveIt.git LoveIt
 ```
 ---
+
 ### 1.4 阅读主题demo或者文档
+
 ---
+
 ### 1.5 快速创建写作文档
 执行以下命令，在mysite/content下创建posts/my-first-post.md文档
 ```
 hugo new posts/my-first-post.md
 ```
-按照想要你想要编辑的方式，去改写my-first-post.md文档
-现在，在启用drafts参数的条件下开启Hugo内置的服务器。
+按照想要你想要编辑的方式，去改写my-first-post.md文档  
+在启用drafts参数的条件下开启Hugo内置的服务器。
 ```
 hugo server -D
 ```
+
 ---
+
 ### 1.6 上传github
 在github创建后缀为github.io的仓库  
 将hugo的baseUrl设置为GitHub仓库的地址  
@@ -42,8 +56,10 @@ hugo server -D
 ```
 hugo --theme=LoveIt --baseUrl="http://zxlkgf.github.io/" --buildDrafts
 ```
-之后再将public文件夹上传到github即可  
+再将public文件夹上传到github即可  
+
 ---
+
 ### 1.7 hugo基本使用
 使用方法:  
   hugo  
