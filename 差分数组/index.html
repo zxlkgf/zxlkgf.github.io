@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>关于.gitignore详解 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="关于.gitignore详解" />
-<meta property="og:description" content="1.什么是.gitignore 在一些项目中，我们不想让本地仓库的所有文件都上传到远程仓库, 比如:万恶的.DS_Store 2.使用规则 2.1 注释 #" />
+        <title>差分数组 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="差分数组" />
+<meta property="og:description" content="差分数组 如果给你一个包含5000万个元素的数组，然后会有频繁区间修改操作，那什么是频繁的区间修改操作呢？比如让第1个数到第1000万个数每个" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" /><meta property="og:image" content="http://zxlkgf.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-11-14T20:11:22+09:00" />
-<meta property="article:modified_time" content="2022-11-14T20:11:22+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta property="og:url" content="http://zxlkgf.github.io/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" /><meta property="og:image" content="http://zxlkgf.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-16T13:34:48+09:00" />
+<meta property="article:modified_time" content="2022-11-16T13:34:48+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://zxlkgf.github.io/logo.png"/>
 
-<meta name="twitter:title" content="关于.gitignore详解"/>
-<meta name="twitter:description" content="1.什么是.gitignore 在一些项目中，我们不想让本地仓库的所有文件都上传到远程仓库, 比如:万恶的.DS_Store 2.使用规则 2.1 注释 #"/>
+<meta name="twitter:title" content="差分数组"/>
+<meta name="twitter:description" content="差分数组 如果给你一个包含5000万个元素的数组，然后会有频繁区间修改操作，那什么是频繁的区间修改操作呢？比如让第1个数到第1000万个数每个"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" /><link rel="prev" href="http://zxlkgf.github.io/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" /><link rel="next" href="http://zxlkgf.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://zxlkgf.github.io/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" /><link rel="prev" href="http://zxlkgf.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "关于.gitignore详解",
+        "headline": "差分数组",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/zxlkgf.github.io\/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3\/"
-        },"genre": "posts","keywords": "git","wordcount":  483 ,
-        "url": "http:\/\/zxlkgf.github.io\/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3\/","datePublished": "2022-11-14T20:11:22+09:00","dateModified": "2022-11-14T20:11:22+09:00","publisher": {
+            "@id": "http:\/\/zxlkgf.github.io\/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84\/"
+        },"genre": "posts","keywords": "差分数组","wordcount":  412 ,
+        "url": "http:\/\/zxlkgf.github.io\/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84\/","datePublished": "2022-11-16T13:34:48+09:00","dateModified": "2022-11-16T13:34:48+09:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,9 +116,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">关于.gitignore详解</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/git%E4%BD%BF%E7%94%A8/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>git使用</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-14">2022-11-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;483 words&nbsp;
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">差分数组</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%AE%97%E6%B3%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>算法</a>&nbsp;<a href="/categories/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>差分数组</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-16">2022-11-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;412 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -127,94 +127,137 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1什么是gitignore">1.什么是.gitignore</a></li>
-    <li><a href="#2使用规则">2.使用规则</a>
-      <ul>
-        <li><a href="#21-注释">2.1 注释</a></li>
-        <li><a href="#22-忽略特定的后缀">2.2 忽略特定的后缀</a></li>
-        <li><a href="#23-忽略整个文件夹">2.3 忽略整个文件夹</a></li>
-        <li><a href="#24-忽略文件和目录">2.4 忽略文件和目录</a></li>
-        <li><a href="#25-表示取反">2.5 !表示取反</a></li>
-        <li><a href="#26-glob通配符">2.6 glob通配符</a></li>
-        <li><a href="#27-双星号">2.7 双星号</a></li>
-      </ul>
-    </li>
-    <li><a href="#3-其他规则">3 其他规则</a></li>
+    <li><a href="#1定义">1.定义</a></li>
+    <li><a href="#2差分数组的应用区间的快速加减">2.差分数组的应用:区间的快速加减</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="1什么是gitignore">1.什么是.gitignore</h2>
-<p>在一些项目中，我们不想让本地仓库的所有文件都上传到远程仓库,
-比如:万恶的.DS_Store</p>
+            </div><div class="content" id="content"><h1 id="差分数组">差分数组</h1>
+<p>如果给你一个包含5000万个元素的数组，然后会有频繁区间修改操作，那什么是频繁的区间修改操作呢？比如让第1个数到第1000万个数每个数都加上1，而且这种操作时频繁的。</p>
+<p>此时你应该怎么做？很容易想到的是，从第1个数开始遍历，一直遍历到第1000万个数，然后每个数都加上1，如果这种操作很频繁的话，那这种暴力的方法在一些实时的系统中可能就拉跨了。</p>
+<p>因此，今天的主角就出现了——差分数组。</p>
 <hr>
-<h2 id="2使用规则">2.使用规则</h2>
+<h2 id="1定义">1.定义</h2>
+<p>差分数组就是与原数组同样大小的数组</p>
+<p>原数组记为:a[]</p>
+<p>差分数组记为:d[]</p>
+<pre tabindex="0"><code>公式:
+1.i=1时 d[i]=a[i]
+2.i&gt;1时,d[i]=a[i]-a[i-1]
+
+恢复公式
+a[i]=d[i]+a[i-1]
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:center">index</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">原数组a</td>
+<td>1</td>
+<td>3</td>
+<td>7</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr>
+<td style="text-align:center">差分d</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>-2</td>
+<td>-3</td>
+</tr>
+<tr>
+<td style="text-align:center">sum.d</td>
+<td>1</td>
+<td>3</td>
+<td>7</td>
+<td>5</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
 <hr>
-<h3 id="21-注释">2.1 注释</h3>
-<pre tabindex="0"><code># this is .gitignore file.
-# 以下是忽略的文件
-.DS_Store
-</code></pre><p>上述例子中，#开头的就是注释</p>
-<hr>
-<h3 id="22-忽略特定的后缀">2.2 忽略特定的后缀</h3>
-<pre tabindex="0"><code># 忽略后缀为exe的文件
-*.exe
-</code></pre><hr>
-<h3 id="23-忽略整个文件夹">2.3 忽略整个文件夹</h3>
-<p>如果我们想要忽略某个路径下文件夹的所有内容<br>
-我们可以在该文件夹路径的后面加入/,如下</p>
-<pre tabindex="0"><code>folder/
-</code></pre><hr>
-<h3 id="24-忽略文件和目录">2.4 忽略文件和目录</h3>
-<p>例如:folder 表示忽略folder文件和folder目录<br>
-会搜索多级目录，找到所有名为folder的文件</p>
-<pre tabindex="0"><code>folder
-</code></pre><hr>
-<h3 id="25-表示取反">2.5 !表示取反</h3>
-<p>如果我们想要保留src/lib下的man.txt<br>
-那么我们可以写下如下内容</p>
-<pre tabindex="0"><code>!man.txt
-</code></pre><hr>
-<h3 id="26-glob通配符">2.6 glob通配符</h3>
-<p>常用的通配符<br>
-(1) * :可以代表一切的字符串，可以是0个也可以是任意多个字符<br>
-(2) ? :匹配除了&rsquo;/&lsquo;以外的任意一个字符<br>
-(3) []:匹配多个列表中的字符<br>
-例如想要清除所有.txt文件</p>
-<pre tabindex="0"><code>*.txt
-</code></pre><p>如果想要清除目标文档下的所有.json文件</p>
-<pre tabindex="0"><code>src/*.json
-</code></pre><hr>
-<h3 id="27-双星号">2.7 双星号</h3>
-<p>斜杠后面紧跟两个连续的星号**,表示多级目录</p>
-<pre tabindex="0"><code>src/**/folder
-</code></pre><hr>
-<h2 id="3-其他规则">3 其他规则</h2>
-<p>(1) .gitignore 文件也会上传到远程仓库<br>
-(2) 如果本地仓库已被跟踪，那么即使在.gitignore中设置了忽略，也不起作用</p>
+<h2 id="2差分数组的应用区间的快速加减">2.差分数组的应用:区间的快速加减</h2>
+<p>对区间[L,R]统一加上X,只需要在差分数组d[L]+X,d[R+1]-X即可</p>
+<p>例如，对区间[1,3]加3</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">index</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">原数组</td>
+<td>1</td>
+<td>3</td>
+<td>7</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr>
+<td style="text-align:center">原差分d</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>-2</td>
+<td>-3</td>
+</tr>
+<tr>
+<td style="text-align:center">减差分</td>
+<td>1</td>
+<td>5</td>
+<td>4</td>
+<td>-2</td>
+<td>0</td>
+</tr>
+<tr>
+<td style="text-align:center">还原数组</td>
+<td>1</td>
+<td>6</td>
+<td>10</td>
+<td>8</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-11-14</span>
+                <span>Updated on 2022-11-16</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-title="关于.gitignore详解" data-hashtags="git"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-hashtag="git"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-title="关于.gitignore详解"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-title="关于.gitignore详解"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/" data-title="关于.gitignore详解"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://zxlkgf.github.io/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" data-title="差分数组" data-hashtags="差分数组"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://zxlkgf.github.io/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" data-hashtag="差分数组"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://zxlkgf.github.io/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" data-title="差分数组"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://zxlkgf.github.io/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" data-title="差分数组"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://zxlkgf.github.io/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" data-title="差分数组"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/git/">git</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/">差分数组</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/" class="prev" rel="prev" title="创建Blog流程"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>创建Blog流程</a>
-            <a href="/%E5%89%8D%E7%BC%80%E5%92%8C/" class="next" rel="next" title="前缀和">前缀和<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/%E5%89%8D%E7%BC%80%E5%92%8C/" class="prev" rel="prev" title="前缀和"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>前缀和</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

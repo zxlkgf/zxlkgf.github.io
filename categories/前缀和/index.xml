@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>前缀和 - Category - Cyo&#39;s Website</title>
+        <link>http://zxlkgf.github.io/categories/%E5%89%8D%E7%BC%80%E5%92%8C/</link>
+        <description>前缀和 - Category - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 16 Nov 2022 12:30:09 &#43;0900</lastBuildDate><atom:link href="http://zxlkgf.github.io/categories/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="self" type="application/rss+xml" /><item>
+    <title>前缀和</title>
+    <link>http://zxlkgf.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/</link>
+    <pubDate>Wed, 16 Nov 2022 12:30:09 &#43;0900</pubDate>
+    <author>Cyo</author>
+    <guid>http://zxlkgf.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/</guid>
+    <description><![CDATA[1.前缀和 1.问题 输入一个长度为n的整数数列, 接下来在输入m个询问, 每个询问都输入一对l(left),r(right) 2.输入格式 第一行输入]]></description>
+</item>
+</channel>
+</rss>
