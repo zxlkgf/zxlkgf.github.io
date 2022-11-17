@@ -4,9 +4,17 @@
         <link>http://zxlkgf.github.io/</link>
         <description>Cyo&#39;s website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 16 Nov 2022 22:07:59 &#43;0900</lastBuildDate>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Thu, 17 Nov 2022 22:55:14 &#43;0900</lastBuildDate>
             <atom:link href="http://zxlkgf.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Java基础3</title>
+    <link>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%803/</link>
+    <pubDate>Thu, 17 Nov 2022 22:55:14 &#43;0900</pubDate>
+    <author>Cyo</author>
+    <guid>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%803/</guid>
+    <description><![CDATA[1.36 遇到过异常么，如何处理? 在Java中，可以按照如下三个步骤处理异常: 1.捕获异常 将业务代码包裹在try块内部，当业务代码方式异常，系统都会]]></description>
+</item>
+<item>
     <title>Java基础2</title>
     <link>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%802/</link>
     <pubDate>Wed, 16 Nov 2022 22:07:59 &#43;0900</pubDate>
@@ -77,14 +85,6 @@
     <author>Cyo</author>
     <guid>http://zxlkgf.github.io/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/</guid>
     <description><![CDATA[9 商品搜索 9.1 关于商品的模糊搜索 9.1.1 后端-持久层 1.编写sql SELECT id,title,sell_point,price,image FROM t_product WHERE STATUS = 1 AND title LIKE &#39;%${title}%&#39; ORDER BY priority DESC; 2.编写Mapper接口的抽象方法 /** * 按照输入的标]]></description>
-</item>
-<item>
-    <title>SpringBoot项目-分页插件</title>
-    <link>http://zxlkgf.github.io/springboot%E9%A1%B9%E7%9B%AE-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</link>
-    <pubDate>Wed, 19 Oct 2022 20:19:14 &#43;0900</pubDate>
-    <author>Cyo</author>
-    <guid>http://zxlkgf.github.io/springboot%E9%A1%B9%E7%9B%AE-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</guid>
-    <description><![CDATA[分页插件学习 1.github:https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md 2.CSDN:https://blog.csdn.net/m0_48736673/article/details/124805124 1.使用步骤 1.在pom.xml添加如下依赖 &lt;dependency&gt; &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt; &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt; &lt;version&gt;最新版本&lt;/version&gt; &lt;!--&lt;version&gt;1.2.3&lt;version&gt;--&gt; &lt;/dependency&gt;]]></description>
 </item>
 </channel>
 </rss>
