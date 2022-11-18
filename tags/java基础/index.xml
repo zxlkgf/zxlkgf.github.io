@@ -4,24 +4,8 @@
         <link>http://zxlkgf.github.io/tags/java%E5%9F%BA%E7%A1%80/</link>
         <description>java基础 - Tag - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Thu, 17 Nov 2022 22:55:14 &#43;0900</lastBuildDate><atom:link href="http://zxlkgf.github.io/tags/java%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
-    <title>Java基础3</title>
-    <link>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%803/</link>
-    <pubDate>Thu, 17 Nov 2022 22:55:14 &#43;0900</pubDate>
-    <author>Cyo</author>
-    <guid>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%803/</guid>
-    <description><![CDATA[1.36 遇到过异常么，如何处理? 在Java中，可以按照如下三个步骤处理异常: 1.捕获异常 将业务代码包裹在try块内部，当业务代码方式异常，系统都会]]></description>
-</item>
-<item>
-    <title>Java基础2</title>
-    <link>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%802/</link>
-    <pubDate>Wed, 16 Nov 2022 22:07:59 &#43;0900</pubDate>
-    <author>Cyo</author>
-    <guid>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%802/</guid>
-    <description><![CDATA[1.11 int 和 Integer有什么区别，二者在==运算会出现什么结果 int是基本数据类型 Integer是引用类型 二者在做==运算的时候，Intege]]></description>
-</item>
-<item>
-    <title>Java基础1</title>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 16 Nov 2022 21:00:22 &#43;0900</lastBuildDate><atom:link href="http://zxlkgf.github.io/tags/java%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+    <title>Java基础</title>
     <link>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%801/</link>
     <pubDate>Wed, 16 Nov 2022 21:00:22 &#43;0900</pubDate>
     <author>Cyo</author>
