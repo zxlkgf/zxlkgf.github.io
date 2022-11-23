@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>HashMap 循环链表 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="HashMap 循环链表" />
-<meta property="og:description" content="1.说一下HashMap循环链表产生的原理 首先我们先了解一下HashMap产生循环链表是出现在JDK1.7版本。 其次产生场景是并放状况下出现" />
+<meta property="og:description" content="1.说一下HashMap循环链表产生的原理 首先我们先了解一下HashMap产生循环链表是出现在JDK1.7版本。 其次产生场景是并发状况下出现" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://zxlkgf.github.io/hashmap-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/" /><meta property="og:image" content="http://zxlkgf.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-11-23T22:39:52+09:00" />
@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="http://zxlkgf.github.io/logo.png"/>
 
 <meta name="twitter:title" content="HashMap 循环链表"/>
-<meta name="twitter:description" content="1.说一下HashMap循环链表产生的原理 首先我们先了解一下HashMap产生循环链表是出现在JDK1.7版本。 其次产生场景是并放状况下出现"/>
+<meta name="twitter:description" content="1.说一下HashMap循环链表产生的原理 首先我们先了解一下HashMap产生循环链表是出现在JDK1.7版本。 其次产生场景是并发状况下出现"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -135,7 +135,7 @@
             </div><div class="content" id="content"><h1 id="1说一下hashmap循环链表产生的原理">1.说一下HashMap循环链表产生的原理</h1>
 <hr>
 <p>首先我们先了解一下HashMap产生循环链表是出现在JDK1.7版本。</p>
-<p>其次产生场景是并放状况下出现死循环</p>
+<p>其次产生场景是并发状况下出现死循环</p>
 <p>产生原因为:多线程同时put时，如果同时操作resize(),可能会导致链表循环，进而使得后面的get产生死循环。</p>
 <p>那么下面我们来看看与其相关联的代码</p>
 <hr>

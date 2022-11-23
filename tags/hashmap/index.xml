@@ -10,7 +10,7 @@
     <pubDate>Wed, 23 Nov 2022 22:39:52 &#43;0900</pubDate>
     <author>Cyo</author>
     <guid>http://zxlkgf.github.io/hashmap-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/</guid>
-    <description><![CDATA[1.说一下HashMap循环链表产生的原理 首先我们先了解一下HashMap产生循环链表是出现在JDK1.7版本。 其次产生场景是并放状况下出现]]></description>
+    <description><![CDATA[1.说一下HashMap循环链表产生的原理 首先我们先了解一下HashMap产生循环链表是出现在JDK1.7版本。 其次产生场景是并发状况下出现]]></description>
 </item>
 <item>
     <title>HashMap详解</title>
