@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>java-集合 - Tag - Cyo&#39;s Website</title>
+        <link>http://zxlkgf.github.io/tags/java-%E9%9B%86%E5%90%88/</link>
+        <description>java-集合 - Tag - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 19 Nov 2022 09:41:50 &#43;0900</lastBuildDate><atom:link href="http://zxlkgf.github.io/tags/java-%E9%9B%86%E5%90%88/" rel="self" type="application/rss+xml" /><item>
+    <title>集合类</title>
+    <link>http://zxlkgf.github.io/%E9%9B%86%E5%90%88%E7%B1%BB/</link>
+    <pubDate>Sat, 19 Nov 2022 09:41:50 &#43;0900</pubDate>
+    <author>Cyo</author>
+    <guid>http://zxlkgf.github.io/%E9%9B%86%E5%90%88%E7%B1%BB/</guid>
+    <description><![CDATA[2.集合类 2.1 Java中有哪些容器(集合类)? Java中的集合类主要由Collection和Map这两个接口派生而出，其中Collection]]></description>
+</item>
+</channel>
+</rss>
