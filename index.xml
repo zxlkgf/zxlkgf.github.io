@@ -4,9 +4,17 @@
         <link>http://zxlkgf.github.io/</link>
         <description>Cyo&#39;s website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 23 Nov 2022 22:39:52 &#43;0900</lastBuildDate>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Thu, 24 Nov 2022 22:00:12 &#43;0900</lastBuildDate>
             <atom:link href="http://zxlkgf.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>LinkedHashMap 详解</title>
+    <link>http://zxlkgf.github.io/linkedhashmap-%E8%AF%A6%E8%A7%A3/</link>
+    <pubDate>Thu, 24 Nov 2022 22:00:12 &#43;0900</pubDate>
+    <author>Cyo</author>
+    <guid>http://zxlkgf.github.io/linkedhashmap-%E8%AF%A6%E8%A7%A3/</guid>
+    <description><![CDATA[1. LinkedHashMap(JDK1.8) 1 简介 public class LinkedHashMap&lt;K,V&gt; extends HashMap&lt;K,V&gt; implements Map&lt;K,V&gt; LinkedHashMap继承自HashMap，它的多种操作都是建立在HashMap的操作上的。同HashMap上不]]></description>
+</item>
+<item>
     <title>HashMap 循环链表</title>
     <link>http://zxlkgf.github.io/hashmap-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/</link>
     <pubDate>Wed, 23 Nov 2022 22:39:52 &#43;0900</pubDate>
@@ -77,14 +85,6 @@
     <author>Cyo</author>
     <guid>http://zxlkgf.github.io/springboot%E9%A1%B9%E7%9B%AE-kaptcha/</guid>
     <description><![CDATA[Kaptcha 1.1 Kaptcha简介 Kaptcha 是一个扩展自simplecaptcha的验证码库，默认情况下，Kaptcha非常易于设置和使用，并且默认输出会产生一]]></description>
-</item>
-<item>
-    <title>SpringBoot项目-AOP</title>
-    <link>http://zxlkgf.github.io/springboot%E9%A1%B9%E7%9B%AE-aop/</link>
-    <pubDate>Sat, 22 Oct 2022 20:19:14 &#43;0900</pubDate>
-    <author>Cyo</author>
-    <guid>http://zxlkgf.github.io/springboot%E9%A1%B9%E7%9B%AE-aop/</guid>
-    <description><![CDATA[AOP 1 Spring AOP AOP：面向切面（Aspect）编程。AOP并不是Spring框架的特性，只是Spring很好的支持了AOP。 如果需要在处理每个业务]]></description>
 </item>
 </channel>
 </rss>

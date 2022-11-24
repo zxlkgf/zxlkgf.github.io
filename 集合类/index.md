@@ -189,5 +189,51 @@ ConcurrentHashMap的实现细节远没有这么简单，因此性能也要高上
 
 ---
 
-### 
+### 2.17 介绍一下ConcurrentHashMap是怎么实现的
+
+JDK1.7中的实现:
+
+在jdk1.7中，ConcurrentHashMap是由segment数据结构和HashEntry数据结构构成。采取分段锁来保证安全性。Segment是ReentrantLock重入锁，在ConcurrentHashMap中扮演锁的角色，HashEntru则用于存储键值对数据。一个ConcurrentHashMap里包含一个Segment数组，一个segment数组里包含一个HashEntry数组，Segment的结构和HashMap相似，是一个数组和链表结构。
+
+JDK1.8中的实现:
+
+JDK1.8的实现已经摒弃了Segment的概念，而是直接用Node数组+链表+红黑树的数据结构来表现，并发控制使用了Synchronized和CAS来操作，整个看起来就像是优化过且线程安全的HashMap，虽然在JDK1.8中还能看到segment的数据结构，但是已经简化了属性，只是为了兼容旧版本。
+
+---
+
+### 2.18 ConcurrentHashMap是怎么分段分组的？
+
+get操作：
+
+Segment的get操作实现非常简单和高效，先经过一次再散列，然后使用这个散列值通过散列运算定位到 Segment，再通过散列算法定位到元素。get操作的高效之处在于整个get过程都不需要加锁，除非读到空的值才会加锁重读。原因就是将使用的共享变量定义成 volatile 类型。
+
+put操作：
+
+当执行put操作时，会经历两个步骤：
+
+1. 判断是否需要扩容；
+
+2. 定位到添加元素的位置，将其放入 HashEntry 数组中。
+
+插入过程会进行第一次 key 的 hash 来定位 Segment 的位置，如果该 Segment 还没有初始化，即通过 CAS 操作进行赋值，然后进行第二次 hash 操作，找到相应的 HashEntry 的位置，这里会利用继承过来的锁的特性，在将数据插入指定的 HashEntry 位置时（尾插法），会通过继承 ReentrantLock 的 tryLock() 方法尝试去获取锁，如果获取成功就直接插入相应的位置，如果已经有线程获取该Segment的锁，那当前线程会以自旋的方式去继续的调用 tryLock() 方法去获取锁，超过指定次数就挂起，等待唤醒。
+
+---
+
+### 2.19 说一说你对LinkedHashMap的理解
+
+LinkedHashMap使用双向链表来维护key-value对的顺序（其实只需要考虑key的顺序），该链表负责维护Map的迭代顺序，迭代顺序与key-value对的插入顺序保持一致。
+
+LinkedHashMap可以避免对HashMap、Hashtable里的key-value对进行排序（只要插入key-value对时保持顺序即可），同时又可避免使用TreeMap所增加的成本。
+
+LinkedHashMap需要维护元素的插入顺序，因此性能略低于HashMap的性能。但因为它以链表来维护内部顺序，所以在迭代访问Map里的全部元素时将有较好的性能。
+
+---
+
+### 2.20 请介绍LinkedHashMap的底层原理
+
+LinkedHashMap继承于HashMap，它在HashMap的基础上，通过维护一条双向链表，解决了HashMap不能随时保持遍历顺序和插入顺序一致的问题。在实现上，LinkedHashMap很多方法直接继承自HashMap，仅为维护双向链表重写了部分方法。
+
+---
+
+### 2.21 请介绍TreeMap的底层原理
 
