@@ -12,21 +12,5 @@
     <guid>http://zxlkgf.github.io/linkedhashmap-%E8%AF%A6%E8%A7%A3/</guid>
     <description><![CDATA[1. LinkedHashMap(JDK1.8) 1 简介 public class LinkedHashMap&lt;K,V&gt; extends HashMap&lt;K,V&gt; implements Map&lt;K,V&gt; LinkedHashMap继承自HashMap，它的多种操作都是建立在HashMap的操作上的。同HashMap上不]]></description>
 </item>
-<item>
-    <title>HashMap 循环链表</title>
-    <link>http://zxlkgf.github.io/hashmap-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/</link>
-    <pubDate>Wed, 23 Nov 2022 22:39:52 &#43;0900</pubDate>
-    <author>Cyo</author>
-    <guid>http://zxlkgf.github.io/hashmap-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/</guid>
-    <description><![CDATA[1.说一下HashMap循环链表产生的原理 首先我们先了解一下HashMap产生循环链表是出现在JDK1.7版本。 其次产生场景是并发状况下出现]]></description>
-</item>
-<item>
-    <title>HashMap详解</title>
-    <link>http://zxlkgf.github.io/hashmap%E8%AF%A6%E8%A7%A3/</link>
-    <pubDate>Sat, 19 Nov 2022 19:15:49 &#43;0900</pubDate>
-    <author>Cyo</author>
-    <guid>http://zxlkgf.github.io/hashmap%E8%AF%A6%E8%A7%A3/</guid>
-    <description><![CDATA[1. HashMap源码详解 基于JDK1.8 1.1HashMap简介 HashMap 主要用来存放键值对，它基于哈希表的 Map 接口实现，是常用的 Java 集合之一，是非线程]]></description>
-</item>
 </channel>
 </rss>
