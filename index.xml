@@ -4,9 +4,17 @@
         <link>http://zxlkgf.github.io/</link>
         <description>Cyo&#39;s website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 03 Dec 2022 19:10:15 &#43;0900</lastBuildDate>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 04 Dec 2022 21:59:14 &#43;0900</lastBuildDate>
             <atom:link href="http://zxlkgf.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>01背包</title>
+    <link>http://zxlkgf.github.io/01%E8%83%8C%E5%8C%85/</link>
+    <pubDate>Sun, 04 Dec 2022 21:59:14 &#43;0900</pubDate>
+    <author>Cyo</author>
+    <guid>http://zxlkgf.github.io/01%E8%83%8C%E5%8C%85/</guid>
+    <description><![CDATA[1.01背包问题 给定n种物品和一个容量为c的背包，物品的重量为W[i]，价值为C[i]，应该如何选择装入背包的物品，使得装入背包的物品的价值]]></description>
+</item>
+<item>
     <title>ArrayList详解</title>
     <link>http://zxlkgf.github.io/arraylist/</link>
     <pubDate>Sat, 03 Dec 2022 19:10:15 &#43;0900</pubDate>
@@ -77,14 +85,6 @@
     <author>Cyo</author>
     <guid>http://zxlkgf.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/</guid>
     <description><![CDATA[1.前缀和 1.问题 输入一个长度为n的整数数列, 接下来在输入m个询问, 每个询问都输入一对l(left),r(right) 2.输入格式 第一行输入]]></description>
-</item>
-<item>
-    <title>关于.gitignore详解</title>
-    <link>http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/</link>
-    <pubDate>Mon, 14 Nov 2022 20:11:22 &#43;0900</pubDate>
-    <author>Cyo</author>
-    <guid>http://zxlkgf.github.io/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/</guid>
-    <description><![CDATA[1.什么是.gitignore 在一些项目中，我们不想让本地仓库的所有文件都上传到远程仓库, 比如:万恶的.DS_Store 2.使用规则 2.1 注释 #]]></description>
 </item>
 </channel>
 </rss>

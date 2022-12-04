@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>背包 - Tag - Cyo&#39;s Website</title>
+        <link>http://zxlkgf.github.io/tags/%E8%83%8C%E5%8C%85/</link>
+        <description>背包 - Tag - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 04 Dec 2022 21:59:14 &#43;0900</lastBuildDate><atom:link href="http://zxlkgf.github.io/tags/%E8%83%8C%E5%8C%85/" rel="self" type="application/rss+xml" /><item>
+    <title>01背包</title>
+    <link>http://zxlkgf.github.io/01%E8%83%8C%E5%8C%85/</link>
+    <pubDate>Sun, 04 Dec 2022 21:59:14 &#43;0900</pubDate>
+    <author>Cyo</author>
+    <guid>http://zxlkgf.github.io/01%E8%83%8C%E5%8C%85/</guid>
+    <description><![CDATA[1.01背包问题 给定n种物品和一个容量为c的背包，物品的重量为W[i]，价值为C[i]，应该如何选择装入背包的物品，使得装入背包的物品的价值]]></description>
+</item>
+</channel>
+</rss>
