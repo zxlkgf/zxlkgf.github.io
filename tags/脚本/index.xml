@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>脚本 - Tag - Cyo&#39;s Website</title>
+        <link>http://example.org/tags/%E8%84%9A%E6%9C%AC/</link>
+        <description>脚本 - Tag - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Fri, 03 Feb 2023 20:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E8%84%9A%E6%9C%AC/" rel="self" type="application/rss+xml" /><item>
+    <title>Makefile</title>
+    <link>http://example.org/makefile/</link>
+    <pubDate>Fri, 03 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/makefile/</guid>
+    <description><![CDATA[什么是Makefile 1.一个工程中的源码不计其数，其按照类型，功能，模块分别放在若干个目录中，Makefile文件定义了一系列的规则来制定]]></description>
+</item>
+</channel>
+</rss>

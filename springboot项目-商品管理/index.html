@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>SpringBoot项目-商品管理 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="SpringBoot项目-商品管理" />
+<meta property="og:description" content="5 商品管理 5.1 创建数据表 DROP TABLE IF EXISTS t_product; CREATE TABLE t_product ( id int(20) NOT NULL COMMENT &#39;商品id&#39;, category_id int(20) DEFAULT NULL COMMENT &#39;分类id&#39;, item_type varchar(100) DEFAULT NULL COMMENT &#39;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-15T20:19:14+09:00" />
+<meta property="article:modified_time" content="2022-10-15T20:19:14+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="SpringBoot项目-商品管理"/>
+<meta name="twitter:description" content="5 商品管理 5.1 创建数据表 DROP TABLE IF EXISTS t_product; CREATE TABLE t_product ( id int(20) NOT NULL COMMENT &#39;商品id&#39;, category_id int(20) DEFAULT NULL COMMENT &#39;分类id&#39;, item_type varchar(100) DEFAULT NULL COMMENT &#39;"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/" /><link rel="prev" href="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" /><link rel="next" href="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%AE%A1%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SpringBoot项目-商品管理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86\/"
+        },"genre": "posts","keywords": "computerStore","wordcount":  2428 ,
+        "url": "http:\/\/example.org\/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86\/","datePublished": "2022-10-15T20:19:14+09:00","dateModified": "2022-10-15T20:19:14+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SpringBoot项目-商品管理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/springboot/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>SpringBoot</a>&nbsp;<a href="/categories/mybatis/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mybatis</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-15">2022-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2428 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#51-创建数据表">5.1 创建数据表</a></li>
+    <li><a href="#52-定义实体类">5.2 定义实体类</a></li>
+    <li><a href="#53-热销商品">5.3 热销商品</a>
+      <ul>
+        <li><a href="#531-商品排行-持久层">5.3.1 商品排行-持久层</a></li>
+        <li><a href="#532-商品排行-业务层">5.3.2 商品排行-业务层</a></li>
+        <li><a href="#533-商品排行-控制层">5.3.3 商品排行-控制层</a></li>
+      </ul>
+    </li>
+    <li><a href="#54-新到商品">5.4 新到商品</a>
+      <ul>
+        <li><a href="#541-新到商品-持久层">5.4.1 新到商品-持久层</a></li>
+        <li><a href="#542-新到商品-业务层">5.4.2 新到商品-业务层</a></li>
+        <li><a href="#543-新到商品-控制层">5.4.3 新到商品-控制层</a></li>
+      </ul>
+    </li>
+    <li><a href="#55-显示商品">5.5 显示商品</a>
+      <ul>
+        <li><a href="#551-显示商品-持久层">5.5.1 显示商品-持久层</a></li>
+        <li><a href="#552-显示商品-业务层">5.5.2 显示商品-业务层</a></li>
+        <li><a href="#553-显示商品-控制层">5.5.3 显示商品-控制层</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="5-商品管理">5 商品管理</h1>
+<hr>
+<h2 id="51-创建数据表">5.1 创建数据表</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">t_product</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">t_product</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;商品id&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">category_id</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;分类id&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">item_type</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;商品系列&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">title</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;商品标题&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">sell_point</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;商品卖点&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">price</span><span class="w"> </span><span class="nb">bigint</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;商品单价&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">num</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;库存数量&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">image</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;图片路径&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">status</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;商品状态  1：上架   2：下架   3：删除&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">priority</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;显示优先级&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">created_time</span><span class="w"> </span><span class="n">datetime</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;创建时间&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">modified_time</span><span class="w"> </span><span class="n">datetime</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;最后修改时间&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">created_user</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;创建人&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">modified_user</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;最后修改人&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="err">具体录入信息参照</span><span class="n">githu</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h2 id="52-定义实体类">5.2 定义实体类</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 商品的实体类
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@NoArgsConstructor</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Product</span> <span class="kd">extends</span> <span class="n">BaseEntity</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">categoryId</span> <span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">itemType</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">sellPoint</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">price</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">num</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">image</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">status</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">priority</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="53-热销商品">5.3 热销商品</h2>
+<h3 id="531-商品排行-持久层">5.3.1 商品排行-持久层</h3>
+<hr>
+<h4 id="1编写sql语句">1.编写sql语句</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="err">查询热销商品的</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_product</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">priorty</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h4 id="2编写mapper接口和抽象方法">2.编写Mapper接口和抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 处理商品数据的Mapper接口
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductMapper</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照priority查找热销前五的商品数据
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回商品数据集合
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findHotList</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写mapper接口的映射">3.编写Mapper接口的映射</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;com.zxl.store.mappers.ProductMapper&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;Product&gt; findHotList();--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findHotList&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Product&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    SELECT * FROM t_product WHERE status = 1 ORDER BY priority DESC LIMIT 0,4
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/select&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/mapper&gt;</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试">4.单元测试</h4>
+<hr>
+<h3 id="532-商品排行-业务层">5.3.2 商品排行-业务层</h3>
+<hr>
+<h4 id="1异常规划">1.异常规划</h4>
+<p>没有异常    </p>
+<hr>
+<h4 id="2定义业务层接口和抽象方法">2.定义业务层接口和抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 处理商品的业务层接口
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IProductService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照priority查找热销前五的商品数据
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回商品数据集合
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findHotList</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写业务层方法逻辑">3.编写业务层方法逻辑</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 处理商品的业务层实现类
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IProductServiceImpl</span> <span class="kd">implements</span> <span class="n">IProductService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ProductMapper</span> <span class="n">productMapper</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findHotList</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//查找数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">productMapper</span><span class="o">.</span><span class="na">findHotList</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试-1">4.单元测试</h4>
+<hr>
+<h3 id="533-商品排行-控制层">5.3.3 商品排行-控制层</h3>
+<h4 id="1异常处理">1.异常处理</h4>
+<p>没有异常</p>
+<hr>
+<h4 id="2设计请求">2.设计请求</h4>
+<p>请求路径：/product/hot_list</p>
+<p>请求参数：无</p>
+<p>请求类型：get</p>
+<p>响应类型：JsonResult&lt;List&lt; Product&raquo;</p>
+<hr>
+<h4 id="3处理请求编写控制层方法">3.处理请求，编写控制层方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description  处理商品相关请求的控制类
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/product&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductController</span> <span class="kd">extends</span> <span class="n">BaseController</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IProductService</span> <span class="n">productService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *  返回热销商品
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/host_list&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;&gt;</span> <span class="nf">getHotList</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">productService</span><span class="o">.</span><span class="na">findHotList</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">data</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4前端页面">4.前端页面</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="kd">function</span> <span class="nx">showHotList</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#hot-list&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">url</span><span class="o">:</span><span class="s2">&#34;/product/hot_list&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">type</span><span class="o">:</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                            <span class="kd">let</span> <span class="nx">product</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                            <span class="kd">let</span> <span class="nx">image</span> <span class="o">=</span> <span class="s2">&#34;..&#34;</span> <span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">image</span> <span class="o">+</span> <span class="s2">&#34;collect.png&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">str</span> <span class="o">=</span> <span class="s2">&#34;&lt;div class=&#39;col-md-12&#39;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;div class=\&#34;col-md-7 text-row-2\&#34;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;a href=&#39;javascript:void(0);&#39;onclick=&#39;jumpWithId(#{id})&#39;&gt;&#34;</span> <span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">&#34;&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;div class=\&#34;col-md-2\&#34;&gt;￥&#34;</span> <span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">price</span> <span class="o">+</span> <span class="s2">&#34;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;div class=\&#34;col-md-3\&#34;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;img src=&#34;</span> <span class="o">+</span> <span class="nx">image</span>  <span class="o">+</span> <span class="s2">&#34; class=&#39;img-responsive&#39; /&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s2">&#34;#{id}&#34;</span><span class="p">,</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#hot-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;查询错误，请等待攻城狮修复！！&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="54-新到商品">5.4 新到商品</h2>
+<h3 id="541-新到商品-持久层">5.4.1 新到商品-持久层</h3>
+<hr>
+<h4 id="1编写sql语句-1">1.编写sql语句</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="err">按照上架物品的修改时间查询新商品</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SELET</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_product</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">modified_time</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h4 id="2定义抽象方法">2.定义抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照创建时间查找新到的商品
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回新商品列表
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findNewProductList</span><span class="o">();</span>
+</span></span></code></pre></div><hr>
+<h4 id="3定义mapper接口映射文件">3.定义mapper接口映射文件</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;Product&gt; findNewProductList();--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findNewProductList&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Product&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        SELECT * FROM t_product WHERE status = 1 ORDER BY modified_time DESC LIMIT 0,4
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试-2">4.单元测试</h4>
+<hr>
+<h3 id="542-新到商品-业务层">5.4.2 新到商品-业务层</h3>
+<hr>
+<h4 id="1定义异常">1.定义异常</h4>
+<p>无</p>
+<hr>
+<h4 id="2定义业务层抽象方法">2.定义业务层抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照商品状态和创建时间选取新商品集合
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findNewProductList</span><span class="o">();</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写业务层逻辑">3. 编写业务层逻辑</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findNewProductList</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//查找数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">productMapper</span><span class="o">.</span><span class="na">findNewProductList</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4-单元测试">4. 单元测试</h4>
+<hr>
+<h3 id="543-新到商品-控制层">5.4.3 新到商品-控制层</h3>
+<h4 id="1处理异常">1.处理异常</h4>
+<p>无</p>
+<hr>
+<h4 id="2定义请求">2.定义请求</h4>
+<p>请求路径：/product/new_list</p>
+<p>请求参数：无</p>
+<p>请求类型：get</p>
+<p>响应类型：JsonResult&lt;List&lt; Product&raquo;</p>
+<hr>
+<h4 id="3处理请求编写控制方法">3.处理请求，编写控制方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *  返回新商品
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/new_list&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;&gt;</span> <span class="nf">getNewList</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">productService</span><span class="o">.</span><span class="na">findNewProductList</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">data</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4前端页面-1">4.前端页面</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="kd">function</span> <span class="nx">showNewList</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#new-list&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">url</span><span class="o">:</span><span class="s2">&#34;/product/new_list&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">type</span><span class="o">:</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                            <span class="kd">let</span> <span class="nx">product</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                            <span class="kd">let</span> <span class="nx">image</span> <span class="o">=</span> <span class="s2">&#34;..&#34;</span> <span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">image</span> <span class="o">+</span> <span class="s2">&#34;collect.png&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">str</span> <span class="o">=</span> <span class="s2">&#34;&lt;div class=&#39;col-md-12&#39;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;div class=\&#34;col-md-7 text-row-2\&#34;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;a href=&#39;javascript:void(0);&#39;onclick=&#39;jumpWithId(#{id})&#39;&gt;&#34;</span> <span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">&#34;&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;div class=\&#34;col-md-2\&#34;&gt;￥&#34;</span> <span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">price</span> <span class="o">+</span> <span class="s2">&#34;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;div class=\&#34;col-md-3\&#34;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;img src=&#34;</span> <span class="o">+</span> <span class="nx">image</span>  <span class="o">+</span> <span class="s2">&#34; class=&#39;img-responsive&#39; /&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s2">&#34;#{id}&#34;</span><span class="p">,</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#new-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;查询错误，请等待攻城狮修复！！&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="55-显示商品">5.5 显示商品</h2>
+<h3 id="551-显示商品-持久层">5.5.1 显示商品-持久层</h3>
+<hr>
+<h4 id="1编写sql">1.编写sql</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="err">查找按照商品</span><span class="n">id</span><span class="err">查找商品</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="n">price</span><span class="p">,</span><span class="n">image</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_product</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="n">id</span><span class="err">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h4 id="2编写mapper接口的抽象方法">2.编写Mapper接口的抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照商品的id查找商品
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Product</span> <span class="nf">findProductById</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写mapper接口的映射文件">3.编写Mapper接口的映射文件</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    Product findProductById(Integer id);--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findProductById&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Product&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        SELECT * FROM t_product WHERE status = 1 AND id = #{id}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试-3">4.单元测试</h4>
+<hr>
+<h3 id="552-显示商品-业务层">5.5.2 显示商品-业务层</h3>
+<h4 id="1异常处理-1">1.异常处理</h4>
+<p>商品为找到异常</p>
+<p>商品状态异常(为未上架或者已经删除的商品)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 商品未找到异常
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductNotFoundException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 商品状态异常
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductStatusException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
+</span></span></code></pre></div><hr>
+<h4 id="2编写业务层接口的抽象方法">2.编写业务层接口的抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据商品id查找商品
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param id 商品id
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回商品信息
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Product</span> <span class="nf">findProductById</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写业务层具体逻辑">3.编写业务层具体逻辑</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Product</span> <span class="nf">findProductById</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//根据id查询商品信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Product</span> <span class="n">res</span> <span class="o">=</span> <span class="n">productMapper</span><span class="o">.</span><span class="na">findProductById</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//判断商品存在或者商品状态是否为上架
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">ProductNotFoundException</span><span class="o">(</span><span class="s">&#34;查询商品不存在&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">.</span><span class="na">getStatus</span><span class="o">()!=</span><span class="mi">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">ProductStatusException</span><span class="o">(</span><span class="s">&#34;查询商品尚未上架&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//传输商品信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试-4">4.单元测试</h4>
+<hr>
+<h3 id="553-显示商品-控制层">5.5.3 显示商品-控制层</h3>
+<h4 id="1异常处理-2">1.异常处理</h4>
+<p>将上述两个异常加入BaseConrtroller</p>
+<hr>
+<h4 id="2设计请求-1">2.设计请求</h4>
+<p>请求路径：/product/{id}</p>
+<p>请求参数：Integet id</p>
+<p>请求类型：get</p>
+<p>响应类型：JsonResult&lt; Product&gt;</p>
+<hr>
+<h4 id="3处理请求设计控制层方法">3.处理请求，设计控制层方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/{id}&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span>  <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findProductById</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">)</span><span class="n">Integer</span> <span class="n">id</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//按照获得的id查询商品
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Product</span> <span class="n">data</span> <span class="o">=</span> <span class="n">productService</span><span class="o">.</span><span class="na">findProductById</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">data</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><h4 id="4前端页面-2">4.前端页面</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">//index.html
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">function</span> <span class="nx">jumpWithId</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">let</span> <span class="nx">jumpUrl</span> <span class="o">=</span> <span class="s2">&#34;product.html?id=&#34;</span><span class="o">+</span><span class="nx">id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="nx">jumpUrl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//function 
+</span></span></span><span class="line"><span class="cl"><span class="c1">//返回一个参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">getOne</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//返回字符串从url的?处开始
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nb">decodeURI</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//如果等于-1，代表没有找到，即网页连接没有携带任何参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;?&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//返回一个新的字符串，从url连接=符号处索引+1的位置开始返回
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">result</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;=&#34;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//product.html
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//接收上一个页面传来的连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">var</span> <span class="nx">pid</span> <span class="o">=</span> <span class="nx">getOne</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="kd">function</span> <span class="nx">showInThisProductHtml</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//判断是否携带参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&#34;500.html&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">//在页面加载完成时自动发送此ajax请求并填充表单
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;/product/&#34;</span> <span class="o">+</span> <span class="nx">pid</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;get&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">success</span><span class="o">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="kd">let</span> <span class="nx">product</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="c1">//将普通的数据填充至页面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#product-title&#34;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">title</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#product-sell-point&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">sellPoint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#product-price&#34;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">price</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#stock&#34;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="c1">//将数据库查询的图片进行替换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="kd">let</span> <span class="nx">image</span> <span class="o">=</span> <span class="s2">&#34;..&#34;</span> <span class="o">+</span>  <span class="nx">product</span><span class="p">.</span><span class="nx">image</span>
+</span></span><span class="line"><span class="cl">                        <span class="c1">//遍历填充图片数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#product-image-&#34;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s2">&#34;-big&#34;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&#34;src&#34;</span><span class="p">,</span><span class="nx">image</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s2">&#34;_big.png&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#product-image-&#34;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&#34;src&#34;</span><span class="p">,</span><span class="nx">image</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s2">&#34;.jpg&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">})</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span></code></pre></div><hr>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-15</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/" data-title="SpringBoot项目-商品管理" data-hashtags="computerStore"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/" data-hashtag="computerStore"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/" data-title="SpringBoot项目-商品管理"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/" data-title="SpringBoot项目-商品管理"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/" data-title="SpringBoot项目-商品管理"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/computerstore/">computerStore</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" class="prev" rel="prev" title="SpringBoot项目-地址管理"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>SpringBoot项目-地址管理</a>
+            <a href="/springboot%E9%A1%B9%E7%9B%AE-%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%AE%A1%E7%90%86/" class="next" rel="next" title="SpringBoot项目-购物车管理">SpringBoot项目-购物车管理<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

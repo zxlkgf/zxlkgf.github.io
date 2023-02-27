@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>GCC基础 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="GCC基础" />
+<meta property="og:description" content="什么是GCC 1.GCC原名为GUN C语言编译器 2.GCC是由GNU开发的编程语言编译器 3.GCC不仅支持C的多种方言，也可以区别不同C的标准" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/gcc/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-01T20:55:47+08:00" />
+<meta property="article:modified_time" content="2023-02-01T20:55:47+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="GCC基础"/>
+<meta name="twitter:description" content="什么是GCC 1.GCC原名为GUN C语言编译器 2.GCC是由GNU开发的编程语言编译器 3.GCC不仅支持C的多种方言，也可以区别不同C的标准"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/gcc/" /><link rel="prev" href="http://example.org/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" /><link rel="next" href="http://example.org/%E9%9D%99%E6%80%81%E5%BA%93/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "GCC基础",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/gcc\/"
+        },"genre": "posts","keywords": "C\/C\u002b\u002b","wordcount":  888 ,
+        "url": "http:\/\/example.org\/gcc\/","datePublished": "2023-02-01T20:55:47+08:00","dateModified": "2023-02-01T20:55:47+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GCC基础</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C/C++</a>&nbsp;<a href="/categories/gcc/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>GCC</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-01">2023-02-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;888 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#gcc-和-g都是gnu的一个编译器">gcc 和 g++都是GNU的一个编译器</a></li>
+    <li><a href="#误区2gcc不会定义__cplusplus宏而g会">误区2：gcc不会定义__cplusplus宏，而g++会</a></li>
+    <li><a href="#误区3编译只能用gcc连接只能用g">误区3：编译只能用gcc，连接只能用g++</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><hr>
+<h1 id="什么是gcc">什么是GCC</h1>
+<p>1.GCC原名为GUN C语言编译器<br>
+2.GCC是由GNU开发的编程语言编译器<br>
+3.GCC不仅支持C的多种方言，也可以区别不同C的标准，可以使用命令行选项控制编译器在翻译源码时应该遵守那个C标准。例如，当使用命令行‘-std=99’启动GCC时，编译器支持C99标准<br>
+4.安装命令 sudo apt install gcc g++<br>
+5.查看版本 gcc/g++ -v/&ndash;version</p>
+<h1 id="gcc工作流程">GCC工作流程</h1>
+<p>源代码-&gt;预处理后源代码-&gt;汇编代码-&gt;目标代码-&gt;连接并输出<br>
+.h&mdash;&ndash;   .i &mdash;&mdash;&mdash;&ndash;.s         <br>
+.cpp<br>
+.c</p>
+<h1 id="指令">指令</h1>
+<table>
+<thead>
+<tr>
+<th>gcc编译选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-E</td>
+<td>预处理制定的源文件，不进行编译</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>编译制定的源文件，不进行汇编</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>编译，汇编制定的源文件，但是不进行连接</td>
+</tr>
+<tr>
+<td>-o [file1][file2] / [file2] -o [file1]</td>
+<td>将文件file2编译成可执行文件file1</td>
+</tr>
+<tr>
+<td>-I directory</td>
+<td>制定include包含文件的搜索目录</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>在编译的时候，生成调试信息，该程序可以被调试器调试</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>在程序编译的时候，制定一个宏</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>不生成任何警告</td>
+</tr>
+<tr>
+<td>-Wal</td>
+<td>生成警告信息</td>
+</tr>
+<tr>
+<td>-On</td>
+<td>n的取值范围:0-3 编译器的优化选项的4个级别</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>在程序编译的时候，使用指定的库</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>指定编译的时候，搜索的库的路径</td>
+</tr>
+<tr>
+<td>-fPIC/fpic</td>
+<td>生成与位置无关的代码</td>
+</tr>
+<tr>
+<td>-shared</td>
+<td>生成共享目标文件，通常用在建立共享库时</td>
+</tr>
+<tr>
+<td>-std</td>
+<td>制定C方言:如:-std=c99</td>
+</tr>
+</tbody>
+</table>
+<h1 id="gcc和g">gcc和g++</h1>
+<h2 id="gcc-和-g都是gnu的一个编译器">gcc 和 g++都是GNU的一个编译器</h2>
+<p>误区1：gcc只能编译c代码，g++只能编译C++代码。两者都可以<br>
+1.1后缀为.c的，gcc会将它当成c程序，而g++当做c++程序<br>
+1.2后缀为.cpp的 两则都会认为是c++程序，c++的语法规则更加严谨一些<br>
+1.3编译阶段，g++会调用gcc，对c++代码，两者是等价的，但是因为gcc命令 不能自动和C++程序使用的库连接，所以通常用g++完成连接</p>
+<h2 id="误区2gcc不会定义__cplusplus宏而g会">误区2：gcc不会定义__cplusplus宏，而g++会</h2>
+<p>2.1 实际上，这个宏只是标志编译器将会把代码按照c还是c++语法解释</p>
+<h2 id="误区3编译只能用gcc连接只能用g">误区3：编译只能用gcc，连接只能用g++</h2>
+<p>3.1：严格来说，这句话不算错误，但是它会混淆了概念，应该这样说：编译可以用gcc/g++，而连接可以用g++或者gcc -lstdc++<br>
+3.2：gcc命令不能自动和C++程序使用的库连接在一起，所以通常会使用g++来完成连接。但是在编译阶段，g++会自动调用gcc，二者等价</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/gcc/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/gcc/" data-title="GCC基础" data-hashtags="C/C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/gcc/" data-hashtag="C/C&#43;&#43;"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/gcc/" data-title="GCC基础"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/gcc/" data-title="GCC基础"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/gcc/" data-title="GCC基础"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c/c&#43;&#43;/">C/C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" class="prev" rel="prev" title="差分数组"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>差分数组</a>
+            <a href="/%E9%9D%99%E6%80%81%E5%BA%93/" class="next" rel="next" title="静态库">静态库<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

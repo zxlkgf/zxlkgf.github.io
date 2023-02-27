@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>QtSocket通信 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="QtSocket通信" />
+<meta property="og:description" content="socket编程有三种 1.流式套接字(SOCKET_STREAM) 2.数据报式套接字(SOCKET_DGRAM) 3,原始套接字(SOCKET" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/qtsocket%E9%80%9A%E4%BF%A1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-16T14:52:16+08:00" />
+<meta property="article:modified_time" content="2023-02-16T14:52:16+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="QtSocket通信"/>
+<meta name="twitter:description" content="socket编程有三种 1.流式套接字(SOCKET_STREAM) 2.数据报式套接字(SOCKET_DGRAM) 3,原始套接字(SOCKET"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/qtsocket%E9%80%9A%E4%BF%A1/" /><link rel="prev" href="http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "QtSocket通信",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/qtsocket%E9%80%9A%E4%BF%A1\/"
+        },"genre": "posts","keywords": "socket","wordcount":  1336 ,
+        "url": "http:\/\/example.org\/qtsocket%E9%80%9A%E4%BF%A1\/","datePublished": "2023-02-16T14:52:16+08:00","dateModified": "2023-02-16T14:52:16+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">QtSocket通信</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a>&nbsp;<a href="/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>网络通信</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-16">2023-02-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1336 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#备注">备注</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="heading"></h1>
+<p>socket编程有三种</p>
+<p>1.流式套接字(SOCKET_STREAM)</p>
+<p>2.数据报式套接字(SOCKET_DGRAM)</p>
+<p>3,原始套接字(SOCKET_RAW)</p>
+<p>前两者较常使用，基于TCP使用的是SOCKET_STREAM(流式套接字)</p>
+<p>服务端</p>
+<p>1.socket():创建流式socket</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span>     <span class="nf">socket</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="err">头文件：</span> 
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">socket</span><span class="p">(</span><span class="kt">int</span> <span class="n">domain</span><span class="p">,</span> <span class="kt">int</span> <span class="n">type</span><span class="p">,</span> <span class="kt">int</span> <span class="n">protocol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">domain</span><span class="p">:</span> <span class="err">协议类型，一般为</span><span class="n">AF_INET</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">type</span><span class="p">:</span> <span class="n">socket</span><span class="err">类型</span><span class="p">(</span><span class="n">SOCKET_STREAM</span><span class="p">,</span><span class="n">SOCKET_DGRAM</span><span class="p">,</span><span class="n">SOCKET_RAW</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">protocol</span><span class="p">:</span><span class="err">用来指定</span><span class="n">socket</span><span class="err">所使用的传输协议编号，通常设为</span><span class="mi">0</span><span class="err">即可</span>
+</span></span></code></pre></div><p>2.bind():指定用于通信的IP地址和port端口</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">bind</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="err">头文件：</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">bind</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">sockaddr</span> <span class="o">*</span><span class="n">my_addr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">addrlen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">sockfd</span><span class="p">:</span> <span class="n">socket</span><span class="err">描述符</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">my_addr</span><span class="p">:</span><span class="err">是一个指向包含有本机</span><span class="n">ip</span><span class="err">地址和端口号等信息的</span><span class="n">sockaddr</span><span class="err">类型的指针</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">addrlen</span><span class="p">:</span><span class="err">常被设为</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr</span><span class="p">)</span>
+</span></span></code></pre></div><p>3.listen():把socket设为监听对象</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="mi">3</span> <span class="nf">listen</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="err">头文件：</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">listen</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">backlog</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nl">sockfd</span><span class="p">:</span><span class="n">socket</span><span class="p">()</span><span class="err">系统调用返回的</span><span class="n">socket</span><span class="err">描述符</span>
+</span></span><span class="line"><span class="cl"><span class="nl">backlog</span><span class="p">:</span><span class="err">指定在请求队列中的最大请求数，进入的连接请求将在队列中等待</span><span class="n">accept</span><span class="p">()</span><span class="err">它们。</span>
+</span></span></code></pre></div><p>4.accept():接受客户端发来的连接请求</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="mi">4</span> <span class="n">accept</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="err">头文件：</span>   
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#inlcude &lt;sys/socket.h&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">accept</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">addrlen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">sockfd</span><span class="p">:</span><span class="err">是被监听的</span><span class="n">socket</span><span class="err">描述符</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">addr</span><span class="p">:</span><span class="err">通常是一个指向</span><span class="n">sockaddr_in</span><span class="err">变量的指针，该变量用来存放提出连接请求服务的主机的信息</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">addrlen</span><span class="p">:</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr_in</span><span class="p">)</span>
+</span></span></code></pre></div><p>5.recv()/send():接受或者发送</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">send</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="err">头文件：</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">send</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">msg</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">sockfd</span><span class="p">:</span><span class="err">用来传输数据的</span><span class="n">socket</span><span class="err">描述符</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">msg</span><span class="p">:</span><span class="err">要发送数据的指针</span> 
+</span></span><span class="line"><span class="cl">    <span class="nl">flags</span><span class="p">:</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">recv</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="err">头文件：</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">recv</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="n">sockfd</span><span class="err">：接收数据的</span><span class="n">socket</span><span class="err">描述符</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">buf</span><span class="p">:</span><span class="err">存放数据的缓冲区</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">len</span><span class="p">:</span><span class="err">缓冲的长度</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">flags</span><span class="p">:</span><span class="mi">0</span>
+</span></span></code></pre></div><p>6.close():关闭socket连接</p>
+<p>客户端</p>
+<p>1.socket():创建流式套接字</p>
+<p>2.connect():连接服务器，发起请求</p>
+<p>3.send()/recv():接受或者发送</p>
+<p>4.close():关闭socket连接 释放资源</p>
+<h2 id="备注">备注</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">htons</span>
+</span></span><span class="line"><span class="cl"><span class="err">头文件</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">uint16_t</span> <span class="n">htons</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">hostshort</span><span class="p">);</span><span class="err">　</span>
+</span></span><span class="line"><span class="cl"><span class="n">htons</span><span class="err">的功能：</span>
+</span></span><span class="line"><span class="cl"><span class="err">    将一个无符号短整型数值转换为网络字节序，即大端模式</span><span class="p">(</span><span class="n">big</span><span class="o">-</span><span class="n">endian</span><span class="p">)</span><span class="err">　</span>
+</span></span><span class="line"><span class="cl"><span class="err">    参数</span><span class="n">u_short</span> <span class="nl">hostshort</span><span class="p">:</span> <span class="mi">16</span><span class="err">位无符号整数　</span>
+</span></span><span class="line"><span class="cl"><span class="err">返回值</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="err">    </span><span class="n">TCP</span> <span class="o">/</span> <span class="n">IP</span><span class="err">网络字节顺序</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">htonl</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;arpa/inet.h&gt;　　</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">uint32_t</span> <span class="n">htonl</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">hostlong</span><span class="p">);</span><span class="err">　　</span>
+</span></span><span class="line"><span class="cl"><span class="err">简述：将主机的无符号长整形数转换成网络字节顺序。　</span>
+</span></span><span class="line"><span class="cl"><span class="n">hostlong</span><span class="err">：主机字节顺序表达的</span><span class="mi">32</span><span class="err">位数。　　</span>
+</span></span><span class="line"><span class="cl"><span class="err">注释：</span>
+</span></span><span class="line"><span class="cl">  <span class="err">　　本函数将一个</span><span class="mi">32</span><span class="err">位数从主机字节顺序转换成网络字节顺序。　　</span>
+</span></span><span class="line"><span class="cl"><span class="err">返回值：　</span>
+</span></span><span class="line"><span class="cl">     <span class="n">htonl</span><span class="p">()</span><span class="err">返回一个网络字节顺序的值。</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="err">使用</span><span class="n">gethostname</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="err">返回如下结构体</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">hostent</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">char</span>  <span class="o">*</span><span class="n">h_name</span><span class="p">;</span>            <span class="cm">/* official name of host */</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">char</span> <span class="o">**</span><span class="n">h_aliases</span><span class="p">;</span>         <span class="cm">/* alias list */</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">int</span>    <span class="n">h_addrtype</span><span class="p">;</span>        <span class="cm">/* host address type */</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">int</span>    <span class="n">h_length</span><span class="p">;</span>          <span class="cm">/* length of address */</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">char</span> <span class="o">**</span><span class="n">h_addr_list</span><span class="p">;</span>       <span class="cm">/* list of addresses */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_name</span>
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机的规范名。例如</span><span class="n">www</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">com</span><span class="err">的规范名其实是</span><span class="n">www</span><span class="p">.</span><span class="n">a</span><span class="p">.</span><span class="n">shifen</span><span class="p">.</span><span class="n">com</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_aliases</span>
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机的别名。</span><span class="n">www</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">com</span><span class="err">就是</span><span class="n">baidu</span><span class="err">他自己的别名。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_addrtype</span>    
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机</span><span class="n">ip</span><span class="err">地址的类型。只会是</span><span class="n">ipv4</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">)</span><span class="err">，</span> <span class="err">这个函数处理不了</span><span class="n">ipv6</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_length</span>      
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机</span><span class="n">ip</span><span class="err">地址的长度。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_addr_list</span>
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机的</span><span class="n">ip</span><span class="err">地址。是网络字节序，需要通过</span><span class="n">inet_ntop</span><span class="err">函数转换。</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-16</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/qtsocket%E9%80%9A%E4%BF%A1/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/qtsocket%E9%80%9A%E4%BF%A1/" data-title="QtSocket通信" data-hashtags="socket"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/qtsocket%E9%80%9A%E4%BF%A1/" data-hashtag="socket"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/qtsocket%E9%80%9A%E4%BF%A1/" data-title="QtSocket通信"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/qtsocket%E9%80%9A%E4%BF%A1/" data-title="QtSocket通信"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/qtsocket%E9%80%9A%E4%BF%A1/" data-title="QtSocket通信"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/socket/">socket</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/exec%E5%87%BD%E6%95%B0%E6%97%8F/" class="prev" rel="prev" title="exec函数族"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>exec函数族</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ArrayList - Tag - Cyo&#39;s Website</title>
+        <link>http://zxlkgf.github.io/tags/arraylist/</link>
+        <description>ArrayList - Tag - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 03 Dec 2022 19:10:15 &#43;0900</lastBuildDate><atom:link href="http://zxlkgf.github.io/tags/arraylist/" rel="self" type="application/rss+xml" /><item>
+    <title>ArrayList详解</title>
+    <link>http://zxlkgf.github.io/arraylist/</link>
+    <pubDate>Sat, 03 Dec 2022 19:10:15 &#43;0900</pubDate>
+    <author>Cyo</author>
+    <guid>http://zxlkgf.github.io/arraylist/</guid>
+    <description><![CDATA[1.ArrayList 1.1 简介 public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable {} ArrayList是java集合类中比较常使用的集合类。该类继承了AbstractList,实现类List接口]]></description>
+</item>
+</channel>
+</rss>

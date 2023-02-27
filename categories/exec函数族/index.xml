@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>exec函数族 - Category - Cyo&#39;s Website</title>
+        <link>http://example.org/categories/exec%E5%87%BD%E6%95%B0%E6%97%8F/</link>
+        <description>exec函数族 - Category - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 07 Feb 2023 20:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/exec%E5%87%BD%E6%95%B0%E6%97%8F/" rel="self" type="application/rss+xml" /><item>
+    <title>exec函数族</title>
+    <link>http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/</link>
+    <pubDate>Tue, 07 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/</guid>
+    <description><![CDATA[exec函数族介绍 1.exec函数族的作用是根据指定的文件名找到可执行文件，并用它来取代调用进程的内容，换句话说，就是在调用进程内部执行一个]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>进程 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="进程" />
+<meta property="og:description" content="进程 查看进程 ps aux/ajx a:显示终端上所有进程，包括其他用户的进程 u:显示进程的详细信息 x:显示没有控制终端的进程 j:列出与作业息息相关的信息 进程相" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E8%BF%9B%E7%A8%8B/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-05T20:55:47+08:00" />
+<meta property="article:modified_time" content="2023-02-05T20:55:47+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="进程"/>
+<meta name="twitter:description" content="进程 查看进程 ps aux/ajx a:显示终端上所有进程，包括其他用户的进程 u:显示进程的详细信息 x:显示没有控制终端的进程 j:列出与作业息息相关的信息 进程相"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E8%BF%9B%E7%A8%8B/" /><link rel="prev" href="http://example.org/%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA/" /><link rel="next" href="http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "进程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E8%BF%9B%E7%A8%8B\/"
+        },"genre": "posts","keywords": "进程","wordcount":  1266 ,
+        "url": "http:\/\/example.org\/%E8%BF%9B%E7%A8%8B\/","datePublished": "2023-02-05T20:55:47+08:00","dateModified": "2023-02-05T20:55:47+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">进程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%BF%9B%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>进程</a>&nbsp;<a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-05">2023-02-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1266 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#查看进程">查看进程</a></li>
+    <li><a href="#进程相关stat参数">进程相关STAT参数</a></li>
+    <li><a href="#进程相关命令">进程相关命令</a></li>
+    <li><a href="#杀死进程">杀死进程</a></li>
+    <li><a href="#进程号和相关函数">进程号和相关函数</a></li>
+    <li><a href="#孤儿进程">孤儿进程</a></li>
+    <li><a href="#僵尸进程">僵尸进程</a></li>
+    <li><a href="#进程回收">进程回收</a></li>
+    <li><a href="#退出信息相关宏函数">退出信息相关宏函数</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="进程">进程</h1>
+<h2 id="查看进程">查看进程</h2>
+<pre><code>ps aux/ajx
+</code></pre>
+<p>a:显示终端上所有进程，包括其他用户的进程<br>
+u:显示进程的详细信息<br>
+x:显示没有控制终端的进程<br>
+j:列出与作业息息相关的信息</p>
+<h2 id="进程相关stat参数">进程相关STAT参数</h2>
+<p>D   不可中断<br>
+R   正在运行，或在队列中的进程<br>
+S   休眠状态<br>
+T   停止或被追踪<br>
+Z   僵尸进程<br>
+W   进入内存交换(kneral2.6开始无效)<br>
+X   死掉的进程<br>
+&lt;   高优先级 <br>
+N   低优先级<br>
+s   包含子进程<br>
++   位于前台的进程组</p>
+<h2 id="进程相关命令">进程相关命令</h2>
+<p>top<br>
+可以再使用top命令上加-G来指定显示信息更新的时间间隔，在top命令执行后，可以按一下按键显示的结果进行排序：<br>
+M   根据内存使用量排序<br>
+P   根据CPU占有率进行排序<br>
+T   根据进程运行时间长短排序<br>
+U   根据用户名来筛选<br>
+K   输入指定的PID杀死线程</p>
+<h2 id="杀死进程">杀死进程</h2>
+<p>kill [-signal] pid<br>
+kill -l 列出所有信号<br>
+kill -SIGKILL 进程ID<br>
+kill -9 进程ID<br>
+killall name 根据进程名杀死进程</p>
+<h2 id="进程号和相关函数">进程号和相关函数</h2>
+<p>1.每个进程都由进程号来标识，其类型为pid_t(整型),进程号的范围为0-32767，进程号总是唯一的，但可以重复使用<br>
+2.任何进程(除了init进程)都是由另一个进程创建，该进程成为被创建进程的父进程，对于的进程号为父进程号(PPID)<br>
+3.进程组是一个或多个进程的集合，他们之间互相关联，进程组可以接受同一终端的各种信号，关联的进程有一个进程组号(PGID)，默认情况下，当前的进程号会当做当前的进程组号<br>
+4.进程号和进程组的相关函数<br>
+pid_t getpid(void);<br>
+pid_t getppid(void);<br>
+pid_t getpgid(void);</p>
+<h2 id="孤儿进程">孤儿进程</h2>
+<p>1.父进程允许结束，但是子进程还在运行，这样的进程成为孤儿进程<br>
+2.每当出现一个孤儿进程的时候，内存就把孤儿进程的父进程设置为init，而init进程会循环地wait()它的已经退出的子进程。<br>
+3.因此孤儿进程并不是什么危害</p>
+<h2 id="僵尸进程">僵尸进程</h2>
+<p>1.每个进程结束之后，，都会释放自己地址空间中的用户数据，内核区的pcb没有办法自己去释放需要父进程去释放<br>
+2.进程终止时，父进程尚未回收，子进程残留资源(pcb)存放于内核中，变成僵尸进程<br>
+3.僵尸进程不可被kill -9杀死<br>
+4.这样会导致一个问题 ，父进程不调用wait()或者waitpid()的话，那么保留的那段信息不会被释放，其进程号就会一直被占用，但是系统所能使用的进程号是有限的，如果大量的僵尸进程产生，，将因为没有可以使用的进程号而导致系统不能产生新的进程，此即为僵尸进程的危害</p>
+<h2 id="进程回收">进程回收</h2>
+<p>1.在每个进程退出的时候，内核释放进程所有的资源，包括打开的文件，占用的内存等。但是仍然为其保留一定的信息，这些信息主要指向控制块PCB的信息<br>
+2.父进程可以通过调用wait或者waitpid得到它的退出状态同时彻底清除掉这个进程。
+3.wait()和waitpid()函数功能一样，区别在于，wait()函数会阻塞，waitpid()可以设置不阻塞，waitpid()可以指定等待哪个子进程结束。
+4.注意 一次wait或waitpid调用只能清理一个子进程，清理多个子进程需要循环</p>
+<h2 id="退出信息相关宏函数">退出信息相关宏函数</h2>
+<p>WIFEXITED(status)       非0 进程正常退出</p>
+<p>WEXITSTATUS(status)     如果宏为真，获取进程退出的状态</p>
+<p>WIFSIGNALED(status)     非0 进程异常退出</p>
+<p>WTERMSIG(status)        如果上宏为真，获取使进程停止的信号编号</p>
+<p>WIFSTOPPED(status)      非0 进程处于暂停</p>
+<p>WSTOPSIG(status)        如果上宏为真，获取使进程暂停的信号的编号</p>
+<p>WIFCONTINUED(status)    非0 进程暂停后已经继续运行</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%BF%9B%E7%A8%8B/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/%E8%BF%9B%E7%A8%8B/" data-title="进程" data-hashtags="进程"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/%E8%BF%9B%E7%A8%8B/" data-hashtag="进程"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/%E8%BF%9B%E7%A8%8B/" data-title="进程"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/%E8%BF%9B%E7%A8%8B/" data-title="进程"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/%E8%BF%9B%E7%A8%8B/" data-title="进程"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%BF%9B%E7%A8%8B/">进程</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA/" class="prev" rel="prev" title="进程创建"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>进程创建</a>
+            <a href="/exec%E5%87%BD%E6%95%B0%E6%97%8F/" class="next" rel="next" title="exec函数族">exec函数族<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

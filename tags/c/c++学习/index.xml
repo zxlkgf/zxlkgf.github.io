@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>C/C&#43;&#43;学习 - Tag - Cyo&#39;s Website</title>
+        <link>http://example.org/tags/c/c&#43;&#43;%E5%AD%A6%E4%B9%A0/</link>
+        <description>C/C&#43;&#43;学习 - Tag - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><atom:link href="http://example.org/tags/c/c&#43;&#43;%E5%AD%A6%E4%B9%A0/" rel="self" type="application/rss+xml" /><item>
+    <title>GDB调试</title>
+    <link>http://example.org/gdb/</link>
+    <pubDate>Sat, 04 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/gdb/</guid>
+    <description><![CDATA[1.什么是GDB GDB是由GNU软件系统社区提供的调试工具，同GCC配套组成的一套完整的开发环境，GDB是Linux和许多类Unix系统中的]]></description>
+</item>
+</channel>
+</rss>

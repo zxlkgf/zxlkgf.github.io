@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>GDB - Category - Cyo&#39;s Website</title>
+        <link>http://example.org/categories/gdb/</link>
+        <description>GDB - Category - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 04 Feb 2023 20:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/gdb/" rel="self" type="application/rss+xml" /><item>
+    <title>GDB多线程调试</title>
+    <link>http://example.org/gdb%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B0%83%E8%AF%95/</link>
+    <pubDate>Sat, 04 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/gdb%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B0%83%E8%AF%95/</guid>
+    <description><![CDATA[GDB多进程调试 使用GDB调试的时候，GDB默认只能跟踪一个进程，可以再fork函数调用之前，通过指令设置GDB调试工具跟踪父进程或者跟踪子]]></description>
+</item>
+<item>
+    <title>GDB调试</title>
+    <link>http://example.org/gdb/</link>
+    <pubDate>Sat, 04 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/gdb/</guid>
+    <description><![CDATA[1.什么是GDB GDB是由GNU软件系统社区提供的调试工具，同GCC配套组成的一套完整的开发环境，GDB是Linux和许多类Unix系统中的]]></description>
+</item>
+</channel>
+</rss>

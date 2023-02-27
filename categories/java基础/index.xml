@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>java基础 - Category - Cyo&#39;s Website</title>
+        <link>http://zxlkgf.github.io/categories/java%E5%9F%BA%E7%A1%80/</link>
+        <description>java基础 - Category - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 16 Nov 2022 21:00:22 &#43;0900</lastBuildDate><atom:link href="http://zxlkgf.github.io/categories/java%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+    <title>Java基础</title>
+    <link>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%801/</link>
+    <pubDate>Wed, 16 Nov 2022 21:00:22 &#43;0900</pubDate>
+    <author>Cyo</author>
+    <guid>http://zxlkgf.github.io/java%E5%9F%BA%E7%A1%801/</guid>
+    <description><![CDATA[1.java基础 1.1 为什么java代码可以实现一次编写，到处运行 JVM虚拟机是java跨平台的关键 在程序运行前，java源代码(.java)需]]></description>
+</item>
+</channel>
+</rss>

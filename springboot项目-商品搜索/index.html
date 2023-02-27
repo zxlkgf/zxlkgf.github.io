@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>SpringBoot项目-商品搜索 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="SpringBoot项目-商品搜索" />
+<meta property="og:description" content="9 商品搜索 9.1 关于商品的模糊搜索 9.1.1 后端-持久层 1.编写sql SELECT id,title,sell_point,price,image FROM t_product WHERE STATUS = 1 AND title LIKE &#39;%${title}%&#39; ORDER BY priority DESC; 2.编写Mapper接口的抽象方法 /** * 按照输入的标" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-20T20:19:14+09:00" />
+<meta property="article:modified_time" content="2022-10-20T20:19:14+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="SpringBoot项目-商品搜索"/>
+<meta name="twitter:description" content="9 商品搜索 9.1 关于商品的模糊搜索 9.1.1 后端-持久层 1.编写sql SELECT id,title,sell_point,price,image FROM t_product WHERE STATUS = 1 AND title LIKE &#39;%${title}%&#39; ORDER BY priority DESC; 2.编写Mapper接口的抽象方法 /** * 按照输入的标"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" /><link rel="prev" href="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/" /><link rel="next" href="http://example.org/springboot%E9%A1%B9%E7%9B%AE-aop/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SpringBoot项目-商品搜索",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2\/"
+        },"genre": "posts","keywords": "computerStore","wordcount":  1657 ,
+        "url": "http:\/\/example.org\/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2\/","datePublished": "2022-10-20T20:19:14+09:00","dateModified": "2022-10-20T20:19:14+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SpringBoot项目-商品搜索</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/springboot/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>SpringBoot</a>&nbsp;<a href="/categories/mybatis/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mybatis</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-20">2022-10-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1657 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#9-商品搜索">9 商品搜索</a>
+      <ul>
+        <li><a href="#91-关于商品的模糊搜索">9.1 关于商品的模糊搜索</a></li>
+        <li><a href="#912-后端-业务层">9.1.2 后端-业务层</a></li>
+        <li><a href="#913-后端-控制层">9.1.3 后端-控制层</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="9-商品搜索">9 商品搜索</h2>
+<h3 id="91-关于商品的模糊搜索">9.1 关于商品的模糊搜索</h3>
+<hr>
+<h4 id="911-后端-持久层">9.1.1 后端-持久层</h4>
+<h4 id="1编写sql">1.编写sql</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="n">sell_point</span><span class="p">,</span><span class="n">price</span><span class="p">,</span><span class="n">image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">t_product</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">STATUS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">AND</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%${title}%&#39;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h4 id="2编写mapper接口的抽象方法">2.编写Mapper接口的抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照输入的标题查找
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param title
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findProductByTitle</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写mapper接口的映射文件">3.编写Mapper接口的映射文件</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;Product&gt; findProductByTitle(String title);--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findProductByTitle&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Product&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        SELECT id,title,sell_point,price,image
+</span></span><span class="line"><span class="cl">        FROM t_product
+</span></span><span class="line"><span class="cl">        WHERE STATUS = 1
+</span></span><span class="line"><span class="cl">        AND title LIKE &#39;%${title}%&#39;
+</span></span><span class="line"><span class="cl">        ORDER BY priority DESC
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span></code></pre></div><hr>
+<h3 id="912-后端-业务层">9.1.2 后端-业务层</h3>
+<h4 id="1处理异常">1.处理异常</h4>
+<hr>
+<h4 id="2编写业务层抽象方法">2.编写业务层抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照标题查询
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param title
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pageNum
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pageSize
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findProductByTitle</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">,</span><span class="n">Integer</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageSize</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写业务层逻辑">3.编写业务层逻辑</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findProductByTitle</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageSize</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//开启分页功能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">PageHelper</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="n">pageNum</span><span class="o">,</span><span class="n">pageSize</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//查询结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">productMapper</span><span class="o">.</span><span class="na">findProductByTitle</span><span class="o">(</span><span class="n">title</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//返回结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">PageInfo</span><span class="o">&lt;&gt;(</span><span class="n">res</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h3 id="913-后端-控制层">9.1.3 后端-控制层</h3>
+<hr>
+<h4 id="1处理异常-1">1.处理异常</h4>
+<hr>
+<h4 id="2设计请求">2.设计请求</h4>
+<p>请求路径：/product/findWithTitle</p>
+<p>请求参数：Integer pageNum，Integer pageSize，String title</p>
+<p>请求类型：get</p>
+<p>响应类型：JsonResult&lt;PageInfo&lt; Product&raquo;</p>
+<hr>
+<h4 id="3处理请求编写控制层方法">3.处理请求，编写控制层方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/{pageNum}/{pageSize}/{title}&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;&gt;</span> <span class="nf">findWithTitle</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;pageNum&#34;</span><span class="o">)</span> <span class="n">Integer</span> <span class="n">pageNum</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                                                       <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;pageSize&#34;</span><span class="o">)</span> <span class="n">Integer</span> <span class="n">pageSize</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                                                       <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;title&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">title</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">productService</span><span class="o">.</span><span class="na">findProductByTitle</span><span class="o">(</span><span class="n">title</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">res</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4前端页面">4.前端页面</h4>
+<p>具体请参考github</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">		<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//获取标题
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">getOne</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">title</span> <span class="o">=</span> <span class="nx">title</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">title</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;&amp;&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="kd">function</span> <span class="nx">getUrlParam</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&#34;(^|&amp;)&#34;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&#34;=([^&amp;]*)(&amp;|$)&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="k">if</span> <span class="p">(</span><span class="nx">r</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">return</span> <span class="nx">unescape</span><span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">getUrlParam</span><span class="p">(</span><span class="s2">&#34;pageNum&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">//为了查询设置的全局参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">pageNum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">pageSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">prePage</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">nextPage</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">navigatepageNums</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">//记录fid
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">fid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">//根据分页条的选择的页数进行查询
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">function</span> <span class="nx">PaginationListSelect</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span><span class="nx">size</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//进行查询的关键字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="kd">let</span> <span class="nx">title</span> <span class="o">=</span>  <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#search&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">llocation</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&#34;/web/search.html?title=&#34;</span> <span class="o">+</span> <span class="nx">title</span> <span class="o">+</span> <span class="s2">&#34;&amp;pageNum=&#34;</span> <span class="o">+</span> <span class="nx">num</span> <span class="o">+</span> <span class="s2">&#34;&amp;pageSize=&#34;</span> <span class="o">+</span> <span class="nx">size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//填充分页条信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">addPaginationData</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">//按照标题查询数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">function</span> <span class="nx">searchByTitle</span><span class="p">(</span><span class="nx">pageNum</span><span class="p">,</span><span class="nx">pageSize</span><span class="p">,</span><span class="nx">title</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">url</span><span class="o">:</span><span class="s2">&#34;/product/&#34;</span> <span class="o">+</span> <span class="nx">pageNum</span> <span class="o">+</span> <span class="s2">&#34;/&#34;</span> <span class="o">+</span> <span class="nx">pageSize</span> <span class="o">+</span> <span class="s2">&#34;/&#34;</span> <span class="o">+</span> <span class="nx">title</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">dataType</span><span class="o">:</span><span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">success</span><span class="o">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">state</span><span class="o">==</span><span class="mi">200</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">							<span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="o">!=</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">								<span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#resultTest&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;\&#34;&#34;</span><span class="o">+</span> <span class="nx">title</span> <span class="o">+</span> <span class="s2">&#34;\&#34;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">								<span class="nx">addData</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">							<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">								<span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#resultTest&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;\&#34;&#34;</span><span class="o">+</span> <span class="nx">title</span> <span class="o">+</span> <span class="s2">&#34;\&#34;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">								<span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#errmsg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;目前该商品并不在库&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">							<span class="p">}</span>
+</span></span><span class="line"><span class="cl">						<span class="p">}</span>
+</span></span><span class="line"><span class="cl">					<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="p">});</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">//填充数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">function</span> <span class="nx">addData</span><span class="p">(</span><span class="nx">res</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//清空目标内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#productList&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#PaginationList&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">let</span> <span class="nx">productListStr</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//获取分页信息中商品的长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="kd">let</span> <span class="nx">dataLength</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//填充商品到信息页面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">dataLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="kd">let</span> <span class="nx">product</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">productListStr</span> <span class="o">=</span> <span class="s2">&#34;&lt;div class=\&#34;col-md-3\&#34;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;div class=\&#34;goods-panel\&#34;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;img src=..&#34;</span> <span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">image</span> <span class="o">+</span> <span class="s2">&#34;collect.png&#34;</span> <span class="o">+</span> <span class="s2">&#34;  class=\&#34;img-responsive\&#34; /&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;p&gt;￥&#34;</span> <span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">price</span>  <span class="o">+</span> <span class="s2">&#34;.00&#34;</span> <span class="o">+</span> <span class="s2">&#34;&lt;/p&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;div class=\&#34;text-row-3\&#34;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;a href=product.html?pid=&#34;</span> <span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">id</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&gt;&lt;small&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="nx">product</span><span class="p">.</span><span class="nx">title</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;/small&gt;&lt;/a&gt;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;span style=&#39;padding-right: 10px&#39;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;a href=&#39;javascript:void(0)&#39; onclick=&#39;addToCollect(#{id})&#39; id=&#39;product#{num}&#39; class=&#39;btn btn-default btn-xs add-fav&#39;&gt;&lt;span class=&#39;fa fa-heart-o&#39;&gt;&lt;/span&gt;加入收藏&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;/span&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;span style=&#39;padding-right: 10px&#39;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;a href=&#39;javascript:void(0)&#39; onclick=&#39;addCollectToCart(#{id},#{price})&#39; class=\&#34;btn btn-default btn-xs add-cart\&#34;&gt;&lt;span class=\&#34;fa fa-cart-arrow-down\&#34;&gt;&lt;/span&gt;加入购物车&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">					<span class="nx">productListStr</span> <span class="o">=</span> <span class="nx">productListStr</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s2">&#34;#{id}&#34;</span><span class="p">,</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">productListStr</span> <span class="o">=</span> <span class="nx">productListStr</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s2">&#34;#{price}&#34;</span><span class="p">,</span><span class="nx">product</span><span class="p">.</span><span class="nx">price</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#productList&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">productListStr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//填充分页条信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">addPaginationData</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//填充分页条信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">function</span> <span class="nx">addPaginationData</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//重新填充分页条
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="c1">//将数据返回的部分需要数据进行填充至全局参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">pageNum</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">pageNum</span> <span class="c1">//当前页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">pageSize</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">pageSize</span>  <span class="c1">//每页显示数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">prePage</span> <span class="o">=</span>  <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">prePage</span> <span class="c1">//上一页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">nextPage</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">nextPage</span> <span class="c1">//下一页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">navigatepageNums</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">navigatepageNums</span> <span class="c1">//分页栏的数字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">				<span class="kd">let</span> <span class="nx">firstPage</span> <span class="o">=</span> <span class="s2">&#34;&lt;a id=&#39;first&#39; href=&#39;#&#39; onclick=&#39;PaginationListSelect(prePage,pageSize)&#39; style=&#39;padding-right: 8px&#39;&gt;上一页&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">let</span> <span class="nx">lastPage</span> <span class="o">=</span> <span class="s2">&#34;&lt;a id=&#39;end&#39; href=&#39;javascript:void(0)&#39; onclick=&#39;PaginationListSelect(nextPage,pageSize)&#39; style=&#39;padding-right: 8px&#39;&gt;下一页&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">let</span> <span class="nx">PaginationListStr</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//判断是否是第一页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="k">if</span> <span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">isFirstPage</span><span class="p">){</span> <span class="c1">//为true表示当前是第一页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>					<span class="nx">firstPage</span> <span class="o">=</span> <span class="s2">&#34;&lt;a id=&#39;first&#39; href=&#39;javascript:void(0)&#39; &#34;</span>
+</span></span><span class="line"><span class="cl">							<span class="o">+</span> <span class="s2">&#34;style=&#39;opacity: 0.2;padding-right: 8px;color: black&#39;&gt;上一页&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">PaginationListStr</span> <span class="o">+=</span> <span class="nx">firstPage</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span><span class="k">else</span> <span class="p">{</span> <span class="c1">//为false表示当前不是第一页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>					<span class="nx">PaginationListStr</span> <span class="o">+=</span> <span class="nx">firstPage</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//填充分页的页码数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">navigatepageNums</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="c1">//当前页的页码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>					<span class="kd">let</span> <span class="nx">nowNum</span> <span class="o">=</span> <span class="nx">navigatepageNums</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">					<span class="k">if</span> <span class="p">(</span><span class="nx">nowNum</span> <span class="o">===</span> <span class="nx">pageNum</span><span class="p">){</span> <span class="c1">//相等表示i的次数和当前也相同，对页数显示做变化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="nx">PaginationListStr</span> <span class="o">+=</span> <span class="s2">&#34;&lt;a href=&#39;javascript:void(0)&#39; &#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">								<span class="s2">&#34;style=&#39;padding-right: 8px;color: black&#39; disabled=&#39;disabled&#39;&gt;&#34;</span> <span class="o">+</span> <span class="s2">&#34;【&#34;</span>  <span class="o">+</span> <span class="nx">nowNum</span> <span class="o">+</span> <span class="s2">&#34;】&#34;</span> <span class="o">+</span><span class="s2">&#34;&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">					<span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">PaginationListStr</span> <span class="o">+=</span> <span class="s2">&#34;&lt;a href=&#39;javascript:void(0)&#39; onclick=&#39;PaginationListSelect(#{nowNum},pageSize)&#39; &#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">								<span class="s2">&#34;style=&#39;padding-right: 8px&#39;&gt;&#34;</span> <span class="o">+</span> <span class="nx">nowNum</span> <span class="o">+</span><span class="s2">&#34;&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">					<span class="p">}</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">PaginationListStr</span> <span class="o">=</span> <span class="nx">PaginationListStr</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s2">&#34;#{nowNum}&#34;</span><span class="p">,</span><span class="nx">nowNum</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//判断是否是末页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">isLastPage</span><span class="p">){</span> <span class="c1">//取反为false表示当前是末页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>					<span class="nx">PaginationListStr</span> <span class="o">+=</span> <span class="nx">lastPage</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span><span class="k">else</span> <span class="p">{</span> <span class="c1">//为true表示当前是末页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>					<span class="nx">lastPage</span> <span class="o">=</span>  <span class="s2">&#34;&lt;a id=&#39;end&#39; href=&#39;javascript:void(0)&#39; style=&#39;opacity: 0.2;padding-right: 8px;color: black&#39;&gt;下一页&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">PaginationListStr</span> <span class="o">+=</span> <span class="nx">lastPage</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//将拼接的str串插入指定id处
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#PaginationList&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">PaginationListStr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="kd">function</span> <span class="nx">addToCollect</span><span class="p">(</span><span class="nx">pid</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&#34;确定要将此商品加入收藏吗？&#34;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;/favorite/addFavorite&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;post&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">data</span><span class="o">:</span> <span class="p">{</span><span class="s2">&#34;pid&#34;</span><span class="o">:</span> <span class="nx">pid</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">							<span class="k">if</span> <span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">state</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">								<span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;收藏成功！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">								<span class="c1">//测试？
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>								<span class="c1">// alert(res.data);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">								<span class="c1">//输出错误问题
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>								<span class="nx">alert</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">							<span class="p">}</span>
+</span></span><span class="line"><span class="cl">						<span class="p">},</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">error</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">							<span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;服务器出现错误，加入购物车失败！&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="p">}</span>
+</span></span><span class="line"><span class="cl">					<span class="p">})</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="kd">function</span> <span class="nx">addCollectToCart</span><span class="p">(</span><span class="nx">pid</span><span class="p">,</span><span class="nx">price</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">if</span><span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&#34;确定加入购物车吗?&#34;</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">url</span><span class="o">:</span><span class="s2">&#34;/cart/add_cart&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">type</span><span class="o">:</span><span class="s2">&#34;post&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">data</span><span class="o">:</span><span class="p">{</span><span class="s2">&#34;pid&#34;</span><span class="o">:</span><span class="nx">pid</span><span class="p">,</span><span class="s2">&#34;price&#34;</span><span class="o">:</span><span class="nx">price</span><span class="p">,</span><span class="s2">&#34;num&#34;</span><span class="o">:</span><span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">dataType</span><span class="o">:</span><span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">success</span><span class="o">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">							<span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">state</span><span class="o">==</span><span class="mi">200</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">								<span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;加入购物车成功&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">							<span class="p">}</span>
+</span></span><span class="line"><span class="cl">						<span class="p">}</span>
+</span></span><span class="line"><span class="cl">					<span class="p">});</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//页面加载时自动启动
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">searchByTitle</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="nx">title</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="p">});</span>
+</span></span><span class="line"><span class="cl">		<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></span></code></pre></div><hr>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" data-title="SpringBoot项目-商品搜索" data-hashtags="computerStore"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" data-hashtag="computerStore"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" data-title="SpringBoot项目-商品搜索"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" data-title="SpringBoot项目-商品搜索"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" data-title="SpringBoot项目-商品搜索"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/computerstore/">computerStore</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/springboot%E9%A1%B9%E7%9B%AE-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/" class="prev" rel="prev" title="SpringBoot项目-分页插件"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>SpringBoot项目-分页插件</a>
+            <a href="/springboot%E9%A1%B9%E7%9B%AE-aop/" class="next" rel="next" title="SpringBoot项目-AOP">SpringBoot项目-AOP<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

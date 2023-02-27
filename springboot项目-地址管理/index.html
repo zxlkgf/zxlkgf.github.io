@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>SpringBoot项目-地址管理 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="SpringBoot项目-地址管理" />
+<meta property="og:description" content="4.地址管理 收货地址的功能模块:列表展示，修改，删除，设置默认，新增收货地址 开发的顺序:新增收货地址-&gt;列表展示-&gt;设置默认收货" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-14T20:19:14+09:00" />
+<meta property="article:modified_time" content="2022-10-14T20:19:14+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="SpringBoot项目-地址管理"/>
+<meta name="twitter:description" content="4.地址管理 收货地址的功能模块:列表展示，修改，删除，设置默认，新增收货地址 开发的顺序:新增收货地址-&gt;列表展示-&gt;设置默认收货"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" /><link rel="prev" href="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/" /><link rel="next" href="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SpringBoot项目-地址管理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86\/"
+        },"genre": "posts","keywords": "computerStore","wordcount":  7288 ,
+        "url": "http:\/\/example.org\/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86\/","datePublished": "2022-10-14T20:19:14+09:00","dateModified": "2022-10-14T20:19:14+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SpringBoot项目-地址管理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/springboot/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>SpringBoot</a>&nbsp;<a href="/categories/mybatis/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mybatis</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-14">2022-10-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;7288 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;15 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#4地址管理">4.地址管理</a>
+      <ul>
+        <li><a href="#41-创建数据表">4.1 创建数据表</a></li>
+        <li><a href="#42-创建实体类">4.2 创建实体类</a></li>
+        <li><a href="#43-新增地址">4.3 新增地址</a></li>
+      </ul>
+    </li>
+    <li><a href="#44-获取省市区列表">4.4 获取省市区列表</a>
+      <ul>
+        <li><a href="#441-创建数据表">4.4.1 创建数据表</a></li>
+        <li><a href="#442-创建实体类">4.4.2 创建实体类</a></li>
+        <li><a href="#443-后端-持久层">4.4.3 后端-持久层</a></li>
+        <li><a href="#444-后端-业务层">4.4.4 后端-业务层</a></li>
+        <li><a href="#445-后端-控制层">4.4.5 后端-控制层</a></li>
+      </ul>
+    </li>
+    <li><a href="#45-获取用户地址">4.5 获取用户地址</a>
+      <ul>
+        <li><a href="#451-后端-持久层">4.5.1 后端-持久层</a></li>
+        <li><a href="#452-后端-业务层">4.5.2 后端-业务层</a></li>
+        <li><a href="#453-后端-控制层">4.5.3 后端-控制层</a></li>
+      </ul>
+    </li>
+    <li><a href="#46-设置默认地址">4.6 设置默认地址</a>
+      <ul>
+        <li><a href="#461-后端-持久层">4.6.1   后端-持久层</a></li>
+        <li><a href="#462-后端-业务层">4.6.2 后端-业务层</a></li>
+        <li><a href="#463-后端-控制层">4.6.3 后端-控制层</a></li>
+      </ul>
+    </li>
+    <li><a href="#47-删除地址">4.7 删除地址</a>
+      <ul>
+        <li><a href="#471-后端-持久层">4.7.1 后端-持久层</a></li>
+        <li><a href="#472-后端-业务层">4.7.2 后端-业务层</a></li>
+        <li><a href="#473-后端-控制层">4.7.3 后端-控制层</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="4地址管理">4.地址管理</h2>
+<p>收货地址的功能模块:列表展示，修改，删除，设置默认，新增收货地址</p>
+<p>开发的顺序:新增收货地址-&gt;列表展示-&gt;设置默认收货地址-&gt;修改删除</p>
+<h3 id="41-创建数据表">4.1 创建数据表</h3>
+<p>创建数据表</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">t_address</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">aid</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;收货地址id&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">uid</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;归属的用户id&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">NAME</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;收货人姓名&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">province_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;省-名称&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">province_code</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;省-行政代号&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">city_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;市-名称&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">city_code</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;市-行政代号&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">area_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;区-名称&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">area_code</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;区-行政代号&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">zip</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;邮政编码&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">address</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;详细地址&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">phone</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;手机&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">tel</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;固话&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">tag</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;标签&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">is_default</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;是否默认：0-不默认，1-默认&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">created_user</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;创建人&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">created_time</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;创建时间&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">modified_user</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;修改人&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">modified_time</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;修改时间&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">aid</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">INNODB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h3 id="42-创建实体类">4.2 创建实体类</h3>
+<p>地址类</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@NoArgsConstructor</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Address</span> <span class="kd">extends</span> <span class="n">BaseEntity</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * aid INT AUTO_INCREMENT COMMENT &#39;收货地址id&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    uid INT COMMENT &#39;归属的用户id&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    name VARCHAR(20) COMMENT &#39;收货人姓名&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    province_name VARCHAR(15) COMMENT &#39;省-名称&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    province_code CHAR(6) COMMENT &#39;省-行政代号&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    city_name VARCHAR(15) COMMENT &#39;市-名称&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    city_code CHAR(6) COMMENT &#39;市-行政代号&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    area_name VARCHAR(15) COMMENT &#39;区-名称&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    area_code CHAR(6) COMMENT &#39;区-行政代号&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    zip CHAR(6) COMMENT &#39;邮政编码&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    address VARCHAR(50) COMMENT &#39;详细地址&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    phone VARCHAR(20) COMMENT &#39;手机&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    tel VARCHAR(20) COMMENT &#39;固话&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    tag VARCHAR(6) COMMENT &#39;标签&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    is_default INT COMMENT &#39;是否默认：0-不默认，1-默认&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    created_user VARCHAR(20) COMMENT &#39;创建人&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    created_time DATETIME COMMENT &#39;创建时间&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    modified_user VARCHAR(20) COMMENT &#39;修改人&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    modified_time DATETIME COMMENT &#39;修改时间&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">aid</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">uid</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">provinceName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">provinceCode</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">cityName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">cityCode</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">areaName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">areaCode</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">zip</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">phone</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">tel</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">tag</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">isDefault</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h3 id="43-新增地址">4.3 新增地址</h3>
+<h4 id="431-后端-持久层">4.3.1 后端-持久层</h4>
+<h5 id="1编写sql语句">1.编写sql语句</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="err">插入语句</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">t_address</span><span class="p">(</span><span class="err">除了</span><span class="n">aid</span><span class="err">外字段</span><span class="p">)</span><span class="n">value</span><span class="p">(</span><span class="err">字段值</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="err">查看收货地址数量</span><span class="p">(</span><span class="err">一个用户最大只能</span><span class="mi">20</span><span class="err">条</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_address</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h5 id="2定义mapper接口和抽象方法">2.定义Mapper接口和抽象方法</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @version 1.0.0
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/02
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @desciption Address所对应的Mapper接口
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">AddressMapper</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 插入用户的收货地址数据
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param address 收货地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return {@link Integer} 受影响的行数
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">addAddress</span><span class="o">(</span><span class="n">Address</span> <span class="n">address</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户id统计用户收货地址数量
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return {@link Integer} 返回当前用户的收货地址总数
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">userAddressCount</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h5 id="3实现mapper接口的映射">3.实现Mapper接口的映射</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;com.zxl.store.mappers.AddressMapper&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!--addAddress 插入用户的地址--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">&#34;addAddress&#34;</span> <span class="na">useGeneratedKeys=</span><span class="s">&#34;true&#34;</span> <span class="na">keyProperty=</span><span class="s">&#34;aid&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        INSERT INTO t_address (
+</span></span><span class="line"><span class="cl">            uid,name, province_name, province_code, city_name, city_code, area_name, area_code, zip,
+</span></span><span class="line"><span class="cl">            address, phone, tel, tag, is_default, created_user, created_time, modified_user, modified_time
+</span></span><span class="line"><span class="cl">        ) VALUES (
+</span></span><span class="line"><span class="cl">            #{uid}, #{name}, #{provinceName}, #{provinceCode}, #{cityName}, #{cityCode}, #{areaName},
+</span></span><span class="line"><span class="cl">            #{areaCode}, #{zip}, #{address}, #{phone}, #{tel}, #{tag}, #{isDefault}, #{createdUser},
+</span></span><span class="line"><span class="cl">            #{createdTime}, #{modifiedUser}, #{modifiedTime}
+</span></span><span class="line"><span class="cl">        )
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/insert&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!--userAddressCount 根据用户uid查询用户地址数量--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;userAddressCount&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        SELECT COUNT(*) FROM t_address WHERE uid = #{uid}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/mapper&gt;</span>
+</span></span></code></pre></div><hr>
+<h5 id="4单元测试mapper接口">4.单元测试Mapper接口</h5>
+<hr>
+<h4 id="432-后端-业务层">4.3.2 后端-业务层</h4>
+<p>如果用户插入的地址是第一条时，将其设为默认的收货地址</p>
+<h5 id="1规划异常">1.  规划异常</h5>
+<p>用户地址超出数量异常</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 用户地址数目超出异常
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/2
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddressCountLimitException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
+</span></span></code></pre></div><hr>
+<h5 id="2接口和抽象方法">2.接口和抽象方法</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 收货地址业务层接口
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/2
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IAddressService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 添加用户地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid      用户uid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param username 用户名
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param address  地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">addAddress</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="n">Address</span> <span class="n">address</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h5 id="3实现抽象方法">3.实现抽象方法</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 收货地址业务层的实现类
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/2
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IAddressServiceImpl</span> <span class="kd">implements</span> <span class="n">IAddressService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">AddressMapper</span> <span class="n">addressMapper</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${user.address.max-count}&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">maxCount</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addAddress</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="n">Address</span> <span class="n">address</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//先判断用户地址的条数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">count</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">userAddressCount</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//判断是否超过20条记录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">&gt;=</span><span class="n">maxCount</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">AddressCountLimitException</span><span class="o">(</span><span class="s">&#34;用户地址已经到达上限，请删除部分地址&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//判断当前地址是否为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setIsDefault</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//补全四项日志
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Date</span> <span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">address</span><span class="o">.</span><span class="na">setCreatedUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">address</span><span class="o">.</span><span class="na">setCreatedTime</span><span class="o">(</span><span class="n">currentTime</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">address</span><span class="o">.</span><span class="na">setModifiedUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">address</span><span class="o">.</span><span class="na">setModifiedTime</span><span class="o">(</span><span class="n">currentTime</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//插入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">addAddress</span><span class="o">(</span><span class="n">address</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//判断插入结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;插入时产生未知异常&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h5 id="4单元测试">4.单元测试</h5>
+<hr>
+<h4 id="433-后端控制层">4.3.3 后端控制层</h4>
+<h5 id="1处理异常">1.处理异常</h5>
+<p>将异常添加到全局异常处理</p>
+<hr>
+<h5 id="2设计请求">2.设计请求</h5>
+<p>请求路径：/address</p>
+<p>请求参数：Address address,HttpSession session</p>
+<p>请求类型：post</p>
+<p>响应类型：JsonResult&lt; Void&gt;</p>
+<hr>
+<h5 id="3处理请求创建相应controller">3.处理请求，创建相应controller</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 地址操作的控制层
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/2
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/address&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddressController</span> <span class="kd">extends</span> <span class="n">BaseController</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IAddressService</span> <span class="n">addressService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 处理用户添加地址的操作
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param address 添加的地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param session 项目自动生成的Session
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return {@link JsonResult}&lt;{@link Void}&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@PostMapping</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">addAddress</span><span class="o">(</span><span class="n">Address</span> <span class="n">address</span><span class="o">,</span> <span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//从Session中获取Uid和Username
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">getUsernameFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">addressService</span><span class="o">.</span><span class="na">addAddress</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span><span class="n">username</span><span class="o">,</span><span class="n">address</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h5 id="4前端页面">4.前端页面</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#btn-add-new-address&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//判断手机号和收货人是否为空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#name&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="kd">let</span> <span class="nx">phone</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#phone&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="kd">let</span> <span class="nx">zip</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#zip&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="kd">let</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#tag&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="nx">phone</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span> <span class="o">||</span> <span class="nx">name</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#error-msg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;请先填写需要添加的信息！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//验证手机号是否符合要求
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="kd">let</span> <span class="nx">checkPhone</span> <span class="o">=</span> <span class="sr">/(^1\d{10}$)|(^[0-9]\d{7}$)/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">checkPhone</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">phone</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#error-msg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;手机号不符合要求！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//验证邮箱是否为空或者超出最大长度6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="k">if</span><span class="p">(</span><span class="nx">zip</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;=</span><span class="mi">6</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#error-msg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;邮箱的最大长度6&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//验证地址类型不可以超过6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="k">if</span><span class="p">(</span><span class="nx">tag</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;=</span><span class="mi">6</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#error-msg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;地址类型的最大长度6&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;/address&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">data</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#form-add-new-address&#34;</span><span class="p">).</span><span class="nx">serialize</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;JSON&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">if</span> <span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">state</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;新增收货地址成功！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="s2">&#34;address.html&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;新增收货地址失败！&#34;</span> <span class="o">+</span> <span class="nx">json</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;您的登录信息已经过期，请重新登录！HTTP响应码：&#34;</span> <span class="o">+</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&#34;login.html&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></span></code></pre></div><hr>
+<h2 id="44-获取省市区列表">4.4 获取省市区列表</h2>
+<h3 id="441-创建数据表">4.4.1 创建数据表</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="n">parent</span><span class="err">属性代表的是父区域的代码号，省的父代码号是</span><span class="o">+</span><span class="mi">86</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="n">code</span><span class="err">代表的是本身的代码号</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="n">name</span><span class="err">就是</span><span class="n">code</span><span class="err">所代表的本身的名称</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">t_dict_district</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">parent</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">code</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="err">部分省市区数据太大</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="err">请参考代码</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h3 id="442-创建实体类">4.4.2 创建实体类</h3>
+<p>创建District实体类</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">**</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@author</span> <span class="n">zxl</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@description</span> <span class="err">省市区的实体类</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@date</span> <span class="mi">2022</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">3</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@NoArgsConstructor</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">District</span> <span class="kd">extends</span> <span class="n">BaseEntity</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">parent</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">code</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h3 id="443-后端-持久层">4.4.3 后端-持久层</h3>
+<h4 id="1编写sql语句-1">1.编写sql语句</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="mi">1</span><span class="p">.</span><span class="err">查询语句，根据父代号查询</span><span class="w"> </span><span class="p">(</span><span class="k">ASC</span><span class="w"> </span><span class="err">升序</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_dict_district</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">ASC</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="mi">2</span><span class="p">.</span><span class="err">根据</span><span class="n">code</span><span class="err">查询对应省市区名字</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_dict_district</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h4 id="2定义mapper接口和抽象方法-1">2.定义Mapper接口和抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DistrictMapper</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户的父代号查询区域信息
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param parent 父代号
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 某个父区域下的所有区域列表
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="nf">findDistrictByParent</span><span class="o">(</span><span class="n">String</span> <span class="n">parent</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据code查询区域名称
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param code 区域代号
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回区域名称
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="nf">findNameByCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写映射文件">3.编写映射文件</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;com.zxl.store.mappers.DistrictMapper&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;District&gt; findDistrictByParent(String parent);--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findDistrictByParent&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.District&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        SELECT * FROM t_dict_district WHERE parent = #{parent} ORDER BY code ASC
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    String findNameByCode(String code);--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findNameByParent&#34;</span> <span class="na">resultType=</span><span class="s">&#34;java.lang.String&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        SELECT name FROM t_dict_district WHERE code = #{code}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/mapper&gt;</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试-1">4.单元测试</h4>
+<hr>
+<h3 id="444-后端-业务层">4.4.4 后端-业务层</h3>
+<h4 id="1规划异常-1">1.规划异常</h4>
+<p>暂无异常可以规划</p>
+<hr>
+<h4 id="2定义service接口和抽象方法">2.定义Service接口和抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description District业务层的接口类
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/3
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IDistrictService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据父代号查询区域信息(省市区)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param parent 父代号
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回多个查询结果
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="nf">getDistrictByParent</span><span class="o">(</span><span class="n">String</span> <span class="n">parent</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照code查询当前省市区名称
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param code code
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回省市区名称
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="nf">getNameByCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写具体的实现方法和处理逻辑">3.编写具体的实现方法和处理逻辑</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 处理省市区业务层接口的实现类
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/3
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IDistrictServiceImpl</span> <span class="kd">implements</span> <span class="n">IDistrictService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">DistrictMapper</span> <span class="n">districtMapper</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//根据父代号查询省市区的信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="nf">getDistrictByParent</span><span class="o">(</span><span class="n">String</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="n">districtByParent</span> <span class="o">=</span> <span class="n">districtMapper</span><span class="o">.</span><span class="na">findDistrictByParent</span><span class="o">(</span><span class="n">parent</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//无效数据设为null
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">District</span> <span class="n">district</span> <span class="o">:</span> <span class="n">districtByParent</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">district</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">district</span><span class="o">.</span><span class="na">setParent</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">districtByParent</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//根据code查询省市区的名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getNameByCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">districtMapper</span><span class="o">.</span><span class="na">findNameByCode</span><span class="o">(</span><span class="n">code</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试-2">4.单元测试</h4>
+<hr>
+<h3 id="445-后端-控制层">4.4.5 后端-控制层</h3>
+<h4 id="1异常处理">1.异常处理</h4>
+<p>没有异常，不需要处理</p>
+<hr>
+<h4 id="2设计请求-1">2.设计请求</h4>
+<p>请求路径：/district/parent</p>
+<p>请求参数：String parent</p>
+<p>请求类型：get</p>
+<p>响应类型：JsonResult&lt;List&lt; District&raquo;</p>
+<hr>
+<h4 id="3处理请求创建一个控制类">3.处理请求，创建一个控制类</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 处理省市区相关业务的控制层
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/3
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/district&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DistrictController</span> <span class="kd">extends</span> <span class="n">BaseController</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IDistrictService</span> <span class="n">districtService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/parent&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;&gt;</span> <span class="nf">getDistrictByParent</span><span class="o">(</span><span class="n">String</span> <span class="n">parent</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//查询数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="n">Data</span> <span class="o">=</span> <span class="n">districtService</span><span class="o">.</span><span class="na">getDistrictByParent</span><span class="o">(</span><span class="n">parent</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//返回数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">Data</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4前端页面-1">4. 前端页面</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//页面加载完成时，先把三个省市区的提示设置好
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="kd">let</span> <span class="nx">provinceFirst</span> <span class="o">=</span> <span class="s1">&#39;&lt;option value=&#34;0&#34;&gt;--- 请选择省 ---&lt;/option&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">let</span> <span class="nx">cityFirst</span> <span class="o">=</span> <span class="s1">&#39;&lt;option value=&#34;0&#34;&gt;--- 请选择市 ---&lt;/option&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">let</span> <span class="nx">areaFirst</span> <span class="o">=</span> <span class="s1">&#39;&lt;option value=&#34;0&#34;&gt;--- 请选择区 ---&lt;/option&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//插入提示框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#province-list&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#city-list&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#area-list&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#province-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">provinceFirst</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#city-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">cityFirst</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#area-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">areaFirst</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">//记录省的点击查询次数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="kd">let</span> <span class="nx">provinceClick</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#province-list&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">provinceClick</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">provinceClick</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//如果provinceClick为1代表首次点击
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="k">if</span><span class="p">(</span><span class="nx">provinceClick</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                        <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">url</span><span class="o">:</span><span class="s2">&#34;/district/parent&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">type</span><span class="o">:</span><span class="s2">&#34;get&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">data</span><span class="o">:</span><span class="s2">&#34;parent=86&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">dataType</span><span class="o">:</span><span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">success</span><span class="o">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="c1">//如果返回消息成功，将数据填充回列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                                <span class="k">if</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">state</span><span class="o">==</span><span class="mi">200</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                                    <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">json</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                                        <span class="c1">//每个district对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                                        <span class="kd">let</span> <span class="nx">district</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                                        <span class="nx">str</span> <span class="o">=</span> <span class="s1">&#39;&lt;option value=&#34;&#39;</span> <span class="o">+</span> <span class="nx">district</span><span class="p">.</span><span class="nx">code</span> <span class="o">+</span> <span class="s1">&#39;&#34;&gt;&#39;</span> <span class="o">+</span> <span class="nx">district</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;&lt;/option&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#province-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">error</span><span class="o">:</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;查询省市区列表错误，请联系管理员修复！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//监听省份的选择  为城市的选择做出变化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#province-list&#34;</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//清空select下的所有option元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#city-list&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#area-list&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//追加默认值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#city-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">cityFirst</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#area-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">areaFirst</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="c1">//获取省份选择的是什么
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="kd">let</span> <span class="nx">provinceChoice</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#province-list&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//等于0 则不做请求
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="k">if</span><span class="p">(</span><span class="nx">provinceChoice</span><span class="o">==</span><span class="s2">&#34;0&#34;</span><span class="p">)</span><span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">url</span><span class="o">:</span><span class="s2">&#34;/district/parent&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">type</span><span class="o">:</span><span class="s2">&#34;get&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">data</span><span class="o">:</span><span class="s2">&#34;parent=&#34;</span><span class="o">+</span><span class="nx">provinceChoice</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">dataType</span><span class="o">:</span><span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">success</span><span class="o">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">if</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">state</span><span class="o">==</span><span class="mi">200</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                                <span class="k">for</span><span class="p">(</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">json</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                                    <span class="c1">//每个district对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                                    <span class="kd">let</span> <span class="nx">district</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                                    <span class="nx">str</span> <span class="o">=</span> <span class="s1">&#39;&lt;option value=&#34;&#39;</span> <span class="o">+</span> <span class="nx">district</span><span class="p">.</span><span class="nx">code</span> <span class="o">+</span> <span class="s1">&#39;&#34;&gt;&#39;</span> <span class="o">+</span> <span class="nx">district</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;&lt;/option&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#city-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">error</span><span class="o">:</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;查询省市区列表错误，请联系管理员修复！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">//监听城市选择 为区县的选择做出变化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#city-list&#34;</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//获取当前选择的城市是什么
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="kd">let</span> <span class="nx">cityChoice</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#city-list&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//清空select下的option元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#area-list&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//重新设置默认值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#area-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">areaFirst</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="c1">//判断默认值是什么
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="c1">//如果是0则不发送ajax请求
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="k">if</span><span class="p">(</span><span class="nx">cityChoice</span><span class="o">==</span><span class="s2">&#34;0&#34;</span><span class="p">)</span><span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="c1">//发送请求
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">url</span><span class="o">:</span><span class="s2">&#34;/district/parent&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">type</span><span class="o">:</span><span class="s2">&#34;get&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">data</span><span class="o">:</span><span class="s2">&#34;parent=&#34;</span><span class="o">+</span><span class="nx">cityChoice</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">dataType</span><span class="o">:</span><span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">success</span><span class="o">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">if</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">state</span><span class="o">==</span><span class="mi">200</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                                <span class="k">for</span><span class="p">(</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">json</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                                    <span class="c1">//每个district对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                                    <span class="kd">let</span> <span class="nx">district</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                                    <span class="nx">str</span> <span class="o">=</span> <span class="s1">&#39;&lt;option value=&#34;&#39;</span> <span class="o">+</span> <span class="nx">district</span><span class="p">.</span><span class="nx">code</span> <span class="o">+</span> <span class="s1">&#39;&#34;&gt;&#39;</span> <span class="o">+</span> <span class="nx">district</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;&lt;/option&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#area-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">error</span><span class="o">:</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;查询省市区列表错误，请联系管理员修复！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">//添加地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#btn-add-new-address&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//判断手机号和收货人是否为空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#name&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="kd">let</span> <span class="nx">phone</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#phone&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="kd">let</span> <span class="nx">zip</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#zip&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="kd">let</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#tag&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="c1">//由于不知道的原因导致省市区的名称无法提交，所以进行这一步
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="kd">let</span> <span class="nx">provinceName</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#province-list&#34;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&#34;option:selected&#34;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#provinceName&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">provinceName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="kd">let</span> <span class="nx">cityName</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#city-list&#34;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&#34;option:selected&#34;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#cityName&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">cityName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="kd">let</span> <span class="nx">areaName</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#area-list&#34;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&#34;option:selected&#34;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#areaName&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">areaName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="nx">phone</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span> <span class="o">||</span> <span class="nx">name</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#error-msg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;请先填写需要添加的信息！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//验证手机号是否符合要求
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="kd">let</span> <span class="nx">checkPhone</span> <span class="o">=</span> <span class="sr">/(^1\d{10}$)|(^[0-9]\d{7}$)/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">checkPhone</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">phone</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#error-msg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;手机号不符合要求！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//验证邮箱是否为空或者超出最大长度6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="k">if</span><span class="p">(</span><span class="nx">zip</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;=</span><span class="mi">6</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#error-msg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;邮箱的最大长度6&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//验证地址类型不可以超过6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="k">if</span><span class="p">(</span><span class="nx">tag</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;=</span><span class="mi">6</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#error-msg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;地址类型的最大长度6&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;/address&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">data</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#form-add-new-address&#34;</span><span class="p">).</span><span class="nx">serialize</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;JSON&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">if</span> <span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">state</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;新增收货地址成功！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="s2">&#34;address.html&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;新增收货地址失败！&#34;</span> <span class="o">+</span> <span class="nx">json</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;您的登录信息已经过期，请重新登录！HTTP响应码：&#34;</span> <span class="o">+</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&#34;login.html&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></span></code></pre></div><hr>
+<h2 id="45-获取用户地址">4.5 获取用户地址</h2>
+<h3 id="451-后端-持久层">4.5.1 后端-持久层</h3>
+<hr>
+<h4 id="1编写sql语句-2">1.编写sql语句</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="err">获取用户收货地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_address</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">is_default</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">created_time</span><span class="w"> </span><span class="k">DESC</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h4 id="2定义抽象方法">2.定义抽象方法</h4>
+<p>只需要在AddressMapper接口中定义新的抽象方法即可</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户的uid查询用户的收货地址集合
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid 
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回收货地址数据
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="nf">findByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写映射文件-1">3.编写映射文件</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;Address&gt; findByUid(Integer uid);--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findByUid&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Address&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        SELECT * FROM t_address WHERE uid = #{uid} ORDER BY is_default DESC ,created_time DESC
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span></code></pre></div><hr>
+<h4 id="4创建mapper的单元测试">4.创建Mapper的单元测试</h4>
+<hr>
+<h3 id="452-后端-业务层">4.5.2 后端-业务层</h3>
+<h4 id="1异常控制">1.异常控制</h4>
+<hr>
+<h4 id="2定义业务层抽象方法">2.定义业务层抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户的uid获取用户的收货地址信息集
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid   用户的uid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回用户的地址集合
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="nf">getAddressByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写具体的业务处理逻辑">3.编写具体的业务处理逻辑</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">   <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照用户uid查询用户的收货地址集合
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid   用户的uid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回用户的收货地址的集合
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="nf">getAddressByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获取结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//由于网页端只需要地址类型，收件人姓名，详细地址，联系电话，所以对信息进行部分过滤
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">Address</span> <span class="n">address</span> <span class="o">:</span> <span class="n">res</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setUid</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setProvinceCode</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setCityCode</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setAreaCode</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setTel</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setCreatedTime</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setCreatedUser</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setModifiedTime</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setModifiedUser</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setIsDefault</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4编写业务层单元测试">4.编写业务层单元测试</h4>
+<hr>
+<h3 id="453-后端-控制层">4.5.3 后端-控制层</h3>
+<h4 id="1异常处理-1">1.异常处理</h4>
+<hr>
+<h4 id="2设计请求-2">2.设计请求</h4>
+<p>请求地址:/address</p>
+<p>请求参数:HttpSession session</p>
+<p>请求类型:GET</p>
+<p>相应类型:JsonResult&lt;List<!-- raw HTML omitted -->&gt;</p>
+<hr>
+<h4 id="3处理请求编写控制层">3.处理请求，编写控制层</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 处理网页端自动显示用户收货地址的请求
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param session 项目自动生成的session
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回JsonResult&lt;List&lt;Address&gt;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GetMapping</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;&gt;</span> <span class="nf">queryAllAddress</span><span class="o">(</span><span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">addressService</span><span class="o">.</span><span class="na">getAddressByUid</span><span class="o">(</span><span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">res</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4前端页面-2">4.前端页面</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="c1">//页面初始化加载用户收货地址信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#address-list&#34;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">url</span><span class="o">:</span><span class="s2">&#34;/address&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">type</span><span class="o">:</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">dataType</span><span class="o">:</span><span class="s2">&#34;json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">success</span><span class="o">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="o">!=</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                            <span class="kd">let</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                                <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">&#34; &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">str</span> <span class="o">=</span> <span class="s2">&#34;&lt;tr&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span><span class="s2">&#34;&lt;td&gt;&#34;</span><span class="o">+</span><span class="nx">address</span><span class="p">.</span><span class="nx">tag</span><span class="o">+</span><span class="s2">&#34;&lt;/td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span><span class="s2">&#34;&lt;td&gt;&#34;</span><span class="o">+</span><span class="nx">address</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="s2">&#34;&lt;/td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span><span class="s2">&#34;&lt;td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span><span class="nx">address</span><span class="p">.</span><span class="nx">provinceName</span> <span class="o">+</span> <span class="nx">address</span><span class="p">.</span><span class="nx">cityName</span> <span class="o">+</span> <span class="nx">address</span><span class="p">.</span><span class="nx">areaName</span> <span class="o">+</span> <span class="nx">address</span><span class="p">.</span><span class="nx">address</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span><span class="s2">&#34;&lt;/td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="err">                            </span><span class="o">+</span><span class="s2">&#34;&lt;td&gt;&#34;</span><span class="o">+</span><span class="nx">address</span><span class="p">.</span><span class="nx">phone</span><span class="o">+</span><span class="s2">&#34;&lt;/td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;a href=&#39;javascript:void(0);&#39; onclick=&#39;updateAddress(#{editAid})&#39; class=&#39;btn btn-xs btn-info&#39;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;span class=&#39;fa fa-edit&#39;&gt;&lt;/span&gt;修改&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;/td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;a href=&#39;javascript:void(0);&#39; onclick=&#39;deleteAddress(#{deleteAid},#{isDefault})&#39; class=&#39;btn btn-xs add-del btn-info&#39;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;span class=&#39;fa fa-trash-o&#39;&gt;&lt;/span&gt;删除&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;/td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;a href=&#39;javascript:void(0);&#39; onclick=&#39;setDefault(#{defaultAid})&#39; class=&#39;btn btn-xs add-def btn-default&#39;&gt;设为默认&lt;/a&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                        <span class="o">+</span> <span class="s2">&#34;&lt;/td&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                     <span class="o">+</span> <span class="s2">&#34;&lt;/tr&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                <span class="c1">//使用正则表达式替换获取该地址的aid值，#{aid}只是一个占位符的含义，没其他含义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                                <span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&#34;#{editAid}&#34;</span><span class="p">,</span><span class="nx">address</span><span class="p">.</span><span class="nx">aid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&#34;#{deleteAid}&#34;</span><span class="p">,</span><span class="nx">address</span><span class="p">.</span><span class="nx">aid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&#34;#{defaultAid}&#34;</span><span class="p">,</span><span class="nx">address</span><span class="p">.</span><span class="nx">aid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&#34;#{isDefault}&#34;</span><span class="p">,</span><span class="nx">address</span><span class="p">.</span><span class="nx">isDefault</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#address-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;.add-def:eq(0)&#34;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="s2">&#34;&lt;tr&gt;&lt;td colspan=&#39;12&#39; style=&#39;font-weight: bold;color: red;padding: 20px;font-size: medium&#39;&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;暂无收货地址，请先添加收货地址&#34;</span>
+</span></span><span class="line"><span class="cl">                                    <span class="o">+</span> <span class="s2">&#34;&lt;/td&gt;&lt;/tr&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#address-list&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">alert</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span></code></pre></div><hr>
+<h2 id="46-设置默认地址">4.6 设置默认地址</h2>
+<h3 id="461-后端-持久层">4.6.1   后端-持久层</h3>
+<hr>
+<h4 id="1编写sql语句-3">1.编写sql语句</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="err">检测当前用户想设置的地址是否存在</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_address</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">aid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="err">将所有的地址都设为非默认地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">t_address</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">is_default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="err">更新选中地址的默认值</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">t_address</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">is_default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="n">modified_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="n">modified_time</span><span class="o">=?</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">aid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h4 id="2定义mapper接口抽象方法">2.定义Mapper接口抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户收货地址aid查询收货地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 收货地址id
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Address</span> <span class="nf">findByAid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户uid将所有地址设为非默认地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回影响行数
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">updateNoneDefault</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照aid将该条收货地址设为默认地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 用户收货地址aid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param modifiedUser 执行操作的操作人
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param modifiedTime 执行操作的操作时间
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回影响行数
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">updateDefault</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span> <span class="n">String</span> <span class="n">modifiedUser</span><span class="o">,</span> <span class="n">Date</span> <span class="n">modifiedTime</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写mapper接口的映射文件">3.编写Mapper接口的映射文件</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    Address findByAid(Integer aid);--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findByAid&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Address&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        SELECT * FROM t_user WHERE aid = #{aid}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/select&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    Integer updateNoneDefault(Integer uid);--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">&#34;updateNoneDefault&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        UPDATE t_address SET is_default = 0 WHERE uid = #{uid}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/update&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    Integer updateDefault(Integer aid, String modifiedUser, Date modifiedTime);--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">&#34;updateDefault&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        UPDATE t_address SET is_default = 1,modified_user = #{modifiedUser},modified_time=#{modifiedTime} WHERE aid = #{aid}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/update&gt;</span>
+</span></span></code></pre></div><hr>
+<h4 id="4编写mapper接口的单元测试">4.编写Mapper接口的单元测试</h4>
+<hr>
+<h3 id="462-后端-业务层">4.6.2 后端-业务层</h3>
+<h4 id="1异常处理-2">1.异常处理</h4>
+<p>更新时异常（已经存在，无需创建）</p>
+<p>数据不存在异常</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 用户地址未找到异常
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/3
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddressNotFoundException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
+</span></span></code></pre></div><hr>
+<h4 id="2定义service层抽象方法">2.定义Service层抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">   <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *　修改用户选中地址为默认收货地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 收货地址id
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param username 操作人
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return void
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setDefault</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span><span class="n">String</span> <span class="n">username</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写方法的具体逻辑">3.编写方法的具体逻辑</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDefault</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Address</span> <span class="n">res</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">AddressNotFoundException</span><span class="o">(</span><span class="s">&#34;用户收货地址不存在&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//先将所有的地址设为非默认地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">updateNoneDefault</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UpdateException</span><span class="o">(</span><span class="s">&#34;将所有地址设置为非默认地址时出现异常&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//按照aid将收货地址设置为默认地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">updateRow</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">updateDefault</span><span class="o">(</span><span class="n">aid</span><span class="o">,</span> <span class="n">username</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">updateRow</span><span class="o">!=</span><span class="mi">0</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UpdateException</span><span class="o">(</span><span class="s">&#34;设置默认地址时出现异常&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试-3">4.单元测试</h4>
+<hr>
+<h3 id="463-后端-控制层">4.6.3 后端-控制层</h3>
+<h4 id="1异常处理-3">1.异常处理</h4>
+<p>将异常加入到全局处理</p>
+<hr>
+<h4 id="2请求设计">2.请求设计</h4>
+<p>请求路径：/address/set_default/{aid}</p>
+<p>请求参数：@PathVariable(&ldquo;aid&rdquo;)Integer aid,HttpSession session</p>
+<p>请求类型：post</p>
+<p>响应类型：JsonResult&lt; void&gt;</p>
+<hr>
+<h4 id="3处理请求编写控制层-1">3.处理请求，编写控制层</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 处理设置默认地址的请求
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 被设置为默认的收货地址id
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param session 项目启动时生成的session
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回void
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/set_default/{aid}&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">setDefault</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;aid&#34;</span><span class="o">)</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span><span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获取uid，username
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">getUsernameFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//设置默认
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">addressService</span><span class="o">.</span><span class="na">setDefault</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span><span class="n">aid</span><span class="o">,</span><span class="n">username</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4前端页面-3">4.  前端页面</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="c1">//为设置默认按钮绑定事件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">function</span> <span class="nx">setDefault</span><span class="p">(</span><span class="nx">aid</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&#34;确定要这条收货地址设为默认地址吗？&#34;</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;/address/set_default/&#34;</span><span class="o">+</span><span class="nx">aid</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;JSON&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">if</span> <span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">state</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;设置成功&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;设置默认收货地址失败！&#34;</span> <span class="o">+</span> <span class="nx">json</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;您的登录信息已经过期，请重新登录！HTTP响应码：&#34;</span> <span class="o">+</span> <span class="nx">json</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&#34;login.html&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="47-删除地址">4.7 删除地址</h2>
+<h3 id="471-后端-持久层">4.7.1 后端-持久层</h3>
+<hr>
+<h4 id="1编写sql语句-4">1.编写sql语句</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="err">根据</span><span class="n">aid</span><span class="err">删除用户收货地址的</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_address</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">aid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="n">aid</span><span class="err">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h4 id="2定义mapper接口抽象方法-1">2.定义Mapper接口抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照aid删除用户的收货地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 用户的收货地址id
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回影响行数
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">DeleteAddressByAid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写mapper接口的映射文件-1">3.编写Mapper接口的映射文件</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    Integer DeleteAddressByAid(Integer aid);--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">&#34;DeleteAddressByAid&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        DELETE * FROM t_address WHERE aid = #{aid}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/delete&gt;</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试-4">4.单元测试</h4>
+<hr>
+<h3 id="472-后端-业务层">4.7.2 后端-业务层</h3>
+<h4 id="1异常控制-1">1.异常控制</h4>
+<p>删除时异常</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 数据库删除时异常
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DeleteException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
+</span></span></code></pre></div><hr>
+<h4 id="2定义抽象方法-1">2.定义抽象方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照收货地址id删除收货地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 收货地址id
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">deleteAddressByAid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h4 id="3编写实现逻辑">3.编写实现逻辑</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteAddressByAid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//需要先判断用户有多少条地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">count</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">userAddressCount</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//判断用户收货地址是否存在
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Address</span> <span class="n">byAid</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">byAid</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">AddressNotFoundException</span><span class="o">(</span><span class="s">&#34;用户收货地址不存在&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//如果地址多条 而且当前要删除的地址为默认地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&amp;&amp;</span><span class="n">byAid</span><span class="o">.</span><span class="na">getIsDefault</span><span class="o">()==</span><span class="mi">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//先删除当前地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//按照用户aid删除
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">DeleteAddressByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//判断是否出现异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//查询所有的地址，由于查询是按照创造时间排序的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="n">byUid</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//设置默认地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">addressMapper</span><span class="o">.</span><span class="na">updateDefault</span><span class="o">(</span><span class="n">aid</span><span class="o">,</span><span class="n">username</span><span class="o">,</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//如果只有一条，就不用判断是否需要再次设置默认地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//按照用户aid删除
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">DeleteAddressByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//判断是否出现异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4单元测试-5">4.单元测试</h4>
+<hr>
+<h3 id="473-后端-控制层">4.7.3 后端-控制层</h3>
+<h4 id="1异常处理-4">1.异常处理</h4>
+<p>将异常加入全局处理</p>
+<hr>
+<h4 id="2设计请求-3">2.设计请求</h4>
+<p>请求路径：/address/delete_address/{aid}</p>
+<p>请求参数：@PathVariable(&ldquo;aid&rdquo;)Integer aid,HttpSession session</p>
+<p>请求类型：post</p>
+<p>响应类型：JsonResult&lt; void&gt;</p>
+<hr>
+<h4 id="3处理请求编写控制方法">3.处理请求，编写控制方法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 处理删除地址的请求
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 需要删除的收货地址的id
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回OK
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/delete_address/{aid}&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">deleteAddressByAid</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;aid&#34;</span><span class="o">)</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span><span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获取uid
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获取username
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">getUsernameFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//执行删除
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">addressService</span><span class="o">.</span><span class="na">deleteAddressByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">,</span><span class="n">uid</span><span class="o">,</span><span class="n">username</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//执行成功返回数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="4前端页面-4">4.前端页面</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="c1">//为删除按钮定义事件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">function</span> <span class="nx">deleteAddress</span><span class="p">(</span><span class="nx">aid</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&#34;确定要删除这条收货地址吗?&#34;</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;/address/delete_address/&#34;</span><span class="o">+</span><span class="nx">aid</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;JSON&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">if</span> <span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">state</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;删除收货地址失败！&#34;</span> <span class="o">+</span> <span class="nx">json</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;您的登录信息已经过期，请重新登录！HTTP响应码：&#34;</span> <span class="o">+</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&#34;login.html&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span></code></pre></div><hr>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-14</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" data-title="SpringBoot项目-地址管理" data-hashtags="computerStore"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" data-hashtag="computerStore"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" data-title="SpringBoot项目-地址管理"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" data-title="SpringBoot项目-地址管理"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" data-title="SpringBoot项目-地址管理"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/computerstore/">computerStore</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/springboot%E9%A1%B9%E7%9B%AE-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/" class="prev" rel="prev" title="SpringBoot项目-用户管理"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>SpringBoot项目-用户管理</a>
+            <a href="/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/" class="next" rel="next" title="SpringBoot项目-商品管理">SpringBoot项目-商品管理<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
