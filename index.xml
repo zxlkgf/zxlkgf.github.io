@@ -7,11 +7,11 @@
             <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Thu, 16 Feb 2023 14:52:16 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>QtSocket通信</title>
-    <link>http://example.org/qtsocket%E9%80%9A%E4%BF%A1/</link>
+    <title>Socket通信</title>
+    <link>http://example.org/socket%E9%80%9A%E4%BF%A1/</link>
     <pubDate>Thu, 16 Feb 2023 14:52:16 &#43;0800</pubDate>
     <author>Cyo</author>
-    <guid>http://example.org/qtsocket%E9%80%9A%E4%BF%A1/</guid>
+    <guid>http://example.org/socket%E9%80%9A%E4%BF%A1/</guid>
     <description><![CDATA[socket编程有三种 1.流式套接字(SOCKET_STREAM) 2.数据报式套接字(SOCKET_DGRAM) 3,原始套接字(SOCKET]]></description>
 </item>
 <item>

@@ -1,4 +1,4 @@
-# QtSocket通信
+# Socket通信
 
 
 # 
