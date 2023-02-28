@@ -4,7 +4,15 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Thu, 16 Feb 2023 14:52:16 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>GitAction_Hugo</title>
+    <link>http://example.org/gitaction_hugo/</link>
+    <pubDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/gitaction_hugo/</guid>
+    <description><![CDATA[关于Hugo在GitAction部署期间的问题 参看网站: 1.利用GitHub Action实现Hugo博客在GitHub Pages自动部署(A]]></description>
+</item>
+<item>
     <title>Socket通信</title>
     <link>http://example.org/socket%E9%80%9A%E4%BF%A1/</link>
     <pubDate>Thu, 16 Feb 2023 14:52:16 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>Cyo</author>
     <guid>http://example.org/%E9%9D%99%E6%80%81%E5%BA%93/</guid>
     <description><![CDATA[01什么是库 1.库文件是计算机上的一类文件，可以简单的把库文件看成代码仓库，它提供给使用者一些可以直接拿来用的变量，函数，类 2.库是特殊的程]]></description>
-</item>
-<item>
-    <title>GCC基础</title>
-    <link>http://example.org/gcc/</link>
-    <pubDate>Wed, 01 Feb 2023 20:55:47 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/gcc/</guid>
-    <description><![CDATA[什么是GCC 1.GCC原名为GUN C语言编译器 2.GCC是由GNU开发的编程语言编译器 3.GCC不仅支持C的多种方言，也可以区别不同C的标准]]></description>
 </item>
 </channel>
 </rss>

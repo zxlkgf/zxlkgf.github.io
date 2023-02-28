@@ -4,7 +4,15 @@
         <link>http://example.org/categories/hugo%E4%BD%BF%E7%94%A8/</link>
         <description>hugo使用 - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 13 Nov 2022 20:19:14 &#43;0900</lastBuildDate><atom:link href="http://example.org/categories/hugo%E4%BD%BF%E7%94%A8/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/hugo%E4%BD%BF%E7%94%A8/" rel="self" type="application/rss+xml" /><item>
+    <title>GitAction_Hugo</title>
+    <link>http://example.org/gitaction_hugo/</link>
+    <pubDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/gitaction_hugo/</guid>
+    <description><![CDATA[关于Hugo在GitAction部署期间的问题 参看网站: 1.利用GitHub Action实现Hugo博客在GitHub Pages自动部署(A]]></description>
+</item>
+<item>
     <title>创建Blog流程</title>
     <link>http://example.org/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BAblog/</link>
     <pubDate>Sun, 13 Nov 2022 20:19:14 &#43;0900</pubDate>
