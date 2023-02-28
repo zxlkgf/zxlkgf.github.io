@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>git使用 - Category - Cyo&#39;s Website</title>
+        <title>Git使用 - Category - Cyo&#39;s Website</title>
         <link>http://example.org/categories/git%E4%BD%BF%E7%94%A8/</link>
-        <description>git使用 - Category - Cyo&#39;s Website</description>
+        <description>Git使用 - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
             <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Mon, 14 Nov 2022 20:11:22 &#43;0900</lastBuildDate><atom:link href="http://example.org/categories/git%E4%BD%BF%E7%94%A8/" rel="self" type="application/rss+xml" /><item>
     <title>关于.gitignore详解</title>
