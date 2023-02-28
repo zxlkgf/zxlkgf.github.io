@@ -5,7 +5,7 @@
         <description>All Posts | Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
             <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>GitAction_Hugo</title>
+    <title>GitAction_Hugo流程和问题</title>
     <link>http://example.org/gitaction_hugo/</link>
     <pubDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</pubDate>
     <author>Cyo</author>

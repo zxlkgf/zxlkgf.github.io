@@ -1,4 +1,4 @@
-# GitAction_Hugo
+# GitAction_Hugo流程和问题
 
 
 # 关于Hugo在GitAction部署期间的问题
@@ -7,7 +7,7 @@
 
 2.[Hugo + GitHub Action，搭建你的博客自动发布系统](https://sspai.com/post/73512)(Access day:2023/02/28)
 
-## hugo使用请惨遭
+## hugo使用请参照
 创建Blog流程
 
 ## 问题1 hugo调用的主题是一个Git仓库

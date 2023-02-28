@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>GitAction_Hugo - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="GitAction_Hugo" />
+        <title>GitAction_Hugo流程和问题 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="GitAction_Hugo流程和问题" />
 <meta property="og:description" content="关于Hugo在GitAction部署期间的问题 参看网站: 1.利用GitHub Action实现Hugo博客在GitHub Pages自动部署(A" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/gitaction_hugo/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
-<meta name="twitter:title" content="GitAction_Hugo"/>
+<meta name="twitter:title" content="GitAction_Hugo流程和问题"/>
 <meta name="twitter:description" content="关于Hugo在GitAction部署期间的问题 参看网站: 1.利用GitHub Action实现Hugo博客在GitHub Pages自动部署(A"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -24,7 +24,7 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "GitAction_Hugo",
+        "headline": "GitAction_Hugo流程和问题",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -115,7 +115,7 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GitAction_Hugo</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GitAction_Hugo流程和问题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hugo%E4%BD%BF%E7%94%A8/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>hugo使用</a>&nbsp;<a href="/categories/git%E4%BD%BF%E7%94%A8/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git使用</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-28">2023-02-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;652 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#hugo使用请惨遭">hugo使用请惨遭</a></li>
+    <li><a href="#hugo使用请参照">hugo使用请参照</a></li>
     <li><a href="#问题1-hugo调用的主题是一个git仓库">问题1 hugo调用的主题是一个Git仓库</a></li>
     <li><a href="#问题2-未知但解决的问题">问题2 未知但解决的问题</a></li>
   </ul>
@@ -135,7 +135,7 @@
 <p>参看网站:<br>
 1.<a href="https://lucumt.info/post/hugo/using-github-action-to-auto-build-deploy/" target="_blank" rel="noopener noreffer ">利用GitHub Action实现Hugo博客在GitHub Pages自动部署</a>(Access day:2023/02/28)</p>
 <p>2.<a href="https://sspai.com/post/73512" target="_blank" rel="noopener noreffer ">Hugo + GitHub Action，搭建你的博客自动发布系统</a>(Access day:2023/02/28)</p>
-<h2 id="hugo使用请惨遭">hugo使用请惨遭</h2>
+<h2 id="hugo使用请参照">hugo使用请参照</h2>
 <p>创建Blog流程</p>
 <h2 id="问题1-hugo调用的主题是一个git仓库">问题1 hugo调用的主题是一个Git仓库</h2>
 <p>如果hugo调用的主题是一个Git仓库的，可以使用以下命令，将主题的Git仓库作为你的仓库的子目录，它能让你将另一个仓库克隆到自己的项目中，同时还保持提交的独立。</p>
@@ -212,7 +212,7 @@ jobs:
                             <a class="link-to-markdown" href="/gitaction_hugo/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/gitaction_hugo/" data-title="GitAction_Hugo" data-hashtags="hugo"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/gitaction_hugo/" data-hashtag="hugo"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/gitaction_hugo/" data-title="GitAction_Hugo"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/gitaction_hugo/" data-title="GitAction_Hugo"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/gitaction_hugo/" data-title="GitAction_Hugo"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/gitaction_hugo/" data-title="GitAction_Hugo流程和问题" data-hashtags="hugo"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/gitaction_hugo/" data-hashtag="hugo"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/gitaction_hugo/" data-title="GitAction_Hugo流程和问题"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/gitaction_hugo/" data-title="GitAction_Hugo流程和问题"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/gitaction_hugo/" data-title="GitAction_Hugo流程和问题"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
