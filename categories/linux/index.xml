@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Linux - Category - Cyo&#39;s Website</title>
-        <link>http://example.org/categories/linux/</link>
+        <link>http://www.zxlkgf.com/categories/linux/</link>
         <description>Linux - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 05 Feb 2023 20:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 05 Feb 2023 20:55:47 &#43;0800</lastBuildDate><atom:link href="http://www.zxlkgf.com/categories/linux/" rel="self" type="application/rss+xml" /><item>
     <title>进程</title>
-    <link>http://example.org/%E8%BF%9B%E7%A8%8B/</link>
+    <link>http://www.zxlkgf.com/%E8%BF%9B%E7%A8%8B/</link>
     <pubDate>Sun, 05 Feb 2023 20:55:47 &#43;0800</pubDate>
     <author>Cyo</author>
-    <guid>http://example.org/%E8%BF%9B%E7%A8%8B/</guid>
+    <guid>http://www.zxlkgf.com/%E8%BF%9B%E7%A8%8B/</guid>
     <description><![CDATA[进程 查看进程 ps aux/ajx a:显示终端上所有进程，包括其他用户的进程 u:显示进程的详细信息 x:显示没有控制终端的进程 j:列出与作业息息相关的信息 进程相]]></description>
 </item>
 </channel>
