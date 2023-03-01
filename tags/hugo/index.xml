@@ -5,12 +5,12 @@
         <description>hugo - Tag - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
             <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</lastBuildDate><atom:link href="http://www.zxlkgf.com/tags/hugo/" rel="self" type="application/rss+xml" /><item>
-    <title>GitAction_Hugo流程和问题</title>
+    <title>Hugo &#43; GitHub Action &#43; 腾讯云 搭建你的博客自动发布系统</title>
     <link>http://www.zxlkgf.com/gitaction_hugo/</link>
     <pubDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</pubDate>
     <author>Cyo</author>
     <guid>http://www.zxlkgf.com/gitaction_hugo/</guid>
-    <description><![CDATA[关于Hugo在GitAction部署期间的问题 参看网站: 1.利用GitHub Action实现Hugo博客在GitHub Pages自动部署(A]]></description>
+    <description><![CDATA[关于Hugo在GitAction部署期间的问题 参参照网站: 1.利用GitHub Action实现Hugo博客在GitHub Pages自动部署(]]></description>
 </item>
 <item>
     <title>创建Blog流程</title>
