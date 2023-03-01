@@ -1,0 +1,40 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux多进程开发 - Tag - Cyo&#39;s Website</title>
+        <link>http://example.org/tags/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/</link>
+        <description>Linux多进程开发 - Tag - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 01 Mar 2023 13:29:27 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml" /><item>
+    <title>内存映射</title>
+    <link>http://example.org/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84/</link>
+    <pubDate>Wed, 01 Mar 2023 13:29:27 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84/</guid>
+    <description><![CDATA[内存映射 内存映射(Memory-mapped I/O)是将磁盘文件的数据映射到内存，用户通过修改内存就能修改磁盘文件。 内存映射相关系统调用 #include &lt;sys/mman.h&gt;]]></description>
+</item>
+<item>
+    <title>进程间通信概念</title>
+    <link>http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/</link>
+    <pubDate>Wed, 01 Mar 2023 09:42:58 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/</guid>
+    <description><![CDATA[进程间通讯概念 1.进程是一个独立的资源分配单元，不同的进程(用户进程)之间的资源是独立的，没有关联，不能在一个进程中直接访问另一个进程的资源]]></description>
+</item>
+<item>
+    <title>进程创建</title>
+    <link>http://example.org/%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA/</link>
+    <pubDate>Sun, 05 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA/</guid>
+    <description><![CDATA[进程的创建 01进程创建 系统允许一个进程创建新进程，新进程即为子进程，子进程还可以创建子进程，形成进程树结构模型 #include &lt;sys/types.h&gt; #include &lt;unistd.h&gt; pid_t fork(void); 返回值: 成功:子进]]></description>
+</item>
+<item>
+    <title>GDB多线程调试</title>
+    <link>http://example.org/gdb%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B0%83%E8%AF%95/</link>
+    <pubDate>Sat, 04 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/gdb%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B0%83%E8%AF%95/</guid>
+    <description><![CDATA[GDB多进程调试 使用GDB调试的时候，GDB默认只能跟踪一个进程，可以再fork函数调用之前，通过指令设置GDB调试工具跟踪父进程或者跟踪子]]></description>
+</item>
+</channel>
+</rss>

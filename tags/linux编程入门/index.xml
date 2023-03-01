@@ -1,0 +1,56 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux编程入门 - Tag - Cyo&#39;s Website</title>
+        <link>http://example.org/tags/linux%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
+        <description>Linux编程入门 - Tag - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 07 Feb 2023 20:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/linux%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" rel="self" type="application/rss+xml" /><item>
+    <title>exec函数族</title>
+    <link>http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/</link>
+    <pubDate>Tue, 07 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/</guid>
+    <description><![CDATA[exec函数族介绍 1.exec函数族的作用是根据指定的文件名找到可执行文件，并用它来取代调用进程的内容，换句话说，就是在调用进程内部执行一个]]></description>
+</item>
+<item>
+    <title>GDB调试</title>
+    <link>http://example.org/gdb/</link>
+    <pubDate>Sat, 04 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/gdb/</guid>
+    <description><![CDATA[1.什么是GDB GDB是由GNU软件系统社区提供的调试工具，同GCC配套组成的一套完整的开发环境，GDB是Linux和许多类Unix系统中的]]></description>
+</item>
+<item>
+    <title>Makefile</title>
+    <link>http://example.org/makefile/</link>
+    <pubDate>Fri, 03 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/makefile/</guid>
+    <description><![CDATA[什么是Makefile 1.一个工程中的源码不计其数，其按照类型，功能，模块分别放在若干个目录中，Makefile文件定义了一系列的规则来制定]]></description>
+</item>
+<item>
+    <title>动态库</title>
+    <link>http://example.org/%E5%8A%A8%E6%80%81%E5%BA%93/</link>
+    <pubDate>Thu, 02 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E5%8A%A8%E6%80%81%E5%BA%93/</guid>
+    <description><![CDATA[01动态库的制作 命名规则 Linux:libxxx.so lib:前缀（固定） xxx:库的名字 自己起 .so:后缀（固定） 在Linux下是一个可执行文件 Windows:libxxx.dll 02动态库的制作: g]]></description>
+</item>
+<item>
+    <title>静态库</title>
+    <link>http://example.org/%E9%9D%99%E6%80%81%E5%BA%93/</link>
+    <pubDate>Thu, 02 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E9%9D%99%E6%80%81%E5%BA%93/</guid>
+    <description><![CDATA[01什么是库 1.库文件是计算机上的一类文件，可以简单的把库文件看成代码仓库，它提供给使用者一些可以直接拿来用的变量，函数，类 2.库是特殊的程]]></description>
+</item>
+<item>
+    <title>GCC基础</title>
+    <link>http://example.org/gcc/</link>
+    <pubDate>Wed, 01 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/gcc/</guid>
+    <description><![CDATA[什么是GCC 1.GCC原名为GUN C语言编译器 2.GCC是由GNU开发的编程语言编译器 3.GCC不仅支持C的多种方言，也可以区别不同C的标准]]></description>
+</item>
+</channel>
+</rss>
