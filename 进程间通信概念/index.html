@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>进程间通信概念 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="进程间通信概念" />
+<meta property="og:description" content="进程间通讯概念 1.进程是一个独立的资源分配单元，不同的进程(用户进程)之间的资源是独立的，没有关联，不能在一个进程中直接访问另一个进程的资源" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-01T09:42:58+08:00" />
+<meta property="article:modified_time" content="2023-03-01T09:42:58+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="进程间通信概念"/>
+<meta name="twitter:description" content="进程间通讯概念 1.进程是一个独立的资源分配单元，不同的进程(用户进程)之间的资源是独立的，没有关联，不能在一个进程中直接访问另一个进程的资源"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/" /><link rel="prev" href="http://example.org/gitaction_hugo/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "进程间通信概念",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5\/"
+        },"genre": "posts","keywords": "进程","wordcount":  3225 ,
+        "url": "http:\/\/example.org\/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5\/","datePublished": "2023-03-01T09:42:58+08:00","dateModified": "2023-03-01T09:42:58+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">进程间通信概念</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%BF%9B%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>进程</a>&nbsp;<a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-01">2023-03-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3225 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#同一主机进程间通信">同一主机进程间通信</a>
+      <ul>
+        <li><a href="#匿名管道">匿名管道</a></li>
+        <li><a href="#有名管道">有名管道</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="进程间通讯概念">进程间通讯概念</h1>
+<p>1.进程是一个独立的资源分配单元，不同的进程(用户进程)之间的资源是独立的，没有关联，不能在一个进程中直接访问另一个进程的资源<br>
+2.但是，进程不是孤立的，不同的进程需要进行信息的交互和状态的传递等，因此需要进程间通信
+3.进程间通信的目的<br>
+3.1数据传输:一个进程需要将它的数据发送给另一个进程
+3.2通知时间:一个进程需要向另一个或一组进程发送信息，通知他们发生了某种时间(如进程终止时通知父进程)<br>
+3.3资源共享:多个进程之间共享同样的资源，为了做到这一点，需要内核提供互斥和同步机制<br>
+3.4进程控制:游戏进程希望完全控制另一个进程的执行(如DEBUG)，此时控制进程希望能够拦截另一个进程的所有陷入和异常，并能够及时知道它的状态改变.</p>
+<h2 id="同一主机进程间通信">同一主机进程间通信</h2>
+<p>Unix进程间通信方式:1.匿名管道2.有名管道3.信号<br>
+SystemV进程间通信方式:1.消息队列2.共享内存3.信号量<br>
+POSIX进程间通信方式:1.消息队列2.共享内存3.信号量</p>
+<h3 id="匿名管道">匿名管道</h3>
+<p>1.管道也叫匿名管道，他是UNIX系统IPC(进程间通信)最古老的形式，所有UNIX系统都支持这种通信机制<br>
+2.统计一个目录中文件的数目命令：ls|wc -l,为了执行该命令，shell创建了两个进程来分别执行ls和wc<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/pipe/NoNamePipe.png"
+        data-srcset="../images/pipe/NoNamePipe.png, ../images/pipe/NoNamePipe.png 1.5x, ../images/pipe/NoNamePipe.png 2x"
+        data-sizes="auto"
+        alt="../images/pipe/NoNamePipe.png"
+        title="NoNamePipe" /></p>
+<h4 id="管道的特点">管道的特点</h4>
+<p>1.管道其实是一个在内核内存中维护的缓冲器，这个缓冲器的存储能力是有限的，不同的操作系统大小不一定相同<br>
+2.管道拥有文件的特质:读操作.写操作，<strong>匿名管道没有文件实体，有名管道有文件实体</strong>，但不存储数据，可以按照操作文件的方式对管道进行操作。<br>
+3.一个管道是一个字节流，使用管道时不存在消息或者消息边界的概念，从管道读取数据的进程可以读取任意大小的数据块，而不管写入进程写入管道的数据块的大小是多少<br>
+4.通过管道传递的数据是顺序的，从管道中读取的字节的顺序和它们被写入管道的顺序是一样的。</p>
+<h4 id="管道的特点-1">管道的特点</h4>
+<p>1.在管道中的数据传递方向是单向的，一端用于写入，一端用于读取，管道时半双工的<br>
+2.从管道读数据是一次操作，数据一旦被读走，它就从管道中被抛弃，释放空间以便写更多的数据，在管道中无法使用lseek()来随机访问数据<br>
+3.匿名管道只能在具有公共先祖的进程(父进程子进程，兄弟进程)之间使用。</p>
+<h4 id="匿名管道的使用">匿名管道的使用</h4>
+<p>1.创建匿名管道</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="nf">pipe</span><span class="p">(</span><span class="kt">int</span> <span class="n">pipefd</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+</span></span></code></pre></div><p>2.查看管道缓冲大小命令
+ulimit -a
+3.查看管道缓冲大小的函数</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">long</span> <span class="nf">fpathconf</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span><span class="kt">int</span> <span class="n">name</span><span class="p">);</span>
+</span></span></code></pre></div><p>example int pipe(int pipefd(2));</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">    #include &lt;unistd.h&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">    int pipe(int pipefd[2]);
+</span></span></span><span class="line"><span class="cl"><span class="cm">    作用：创建一个匿名管道
+</span></span></span><span class="line"><span class="cl"><span class="cm">    参数:
+</span></span></span><span class="line"><span class="cl"><span class="cm">        int pipefd[2]:这个数组是一个传出参数
+</span></span></span><span class="line"><span class="cl"><span class="cm">        pipefd[0]:对应的是读端
+</span></span></span><span class="line"><span class="cl"><span class="cm">        pipefd[1]:对应的是写端
+</span></span></span><span class="line"><span class="cl"><span class="cm">    返回值：
+</span></span></span><span class="line"><span class="cl"><span class="cm">        success:0
+</span></span></span><span class="line"><span class="cl"><span class="cm">        fail：-1 and set errno
+</span></span></span><span class="line"><span class="cl"><span class="cm">    
+</span></span></span><span class="line"><span class="cl"><span class="cm">    管道默认是阻塞的，如果管道中没有数据 read阻塞，如果管道满了，write阻塞
+</span></span></span><span class="line"><span class="cl"><span class="cm">    注意:匿名管道只能用于有关系的进程间通信
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//子进程发送数据给父进程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//管道需要在fork之前创建管道
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">pipefd</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span><span class="n">pipefd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;pipe&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//创建子进程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">pid_t</span> <span class="n">pid</span> <span class="o">=</span><span class="n">fork</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//判断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//父进程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;parent process pid %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">getpid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span> 
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">buf</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;parent recv %s, pid %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">buf</span><span class="p">,</span><span class="n">getpid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;Hello I m parent&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">write</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">str</span><span class="p">,</span><span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;child process, pid %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">getpid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//从管道的读取端读取数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;Hello I m child&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">write</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">str</span><span class="p">,</span><span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">buf</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;child recv %s, pid %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">buf</span><span class="p">,</span><span class="n">getpid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>example long fpathconf(int fd,int name);</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">    #include &lt;unistd.h&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">    long fpathconf(int fd, int name);
+</span></span></span><span class="line"><span class="cl"><span class="cm">    long pathconf(const char *path, int name);
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span> <span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">pipefd</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span><span class="n">pipefd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;pipe&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pid_t</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">pid</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//father process
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;father process pid = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">getpid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;pipe read buffer size = %ld,pipe write buffer size = %ld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">fpathconf</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">_PC_PIPE_BUF</span><span class="p">),</span><span class="n">fpathconf</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">_PC_PIPE_BUF</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pid</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;child process pid = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">getpid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;pipe read buffer size = %ld,pipe write buffer size = %ld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">fpathconf</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">_PC_PIPE_BUF</span><span class="p">),</span><span class="n">fpathconf</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">_PC_PIPE_BUF</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>由于上述代码使用sleep控制输出，才没有导致单一进程读写管道内数据。基本上管道只作为单一方向通信时使用。其使用的模型分为三种，如下图所示<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/pipe/model.png"
+        data-srcset="../images/pipe/model.png, ../images/pipe/model.png 1.5x, ../images/pipe/model.png 2x"
+        data-sizes="auto"
+        alt="../images/pipe/model.png"
+        title="model" /><br>
+所以，如果我们想要双方通信的话，可以选择模式3，关闭写方读通道，关闭读方写通道。具体代码如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">    #include &lt;unistd.h&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">    int pipe(int pipefd[2]);
+</span></span></span><span class="line"><span class="cl"><span class="cm">    作用：创建一个匿名管道
+</span></span></span><span class="line"><span class="cl"><span class="cm">    参数:
+</span></span></span><span class="line"><span class="cl"><span class="cm">        int pipefd[2]:这个数组是一个传出参数
+</span></span></span><span class="line"><span class="cl"><span class="cm">        pipefd[0]:对应的是读端
+</span></span></span><span class="line"><span class="cl"><span class="cm">        pipefd[1]:对应的是写端
+</span></span></span><span class="line"><span class="cl"><span class="cm">    返回值：
+</span></span></span><span class="line"><span class="cl"><span class="cm">        success:0
+</span></span></span><span class="line"><span class="cl"><span class="cm">        fail：-1 and set errno
+</span></span></span><span class="line"><span class="cl"><span class="cm">    
+</span></span></span><span class="line"><span class="cl"><span class="cm">    管道默认是阻塞的，如果管道中没有数据 read阻塞，如果管道满了，write阻塞
+</span></span></span><span class="line"><span class="cl"><span class="cm">    注意:匿名管道只能用于有关系的进程间通信
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//子进程发送数据给父进程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//管道需要在fork之前创建管道
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">pipefd</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span><span class="n">pipefd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;pipe&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//创建子进程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">pid_t</span> <span class="n">pid</span> <span class="o">=</span><span class="n">fork</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//判断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="c1">//buffer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//父进程读
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;parent process pid %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">getpid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//关闭写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">close</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span> 
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">buf</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;parent recv %s, pid %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">buf</span><span class="p">,</span><span class="n">getpid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            <span class="n">memset</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="sc">&#39;\0&#39;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//子进程写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;child process, pid %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">getpid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//关闭读
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">close</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="s">&#34;我爱洗澡皮肤好好,噢噢噢噢！&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">write</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">str</span><span class="p">,</span><span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="案例">案例</h4>
+<p>实现ps aux | grep xxx</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">    实现ps aux | grep xxx
+</span></span></span><span class="line"><span class="cl"><span class="cm">    父子进程间通信
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">    子进程执行ps aux，子进程结束之后，将数据发送给父进程
+</span></span></span><span class="line"><span class="cl"><span class="cm">    父进程获取到数据，过滤
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">    pipe()
+</span></span></span><span class="line"><span class="cl"><span class="cm">    fork()
+</span></span></span><span class="line"><span class="cl"><span class="cm">    execlp()
+</span></span></span><span class="line"><span class="cl"><span class="cm">    子进程讲标准输出stdout_fileno 重定向到管道的写端  dup
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;regex.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;wait.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//先创建管道
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">pipefd</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span><span class="n">pipefd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;pipe&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//创建进程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">pid_t</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">pid</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//father
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//关闭写端
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">close</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//从管道里读取数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">memset</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//读数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="p">((</span><span class="n">res</span><span class="o">=</span><span class="n">read</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">buffer</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span><span class="n">buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//过滤 输出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        
+</span></span><span class="line"><span class="cl">        <span class="c1">//回收
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pid</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//child
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 文件描述符的重定向  STDOUT_FILENO --&gt; pipefd[1]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">dup2</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">STDERR_FILENO</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//执行ps aux
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">execlp</span><span class="p">(</span><span class="s">&#34;ps&#34;</span><span class="p">,</span><span class="s">&#34;ps&#34;</span><span class="p">,</span><span class="s">&#34;aux&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;execlp&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="管道的读写特点">管道的读写特点</h4>
+<p>使用管道时，需要注意一下几种特殊情况(假设都是阻塞I/O操作)
+1.所有的指向管道写端文件描述符都关闭了(管道写端引用计数为0)，有进程从管道的读端读数据，那么管道中剩余的数据被读取以后，再次read会返回0，或者-1.就像读到文件末尾一样。</p>
+<p>2.如果有指向管道写端的文件描述符没有关闭(管道写端的引用计数大于0),而持有管道写端的进程也没有忘管道中写数据，那么这个时候有进程从管道中读取数据，管道中剩余的数据被读取后，再次read后会阻塞，知道管道中有数据可以被读取，才读取数据并返回读到字节的个数。</p>
+<p>3.如果所有指向管道读端的文件描述符都关闭了(管道的读端引用计数为0),这个时候有进程向管道中写数据，那么该进程会受到一个信号SIGPIPE,通常会导致进程异常终止。</p>
+<p>4.如果有指向管道读端的文件描述符没有关闭(管道的读端引用计数大于0),而持有管道读端的进程也没有从管道中读数据，这时有进程从管道中写数据，管道中剩余的空间被写满之后，那么再次调用write之后会阻塞。直到管道中有空位置才能再次写入数据并返回。</p>
+<p>读管道：<br>
+管道中有数据，read返回实际读到的字节数<br>
+管道中无数据:<br>
+写端全部关闭，read返回0<br>
+写端没完全关闭，read阻塞等待<br>
+写管道:<br>
+管道读端全部被关闭，进程异常终止(进程收到SIGPIPE信号)<br>
+管道读端没有全部关闭:<br>
+管道已满:阻塞<br>
+管道没满：写入数据，如果写满，阻塞</p>
+<h4 id="管道设置非阻塞">管道设置非阻塞</h4>
+<p>可以使用fcntl()函数</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">//先获取flag
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">fcntl</span><span class="p">(</span><span class="n">fd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">F_GETFL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//然后修改flag
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">flag</span> <span class="o">|=</span> <span class="n">O_NONBLOCK</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//设置flag
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">fcntl</span><span class="p">(</span><span class="n">fd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">F_SETFL</span><span class="p">,</span><span class="n">flag</span><span class="p">);</span>
+</span></span></code></pre></div><h3 id="有名管道">有名管道</h3>
+<p>1.匿名管道，由于没有名字，只能用于亲缘关系的进程间通信，为了克服这一点，提出了有名管道(FIFO)，也叫命名管道，FIFO文件<br>
+2.有名管道不同于匿名管道之处在于它提供了一个路径名与之关联，以FIFO的文件形式存在于文件系统中，并且其打开方式与打开一个普通文件是一样的。这样及时与FIFO的创建进程不存在亲缘关系的进程，也可以访问该路径，就能够彼此通过FIFO通信。<br>
+3.一旦打开了FIFO，就能在它上面使用与操作匿名管道和其他文件的系统调用一样的IO系统调用(read,write,close)。与管道一样，FIFO也有一个写入端和一个读取端。并且从个管道中读取数据的顺序与写入的顺序是一样的。FIFO的名称也由此而来，First in First out</p>
+<h4 id="区别">区别</h4>
+<p>有名管道(FIFO)和匿名管道(pipe)有一些特点相同，不一样的地方在于:<br>
+1.FIFO在文件系统中作为一个特殊文件存在，但FIFO中的内容却存放在内存中<br>
+2.当使用FIFO的进程退出后，FIFO文件将继续保存在文件系统中以便以后使用.<br>
+3.FIFO有名字，不相干的进程可以打开有名管道进行通信</p>
+<h4 id="有名管道的使用">有名管道的使用</h4>
+<p>1.通过命令创建有名管道<br>
+mkfifo 名字<br>
+2.通过函数创建</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types/h&gt;  </span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#inclued &lt;sys/stat.h&gt;  
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="nf">mkfifo</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="n">mode_t</span> <span class="n">mode</span><span class="p">);</span>
+</span></span></code></pre></div><p>3.一旦使用mkfifo创建了一个FIFO,就可以使用open打开，使用IO函数操作<br>
+4.不支持lseek()等文件定位操作</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-03-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/" data-title="进程间通信概念" data-hashtags="进程"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/" data-hashtag="进程"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/" data-title="进程间通信概念"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/" data-title="进程间通信概念"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/" data-title="进程间通信概念"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%BF%9B%E7%A8%8B/">进程</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/gitaction_hugo/" class="prev" rel="prev" title="GitAction_Hugo流程和问题"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GitAction_Hugo流程和问题</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
