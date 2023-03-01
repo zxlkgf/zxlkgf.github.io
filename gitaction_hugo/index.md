@@ -3,7 +3,7 @@
 
 # 关于Hugo在GitAction部署期间的问题
 参参照网站:  
-1.[利用GitHub Action实现Hugo博客在GitHub Pages自动部署](https://lucumt.info/post/hugo/using-github-action-to-auto-build-deploy/)(Access day:2023/02/28)
+1.[利用GitHub Action实现Hugo博客在GitHub Pages自动部署](https://lucumt.info/post/hugo/using-github-action-to-auto-build-deploy/)(Access day:2023/02/28)  
 
 2.[Hugo + GitHub Action，搭建你的博客自动发布系统](https://sspai.com/post/73512)(Access day:2023/02/28)
 
@@ -11,7 +11,7 @@
 创建Blog流程
 
 ## 搭建流程(域名),其他可参考上述网站
-1.进入腾讯云购买个人域名
+1.进入腾讯云购买个人域名  
 2.进入腾讯云的管理节点，点击自己购买的域名，选择添加记录，并选择记录类型CNAME，将记录值修改为自己的github.io，如下图:
 ![购买域名](../images/blogCreater/2.png)  
 3.进入github,在自己的github.io仓库下进入Settings，并在侧边栏找到Pages,修改**Custom Domain**，将其修改为自己购买的域名。如下图  
