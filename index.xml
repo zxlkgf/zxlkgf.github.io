@@ -4,9 +4,17 @@
         <link>http://example.org/</link>
         <description>Cyo&#39;s website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 01 Mar 2023 13:29:27 &#43;0800</lastBuildDate>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 01 Mar 2023 20:55:47 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>信号</title>
+    <link>http://example.org/%E4%BF%A1%E5%8F%B7/</link>
+    <pubDate>Wed, 01 Mar 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E4%BF%A1%E5%8F%B7/</guid>
+    <description><![CDATA[信号的概念 1.信号是Linux进程间通信的最古老的方式之一，是事件发生时对进程的通知机制，有时也称之为软件中断，它是在软件层次上对中断机制的]]></description>
+</item>
+<item>
     <title>内存映射</title>
     <link>http://example.org/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84/</link>
     <pubDate>Wed, 01 Mar 2023 13:29:27 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>Cyo</author>
     <guid>http://example.org/gdb/</guid>
     <description><![CDATA[1.什么是GDB GDB是由GNU软件系统社区提供的调试工具，同GCC配套组成的一套完整的开发环境，GDB是Linux和许多类Unix系统中的]]></description>
-</item>
-<item>
-    <title>Makefile</title>
-    <link>http://example.org/makefile/</link>
-    <pubDate>Fri, 03 Feb 2023 20:55:47 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/makefile/</guid>
-    <description><![CDATA[什么是Makefile 1.一个工程中的源码不计其数，其按照类型，功能，模块分别放在若干个目录中，Makefile文件定义了一系列的规则来制定]]></description>
 </item>
 </channel>
 </rss>

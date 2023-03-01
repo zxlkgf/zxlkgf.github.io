@@ -4,7 +4,15 @@
         <link>http://example.org/categories/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/</link>
         <description>Linux多进程开发 - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 01 Mar 2023 13:29:27 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 01 Mar 2023 20:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml" /><item>
+    <title>信号</title>
+    <link>http://example.org/%E4%BF%A1%E5%8F%B7/</link>
+    <pubDate>Wed, 01 Mar 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E4%BF%A1%E5%8F%B7/</guid>
+    <description><![CDATA[信号的概念 1.信号是Linux进程间通信的最古老的方式之一，是事件发生时对进程的通知机制，有时也称之为软件中断，它是在软件层次上对中断机制的]]></description>
+</item>
+<item>
     <title>内存映射</title>
     <link>http://example.org/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84/</link>
     <pubDate>Wed, 01 Mar 2023 13:29:27 &#43;0800</pubDate>
