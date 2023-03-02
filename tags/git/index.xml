@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Git - Tag - Cyo&#39;s Website</title>
-        <link>http://www.zxlkgf.com/tags/git/</link>
+        <link>http://example.org/tags/git/</link>
         <description>Git - Tag - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Mon, 14 Nov 2022 20:11:22 &#43;0900</lastBuildDate><atom:link href="http://www.zxlkgf.com/tags/git/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Mon, 14 Nov 2022 20:11:22 &#43;0900</lastBuildDate><atom:link href="http://example.org/tags/git/" rel="self" type="application/rss+xml" /><item>
     <title>关于.gitignore详解</title>
-    <link>http://www.zxlkgf.com/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/</link>
+    <link>http://example.org/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/</link>
     <pubDate>Mon, 14 Nov 2022 20:11:22 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/</guid>
+    <guid>http://example.org/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/</guid>
     <description><![CDATA[1.什么是.gitignore 在一些项目中，我们不想让本地仓库的所有文件都上传到远程仓库, 比如:万恶的.DS_Store 2.使用规则 2.1 注释 #]]></description>
 </item>
 </channel>

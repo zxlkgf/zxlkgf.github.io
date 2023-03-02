@@ -1,87 +1,87 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>SpringBoot - Category - Cyo&#39;s Website</title>
-        <link>http://www.zxlkgf.com/categories/springboot/</link>
+        <link>http://example.org/categories/springboot/</link>
         <description>SpringBoot - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 23 Oct 2022 20:19:14 &#43;0900</lastBuildDate><atom:link href="http://www.zxlkgf.com/categories/springboot/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 23 Oct 2022 20:19:14 &#43;0900</lastBuildDate><atom:link href="http://example.org/categories/springboot/" rel="self" type="application/rss+xml" /><item>
     <title>SpringBoot项目-Kaptcha</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-kaptcha/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-kaptcha/</link>
     <pubDate>Sun, 23 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-kaptcha/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-kaptcha/</guid>
     <description><![CDATA[Kaptcha 1.1 Kaptcha简介 Kaptcha 是一个扩展自simplecaptcha的验证码库，默认情况下，Kaptcha非常易于设置和使用，并且默认输出会产生一]]></description>
 </item>
 <item>
     <title>SpringBoot项目-AOP</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-aop/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-aop/</link>
     <pubDate>Sat, 22 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-aop/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-aop/</guid>
     <description><![CDATA[AOP 1 Spring AOP AOP：面向切面（Aspect）编程。AOP并不是Spring框架的特性，只是Spring很好的支持了AOP。 如果需要在处理每个业务]]></description>
 </item>
 <item>
     <title>SpringBoot项目-商品搜索</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/</link>
     <pubDate>Thu, 20 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/</guid>
     <description><![CDATA[9 商品搜索 9.1 关于商品的模糊搜索 9.1.1 后端-持久层 1.编写sql SELECT id,title,sell_point,price,image FROM t_product WHERE STATUS = 1 AND title LIKE &#39;%${title}%&#39; ORDER BY priority DESC; 2.编写Mapper接口的抽象方法 /** * 按照输入的标]]></description>
 </item>
 <item>
     <title>SpringBoot项目-分页插件</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</link>
     <pubDate>Wed, 19 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</guid>
     <description><![CDATA[分页插件学习 1.github:https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md 2.CSDN:https://blog.csdn.net/m0_48736673/article/details/124805124 1.使用步骤 1.在pom.xml添加如下依赖 &lt;dependency&gt; &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt; &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt; &lt;version&gt;最新版本&lt;/version&gt; &lt;!--&lt;version&gt;1.2.3&lt;version&gt;--&gt; &lt;/dependency&gt;]]></description>
 </item>
 <item>
     <title>SpringBoot项目-收藏管理</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E6%94%B6%E8%97%8F%E7%AE%A1%E7%90%86/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E6%94%B6%E8%97%8F%E7%AE%A1%E7%90%86/</link>
     <pubDate>Tue, 18 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E6%94%B6%E8%97%8F%E7%AE%A1%E7%90%86/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E6%94%B6%E8%97%8F%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[8 收藏管理 8.1 创建实体类 CREATE TABLE t_favorites( fid INT PRIMARY KEY AUTO_INCREMENT COMMENT &#39;收藏商品在数据表的id&#39;, uid INT COMMENT &#39;归属的用户id&#39;, pid INT COMMENT &#39]]></description>
 </item>
 <item>
     <title>SpringBoot项目-订单管理</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/</link>
     <pubDate>Mon, 17 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[订单管理 7.1 创建数据表 CREATE TABLE t_order ( oid INT AUTO_INCREMENT COMMENT &#39;订单id&#39;, uid INT NOT NULL COMMENT &#39;用户id&#39;, aid INT NOT NULL COMMENT &#39;收货地址id&]]></description>
 </item>
 <item>
     <title>SpringBoot项目-购物车管理</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%AE%A1%E7%90%86/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%AE%A1%E7%90%86/</link>
     <pubDate>Sun, 16 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%AE%A1%E7%90%86/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[6 购物车 6.1 创建数据表 CREATE TABLE t_cart ( cid INT AUTO_INCREMENT COMMENT &#39;购物车数据id&#39;, uid INT NOT NULL COMMENT &#39;用户id&#39;, pid INT NOT NULL COMMENT &#39;商品id]]></description>
 </item>
 <item>
     <title>SpringBoot项目-商品管理</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/</link>
     <pubDate>Sat, 15 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[5 商品管理 5.1 创建数据表 DROP TABLE IF EXISTS t_product; CREATE TABLE t_product ( id int(20) NOT NULL COMMENT &#39;商品id&#39;, category_id int(20) DEFAULT NULL COMMENT &#39;分类id&#39;, item_type varchar(100) DEFAULT NULL COMMENT &#39;]]></description>
 </item>
 <item>
     <title>SpringBoot项目-地址管理</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/</link>
     <pubDate>Fri, 14 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[4.地址管理 收货地址的功能模块:列表展示，修改，删除，设置默认，新增收货地址 开发的顺序:新增收货地址-&gt;列表展示-&gt;设置默认收货]]></description>
 </item>
 <item>
     <title>SpringBoot项目-用户管理</title>
-    <link>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</link>
+    <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</link>
     <pubDate>Thu, 13 Oct 2022 20:19:14 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://www.zxlkgf.com/springboot%E9%A1%B9%E7%9B%AE-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</guid>
+    <guid>http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[2环境搭建 2.1基本环境: 1.JDK1.8 2.Maven 3.6.1 3.Mysql 8.0.28 4.IDEA 2019.2.4 3.用户管理 3.1 创建数据库 CREATE DATABASE IF NOT EXISTS `computer_store` CHARACTER SET &#39;utf8&#39;; 3.2 创建数据表 CREATE TABLE t_user ( uid INT AUTO_INCREMENT COMMENT &#39;用户id&#39;,]]></description>
 </item>
 </channel>
