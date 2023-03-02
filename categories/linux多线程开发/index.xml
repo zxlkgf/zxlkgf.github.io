@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux多线程开发 - Category - Cyo&#39;s Website</title>
+        <link>http://example.org/categories/linux%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%BC%80%E5%8F%91/</link>
+        <description>Linux多线程开发 - Category - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/linux%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml" /><item>
+    <title>线程</title>
+    <link>http://example.org/%E7%BA%BF%E7%A8%8B/</link>
+    <pubDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E7%BA%BF%E7%A8%8B/</guid>
+    <description><![CDATA[线程概述 1.与进程(process)类似，线程(thread)是允许应用程序并发执行多个任务的一种机制。一个进程可以包含多个线程。同一个程序]]></description>
+</item>
+</channel>
+</rss>

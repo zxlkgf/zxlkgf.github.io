@@ -23,6 +23,14 @@
     <description><![CDATA[终端 1.在UNIX系统中，用户通过终端登陆系统后得到一个shell进程，这个终端成为shell进程的控制终端(Controlling Term]]></description>
 </item>
 <item>
+    <title>线程</title>
+    <link>http://example.org/%E7%BA%BF%E7%A8%8B/</link>
+    <pubDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E7%BA%BF%E7%A8%8B/</guid>
+    <description><![CDATA[线程概述 1.与进程(process)类似，线程(thread)是允许应用程序并发执行多个任务的一种机制。一个进程可以包含多个线程。同一个程序]]></description>
+</item>
+<item>
     <title>信号</title>
     <link>http://example.org/%E4%BF%A1%E5%8F%B7/</link>
     <pubDate>Wed, 01 Mar 2023 20:55:47 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>Cyo</author>
     <guid>http://example.org/%E8%BF%9B%E7%A8%8B/</guid>
     <description><![CDATA[进程 查看进程 ps aux/ajx a:显示终端上所有进程，包括其他用户的进程 u:显示进程的详细信息 x:显示没有控制终端的进程 j:列出与作业息息相关的信息 进程相]]></description>
-</item>
-<item>
-    <title>进程创建</title>
-    <link>http://example.org/%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA/</link>
-    <pubDate>Sun, 05 Feb 2023 20:55:47 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA/</guid>
-    <description><![CDATA[进程的创建 01进程创建 系统允许一个进程创建新进程，新进程即为子进程，子进程还可以创建子进程，形成进程树结构模型 #include &lt;sys/types.h&gt; #include &lt;unistd.h&gt; pid_t fork(void); 返回值: 成功:子进]]></description>
 </item>
 </channel>
 </rss>
