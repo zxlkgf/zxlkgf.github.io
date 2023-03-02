@@ -4,7 +4,23 @@
         <link>http://www.zxlkgf.com/tags/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/</link>
         <description>Linux多进程开发 - Tag - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 01 Mar 2023 20:55:47 &#43;0800</lastBuildDate><atom:link href="http://www.zxlkgf.com/tags/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</lastBuildDate><atom:link href="http://www.zxlkgf.com/tags/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml" /><item>
+    <title>共享内存</title>
+    <link>http://www.zxlkgf.com/%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/</link>
+    <pubDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://www.zxlkgf.com/%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/</guid>
+    <description><![CDATA[共享内存 1.共享内存允许两个或者多个进程共享物理内存的同一块区域(通常被称为段)。由于一个共享内存段会称为一个进程用户空间的一部分。因此这种]]></description>
+</item>
+<item>
+    <title>守护进程</title>
+    <link>http://www.zxlkgf.com/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link>
+    <pubDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://www.zxlkgf.com/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid>
+    <description><![CDATA[终端 1.在UNIX系统中，用户通过终端登陆系统后得到一个shell进程，这个终端成为shell进程的控制终端(Controlling Term]]></description>
+</item>
+<item>
     <title>信号</title>
     <link>http://www.zxlkgf.com/%E4%BF%A1%E5%8F%B7/</link>
     <pubDate>Wed, 01 Mar 2023 20:55:47 &#43;0800</pubDate>
