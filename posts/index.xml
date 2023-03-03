@@ -4,7 +4,23 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Fri, 03 Mar 2023 09:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>线程同步&#43;锁</title>
+    <link>http://example.org/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/</link>
+    <pubDate>Fri, 03 Mar 2023 09:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/</guid>
+    <description><![CDATA[线程同步 1.线程的主要优势在于，能够通过全局变量来共享信息。不过，这种便捷的共享是有代价的，必须确保多个线程不会同时修改同一个变量，或者某个]]></description>
+</item>
+<item>
+    <title>线程</title>
+    <link>http://example.org/%E7%BA%BF%E7%A8%8B/</link>
+    <pubDate>Thu, 02 Mar 2023 23:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E7%BA%BF%E7%A8%8B/</guid>
+    <description><![CDATA[线程概述 1.与进程(process)类似，线程(thread)是允许应用程序并发执行多个任务的一种机制。一个进程可以包含多个线程。同一个程序]]></description>
+</item>
+<item>
     <title>共享内存</title>
     <link>http://example.org/%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/</link>
     <pubDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</pubDate>
@@ -19,14 +35,6 @@
     <author>Cyo</author>
     <guid>http://example.org/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid>
     <description><![CDATA[终端 1.在UNIX系统中，用户通过终端登陆系统后得到一个shell进程，这个终端成为shell进程的控制终端(Controlling Term]]></description>
-</item>
-<item>
-    <title>线程</title>
-    <link>http://example.org/%E7%BA%BF%E7%A8%8B/</link>
-    <pubDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/%E7%BA%BF%E7%A8%8B/</guid>
-    <description><![CDATA[线程概述 1.与进程(process)类似，线程(thread)是允许应用程序并发执行多个任务的一种机制。一个进程可以包含多个线程。同一个程序]]></description>
 </item>
 <item>
     <title>信号</title>
@@ -75,14 +83,6 @@
     <author>Cyo</author>
     <guid>http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/</guid>
     <description><![CDATA[exec函数族介绍 1.exec函数族的作用是根据指定的文件名找到可执行文件，并用它来取代调用进程的内容，换句话说，就是在调用进程内部执行一个]]></description>
-</item>
-<item>
-    <title>进程</title>
-    <link>http://example.org/%E8%BF%9B%E7%A8%8B/</link>
-    <pubDate>Sun, 05 Feb 2023 20:55:47 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/%E8%BF%9B%E7%A8%8B/</guid>
-    <description><![CDATA[进程 查看进程 ps aux/ajx a:显示终端上所有进程，包括其他用户的进程 u:显示进程的详细信息 x:显示没有控制终端的进程 j:列出与作业息息相关的信息 进程相]]></description>
 </item>
 </channel>
 </rss>
