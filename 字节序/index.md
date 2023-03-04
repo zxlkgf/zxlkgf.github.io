@@ -30,7 +30,7 @@
 
 ### 整体视图
 
-![总](../images/zijiexu/总.png) 
+![总](../images/zijiexu/zong.png) 
 
 ---
 
