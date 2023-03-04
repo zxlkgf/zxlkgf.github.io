@@ -1,6 +1,36 @@
 # Socket通信
 
 
+## TCP通信流程
+
+!![TCP通信](../images/socket/1.png) 
+```text
+//TCP通信流程
+//服务器端(被动接受的角色)
+1.创建一个用于监听的套接字
+    -监听：监听有无客户端连接
+    -套接字：这个套接字其实是一个文件描述符
+2.将这个监听文件描述符和本地的Ip和端口绑定(IP和端口就是服务器的地址信息);
+    -客户端连接服务器的时候使用的就是这个ip和端口
+3.设置监听，监听的fd开始工作
+4.阻塞等待，当有客户端发起连接，接触阻塞，接受客户端的连接，会得到一个和客户端通信的套接字(fd)
+5.通信
+    - 接收数据
+    - 发送数据
+6.通信结束，断开连接  
+```
+```text
+//客户端
+1.创建一个用于通信的套接字
+2.连接服务器，需要指定的服务器的ip和端口
+3.通信
+    -接收数据
+    -发送数据
+4.通信结束，断开连接
+```
+
+---
+
 # 
 
 socket编程有三种
@@ -156,3 +186,138 @@ hostent->h_addr_list
 表示的是主机的ip地址。是网络字节序，需要通过inet_ntop函数转换。
 ```
 
+---
+
+### 代码样例
+需求:客户端向服务器发送消息，服务器回传该消息给客户端。  
+#### 服务器部分:  
+```c++
+#include <stdio.h>
+#include <stdlib.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <string.h>
+
+//服务端
+int main(){
+    int socket_fd,connect_fd;
+    struct sockaddr_in saddr,caddr;
+    //创建套接字
+    if((socket_fd=socket(AF_INET,SOCK_STREAM,0))==-1){
+        perror("socket");
+        exit(0);
+    }
+    //定义服务器地址
+    saddr.sin_family = AF_INET;
+    saddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    saddr.sin_port = htons(8000);
+
+    if((bind(socket_fd,(struct sockaddr *)&saddr,sizeof(saddr)))==-1){
+        perror("bind");
+        exit(0);
+    }
+    //监听
+    if((listen(socket_fd,10))==-1){
+        perror("listen");
+        exit(0);
+    }
+    //阻塞接受
+    socklen_t clen = sizeof(caddr);
+    if((connect_fd=accept(socket_fd,(struct sockaddr * )&caddr,&clen))==-1){
+        perror("accept");
+        exit(0);
+    }
+    //客户端信息
+    char cip[16];//客户端ip
+    inet_ntop(AF_INET,&caddr.sin_addr.s_addr,cip,sizeof(cip));
+    unsigned int cport = ntohs(caddr.sin_port);//客户端端口
+    //接受消息
+    char recvbuf[1024]={0};
+    while(1){
+         
+        // recvbuf
+        int num = read(connect_fd, recvbuf, sizeof(recvbuf));
+        if(num == -1) {
+            perror("read");
+            exit(-1);
+        } else if(num > 0) {
+            printf("我接受到了客户端的数据 : %s\n", recvbuf);
+        } else if(num == 0) {
+            // 表示客户端断开连接
+            printf("clinet closed...\n");
+            break;
+        }
+ 
+        char * data = recvbuf;
+        // 给客户端发送数据（实现回射服务器）
+        write(connect_fd, data, strlen(data));
+    }
+    //关闭文件描述符
+    close(connect_fd);
+    close(socket_fd);
+
+    return 0;
+}
+```
+#### 客户端部分
+```c++
+#include <stdio.h>
+#include <stdlib.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <string.h>
+
+int main(){
+    int socket_fd;
+    struct sockaddr_in saddr;
+
+    //描述符
+    if((socket_fd = socket(AF_INET,SOCK_STREAM,0))==-1){
+        perror("socket");
+        exit(0);
+    }
+    //设置服务器信息
+    saddr.sin_family=AF_INET;
+    inet_pton(AF_INET,"127.0.0.1",&saddr.sin_addr.s_addr);
+    saddr.sin_port=htons(8000);
+    
+    //连接
+    int ret = connect(socket_fd, (struct sockaddr *)&saddr, sizeof(saddr));
+ 
+    if(ret == -1) {
+        perror("connect");
+        exit(-1);
+    }
+    //发送消息
+    char recvbuf[1024]={0};
+    while(1){
+        // 从键盘输入，给客户端发送数据
+        char data[1024];
+        memset(data,0,sizeof data);
+        printf("请输入发送数据：");
+        scanf("%s", data);
+        write(socket_fd, data , strlen(data));
+ 
+        sleep(1);
+         
+        int len = read(socket_fd, recvbuf, sizeof(recvbuf));
+        if(len == -1) {
+            perror("read");
+            exit(-1);
+        } else if(len > 0) {
+            printf("我接受到了回射服务器的返回的数据 : %s\n", recvbuf);
+        } else if(len == 0) {
+            // 表示服务器端断开连接
+            printf("server closed...\n");
+            break;
+        }
+    }
+    close(socket_fd);
+
+    return 0;
+}
+```

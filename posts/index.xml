@@ -4,7 +4,15 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 04 Mar 2023 12:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 04 Mar 2023 14:52:16 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Socket通信</title>
+    <link>http://example.org/socket%E9%80%9A%E4%BF%A1/</link>
+    <pubDate>Sat, 04 Mar 2023 14:52:16 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/socket%E9%80%9A%E4%BF%A1/</guid>
+    <description><![CDATA[TCP通信流程 ! //TCP通信流程 //服务器端(被动接受的角色) 1.创建一个用于监听的套接字 -监听：监听有无客户端连接 -套接字：这个套接字其]]></description>
+</item>
+<item>
     <title>socket地址</title>
     <link>http://example.org/socket%E5%9C%B0%E5%9D%80/</link>
     <pubDate>Sat, 04 Mar 2023 12:55:47 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>Cyo</author>
     <guid>http://example.org/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%A6%82%E5%BF%B5/</guid>
     <description><![CDATA[进程间通讯概念 1.进程是一个独立的资源分配单元，不同的进程(用户进程)之间的资源是独立的，没有关联，不能在一个进程中直接访问另一个进程的资源]]></description>
-</item>
-<item>
-    <title>Hugo &#43; GitHub Action &#43; 腾讯云 搭建你的博客自动发布系统</title>
-    <link>http://example.org/gitaction_hugo/</link>
-    <pubDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/gitaction_hugo/</guid>
-    <description><![CDATA[关于Hugo在GitAction部署期间的问题 参参照网站: 1.利用GitHub Action实现Hugo博客在GitHub Pages自动部署(]]></description>
 </item>
 </channel>
 </rss>

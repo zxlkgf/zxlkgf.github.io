@@ -5,20 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Socket通信 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="Socket通信" />
-<meta property="og:description" content="socket编程有三种 1.流式套接字(SOCKET_STREAM) 2.数据报式套接字(SOCKET_DGRAM) 3,原始套接字(SOCKET" />
+<meta property="og:description" content="TCP通信流程 ! //TCP通信流程 //服务器端(被动接受的角色) 1.创建一个用于监听的套接字 -监听：监听有无客户端连接 -套接字：这个套接字其" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/socket%E9%80%9A%E4%BF%A1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-02-16T14:52:16+08:00" />
-<meta property="article:modified_time" content="2023-02-16T14:52:16+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta property="article:published_time" content="2023-03-04T14:52:16+08:00" />
+<meta property="article:modified_time" content="2023-03-04T14:52:16+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
 <meta name="twitter:title" content="Socket通信"/>
-<meta name="twitter:description" content="socket编程有三种 1.流式套接字(SOCKET_STREAM) 2.数据报式套接字(SOCKET_DGRAM) 3,原始套接字(SOCKET"/>
+<meta name="twitter:description" content="TCP通信流程 ! //TCP通信流程 //服务器端(被动接受的角色) 1.创建一个用于监听的套接字 -监听：监听有无客户端连接 -套接字：这个套接字其"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/socket%E9%80%9A%E4%BF%A1/" /><link rel="prev" href="http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/" /><link rel="next" href="http://example.org/gitaction_hugo/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/socket%E9%80%9A%E4%BF%A1/" /><link rel="prev" href="http://example.org/socket%E5%9C%B0%E5%9D%80/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/socket%E9%80%9A%E4%BF%A1\/"
-        },"genre": "posts","keywords": "socket","wordcount":  1336 ,
-        "url": "http:\/\/example.org\/socket%E9%80%9A%E4%BF%A1\/","datePublished": "2023-02-16T14:52:16+08:00","dateModified": "2023-02-16T14:52:16+08:00","publisher": {
+        },"genre": "posts","keywords": "Linux网络编程","wordcount":  2139 ,
+        "url": "http:\/\/example.org\/socket%E9%80%9A%E4%BF%A1\/","datePublished": "2023-03-04T14:52:16+08:00","dateModified": "2023-03-04T14:52:16+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,9 +116,9 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Socket通信</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a>&nbsp;<a href="/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>网络通信</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-16">2023-02-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1336 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux网络编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-04">2023-03-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2139 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -126,10 +126,48 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#备注">备注</a></li>
+    <li><a href="#tcp通信流程">TCP通信流程</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#备注">备注</a>
+      <ul>
+        <li><a href="#代码样例">代码样例</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="heading"></h1>
+            </div><div class="content" id="content"><h2 id="tcp通信流程">TCP通信流程</h2>
+<p>!<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/socket/1.png"
+        data-srcset="../images/socket/1.png, ../images/socket/1.png 1.5x, ../images/socket/1.png 2x"
+        data-sizes="auto"
+        alt="../images/socket/1.png"
+        title="TCP通信" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">//TCP通信流程
+</span></span><span class="line"><span class="cl">//服务器端(被动接受的角色)
+</span></span><span class="line"><span class="cl">1.创建一个用于监听的套接字
+</span></span><span class="line"><span class="cl">    -监听：监听有无客户端连接
+</span></span><span class="line"><span class="cl">    -套接字：这个套接字其实是一个文件描述符
+</span></span><span class="line"><span class="cl">2.将这个监听文件描述符和本地的Ip和端口绑定(IP和端口就是服务器的地址信息);
+</span></span><span class="line"><span class="cl">    -客户端连接服务器的时候使用的就是这个ip和端口
+</span></span><span class="line"><span class="cl">3.设置监听，监听的fd开始工作
+</span></span><span class="line"><span class="cl">4.阻塞等待，当有客户端发起连接，接触阻塞，接受客户端的连接，会得到一个和客户端通信的套接字(fd)
+</span></span><span class="line"><span class="cl">5.通信
+</span></span><span class="line"><span class="cl">    - 接收数据
+</span></span><span class="line"><span class="cl">    - 发送数据
+</span></span><span class="line"><span class="cl">6.通信结束，断开连接  
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">//客户端
+</span></span><span class="line"><span class="cl">1.创建一个用于通信的套接字
+</span></span><span class="line"><span class="cl">2.连接服务器，需要指定的服务器的ip和端口
+</span></span><span class="line"><span class="cl">3.通信
+</span></span><span class="line"><span class="cl">    -接收数据
+</span></span><span class="line"><span class="cl">    -发送数据
+</span></span><span class="line"><span class="cl">4.通信结束，断开连接
+</span></span></code></pre></div><hr>
+<h1 id="heading"></h1>
 <p>socket编程有三种</p>
 <p>1.流式套接字(SOCKET_STREAM)</p>
 <p>2.数据报式套接字(SOCKET_DGRAM)</p>
@@ -244,31 +282,160 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_addr_list</span>
 </span></span><span class="line"><span class="cl"><span class="err">表示的是主机的</span><span class="n">ip</span><span class="err">地址。是网络字节序，需要通过</span><span class="n">inet_ntop</span><span class="err">函数转换。</span>
+</span></span></code></pre></div><hr>
+<h3 id="代码样例">代码样例</h3>
+<p>需求:客户端向服务器发送消息，服务器回传该消息给客户端。</p>
+<h4 id="服务器部分">服务器部分:</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//服务端
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">socket_fd</span><span class="p">,</span><span class="n">connect_fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="nc">sockaddr_in</span> <span class="n">saddr</span><span class="p">,</span><span class="n">caddr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//创建套接字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">((</span><span class="n">socket_fd</span><span class="o">=</span><span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">SOCK_STREAM</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;socket&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//定义服务器地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">saddr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">saddr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">htonl</span><span class="p">(</span><span class="n">INADDR_ANY</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">saddr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="mi">8000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">((</span><span class="n">bind</span><span class="p">(</span><span class="n">socket_fd</span><span class="p">,(</span><span class="k">struct</span> <span class="nc">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">saddr</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">saddr</span><span class="p">)))</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;bind&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//监听
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">((</span><span class="n">listen</span><span class="p">(</span><span class="n">socket_fd</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;listen&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//阻塞接受
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">socklen_t</span> <span class="n">clen</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">caddr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">((</span><span class="n">connect_fd</span><span class="o">=</span><span class="n">accept</span><span class="p">(</span><span class="n">socket_fd</span><span class="p">,(</span><span class="k">struct</span> <span class="nc">sockaddr</span> <span class="o">*</span> <span class="p">)</span><span class="o">&amp;</span><span class="n">caddr</span><span class="p">,</span><span class="o">&amp;</span><span class="n">clen</span><span class="p">))</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;accept&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//客户端信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">char</span> <span class="n">cip</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="c1">//客户端ip
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">inet_ntop</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span><span class="o">&amp;</span><span class="n">caddr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span><span class="p">,</span><span class="n">cip</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">cip</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">cport</span> <span class="o">=</span> <span class="n">ntohs</span><span class="p">(</span><span class="n">caddr</span><span class="p">.</span><span class="n">sin_port</span><span class="p">);</span><span class="c1">//客户端端口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//接受消息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">char</span> <span class="n">recvbuf</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">         
+</span></span><span class="line"><span class="cl">        <span class="c1">// recvbuf
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">connect_fd</span><span class="p">,</span> <span class="n">recvbuf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">recvbuf</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">perror</span><span class="p">(</span><span class="s">&#34;read&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;我接受到了客户端的数据 : %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">recvbuf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 表示客户端断开连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;clinet closed...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="o">*</span> <span class="n">data</span> <span class="o">=</span> <span class="n">recvbuf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 给客户端发送数据（实现回射服务器）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">write</span><span class="p">(</span><span class="n">connect_fd</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//关闭文件描述符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">close</span><span class="p">(</span><span class="n">connect_fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">close</span><span class="p">(</span><span class="n">socket_fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="客户端部分">客户端部分</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">socket_fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="nc">sockaddr_in</span> <span class="n">saddr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//描述符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">((</span><span class="n">socket_fd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">SOCK_STREAM</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;socket&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//设置服务器信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">saddr</span><span class="p">.</span><span class="n">sin_family</span><span class="o">=</span><span class="n">AF_INET</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">inet_pton</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span><span class="s">&#34;127.0.0.1&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">saddr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">saddr</span><span class="p">.</span><span class="n">sin_port</span><span class="o">=</span><span class="n">htons</span><span class="p">(</span><span class="mi">8000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">//连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="n">socket_fd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">saddr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">saddr</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perror</span><span class="p">(</span><span class="s">&#34;connect&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//发送消息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">char</span> <span class="n">recvbuf</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 从键盘输入，给客户端发送数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">memset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span> <span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;请输入发送数据：&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">write</span><span class="p">(</span><span class="n">socket_fd</span><span class="p">,</span> <span class="n">data</span> <span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">         
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">socket_fd</span><span class="p">,</span> <span class="n">recvbuf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">recvbuf</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">len</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">perror</span><span class="p">(</span><span class="s">&#34;read&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;我接受到了回射服务器的返回的数据 : %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">recvbuf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">len</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 表示服务器端断开连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;server closed...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">close</span><span class="p">(</span><span class="n">socket_fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-02-16</span>
+                <span>Updated on 2023-03-04</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/socket%E9%80%9A%E4%BF%A1/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-title="Socket通信" data-via="https://twitter.com/ZXLKG" data-hashtags="socket"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-hashtag="socket"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-title="Socket通信"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-title="Socket通信"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-title="Socket通信"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-title="Socket通信" data-via="https://twitter.com/ZXLKG" data-hashtags="Linux网络编程"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-hashtag="Linux网络编程"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-title="Socket通信"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-title="Socket通信"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/socket%E9%80%9A%E4%BF%A1/" data-title="Socket通信"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/socket/">socket</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">Linux网络编程</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/exec%E5%87%BD%E6%95%B0%E6%97%8F/" class="prev" rel="prev" title="exec函数族"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>exec函数族</a>
-            <a href="/gitaction_hugo/" class="next" rel="next" title="Hugo &#43; GitHub Action &#43; 腾讯云 搭建你的博客自动发布系统">Hugo + GitHub Action + 腾讯云 搭建你的博客自动发布系统<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/socket%E5%9C%B0%E5%9D%80/" class="prev" rel="prev" title="socket地址"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>socket地址</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
