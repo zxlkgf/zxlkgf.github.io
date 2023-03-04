@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>socket地址 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="socket地址" />
+<meta property="og:description" content="socket地址 通用socket地址 socket网络编程接口中表示socket地址的是结构体sockaddr，其定义如下： #include &lt;bits/socket.h&gt; struct sockaddr { sa_family_t sa_family; char sa_data[14];" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/socket%E5%9C%B0%E5%9D%80/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-04T12:55:47+08:00" />
+<meta property="article:modified_time" content="2023-03-04T12:55:47+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="socket地址"/>
+<meta name="twitter:description" content="socket地址 通用socket地址 socket网络编程接口中表示socket地址的是结构体sockaddr，其定义如下： #include &lt;bits/socket.h&gt; struct sockaddr { sa_family_t sa_family; char sa_data[14];"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/socket%E5%9C%B0%E5%9D%80/" /><link rel="prev" href="http://example.org/%E5%AD%97%E8%8A%82%E5%BA%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "socket地址",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/socket%E5%9C%B0%E5%9D%80\/"
+        },"genre": "posts","keywords": "Linux网络编程","wordcount":  1355 ,
+        "url": "http:\/\/example.org\/socket%E5%9C%B0%E5%9D%80\/","datePublished": "2023-03-04T12:55:47+08:00","dateModified": "2023-03-04T12:55:47+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">socket地址</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux网络编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-04">2023-03-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1355 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#通用socket地址">通用socket地址</a></li>
+    <li><a href="#专用socket地址">专用socket地址</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="socket地址">socket地址</h1>
+<h2 id="通用socket地址">通用socket地址</h2>
+<p>socket网络编程接口中表示socket地址的是结构体sockaddr，其定义如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;bits/socket.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">struct</span> <span class="nc">sockaddr</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sa_family_t</span> <span class="n">sa_family</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span>        <span class="n">sa_data</span><span class="p">[</span><span class="mi">14</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="kt">int</span> <span class="n">sa_family_t</span><span class="p">;</span>
+</span></span></code></pre></div><p>sa_family成员是地址族类型(sa_family_t)的变量。地址族类型通常与协议族类型对应，常见的协议族(protocol family,也成domain)和对应的地址族如下所示:</p>
+<table>
+<thead>
+<tr>
+<th>协议族</th>
+<th>地址族</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PF_UNIX</td>
+<td>AF_UNIX</td>
+<td>UNIX本地域协议族</td>
+</tr>
+<tr>
+<td>PF_INET</td>
+<td>AF_INET</td>
+<td>TCP/IPv4协议族</td>
+</tr>
+<tr>
+<td>PF_INET6</td>
+<td>AF_INET6</td>
+<td>TCP/IPv6协议族</td>
+</tr>
+</tbody>
+</table>
+<p>宏PF_*和AF_*都定义在bit/socket.h头文件中，且后者与前者有完全相同的值，所有二者通常混用。sa_data成员用于存放socket地址值.但是，不同的协议族的地址值具有不同的含义和长度，如下表示：</p>
+<table>
+<thead>
+<tr>
+<th>协议族</th>
+<th>地址值含义和长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PF_UNIX</td>
+<td>文件的路径名，长度可达到108字节</td>
+</tr>
+<tr>
+<td>PF_INET</td>
+<td>16bit端口号和32bitIPv4地址，共6字节</td>
+</tr>
+<tr>
+<td>PF_INET6</td>
+<td>16bit端口号，32bit流标识，128bitIPv6地址，32bit范围ID，共26字节</td>
+</tr>
+</tbody>
+</table>
+<p>由上表可知，14字节的sa_data根本无法容纳多数协议族的地址值。因此，Linux定义了下面这个新的通用socket地址结构体，这个结构体不仅提供了足够大的空间用于存放地址值，而且是内存对象的。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;bits/socket.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">struct</span> <span class="nc">sockadr_storage</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sa_family_t</span> <span class="n">sa_family</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">int</span> <span class="n">__sa_align</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">__ss_padding</span><span class="p">[</span><span class="mi">128</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__sa_align</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="kt">int</span> <span class="n">sa_family_t</span><span class="p">;</span>
+</span></span></code></pre></div><hr>
+<h2 id="专用socket地址">专用socket地址</h2>
+<p>很多网络编程函数诞生早于IPv4协议，那时候都使用的是struct sockaddr结构体，为了向前兼容，现在的sockaddr退化成(void *)的作用，传递一个地址给函数，至于这个函数时sockaddr_in 还是sockaddr_in6，由地址族确定，然后函数内部再强制类型转换为所需的地址类型。<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/socketaddr/1.png"
+        data-srcset="../images/socketaddr/1.png, ../images/socketaddr/1.png 1.5x, ../images/socketaddr/1.png 2x"
+        data-sizes="auto"
+        alt="../images/socketaddr/1.png"
+        title="socketaddr" /></p>
+<p>UNIX本地域协议族使用如下专用的socket地址结构体</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/un.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">struct</span> <span class="nc">sockaddr_un</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sa_family_t</span> <span class="n">sin_family</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">sun_path</span><span class="p">[</span><span class="mi">108</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>TCP/IP协议族由sockaddr_in和sockaddr_in6两个专用的socket地址结构体，他们分别用于IPv4和Ipv6</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;netinet/in.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">struct</span> <span class="nc">sockaddr_in</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sa_family_t</span> <span class="n">sa_family</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">in_port_t</span> <span class="n">sin_port</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="nc">in_addr</span> <span class="n">sin_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">sin_zero</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr</span><span class="p">)</span><span class="o">-</span><span class="n">__SOCKADDR_COMMON_SIZE</span><span class="o">-</span><span class="k">sizeof</span><span class="p">(</span><span class="n">in_port_t</span><span class="p">)</span><span class="o">-</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">in_addr</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">in_addr</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">in_addr_t</span> <span class="n">s_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sockaddr_in6</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sa_family_t</span> <span class="n">sa_family</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">in_port_t</span> <span class="n">sin6_port</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">sin6_flowinfo</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="nc">in6_addr</span> <span class="n">sin6_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">sin6_scope_id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="kt">uint16_t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="kt">uint32_t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">uint16_t</span> <span class="n">in_port_t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">uint32_t</span> <span class="n">in_addr_t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define __SOCKADDR_COMMON_SIZE (sizeof(unsigned short int))
+</span></span></span></code></pre></div><p>所有专用socket地址(以及sockaddr_storage)类型的变量在实际使用时都需要转化为通用socket地址类型sockaddr(强制转换即可),因为所有socket编程接口使用的地址参数类型都是sockaddr。</p>
+<h1 id="ip地址转换">IP地址转换</h1>
+<p>通常，人们习惯用可读性好的字符串来表示ip地址，比如用点分十进制字符串表示IPv4地址，以及用十六进制字符串表示IPv6地址。但编程中我们需要先把它们转化成整数(二进制)方能使用。而记录日志时则相反，我们要把整数表示的IP地址转化成为可读的字符串。下面3个函数可用于用点分是兼职字符串表示的IPv4地址和用网络字节序整数表示的IPv4地址之间的转换：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#includ &lt;arpa/inet.h&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">in_addr_t</span> <span class="nf">inet_addr</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">cp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">inet_aton</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">cp</span><span class="p">,</span><span class="k">struct</span> <span class="nc">in_addr</span> <span class="o">*</span><span class="n">inp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="nf">inet_ntoa</span><span class="p">(</span><span class="k">struct</span> <span class="nc">in_addr</span> <span class="n">in</span><span class="p">);</span>
+</span></span></code></pre></div><p>下面这对更新的函数也能完成前面3个函数同样的功能，并且它们同时适用IPv4地址和IPv6地址</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#includ &lt;arpa/inet.h&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">//p : 点分十进制的字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1">//n : 表示network字节序的整数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">inet_pton</span><span class="p">(</span><span class="kt">int</span> <span class="n">af</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span><span class="kt">void</span> <span class="o">*</span><span class="n">dest</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//af:地址族
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//src ：需要转换的点分十进制字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//dest：转换后保存的目标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">char</span>  <span class="o">*</span><span class="nf">inet_ntop</span><span class="p">(</span><span class="kt">int</span> <span class="n">af</span><span class="p">,</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span><span class="n">socklen_t</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//af:地址族
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//src ：需要转换的Ip的整数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//dest：转换后保存的目标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//size : 第三个参数的大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//返回值:返回转换后的字符串
+</span></span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-03-04</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/socket%E5%9C%B0%E5%9D%80/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/socket%E5%9C%B0%E5%9D%80/" data-title="socket地址" data-via="https://twitter.com/ZXLKG" data-hashtags="Linux网络编程"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/socket%E5%9C%B0%E5%9D%80/" data-hashtag="Linux网络编程"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/socket%E5%9C%B0%E5%9D%80/" data-title="socket地址"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/socket%E5%9C%B0%E5%9D%80/" data-title="socket地址"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/socket%E5%9C%B0%E5%9D%80/" data-title="socket地址"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">Linux网络编程</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%AD%97%E8%8A%82%E5%BA%8F/" class="prev" rel="prev" title="字节序"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>字节序</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

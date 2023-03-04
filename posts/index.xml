@@ -4,7 +4,23 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Fri, 03 Mar 2023 09:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 04 Mar 2023 12:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>socket地址</title>
+    <link>http://example.org/socket%E5%9C%B0%E5%9D%80/</link>
+    <pubDate>Sat, 04 Mar 2023 12:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/socket%E5%9C%B0%E5%9D%80/</guid>
+    <description><![CDATA[socket地址 通用socket地址 socket网络编程接口中表示socket地址的是结构体sockaddr，其定义如下： #include &lt;bits/socket.h&gt; struct sockaddr { sa_family_t sa_family; char sa_data[14];]]></description>
+</item>
+<item>
+    <title>字节序</title>
+    <link>http://example.org/%E5%AD%97%E8%8A%82%E5%BA%8F/</link>
+    <pubDate>Sat, 04 Mar 2023 08:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E5%AD%97%E8%8A%82%E5%BA%8F/</guid>
+    <description><![CDATA[字节序 现代CPU的累加器一次都能装载至少4字节(32位机器),即一个整数。那么这四个字节在内存中排列的顺序将影响它被累加器装载成的整数的值，]]></description>
+</item>
+<item>
     <title>线程同步&#43;锁</title>
     <link>http://example.org/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/</link>
     <pubDate>Fri, 03 Mar 2023 09:55:47 &#43;0800</pubDate>
@@ -67,22 +83,6 @@
     <author>Cyo</author>
     <guid>http://example.org/gitaction_hugo/</guid>
     <description><![CDATA[关于Hugo在GitAction部署期间的问题 参参照网站: 1.利用GitHub Action实现Hugo博客在GitHub Pages自动部署(]]></description>
-</item>
-<item>
-    <title>Socket通信</title>
-    <link>http://example.org/socket%E9%80%9A%E4%BF%A1/</link>
-    <pubDate>Thu, 16 Feb 2023 14:52:16 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/socket%E9%80%9A%E4%BF%A1/</guid>
-    <description><![CDATA[socket编程有三种 1.流式套接字(SOCKET_STREAM) 2.数据报式套接字(SOCKET_DGRAM) 3,原始套接字(SOCKET]]></description>
-</item>
-<item>
-    <title>exec函数族</title>
-    <link>http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/</link>
-    <pubDate>Tue, 07 Feb 2023 20:55:47 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/exec%E5%87%BD%E6%95%B0%E6%97%8F/</guid>
-    <description><![CDATA[exec函数族介绍 1.exec函数族的作用是根据指定的文件名找到可执行文件，并用它来取代调用进程的内容，换句话说，就是在调用进程内部执行一个]]></description>
 </item>
 </channel>
 </rss>

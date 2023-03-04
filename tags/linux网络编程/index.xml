@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux网络编程 - Tag - Cyo&#39;s Website</title>
+        <link>http://example.org/tags/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+        <description>Linux网络编程 - Tag - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 04 Mar 2023 12:55:47 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>socket地址</title>
+    <link>http://example.org/socket%E5%9C%B0%E5%9D%80/</link>
+    <pubDate>Sat, 04 Mar 2023 12:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/socket%E5%9C%B0%E5%9D%80/</guid>
+    <description><![CDATA[socket地址 通用socket地址 socket网络编程接口中表示socket地址的是结构体sockaddr，其定义如下： #include &lt;bits/socket.h&gt; struct sockaddr { sa_family_t sa_family; char sa_data[14];]]></description>
+</item>
+<item>
+    <title>字节序</title>
+    <link>http://example.org/%E5%AD%97%E8%8A%82%E5%BA%8F/</link>
+    <pubDate>Sat, 04 Mar 2023 08:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E5%AD%97%E8%8A%82%E5%BA%8F/</guid>
+    <description><![CDATA[字节序 现代CPU的累加器一次都能装载至少4字节(32位机器),即一个整数。那么这四个字节在内存中排列的顺序将影响它被累加器装载成的整数的值，]]></description>
+</item>
+</channel>
+</rss>
