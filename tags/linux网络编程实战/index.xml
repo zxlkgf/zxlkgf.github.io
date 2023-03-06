@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux网络编程实战 - Tag - Cyo&#39;s Website</title>
+        <link>http://example.org/tags/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/</link>
+        <description>Linux网络编程实战 - Tag - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Mon, 06 Mar 2023 13:52:16 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" rel="self" type="application/rss+xml" /><item>
+    <title>阻塞/阻塞_同步/异步</title>
+    <link>http://example.org/%E9%98%BB%E5%A1%9E_%E9%9D%9E%E9%98%BB%E5%A1%9E/</link>
+    <pubDate>Mon, 06 Mar 2023 13:52:16 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E9%98%BB%E5%A1%9E_%E9%9D%9E%E9%98%BB%E5%A1%9E/</guid>
+    <description><![CDATA[1.阻塞/非阻塞,同步/异步 典型的一次IO的两个阶段：数据的就绪和数据的读写 数据就绪:根据系统IO操作的就绪状态 1.阻塞 调用IO方法的线程进]]></description>
+</item>
+</channel>
+</rss>

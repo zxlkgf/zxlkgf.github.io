@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>UDP - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="UDP" />
+<meta property="og:description" content="UDP UDP通信 #include &lt;sys/types.h&gt; #include &lt;sys/socket.h&gt; ssize_t sendto(int sockfd,const void *buf,size_t len,int flags,const struct sockaddr *dest_addr,socklen_t addrlen); 参数: -sockfd：通信的fd -buf:需要发送的数据 -len:数组的大小 -flags:设置一些" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/udp%E9%80%9A%E4%BF%A1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-06T08:52:16+08:00" />
+<meta property="article:modified_time" content="2023-03-06T08:52:16+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="UDP"/>
+<meta name="twitter:description" content="UDP UDP通信 #include &lt;sys/types.h&gt; #include &lt;sys/socket.h&gt; ssize_t sendto(int sockfd,const void *buf,size_t len,int flags,const struct sockaddr *dest_addr,socklen_t addrlen); 参数: -sockfd：通信的fd -buf:需要发送的数据 -len:数组的大小 -flags:设置一些"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/udp%E9%80%9A%E4%BF%A1/" /><link rel="prev" href="http://example.org/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" /><link rel="next" href="http://example.org/%E9%98%BB%E5%A1%9E_%E9%9D%9E%E9%98%BB%E5%A1%9E/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "UDP",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/udp%E9%80%9A%E4%BF%A1\/"
+        },"genre": "posts","keywords": "Linux网络编程","wordcount":  826 ,
+        "url": "http:\/\/example.org\/udp%E9%80%9A%E4%BF%A1\/","datePublished": "2023-03-06T08:52:16+08:00","dateModified": "2023-03-06T08:52:16+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">UDP</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux网络编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-06">2023-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;826 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#udp通信">UDP通信</a></li>
+    <li><a href="#广播">广播</a></li>
+    <li><a href="#组播">组播</a>
+      <ul>
+        <li><a href="#组播地址">组播地址</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="udp">UDP</h1>
+<h2 id="udp通信">UDP通信</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/udp/1.png"
+        data-srcset="../images/udp/1.png, ../images/udp/1.png 1.5x, ../images/udp/1.png 2x"
+        data-sizes="auto"
+        alt="../images/udp/1.png"
+        title="1" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">#include &lt;sys/types.h&gt;
+</span></span><span class="line"><span class="cl">#include &lt;sys/socket.h&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ssize_t sendto(int sockfd,const void *buf,size_t len,int flags,const struct sockaddr *dest_addr,socklen_t addrlen);
+</span></span><span class="line"><span class="cl">    参数:
+</span></span><span class="line"><span class="cl">        -sockfd：通信的fd
+</span></span><span class="line"><span class="cl">        -buf:需要发送的数据
+</span></span><span class="line"><span class="cl">        -len:数组的大小
+</span></span><span class="line"><span class="cl">        -flags:设置一些标志
+</span></span><span class="line"><span class="cl">        -dest_addr:通信的另外一端的地址信息
+</span></span><span class="line"><span class="cl">        -addrlen :地址的内存大小
+</span></span><span class="line"><span class="cl">    返回值:。。。
+</span></span><span class="line"><span class="cl">ssize_t recvfrom(int sockfd,void *buf,size_t len,int flags,struct sockaddr *src_addr,socklen_t *addrlen);
+</span></span><span class="line"><span class="cl">    参数
+</span></span><span class="line"><span class="cl">        -sockfd:通信的fd
+</span></span><span class="line"><span class="cl">        -buf:接受数据的数组
+</span></span><span class="line"><span class="cl">        -len:数组的大小
+</span></span><span class="line"><span class="cl">        -flags:0
+</span></span><span class="line"><span class="cl">        -src_addr:接收方的地址指针
+</span></span><span class="line"><span class="cl">        -addrlen:接收方地址的内存大小
+</span></span></code></pre></div><h2 id="广播">广播</h2>
+<p>向子网中多台计算机发送消息，并且子网中所有计算机都可以接受到发送方发送的消息，每个广播消息都包含一个特殊的IP地址，这个IP中子网内主机标志部分的二进制全部为1<br>
+a.只能在局域网中使用<br>
+b.客户端要绑定服务器广播使用的端口，才可以接收到广播的消息。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">//设置广播属性
+</span></span><span class="line"><span class="cl">int setsockopt(int sockfd, int level, int optname,const void *optval, socklen_t optlen);
+</span></span><span class="line"><span class="cl">    sockfd：文件描述符
+</span></span><span class="line"><span class="cl">    level:级别 SOL_SOCKET
+</span></span><span class="line"><span class="cl">    optname:SO_BROADCAST
+</span></span><span class="line"><span class="cl">    optval : 1表示允许广播
+</span></span><span class="line"><span class="cl">    optlen : optval的大小
+</span></span></code></pre></div><h2 id="组播">组播</h2>
+<p>单播地址标识单个IP接口，广播地址标识某个子网的所有IP接口，多播地址标识一组IP接口。单播是寻址方案的两个极端(要么单个要么全部)，多播则实在两者之间提供一个折中的方案。多播数据报只应该由对它感兴趣的接口接受。也就是说由允许相应多播会话系统的主机上的接口接受。另外，广播一般局限于局域网使用，而多播既可以用于局域网，也可跨局域网使用。<br>
+a.既可以局域网，也可以跨局域网<br>
+b.客户端需要加入多播组，才能接收到多播的数据</p>
+<h3 id="组播地址">组播地址</h3>
+<p>IP多播通信必须依赖于IP多播地址，在IPv4中它的范围224.0.0.0到239.255.255.255,并被划分为局部链接多播地址，预留多播地址和管理权限多播地址三类。<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/broadcast/1.png"
+        data-srcset="../images/broadcast/1.png, ../images/broadcast/1.png 1.5x, ../images/broadcast/1.png 2x"
+        data-sizes="auto"
+        alt="../images/broadcast/1.png"
+        title="1" /></p>
+<h4 id="设置组播">设置组播</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">int setsockopt(int sockfd, int level, int optname,const void *optval, socklen_t optlen);
+</span></span><span class="line"><span class="cl">//服务器设置多播信息，外出接口
+</span></span><span class="line"><span class="cl">    sockfd：文件描述符
+</span></span><span class="line"><span class="cl">    level:级别 IPPROTO_IP
+</span></span><span class="line"><span class="cl">    optname:
+</span></span><span class="line"><span class="cl">    optval : struct in_addr
+</span></span><span class="line"><span class="cl">    optlen : optval的大小
+</span></span><span class="line"><span class="cl">//客户端加入到多播组
+</span></span><span class="line"><span class="cl">    -level :IPPROTO_IP
+</span></span><span class="line"><span class="cl">    -optname : IP_ADD_MEMBERSHIP
+</span></span><span class="line"><span class="cl">    -optval : struct ip_mreqn;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">struct ip_mreq{
+</span></span><span class="line"><span class="cl">    //组播组的IP地址
+</span></span><span class="line"><span class="cl">    struct in_addr_imr_multiaddr;  //组播组的ip地址
+</span></span><span class="line"><span class="cl">    //本地某一网路设备接口的IP地址
+</span></span><span class="line"><span class="cl">    struct in_addr imr_address;
+</span></span><span class="line"><span class="cl">    int imr_ifindex; //网卡编号
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">typedef uint32_t in_addr_t;
+</span></span><span class="line"><span class="cl">struct in_addr{
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-03-06</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/udp%E9%80%9A%E4%BF%A1/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/udp%E9%80%9A%E4%BF%A1/" data-title="UDP" data-via="https://twitter.com/ZXLKG" data-hashtags="Linux网络编程"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/udp%E9%80%9A%E4%BF%A1/" data-hashtag="Linux网络编程"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/udp%E9%80%9A%E4%BF%A1/" data-title="UDP"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/udp%E9%80%9A%E4%BF%A1/" data-title="UDP"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/udp%E9%80%9A%E4%BF%A1/" data-title="UDP"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">Linux网络编程</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" class="prev" rel="prev" title="IO多路复用(select,poll,epoll)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>IO多路复用(select,poll,epoll)</a>
+            <a href="/%E9%98%BB%E5%A1%9E_%E9%9D%9E%E9%98%BB%E5%A1%9E/" class="next" rel="next" title="阻塞/阻塞_同步/异步">阻塞/阻塞_同步/异步<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

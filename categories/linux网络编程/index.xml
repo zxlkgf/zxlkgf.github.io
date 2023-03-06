@@ -4,7 +4,15 @@
         <link>http://example.org/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
         <description>Linux网络编程 - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 05 Mar 2023 14:52:16 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Mon, 06 Mar 2023 08:52:16 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>UDP</title>
+    <link>http://example.org/udp%E9%80%9A%E4%BF%A1/</link>
+    <pubDate>Mon, 06 Mar 2023 08:52:16 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/udp%E9%80%9A%E4%BF%A1/</guid>
+    <description><![CDATA[UDP UDP通信 #include &lt;sys/types.h&gt; #include &lt;sys/socket.h&gt; ssize_t sendto(int sockfd,const void *buf,size_t len,int flags,const struct sockaddr *dest_addr,socklen_t addrlen); 参数: -sockfd：通信的fd -buf:需要发送的数据 -len:数组的大小 -flags:设置一些]]></description>
+</item>
+<item>
     <title>IO多路复用(select,poll,epoll)</title>
     <link>http://example.org/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/</link>
     <pubDate>Sun, 05 Mar 2023 14:52:16 &#43;0800</pubDate>
