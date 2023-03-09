@@ -4,9 +4,33 @@
         <link>http://example.org/</link>
         <description>Cyo&#39;s website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Wed, 08 Mar 2023 18:59:14 &#43;0800</lastBuildDate>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Thu, 09 Mar 2023 22:00:14 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>力扣hot100_11_有效括号</title>
+    <link>http://example.org/%E5%8A%9B%E6%89%A3hot11_%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/</link>
+    <pubDate>Thu, 09 Mar 2023 22:00:14 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E5%8A%9B%E6%89%A3hot11_%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/</guid>
+    <description><![CDATA[有效括号 有效括号 给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsquo;{&rsquo;，&rsquo;]]></description>
+</item>
+<item>
+    <title>力扣hot100_10_删除链表倒数第N个节点</title>
+    <link>http://example.org/%E5%8A%9B%E6%89%A3hot10_%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E8%8A%82%E7%82%B9/</link>
+    <pubDate>Thu, 09 Mar 2023 19:59:14 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E5%8A%9B%E6%89%A3hot10_%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E8%8A%82%E7%82%B9/</guid>
+    <description><![CDATA[删除链表倒数第N个节点 删除链表倒数第N个节点 题目: 给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。 示例1 输入：head = [1,2,3,4,5], n =]]></description>
+</item>
+<item>
+    <title>力扣hot100_9_电话号码的字母组合</title>
+    <link>http://example.org/%E5%8A%9B%E6%89%A3hot9_%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/</link>
+    <pubDate>Thu, 09 Mar 2023 18:59:14 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/%E5%8A%9B%E6%89%A3hot9_%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/</guid>
+    <description><![CDATA[电话号码的字母组合 电话号码的字母组合 题目: 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。 给出数字到字母的]]></description>
+</item>
+<item>
     <title>力扣hot100_8_三数之和</title>
     <link>http://example.org/%E5%8A%9B%E6%89%A3hot8_%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</link>
     <pubDate>Wed, 08 Mar 2023 18:59:14 &#43;0800</pubDate>
@@ -61,30 +85,6 @@
     <author>Cyo</author>
     <guid>http://example.org/%E9%98%BB%E5%A1%9E_%E9%9D%9E%E9%98%BB%E5%A1%9E/</guid>
     <description><![CDATA[1.阻塞/非阻塞,同步/异步 典型的一次IO的两个阶段：数据的就绪和数据的读写 数据就绪:根据系统IO操作的就绪状态 1.阻塞 调用IO方法的线程进]]></description>
-</item>
-<item>
-    <title>UDP</title>
-    <link>http://example.org/udp%E9%80%9A%E4%BF%A1/</link>
-    <pubDate>Mon, 06 Mar 2023 08:52:16 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/udp%E9%80%9A%E4%BF%A1/</guid>
-    <description><![CDATA[UDP UDP通信 #include &lt;sys/types.h&gt; #include &lt;sys/socket.h&gt; ssize_t sendto(int sockfd,const void *buf,size_t len,int flags,const struct sockaddr *dest_addr,socklen_t addrlen); 参数: -sockfd：通信的fd -buf:需要发送的数据 -len:数组的大小 -flags:设置一些]]></description>
-</item>
-<item>
-    <title>IO多路复用(select,poll,epoll)</title>
-    <link>http://example.org/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/</link>
-    <pubDate>Sun, 05 Mar 2023 14:52:16 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/</guid>
-    <description><![CDATA[IO多路复用 I/O 多路复用使得程序能够同时监听多个文件描述符，能够提高程序的性能，Linux下实现I/O多路复用的系统调用主要有select ，p]]></description>
-</item>
-<item>
-    <title>端口复用</title>
-    <link>http://example.org/%E5%8D%8A%E5%85%B3%E9%97%AD-%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/</link>
-    <pubDate>Sun, 05 Mar 2023 08:52:16 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/%E5%8D%8A%E5%85%B3%E9%97%AD-%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/</guid>
-    <description><![CDATA[半关闭 当TCP连接中A向B发送FIN请求关闭，另一端B回应ACK之后(A端进入FIN_WAIT_2状态)，并没有立即发送FIN给A，A方处于]]></description>
 </item>
 </channel>
 </rss>
