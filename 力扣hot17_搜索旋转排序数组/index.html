@@ -4,33 +4,33 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>力扣hot100_13_括号生成 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="力扣hot100_13_括号生成" />
-<meta property="og:description" content="括号生成 括号生成 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。 示例1 输入：n = 3 输出：[&#34;(" />
+        <title>力扣hot100_17_搜索旋转排序数组 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="力扣hot100_17_搜索旋转排序数组" />
+<meta property="og:description" content="搜索旋转排序数组 搜索旋转排序数组 整数数组 nums 按升序排列，数组中的值 互不相同 。 在传递给函数之前，nums 在预先未知的某个下标 k（0 &lt;= k &lt; nums" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-10T09:20:14+08:00" />
-<meta property="article:modified_time" content="2023-03-10T09:20:14+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta property="og:url" content="http://example.org/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-14T09:20:14+08:00" />
+<meta property="article:modified_time" content="2023-03-14T09:20:14+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
-<meta name="twitter:title" content="力扣hot100_13_括号生成"/>
-<meta name="twitter:description" content="括号生成 括号生成 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。 示例1 输入：n = 3 输出：[&#34;("/>
+<meta name="twitter:title" content="力扣hot100_17_搜索旋转排序数组"/>
+<meta name="twitter:description" content="搜索旋转排序数组 搜索旋转排序数组 整数数组 nums 按升序排列，数组中的值 互不相同 。 在传递给函数之前，nums 在预先未知的某个下标 k（0 &lt;= k &lt; nums"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" /><link rel="prev" href="http://example.org/%E5%8A%9B%E6%89%A3hot12_%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" /><link rel="next" href="http://example.org/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" /><link rel="prev" href="http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "力扣hot100_13_括号生成",
+        "headline": "力扣hot100_17_搜索旋转排序数组",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/example.org\/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90\/"
-        },"genre": "posts","keywords": "力扣hot100","wordcount":  246 ,
-        "url": "http:\/\/example.org\/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90\/","datePublished": "2023-03-10T09:20:14+08:00","dateModified": "2023-03-10T09:20:14+08:00","publisher": {
+            "@id": "http:\/\/example.org\/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84\/"
+        },"genre": "posts","keywords": "力扣hot100","wordcount":  345 ,
+        "url": "http:\/\/example.org\/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84\/","datePublished": "2023-03-14T09:20:14+08:00","dateModified": "2023-03-14T09:20:14+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -115,9 +115,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">力扣hot100_13_括号生成</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">力扣hot100_17_搜索旋转排序数组</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E5%8A%9B%E6%89%A3hot100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>力扣hot100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-10">2023-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;246 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-14">2023-03-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;345 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -129,53 +129,56 @@
     <li><a href="#题解和思路">题解和思路</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="括号生成">括号生成</h1>
-<p><a href="https://leetcode.cn/problems/generate-parentheses/?favorite=2cktkvj" target="_blank" rel="noopener noreffer ">括号生成</a></p>
-<p>数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。</p>
+            </div><div class="content" id="content"><h1 id="搜索旋转排序数组">搜索旋转排序数组</h1>
+<p><a href="https://leetcode.cn/problems/search-in-rotated-sorted-array/?favorite=2cktkvj" target="_blank" rel="noopener noreffer ">搜索旋转排序数组</a></p>
+<p>整数数组 nums 按升序排列，数组中的值 互不相同 。</p>
+<p>在传递给函数之前，nums 在预先未知的某个下标 k（0 &lt;= k &lt; nums.length）上进行了 旋转，使数组变为 [nums[k], nums[k+1], &hellip;, nums[n-1], nums[0], nums[1], &hellip;, nums[k-1]]（下标 从 0 开始 计数）。例如， [0,1,2,4,5,6,7] 在下标 3 处经旋转后可能变为 [4,5,6,7,0,1,2] 。</p>
+<p>给你 旋转后 的数组 nums 和一个整数 target ，如果 nums 中存在这个目标值 target ，则返回它的下标，否则返回 -1 。</p>
+<p>你必须设计一个时间复杂度为 O(log n) 的算法解决此问题。</p>
 <p>示例1</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">输入：n = 3
-</span></span><span class="line"><span class="cl">输出：[&#34;((()))&#34;,&#34;(()())&#34;,&#34;(())()&#34;,&#34;()(())&#34;,&#34;()()()&#34;]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">输入：nums = [4,5,6,7,0,1,2], target = 0
+</span></span><span class="line"><span class="cl">输出：4
 </span></span></code></pre></div><h2 id="题解和思路">题解和思路</h2>
-<p>使用回溯算法</p>
-<p>可以按照左右括号的匹配情况判断</p>
-<p>优先使用左括号，如果左括号小于右括号，则使用右括号</p>
+<p>可以通过mid和target的关系来判断target究竟处于哪个空间</p>
+<p>在判断的同时还需要注意left 和 right 是否逆序</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">generateParenthesis</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">search</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="p">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="o">==</span><span class="n">target</span><span class="p">)</span><span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">target</span><span class="o">&amp;&amp;</span><span class="n">target</span><span class="o">&lt;</span><span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="n">target</span><span class="o">&gt;</span><span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="o">&amp;&amp;</span><span class="n">target</span><span class="o">&lt;=</span><span class="n">nums</span><span class="p">[</span><span class="n">right</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="n">dfs</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span><span class="p">,</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span><span class="kt">int</span> <span class="n">right</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">left</span><span class="o">==</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">right</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">ans</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//优先使用左括号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">left</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">dfs</span><span class="p">(</span><span class="n">str</span><span class="o">+</span><span class="sc">&#39;(&#39;</span><span class="p">,</span><span class="n">left</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">right</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">left</span><span class="o">&lt;</span><span class="n">right</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">dfs</span><span class="p">(</span><span class="n">str</span><span class="o">+</span><span class="sc">&#39;)&#39;</span><span class="p">,</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-10</span>
+                <span>Updated on 2023-03-14</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" data-title="力扣hot100_13_括号生成" data-via="https://twitter.com/ZXLKG" data-hashtags="力扣hot100"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" data-hashtag="力扣hot100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" data-title="力扣hot100_13_括号生成"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" data-title="力扣hot100_13_括号生成"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" data-title="力扣hot100_13_括号生成"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-title="力扣hot100_17_搜索旋转排序数组" data-via="https://twitter.com/ZXLKG" data-hashtags="力扣hot100"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-hashtag="力扣hot100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-title="力扣hot100_17_搜索旋转排序数组"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-title="力扣hot100_17_搜索旋转排序数组"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-title="力扣hot100_17_搜索旋转排序数组"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -187,8 +190,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/%E5%8A%9B%E6%89%A3hot12_%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" class="prev" rel="prev" title="力扣hot100_12_合并两个有序链表"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>力扣hot100_12_合并两个有序链表</a>
-            <a href="/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" class="next" rel="next" title="力扣hot100_17_搜索旋转排序数组">力扣hot100_17_搜索旋转排序数组<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" class="prev" rel="prev" title="力扣hot100_13_括号生成"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>力扣hot100_13_括号生成</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
