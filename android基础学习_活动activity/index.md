@@ -398,7 +398,7 @@ AndroidManifest.xml，在测试活动的activity节点内部添加meta-data标�
 式便用到了这点，譬如在手机桌面上长按支付宝图标，会弹出如图5的快捷菜单。
 ![图5.快捷菜单](../images/Android/AndroidBasic/shortCuts.png)
 
-参考链接如下[菜鸟创建快捷方式教程](https://developer.android.com/guide/topics/ui/shortcuts/creating-shortcuts?hl=zh-cn)
+参考链接如下[创建快捷方式教程](https://developer.android.com/guide/topics/ui/shortcuts/creating-shortcuts?hl=zh-cn)
 
 #### 创建静态快捷方式
 1.在应用的清单文件 (AndroidManifest.xml) 中，找到 intent 过滤器设置为 android.intent.action.MAIN 操作和 android.intent.category.LAUNCHER 类别的 Activity。  
