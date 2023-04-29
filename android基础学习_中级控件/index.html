@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Android基础学习_中级控件 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="Android基础学习_中级控件" />
+<meta property="og:description" content="1.Android开发 中级控件 1.1 图形定制 1.1.1 图形Drawable Android把所有能够显示的图形都抽象为Drawable类（可绘制的）。这里" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-29T22:03:00+08:00" />
+<meta property="article:modified_time" content="2023-04-29T22:03:00+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Android基础学习_中级控件"/>
+<meta name="twitter:description" content="1.Android开发 中级控件 1.1 图形定制 1.1.1 图形Drawable Android把所有能够显示的图形都抽象为Drawable类（可绘制的）。这里"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/" /><link rel="prev" href="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%B4%BB%E5%8A%A8activity/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Android基础学习_中级控件",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6\/"
+        },"genre": "posts","keywords": "Android","wordcount":  10675 ,
+        "url": "http:\/\/example.org\/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6\/","datePublished": "2023-04-29T22:03:00+08:00","dateModified": "2023-04-29T22:03:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Android基础学习_中级控件</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/andorid%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Andorid基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-29">2023-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;10675 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;22 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-图形定制">1.1 图形定制</a>
+      <ul>
+        <li><a href="#111-图形drawable">1.1.1 图形Drawable</a></li>
+        <li><a href="#112-shape视图">1.1.2 shape视图</a></li>
+        <li><a href="#113-九宫格图片">1.1.3 九宫格图片</a></li>
+        <li><a href="#114-状态列表图形">1.1.4 状态列表图形</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-选择按钮">1.2 选择按钮</a>
+      <ul>
+        <li><a href="#121--复选框checkbox">1.2.1  复选框CheckBox</a></li>
+        <li><a href="#122--开关按钮switch">1.2.2  开关按钮switch</a></li>
+        <li><a href="#123-单选按钮radiobutton">1.2.3 单选按钮RadioButton</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-文本输入">1.3 文本输入</a>
+      <ul>
+        <li><a href="#131-编辑框edittext">1.3.1 编辑框EditText</a></li>
+        <li><a href="#132-焦点变更监听器">1.3.2 焦点变更监听器</a></li>
+        <li><a href="#133-文本监视器">1.3.3 文本监视器</a></li>
+      </ul>
+    </li>
+    <li><a href="#14-对话框">1.4 对话框</a>
+      <ul>
+        <li><a href="#141--提醒对话框alertdialog">1.4.1  提醒对话框AlertDialog</a></li>
+        <li><a href="#142--日期对话框datepickerdialog">1.4.2  日期对话框DatePickerDialog</a></li>
+        <li><a href="#143--时间对话框timepickerdialog">1.4.3  时间对话框TimePickerDialog</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="1android开发-中级控件">1.Android开发 中级控件</h1>
+<h2 id="11-图形定制">1.1 图形定制</h2>
+<h3 id="111-图形drawable">1.1.1 图形Drawable</h3>
+<p>Android把所有能够显示的图形都抽象为Drawable类（可绘制的）。这里的图形不止是图片，还包括色块、画板、背景等。包含图片在内的图形文件放在res目录的各个drawable目录下，其中drawable目录一般保存描述性的
+XML文件，而图片文件一般放在具体分辨率的drawable目录下。</p>
+<p>例如：<br>
+drawable-ldpi里面存放低分辨率的图片（如240×320），现在基本没有这样的智能手机了。<br>
+drawable-mdpi里面存放中等分辨率的图片（如320×480），这样的智能手机已经很少了。<br>
+drawable-hdpi里面存放高分辨率的图片（如480×800），一般对应4英寸～4.5英寸的手机（但不绝对，同尺寸的手机有可能分辨率不同，手机分辨率就高不就低，因为分辨率低了屏幕会有模糊的感觉）。<br>
+drawable-xhdpi里面存放加高分辨率的图片（如720×1280），一般对应5英寸～5.5英寸的手机。<br>
+drawable-xxhdpi里面存放超高分辨率的图片（如1080×1920），一般对应6英寸～6.5英寸的手机。<br>
+drawable-xxxhdpi里面存放超超高分辨率的图片（如1440×2560），一般对应7英寸以上的平板电脑。</p>
+<p>基本上，分辨率每加大一级，宽度和高度就要增加二分之一或三分之一像素。如果各目录存在同名图
+片，Android就会根据手机的分辨率分别适配对应文件夹里的图片。在开发App时，为了兼容不同的手机
+屏幕，在各目录存放不同分辨率的图片，才能达到最合适的显示效果。例如，在drawable-hdpi放了一
+张背景图片bg.png（分辨率为480×800），其他目录没放，使用分辨率为480×800的手机查看该App界
+面没有问题，但是使用分辨率为720×1280的手机查看该App会发现背景图片有点模糊，原因是Android
+为了让bg.png适配高分辨率的屏幕，强行把bg.png拉伸到了720×1280，拉伸的后果是图片变模糊了。</p>
+<p>在XML布局文件中引用图形文件可使用“@drawable/不含扩展名的文件名称”这种形式，如各视图的
+background属性、ImageView和ImageButton的src属性、TextView和Button四个方向的drawable***
+系列属性都可以引用图形文件。</p>
+<hr>
+<h3 id="112-shape视图">1.1.2 shape视图</h3>
+<p>Shape图形又称形状图形，它用来描述常见的几何形状，包括矩形、圆角矩形、圆形、椭圆等。用好形状图形可以让App页面不再呆板，还可以节省美工不少工作量。</p>
+<p>形状图形的定义文件放在drawable目录下，它是以shape标签为根节点的XML描述文件。根节点下定义
+了6个节点，分别是：size（尺寸）、stroke（描边）、corners（圆角）、solid（填充）、padding
+（间隔）、gradient（渐变），各节点的属性值主要是长宽、半径、角度以及颜色等。下面是形状图形
+各个节点及其属性的简要说明。</p>
+<h4 id="1121-shape形状">1.1.2.1 shape(形状)</h4>
+<p>shape是形状图形文件的根节点，它描述了当前是哪种几何图形。下面是shape节点的常用属性说明。</p>
+<p>shape：字符串类型，表示图形的形状。形状类型的取值说明见下表。</p>
+<table>
+<thead>
+<tr>
+<th>形状类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rectangle</td>
+<td>矩形,默认值</td>
+</tr>
+<tr>
+<td>ring</td>
+<td>圆形</td>
+</tr>
+<tr>
+<td>oval</td>
+<td>椭圆,此时corner节点会失效</td>
+</tr>
+<tr>
+<td>line</td>
+<td>直线,必须设置stroke，否则会报错</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1122-size">1.1.2.2 size</h4>
+<p>size是shape的下级节点，它描述了形状图形的宽高尺寸。若无size节点，则表示宽高与宿主视图一样大小。下面是size节点的常用属性说明。<br>
+height：像素类型，图形高度。<br>
+width：像素类型，图形宽度。</p>
+<h4 id="1123-stroke描边">1.1.2.3 stroke(描边)</h4>
+<p>stroke是shape的下级节点，它描述了形状图形的描边规格。若无stroke节点，则表示不存在描边。下面是stroke节点的常用属性说明。<br>
+color：颜色类型，描边的颜色。<br>
+dashGap：像素类型，每段虚线之间的间隔。<br>
+dashWidth：像素类型，每段虚线的宽度。若dashGap和dashWidth有一个值为0，则描边为实
+线。<br>
+width：像素类型，描边的厚度。</p>
+<h4 id="1124-corners圆角">1.1.2.4 corners(圆角)</h4>
+<p>corners是shape的下级节点，它描述了形状图形的圆角大小。若无corners节点，则表示没有圆角。下
+面是corners节点的常用属性说明。<br>
+bottomLeftRadius：像素类型，左下圆角的半径。<br>
+bottomRightRadius：像素类型，右下圆角的半径。<br>
+topLeftRadius：像素类型，左上圆角的半径。<br>
+topRightRadius：像素类型，右上圆角的半径。<br>
+radius：像素类型，4个圆角的半径（若有上面4个圆角半径的定义，则不需要radius定义）。</p>
+<h4 id="1125-solid填充">1.1.2.5 solid(填充)</h4>
+<p>solid是shape的下级节点，它描述了形状图形的填充色彩。若无solid节点，则表示无填充颜色。下面是
+solid节点的常用属性说明。<br>
+color：颜色类型，内部填充的颜色。</p>
+<h4 id="1126-padding间隔">1.1.2.6 padding(间隔)</h4>
+<p>padding是shape的下级节点，它描述了形状图形与周围边界的间隔。若无padding节点，则表示四周不
+设间隔。下面是padding节点的常用属性说明。<br>
+top：像素类型，与上方的间隔。<br>
+bottom：像素类型，与下方的间隔。<br>
+left：像素类型，与左边的间隔。<br>
+right：像素类型，与右边的间隔。</p>
+<h4 id="1127-gradient渐变">1.1.2.7 gradient(渐变)</h4>
+<p>gradient是shape的下级节点，它描述了形状图形的颜色渐变。若无gradient节点，则表示没有渐变效
+果。下面是gradient节点的常用属性说明。</p>
+<p>angle：整型，渐变的起始角度。为0时表示时钟的9点位置，值增大表示往逆时针方向旋转。例
+如，值为90表示6点位置，值为180表示3点位置，值为270表示0点/12点位置</p>
+<p>type：字符串类型，渐变类型。渐变类型的取值说明见下表</p>
+<p>|渐变类型|说明|
+|linear|线性渐变,默认值|
+|radial|放射渐变,起始颜色就是圆心颜色|
+|sweep|滚动渐变,即一个线段以某个端点为圆心做360°旋转|</p>
+<p>centerX：浮点型，圆心的X坐标。当android:type=&ldquo;linear&quot;时不可用。<br>
+centerY：浮点型，圆心的Y坐标。当android:type=&ldquo;linear&quot;时不可用。<br>
+gradientRadius：整型，渐变的半径。当android:type=&ldquo;radial&quot;时需要设置该属性。<br>
+centerColor：颜色类型，渐变的中间颜色。<br>
+startColor：颜色类型，渐变的起始颜色。<br>
+endColor：颜色类型，渐变的终止颜色。<br>
+useLevel：布尔类型，设置为true为无渐变色、false为有渐变色。</p>
+<hr>
+<h3 id="113-九宫格图片">1.1.3 九宫格图片</h3>
+<p>将某张图片设置成视图背景时，如果图片尺寸太小，则系统会自动拉伸图片使之填满背景。可是一旦图
+片拉得过大，其画面容易变得模糊，如图5-3所示，上面按钮的背景图片被拉得很宽，此时左右两边的边
+缘线既变宽又变模糊了。</p>
+<p>为了解决这个问题，Android专门设计了点九图片。点九图片的扩展名是png，文件名后面常带有“.9”字
+样。因为该图片划分了3×3的九宫格区域，所以得名点九图片，也叫九宫格图片。如果背景是一个形状
+图形，其stroke节点的width属性已经设置了固定数值（如1dp），那么无论该图形被拉到多大，描边宽
+度始终是1dp。点九图片的实现原理与之类似，即拉伸图形时，只拉伸内部区域，不拉伸边缘线条。</p>
+<p>NinePhoto
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/NinePhoto.png"
+        data-srcset="../images/Android/AndroidBasic/NinePhoto.png, ../images/Android/AndroidBasic/NinePhoto.png 1.5x, ../images/Android/AndroidBasic/NinePhoto.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/NinePhoto.png"
+        title="图1.点9图片的加工页面" /></p>
+<p>图1的左侧窗口是图片加工区域，右侧窗口是图片预览区域，从上到下依次是纵向拉伸预览、横向
+拉伸预览、两方向同时拉伸预览。在左侧窗口图片四周的马赛克处单击会出现一个黑点，把黑点左右或
+上下拖动会拖出一段黑线，不同方向上的黑线表示不同的效果。</p>
+<p>界面上边的黑线指的是水平方向的拉伸区域。水平方向拉伸图片时，只有黑线区域内的图像会拉伸，黑线以外的图像保持原状，从而保证左右两侧的边框厚度不变。</p>
+<p>界面左边的黑线指的是垂直方向的拉伸区域。垂直方向拉伸图片时，只有黑线区域内的图像会拉伸，黑线以外的图像保持原状，从而保证上下两侧的边框厚度不变。</p>
+<p>界面下边的黑线指的是该图片作为控件背景时，控件内部的文字左右边界只能放在黑线区域内。这里Horizontal Padding的效果就相当于android:paddingLeft与android:paddingRight</p>
+<p>界面右边的黑线指的是该图片作为控件背景时，控件内部的文字上下边界只能放在黑线区域内。这里Vertical Padding的效果就相当于android:paddingTop与android:paddingBottom</p>
+<p>尤其注意，如果点九图片被设置为视图背景，且该图片指定了Horizontal Padding和Vertical Padding，
+那么视图内部将一直与视图边缘保持固定间距，无论怎么调整XML文件和Java代码都无法缩小间隔，缘由是点九图片早已在水平和垂直方向都设置了padding</p>
+<hr>
+<h3 id="114-状态列表图形">1.1.4 状态列表图形</h3>
+<p>常见的图形文件一般为静态图形，但有时会用到动态图形，比如按钮控件的背景在正常情况下是凸起
+的，在按下时是凹陷的，从按下到弹起的过程，用户便晓得点击了该按钮。根据不同的触摸情况变更图
+形状态，这种情况用到了Drawable的一个子类StateListDrawable（状态列表图形），它在XML文件中
+规定了不同状态时候所呈现的图形列表。</p>
+<p>接下来演示一下状态列表图形的界面效果，右击drawable目录，并依次选择右键菜单的
+New→Drawable resource file，在弹窗中输入文件名称再单击OK按钮，即可自动生成一个XML描述文
+件。往该文件填入下面的状态列表图形定义：</p>
+<p>接下来演示一下状态列表图形的界面效果，右击drawable目录，并依次选择右键菜单的
+New→Drawable resource file，在弹窗中输入文件名称再单击OK按钮，即可自动生成一个XML描述文
+件。往该文件填入下面的状态列表图形定义：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;selector</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;item</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">android:state_pressed=</span><span class="s">&#34;true&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">android:drawable=</span><span class="s">&#34;@drawable/button_pressed&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;item</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">android:drawable=</span><span class="s">&#34;@drawable/button_normal&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/selector&gt;</span>
+</span></span></code></pre></div><p>上述XML文件的关键点是state_pressed属性，该属性表示按下状态，值为true表示按下时显示
+button_pressed图像，其余情况显示button_normal图像。</p>
+<p>效果图如下:<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/pressStyle.png"
+        data-srcset="../images/Android/AndroidBasic/pressStyle.png, ../images/Android/AndroidBasic/pressStyle.png 1.5x, ../images/Android/AndroidBasic/pressStyle.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/pressStyle.png"
+        title="图2.按下效果图" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/unpressStyle.png"
+        data-srcset="../images/Android/AndroidBasic/unpressStyle.png, ../images/Android/AndroidBasic/unpressStyle.png 1.5x, ../images/Android/AndroidBasic/unpressStyle.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/unpressStyle.png"
+        title="图3.松开效果图" /></p>
+<p>状态列表图形不仅用于按钮控件，还可用于其他拥有多种状态的控件，这取决于开发者在XML文件中指
+定了哪种状态类型，各种状态类型的取值说明详见下表.</p>
+<table>
+<thead>
+<tr>
+<th>状态类型的属性名称</th>
+<th>说明</th>
+<th>使用的控件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>state_pressed</td>
+<td>是否按下</td>
+<td>按钮</td>
+</tr>
+<tr>
+<td>state_checked</td>
+<td>是否勾选</td>
+<td>复选框CheckBox、单选按钮RadioButton</td>
+</tr>
+<tr>
+<td>state_focused</td>
+<td>是否获取焦点</td>
+<td>文本编辑框EditText</td>
+</tr>
+<tr>
+<td>state_selected</td>
+<td>是否选中</td>
+<td>各控件均适用</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="12-选择按钮">1.2 选择按钮</h2>
+<p>几个常用的特殊控制按钮</p>
+<h3 id="121--复选框checkbox">1.2.1  复选框CheckBox</h3>
+<p>在学习复选框之前，先了解一下CompoundButton。在Android体系中，CompoundButton类是抽象的
+复合按钮，因为是抽象类，所以它不能直接使用。实际开发中用的是CompoundButton的几个派生类，
+主要有复选框CheckBox、单选按钮RadioButton以及开关按钮Switch，这些派生类均可使用
+CompoundButton的属性和方法。加之CompoundButton本身继承了Button类，故以上几种按钮同时
+具备Button的属性和方法，它们之间的继承关系如图4所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/CompoundButtonRelationship.png"
+        data-srcset="../images/Android/AndroidBasic/CompoundButtonRelationship.png, ../images/Android/AndroidBasic/CompoundButtonRelationship.png 1.5x, ../images/Android/AndroidBasic/CompoundButtonRelationship.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/CompoundButtonRelationship.png"
+        title="图4.关系图" /></p>
+<p>CompoundButton在XML文件中主要使用下面两个属性。<br>
+checked：指定按钮的勾选状态，true表示勾选，false则表示未勾选。默认为未勾选。<br>
+button：指定左侧勾选图标的图形资源，如果不指定就使用系统的默认图标。</p>
+<p>CompoundButton在Java代码中主要使用下列4种方法。<br>
+setChecked：设置按钮的勾选状态。<br>
+setButtonDrawable：设置左侧勾选图标的图形资源。<br>
+setOnCheckedChangeListener：设置勾选状态变化的监听器。<br>
+isChecked：判断按钮是否勾选。</p>
+<p>复选框CheckBox是CompoundButton一个最简单的实现控件，点击复选框将它勾选，再次点击取消勾
+选。复选框对象调用setOnCheckedChangeListener方法设置勾选监听器，这样在勾选和取消勾选时就
+会触发监听器的勾选事件。</p>
+<p>接下来演示复选框的操作过程，首先编写活动页面的XML文件如下所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">    <span class="nt">&lt;CheckBox</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/ck_system&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:text=</span><span class="s">&#34;这是systemStyle CheckBox&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textSize=</span><span class="s">&#34;20sp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>接着编写对应的Java代码，主要是如何处理勾选监听器，具体代码如下所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckBoxReviewActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="kd">implements</span> <span class="n">CompoundButton</span><span class="o">.</span><span class="na">OnCheckedChangeListener</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_check_box_review</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CheckBox</span> <span class="n">ck_system</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">ck_system</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CheckBox</span> <span class="n">ck_custom</span>  <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">ck_custom</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">ck_system</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ck_custom</span><span class="o">.</span><span class="na">setOnCheckedChangeListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCheckedChanged</span><span class="o">(</span><span class="n">CompoundButton</span> <span class="n">buttonView</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isChecked</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;你%s了这个CheckBox&#34;</span><span class="o">,(</span><span class="n">isChecked</span> <span class="o">?</span> <span class="s">&#34;勾选&#34;</span> <span class="o">:</span> <span class="s">&#34;取消勾选&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">buttonView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">desc</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h3 id="122--开关按钮switch">1.2.2  开关按钮switch</h3>
+<p>Switch是开关按钮，它像一个高级版本的CheckBox，在选中与取消选中时可展现的界面元素比复选框丰
+富。Switch控件新添加的XML属性说明如下：</p>
+<p>textOn：设置右侧开启时的文本。<br>
+textOff：设置左侧关闭时的文本。<br>
+track：设置开关轨道的背景。<br>
+thumb：设置开关标识的图标。</p>
+<p>下面介绍类IOSUI的Switch控件的设计。
+主要思路是借助状态列表图形，首先创建一个图形专用的XML文件，给状态列表指定选中与未选中时候的开关图标，如下所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;selector</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;item</span> <span class="na">android:state_checked=</span><span class="s">&#34;true&#34;</span> <span class="na">android:drawable=</span><span class="s">&#34;@drawable/switch_on&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;item</span> <span class="na">android:drawable=</span><span class="s">&#34;@drawable/switch_off&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/selector&gt;</span>
+</span></span></code></pre></div><p>然后把CheckBox标签的background属性设置为@drawable/switch_selector，同时将button属性设置
+为@null。完整的CheckBox标签内容示例如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;CheckBox</span>
+</span></span><span class="line"><span class="cl"><span class="na">android:id=</span><span class="s">&#34;@+id/ck_status&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">android:layout_width=</span><span class="s">&#34;60dp&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">android:layout_height=</span><span class="s">&#34;30dp&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">android:background=</span><span class="s">&#34;@drawable/switch_selector&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">android:button=</span><span class="s">&#34;@null&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><hr>
+<h3 id="123-单选按钮radiobutton">1.2.3 单选按钮RadioButton</h3>
+<p>所谓单选按钮，指的是在一组按钮中选择其中一项，并且不能多选，这要求有个容器确定这组按钮的范
+围，这个容器便是单选组RadioGroup。单选组实质上是个布局，同一组RadioButton都要放在同一个
+RadioGroup节点下。RadioGroup提供了orientation属性指定下级控件的排列方向，该属性为horizontal时，单选按钮在水平方向排列；该属性为vertical时，单选按钮在垂直方向排列。</p>
+<p>下面是RadioGroup在Java代码中的3个常用方法。</p>
+<p>check：选中指定资源编号的单选按钮。<br>
+getCheckedRadioButtonId：获取已选中单选按钮的资源编号。<br>
+setOnCheckedChangeListener：设置单选按钮勾选变化的监听器。</p>
+<p>与CheckBox不同的是，RadioButton默认未选中，点击后显示选中，但是再次点击不会取消选中。只有
+点击同组的其他单选按钮时，原来选中的单选按钮才会取消选中。另需注意，单选按钮的选中事件不是
+由RadioButton处理，而是由RadioGroup处理。</p>
+<hr>
+<h2 id="13-文本输入">1.3 文本输入</h2>
+<h3 id="131-编辑框edittext">1.3.1 编辑框EditText</h3>
+<p>编辑框EditText用于接收软键盘输入的文字，例如用户名、密码、评价内容等，它由文本视图派生而
+来，除了TextView已有的各种属性和方法，EditText还支持下列XML属性。</p>
+<p>inputType：指定输入的文本类型。输入类型的取值说明见下表，若同时使用多种文本类型，则可使用竖线“|”把多种文本类型拼接起来。<br>
+maxLength：指定文本允许输入的最大长度。<br>
+hint：指定提示文本的内容。<br>
+textColorHint：指定提示文本的颜色。</p>
+<table>
+<thead>
+<tr>
+<th>输入类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td>文本</td>
+</tr>
+<tr>
+<td>textPassword</td>
+<td>文本密码。显示时用圆点&rdquo;.&ldquo;代替显示</td>
+</tr>
+<tr>
+<td>number</td>
+<td>整型数</td>
+</tr>
+<tr>
+<td>numberSigned</td>
+<td>带符号的数字。允许在开头带负号</td>
+</tr>
+<tr>
+<td>numberDecimal</td>
+<td>带小数点的数字</td>
+</tr>
+<tr>
+<td>numberPassword</td>
+<td>数字密码。显示时用圆点&rdquo;.&ldquo;代替显示</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>时间日期格式。除了数字外，还允许输入横线、斜杆、空格、冒号</td>
+</tr>
+<tr>
+<td>date</td>
+<td>日期格式。除了数字外，还允许输入横线“-”和斜杆“/”</td>
+</tr>
+<tr>
+<td>time</td>
+<td>时间格式。除了数字外，还允许输入冒号“:”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="132-焦点变更监听器">1.3.2 焦点变更监听器</h3>
+<p>虽然编辑框EditText提供了maxLength属性，用来设置可输入文本的最大长度，但是它没提供对应的
+minLength属性，也就无法设置可输入文本的最小长度。譬如手机号码为固定的11位数字，用户必须输
+满11位才是合法的，然而编辑框不会自动检查手机号码是否达到11位，即使用户少输一位只输入十位数
+字，编辑框依然认为这是合法的手机号。</p>
+<p>焦点变更监听器来自于接口View.OnFocusChangeListener，若想注册该监听器，就要调用编辑框对象
+的setOnFocusChangeListener方法，即可在光标切换之时（获得光标和失去光标）触发焦点变更事
+件。下面是给密码框注册焦点变更监听器的代码例子</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 从布局文件中获取名为et_password的编辑框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">EditText</span> <span class="n">et_password</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">et_password</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 给编辑框注册一个焦点变化监听器，一旦焦点发生变化，就触发监听器的onFocusChange方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">et_password</span><span class="o">.</span><span class="na">setOnFocusChangeListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span></span></code></pre></div><p>以上代码把焦点变更监听器设置到当前页面，则需让活动页面实现接口
+View.OnFocusChangeListener，并重写该接口定义的onFocusChange方法，判断如果是密码框获得焦
+点，就检查输入的手机号码是否达到11位。具体的焦点变更处理方法如下所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 焦点变更事件的处理方法，hasFocus表示当前控件是否获得焦点。
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 为什么光标进入事件不选onClick？因为要点两下才会触发onClick动作（第一下是切换焦点动作）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFocusChange</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">hasFocus</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 判断密码编辑框是否获得焦点。hasFocus为true表示获得焦点，为false表示失去焦点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()==</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">et_password</span> <span class="o">&amp;&amp;</span> <span class="n">hasFocus</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">phone</span> <span class="o">=</span> <span class="n">et_phone</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">TextUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">phone</span><span class="o">)</span> <span class="o">||</span> <span class="n">phone</span><span class="o">.</span><span class="na">length</span><span class="o">()&lt;</span><span class="mi">11</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 手机号码不足11位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 手机号码编辑框请求焦点，也就是把光标移回手机号码编辑框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">et_phone</span><span class="o">.</span><span class="na">requestFocus</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&#34;请输入11位手机号码&#34;</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h3 id="133-文本监视器">1.3.3 文本监视器</h3>
+<p>监控文本的监控操作用到文本监听器接口TextWatcher，该接口提供了3个监控方法，具体说明如下：<br>
+beforeTextChanged：在文本改变之前触发。<br>
+onTextChanged：在文本改变过程中触发。<br>
+afterTextChanged：在文本改变之后触发。</p>
+<p>具体到编码实现，需要自己写个监听器实现TextWatcher接口，再调用编辑框对象的
+addTextChangedListener方法注册文本监听器。监听操作建议在afterTextChanged方法中完成、</p>
+<hr>
+<h2 id="14-对话框">1.4 对话框</h2>
+<p>本节介绍几种常用的对话框控件，包括：如何使用提醒对话框处理不同的选项，如何使用日期对话框获
+取用户选择的日期，如何使用时间对话框获取用户选择的时间。</p>
+<h3 id="141--提醒对话框alertdialog">1.4.1  提醒对话框AlertDialog</h3>
+<p>AlertDialog名为提醒对话框，它是Android中最常用的对话框，可以完成常见的交互操作，例如提示、
+确认、选择等功能。由于AlertDialog没有公开的构造方法，因此必须借助建造器AlertDialog.Builder才
+能完成参数设置，AlertDialog.Builder的常用方法说明如下。</p>
+<p>setIcon：设置对话框的标题图标。<br>
+setTitle：设置对话框的标题文本。<br>
+setMessage：设置对话框的内容文本。<br>
+setPositiveButton：设置肯定按钮的信息，包括按钮文本和点击监听器。<br>
+setNegativeButton：设置否定按钮的信息，包括按钮文本和点击监听器。<br>
+setNeutralButton：设置中性按钮的信息，包括按钮文本和点击监听器，该方法比较少用。</p>
+<p>首先，我们来了解一下AlertDialog的大体创建顺序。与TextView、Button这些控件稍有不同, AlertDialog并不是初始化（findViewById）之后就直接调用各种方法了。仔细想想AlertDialog的使用场景,它并不像TextView和Button那些控件似的一般都是固定在界面上,而是在某个时机才会触发出来（比如用户点击了某个按钮或者断网了）。所以AlertDialog并不需要到布局文件中创建，而是在代码中通过构造器（AlertDialog.Builder）来构造标题、图标和按钮等内容的。</p>
+<p>1.创建构造器AlertDialog.Builder的对象；<br>
+2.通过构造器对象调用setTitle、setMessage、setIcon等方法构造对话框的标题、信息和图标等内容；<br>
+3.根据需要调用setPositive/Negative/NeutralButton()方法设置正面按钮、负面按钮和中立按钮；<br>
+4.调用构造器对象的create方法创建AlertDialog对象；<br>
+5.AlertDialog对象调用show方法，让对话框在界面上显示。</p>
+<p>注：AlertDialog.Builder自己也有一个show方法，可以显示对话框，所以上面的第4、第5步可以简化为一步。</p>
+<p>下面是构建并显示提醒对话框的Java代码例子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AlertDialogReviewActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="kd">implements</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">TextView</span> <span class="n">tv_show</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_alert_dialog_review</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Button</span> <span class="n">delete_soft</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">delete_soft</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">delete_soft</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">builder</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">&#34;尊敬的用户:&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">builder</span><span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="s">&#34;您真的要卸载我么&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">builder</span><span class="o">.</span><span class="na">setPositiveButton</span><span class="o">(</span><span class="s">&#34;残忍卸载&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">DialogInterface</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">AlertDialogReviewActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span><span class="s">&#34;虽然依依不舍，但是只能离开了&#34;</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">});</span>
+</span></span><span class="line"><span class="cl">        <span class="n">builder</span><span class="o">.</span><span class="na">setNegativeButton</span><span class="o">(</span><span class="s">&#34;我再想想&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">DialogInterface</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">AlertDialogReviewActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span><span class="s">&#34;陪你三百六十五个日夜&#34;</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">});</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AlertDialog</span> <span class="n">alertDialog</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">alertDialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h3 id="142--日期对话框datepickerdialog">1.4.2  日期对话框DatePickerDialog</h3>
+<p>虽然EditText提供了inputType=&ldquo;date&quot;的日期输入，但是很少有人会手工输入完整日期，况且EditText
+还不支持“ 年 ** 月 **日”这样的中文日期，所以系统提供了专门的日期选择器DatePicker，供用户选择
+具体的年月日。不过，DatePicker并非弹窗模式，而是在当前页面占据一块区域，并且不会自动关闭。
+按习惯来说，日期控件应该弹出对话框，选择完日期就要自动关闭对话框。因此，很少直接在界面上显
+示DatePicker，而是利用已经封装好的日期选择对话框DatePickerDialog。</p>
+<p>DatePickerDialog相当于在AlertDialog上装载了DatePicker，编码时只需调用构造方法设置当前的年、
+月、日，然后调用show方法即可弹出日期对话框。日期选择事件则由监听器OnDateSetListener负责响
+应，在该监听器的onDateSet方法中，开发者获取用户选择的具体日期，再做后续处理。特别注意
+onDateSet的月份参数，它的起始值不是1而是0。也就是说，一月份对应的参数值为0，十二月份对应的
+参数值为11，中间月份的数值以此类推。</p>
+<p>在界面上内嵌显示DatePicker的效果如图5所示，其中，年、月、日通过上下滑动选择。单独弹出日
+期对话框的效果如图5-34所示，其中年、月、日按照日历风格展示</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/DatePicker.png"
+        data-srcset="../images/Android/AndroidBasic/DatePicker.png, ../images/Android/AndroidBasic/DatePicker.png 1.5x, ../images/Android/AndroidBasic/DatePicker.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/DatePicker.png"
+        title="图5.日期选择器截图" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/DatePickerDialog.png"
+        data-srcset="../images/Android/AndroidBasic/DatePickerDialog.png, ../images/Android/AndroidBasic/DatePickerDialog.png 1.5x, ../images/Android/AndroidBasic/DatePickerDialog.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/DatePickerDialog.png"
+        title="图6.日期对话框截图" /></p>
+<p>下面是使用日期对话框的Java代码例子，包括弹出日期对话框和处理日期监听事件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 该页面类实现了接口OnDateSetListener，意味着要重写日期监听器的onDateSet方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DatePickerActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="kd">implements</span>
+</span></span><span class="line"><span class="cl"><span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">,</span> <span class="n">DatePickerDialog</span><span class="o">.</span><span class="na">OnDateSetListener</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">TextView</span> <span class="n">tv_date</span><span class="o">;</span> <span class="c1">// 声明一个文本视图对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">private</span> <span class="n">DatePicker</span> <span class="n">dp_date</span><span class="o">;</span> <span class="c1">// 声明一个日期选择器对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_date_picker</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">tv_date</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">tv_date</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 从布局文件中获取名叫dp_date的日期选择器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">dp_date</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">dp_date</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_date</span><span class="o">).</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">==</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_date</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取日历的一个实例，里面包含了当前的年月日
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Calendar</span> <span class="n">calendar</span> <span class="o">=</span> <span class="n">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 构建一个日期对话框，该对话框已经集成了日期选择器。
+</span></span></span><span class="line"><span class="cl"><span class="c1">// DatePickerDialog的第二个构造参数指定了日期监听器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">DatePickerDialog</span> <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatePickerDialog</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="k">this</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">Calendar</span><span class="o">.</span><span class="na">YEAR</span><span class="o">),</span> <span class="c1">// 年份
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">Calendar</span><span class="o">.</span><span class="na">MONTH</span><span class="o">),</span> <span class="c1">// 月份
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">Calendar</span><span class="o">.</span><span class="na">DAY_OF_MONTH</span><span class="o">));</span> <span class="c1">// 日子
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">dialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">// 显示日期对话框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 一旦点击日期对话框上的确定按钮，就会触发监听器的onDateSet方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDateSet</span><span class="o">(</span><span class="n">DatePicker</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">monthOfYear</span><span class="o">,</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="n">dayOfMonth</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取日期对话框设定的年月份
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;您选择的日期是%d年%d月%d日&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">year</span><span class="o">,</span> <span class="n">monthOfYear</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">dayOfMonth</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">tv_date</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">desc</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="143--时间对话框timepickerdialog">1.4.3  时间对话框TimePickerDialog</h3>
+<p>既然有了日期选择器，还得有对应的时间选择器。同样，实际开发中也很少直接用TimePicker，而是用
+封装好的时间选择对话框TimePickerDialog。该对话框的用法类似DatePickerDialog，不同之处主要有
+两个：</p>
+<p>（1）构造方法传的是当前的小时与分钟，最后一个参数表示是否采取24小时制，一般为true表示小时
+的数值范围为0～23；若为false则表示采取12小时制。<br>
+（2）时间选择监听器为OnTimeSetListener，对应需要实现onTimeSet方法，在该方法中可获得用户选
+择的小时和分钟。</p>
+<p>在界面上内嵌显示TimePicker的效果如图7所示，其中，小时与分钟可通过上下滑动选择。单独弹出
+时间对话框的效果如图8所示，其中小时与分钟按照钟表风格展示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/TimePicker.png"
+        data-srcset="../images/Android/AndroidBasic/TimePicker.png, ../images/Android/AndroidBasic/TimePicker.png 1.5x, ../images/Android/AndroidBasic/TimePicker.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/TimePicker.png"
+        title="图7.时间选择器截图" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/TimePIckerDialog.png"
+        data-srcset="../images/Android/AndroidBasic/TimePIckerDialog.png, ../images/Android/AndroidBasic/TimePIckerDialog.png 1.5x, ../images/Android/AndroidBasic/TimePIckerDialog.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/TimePIckerDialog.png"
+        title="图8.时间对话框截图" /></p>
+<p>下面是使用时间对话框的Java代码例子，包括弹出时间对话框和处理时间监听事件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 该页面类实现了接口OnTimeSetListener，意味着要重写时间监听器的onTimeSet方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TimePickerActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="kd">implements</span>
+</span></span><span class="line"><span class="cl"><span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">,</span> <span class="n">TimePickerDialog</span><span class="o">.</span><span class="na">OnTimeSetListener</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">TextView</span> <span class="n">tv_time</span><span class="o">;</span> <span class="c1">// 声明一个文本视图对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">private</span> <span class="n">TimePicker</span> <span class="n">tp_time</span><span class="o">;</span> <span class="c1">// 声明一个时间选择器对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_time_picker</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">tv_time</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">tv_time</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 从布局文件中获取名叫tp_time的时间选择器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">tp_time</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">tp_time</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_time</span><span class="o">).</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">==</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_time</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取日历的一个实例，里面包含了当前的时分秒
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Calendar</span> <span class="n">calendar</span> <span class="o">=</span> <span class="n">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 构建一个时间对话框，该对话框已经集成了时间选择器。
+</span></span></span><span class="line"><span class="cl"><span class="c1">// TimePickerDialog的第二个构造参数指定了时间监听器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">TimePickerDialog</span> <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TimePickerDialog</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="k">this</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">Calendar</span><span class="o">.</span><span class="na">HOUR_OF_DAY</span><span class="o">),</span> <span class="c1">// 小时
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">calendar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">Calendar</span><span class="o">.</span><span class="na">MINUTE</span><span class="o">),</span> <span class="c1">// 分钟
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kc">true</span><span class="o">);</span> <span class="c1">// true表示24小时制，false表示12小时制
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">dialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span> <span class="c1">// 显示时间对话框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 一旦点击时间对话框上的确定按钮，就会触发监听器的onTimeSet方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onTimeSet</span><span class="o">(</span><span class="n">TimePicker</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">hourOfDay</span><span class="o">,</span> <span class="kt">int</span> <span class="n">minute</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取时间对话框设定的小时和分钟
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;您选择的时间是%d时%d分&#34;</span><span class="o">,</span> <span class="n">hourOfDay</span><span class="o">,</span> <span class="n">minute</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">tv_time</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">desc</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-29</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/" data-title="Android基础学习_中级控件" data-via="https://twitter.com/ZXLKG" data-hashtags="Android"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/" data-hashtag="Android"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/" data-title="Android基础学习_中级控件"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/" data-title="Android基础学习_中级控件"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/" data-title="Android基础学习_中级控件"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/android/">Android</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%B4%BB%E5%8A%A8activity/" class="prev" rel="prev" title="Android基础学习_活动Activity"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Android基础学习_活动Activity</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

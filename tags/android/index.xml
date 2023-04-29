@@ -4,7 +4,15 @@
         <link>http://example.org/tags/android/</link>
         <description>Android - Tag - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 25 Apr 2023 23:03:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/android/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 29 Apr 2023 22:03:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/android/" rel="self" type="application/rss+xml" /><item>
+    <title>Android基础学习_中级控件</title>
+    <link>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/</link>
+    <pubDate>Sat, 29 Apr 2023 22:03:00 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/</guid>
+    <description><![CDATA[1.Android开发 中级控件 1.1 图形定制 1.1.1 图形Drawable Android把所有能够显示的图形都抽象为Drawable类（可绘制的）。这里]]></description>
+</item>
+<item>
     <title>Android基础学习_活动Activity</title>
     <link>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%B4%BB%E5%8A%A8activity/</link>
     <pubDate>Tue, 25 Apr 2023 23:03:00 &#43;0800</pubDate>
