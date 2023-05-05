@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Android基础学习_数据存储 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="Android基础学习_数据存储" />
+<meta property="og:description" content="1.Android开发 数据存储 1.1 共享参数sharePrefrence 本节介绍Android的键值对存储方式——共享参数SharedPrefe" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-05T10:03:00+08:00" />
+<meta property="article:modified_time" content="2023-05-05T10:03:00+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Android基础学习_数据存储"/>
+<meta name="twitter:description" content="1.Android开发 数据存储 1.1 共享参数sharePrefrence 本节介绍Android的键值对存储方式——共享参数SharedPrefe"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" /><link rel="prev" href="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Android基础学习_数据存储",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8\/"
+        },"genre": "posts","keywords": "Android","wordcount":  10551 ,
+        "url": "http:\/\/example.org\/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8\/","datePublished": "2023-05-05T10:03:00+08:00","dateModified": "2023-05-05T10:03:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Android基础学习_数据存储</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/andorid%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Andorid基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-05">2023-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;10551 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;22 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-共享参数shareprefrence">1.1 共享参数sharePrefrence</a>
+      <ul>
+        <li><a href="#111-共享参数的使用方法">1.1.1 共享参数的使用方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-数据库sqlite">1.2 数据库SQLite</a>
+      <ul>
+        <li><a href="#121-sql的基本语法">1.2.1 SQL的基本语法</a></li>
+        <li><a href="#122-数据库管理器sqlitedatabase">1.2.2 数据库管理器SQLiteDatabase</a></li>
+        <li><a href="#123-数据库帮助器sqliteopenhelper">1.2.3 数据库帮助器SQLiteOpenHelper</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-存储卡的文件操作">1.3 存储卡的文件操作</a>
+      <ul>
+        <li><a href="#131-私有存储空间与公共存储空间">1.3.1 　私有存储空间与公共存储空间</a></li>
+        <li><a href="#132-在存储卡上读写文本文件">1.3.2 在存储卡上读写文本文件</a></li>
+        <li><a href="#133-在存储卡上读取图片">1.3.3 在存储卡上读取图片</a></li>
+      </ul>
+    </li>
+    <li><a href="#14-应用组件application">1.4 应用组件Application</a>
+      <ul>
+        <li><a href="#141-application的生命周期">1.4.1 Application的生命周期</a></li>
+        <li><a href="#142-利用application操作全局变量">1.4.2 利用Application操作全局变量</a></li>
+        <li><a href="#143-利用room简化数据库操作">1.4.3 利用Room简化数据库操作</a></li>
+        <li><a href="#3编写信息表对应的database类">3.编写信息表对应的Database类</a></li>
+        <li><a href="#4在自定义的application类中声明图书数据库的唯一实例">4.在自定义的Application类中声明图书数据库的唯一实例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="1android开发-数据存储">1.Android开发 数据存储</h1>
+<h2 id="11-共享参数shareprefrence">1.1 共享参数sharePrefrence</h2>
+<p>本节介绍Android的键值对存储方式——共享参数SharedPreferences的使用方法，包括：如何将数据保存到共享参数，如何从共享参数读取数据，如何使用共享参数实现登录页面的记住密码功能，如何利用设备浏览器找到共享参数文件。</p>
+<h3 id="111-共享参数的使用方法">1.1.1 共享参数的使用方法</h3>
+<p>SharedPreferences是Android的一个轻量级存储工具，它采用的存储结构是<strong>Key-Value</strong>的键值对方式，类似于Java的Properties，二者都是把Key-Value的键值对保存在配置文件中。不同的是，Properties的文件内容形如<strong>Key=Value</strong>，而SharedPreferences的存储介质是XML文件，且以XML标记保存键值对。保存共享参数键值对信息的文件路径为：/data/data/应用包名/shared_prefs/文件名.xml。下面是一个共享参数的XML文件例子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39; standalone=&#39;yes&#39; ?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;map&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;int</span> <span class="na">name=</span><span class="s">&#34;isMarried&#34;</span> <span class="na">value=</span><span class="s">&#34;0&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;name&#34;</span><span class="nt">&gt;</span>李易<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;float</span> <span class="na">name=</span><span class="s">&#34;weight&#34;</span> <span class="na">value=</span><span class="s">&#34;90.0&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;int</span> <span class="na">name=</span><span class="s">&#34;age&#34;</span> <span class="na">value=</span><span class="s">&#34;24&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;long</span> <span class="na">name=</span><span class="s">&#34;height&#34;</span> <span class="na">value=</span><span class="s">&#34;180&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/map&gt;</span>
+</span></span></code></pre></div><p>基于XML格式的特点，共享参数主要用于如下场合：<br>
+（1）简单且孤立的数据。若是复杂且相互关联的数据，则要保存于关系数据库。<br>
+（2）文本形式的数据。若是二进制数据，则要保存至文件。<br>
+（3）需要持久化存储的数据。App退出后再次启动时，之前保存的数据仍然有效。<br>
+实际开发中，共享参数经常存储的数据包括：App的个性化配置信息、用户使用App的行为信息、临时需要保存的片段信息等。<br>
+共享参数对数据的存储和读取操作类似于Map，也有存储数据的put方法，以及读取数据的get方法。调
+用getSharedPreferences方法可以获得共享参数实例，获取代码示例如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 从share.xml获取共享参数实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">SharedPreferences</span> <span class="n">sp</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="o">(</span><span class="s">&#34;user_info&#34;</span><span class="o">,</span> <span class="n">MODE_PRIVATE</span><span class="o">);</span>
+</span></span></code></pre></div><p>由以上代码可知，getSharedPreferences方法的第一个参数是文件名，填share表示共享参数的文件名
+是share.xml；第二个参数是操作模式，填MODE_PRIVATE表示私有模式。往共享参数存储数据要借助于Editor类，保存数据的代码示例如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">            <span class="n">SharedPreferences</span><span class="o">.</span><span class="na">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="na">edit</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">editor</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="n">name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">editor</span><span class="o">.</span><span class="na">putInt</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">age</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">editor</span><span class="o">.</span><span class="na">putLong</span><span class="o">(</span><span class="s">&#34;height&#34;</span><span class="o">,</span><span class="n">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">height</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">editor</span><span class="o">.</span><span class="na">putFloat</span><span class="o">(</span><span class="s">&#34;weight&#34;</span><span class="o">,</span><span class="n">Float</span><span class="o">.</span><span class="na">parseFloat</span><span class="o">(</span><span class="n">weight</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">editor</span><span class="o">.</span><span class="na">putInt</span><span class="o">(</span><span class="s">&#34;isMarried&#34;</span><span class="o">,(</span><span class="n">ck_isMarried</span><span class="o">.</span><span class="na">isChecked</span><span class="o">()?</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">editor</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+</span></span></code></pre></div><p>从共享参数读取数据相对简单，直接调用共享参数实例的get方法即可读取键值，注意 get方法
+的第二个参数表示默认值，读取数据的代码示例如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">                <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">sp</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="s">&#34;&#34;</span><span class="o">)).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">sp</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span><span class="mi">0</span><span class="o">)).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">sp</span><span class="o">.</span><span class="na">getLong</span><span class="o">(</span><span class="s">&#34;height&#34;</span><span class="o">,</span><span class="mi">0</span><span class="o">)).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">sp</span><span class="o">.</span><span class="na">getFloat</span><span class="o">(</span><span class="s">&#34;weight&#34;</span><span class="o">,</span><span class="mf">0.0f</span><span class="o">)).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="o">.</span><span class="na">append</span><span class="o">((</span><span class="n">sp</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&#34;isMarried&#34;</span><span class="o">,</span><span class="mi">0</span><span class="o">)==</span><span class="mi">1</span><span class="o">)?</span><span class="s">&#34;已婚&#34;</span><span class="o">:</span><span class="s">&#34;未婚&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">tv_result</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</span></span></code></pre></div><hr>
+<h2 id="12-数据库sqlite">1.2 数据库SQLite</h2>
+<p>本节介绍Android的数据库存储方式—SQLite的使用方法，包括：SQLite用到了哪些SQL语法，如何使用
+数据库管理器操纵SQLite，如何使用数据库帮助器简化数据库操作等，以及如何利用SQLite改进登录页
+面的记住密码功能。</p>
+<h3 id="121-sql的基本语法">1.2.1 SQL的基本语法</h3>
+<p>此处省略</p>
+<h3 id="122-数据库管理器sqlitedatabase">1.2.2 数据库管理器SQLiteDatabase</h3>
+<p>SQL语句毕竟只是SQL命令，若要在Java代码中操纵SQLite，还需专门的工具类。SQLiteDatabase便是
+Android提供的SQLite数据库管理器，开发者可以在活动页面代码调用openOrCreateDatabase方法获
+取数据库实例，参考代码如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">==</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_create_db</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 创建名为test.db的数据库。数据库如果不存在就创建它，如果存在就打开它
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">sqLiteDatabase</span> <span class="o">=</span> <span class="n">openOrCreateDatabase</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">getFilesDir</span><span class="o">()</span> <span class="o">+</span> <span class="n">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">&#34;test.db&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Context</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//输出创建成功
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;数据库路径:%s,创建%s&#34;</span><span class="o">,</span><span class="n">sqLiteDatabase</span><span class="o">.</span><span class="na">getPath</span><span class="o">(),(</span><span class="n">sqLiteDatabase</span><span class="o">!=</span><span class="kc">null</span><span class="o">)?</span><span class="s">&#34;成功&#34;</span><span class="o">:</span><span class="s">&#34;失败&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">tv_show</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">desc</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">==</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_delete_db</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="n">sqLiteDatabase</span><span class="o">.</span><span class="na">getPath</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">boolean</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">deleteDatabase</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;数据库路径:%s,创建%s&#34;</span><span class="o">,</span><span class="n">path</span><span class="o">,(</span><span class="n">flag</span><span class="o">)?</span><span class="s">&#34;成功&#34;</span><span class="o">:</span><span class="s">&#34;失败&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">tv_show</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">desc</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/SQLiteCreate.png"
+        data-srcset="../images/Android/AndroidBasic/SQLiteCreate.png, ../images/Android/AndroidBasic/SQLiteCreate.png 1.5x, ../images/Android/AndroidBasic/SQLiteCreate.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/SQLiteCreate.png"
+        title="图1.创建数据库结果展示" /></p>
+<p>获得数据库实例之后，就能对该数据库开展各项操作了。数据库管理器SQLiteDatabase提供了若干操作
+数据表的API，常用的方法有3类，列举如下：</p>
+<h4 id="管理类用于数据库层面的操作">管理类，用于数据库层面的操作</h4>
+<p>openDatabase：打开指定路径的数据库。<br>
+isOpen：判断数据库是否已打开。<br>
+close：关闭数据库。<br>
+getVersion：获取数据库的版本号。<br>
+setVersion：设置数据库的版本号。</p>
+<h4 id="事务类用于事务层面的操作">事务类，用于事务层面的操作</h4>
+<p>beginTransaction：开始事务。<br>
+setTransactionSuccessful：设置事务的成功标志。<br>
+endTransaction：结束事务。执行本方法时，系统会判断之前是否调用了<br>
+setTransactionSuccessful方法，如果之前已调用该方法就提交事务，如果没有调用该方法就回滚事务。</p>
+<h4 id="数据处理类用于数据表层面的操作">数据处理类，用于数据表层面的操作</h4>
+<p>execSQL：执行拼接好的SQL控制语句。一般用于建表、删表、变更表结构。<br>
+delete：删除符合条件的记录。<br>
+update：更新符合条件的记录信息。<br>
+insert：插入一条记录。<br>
+query：执行查询操作，并返回结果集的游标。<br>
+rawQuery：执行拼接好的SQL查询语句，并返回结果集的游标。</p>
+<hr>
+<h3 id="123-数据库帮助器sqliteopenhelper">1.2.3 数据库帮助器SQLiteOpenHelper</h3>
+<p>由于SQLiteDatabase存在局限性，一不小心就会重复打开数据库，处理数据库的升级也不方便；因此
+Android提供了数据库帮助器SQLiteOpenHelper，帮助开发者合理使用SQLite。</p>
+<p>SQLiteOpenHelper的具体使用步骤如下：</p>
+<p>1.新建一个继承自SQLiteOpenHelper的数据库操作类，按提示重写onCreate和onUpgrade两个方法。其中，onCreate方法只在第一次打开数据库时执行，在此可以创建表结构；而onUpgrade方法在数据库版本升高时执行，在此可以根据新旧版本号变更表结构。</p>
+<p>2.为保证数据库安全使用，需要封装几个必要方法，包括获取单例对象、打开数据库连接、关闭
+数据库连接，说明如下： <br>
+2.1 获取单例对象：确保在App运行过程中数据库只会打开一次，避免重复打开引起错误。</p>
+<p>2.2 打开数据库连接：SQLite有锁机制，即读锁和写锁的处理；故而数据库连接也分两种，读连接可调用getReadableDatabase方法获得，写连接可调用getWritableDatabase获得。</p>
+<p>2.3 关闭数据库连接：数据库操作完毕，调用数据库实例的close方法关闭连接。</p>
+<p>3.提供对表记录增加、删除、修改、查询的操作方法。</p>
+<p>能被SQLite直接使用的数据结构是ContentValues类，它类似于映射Map，也提供了put和get方法存取
+键值对。区别之处在于：ContentValues的键只能是字符串，不能是其他类型。ContentValues主要用于
+增加记录和更新记录，对应数据库的insert和update方法。<br>
+记录的查询操作用到了游标类Cursor，调用query和rawQuery方法返回的都是Cursor对象，若要获取全
+部的查询结果，则需根据游标的指示一条一条遍历结果集合。Cursor的常用方法可分为3类，说明如
+下：</p>
+<h4 id="1231-游标控制类方法用于指定游标的状态">1.2.3.1 游标控制类方法，用于指定游标的状态</h4>
+<p>close：关闭游标。<br>
+isClosed：判断游标是否关闭。<br>
+isFirst：判断游标是否在开头。<br>
+isLast：判断游标是否在末尾。</p>
+<h4 id="1232-游标移动类方法把游标移动到指定位置">1.2.3.2 游标移动类方法，把游标移动到指定位置</h4>
+<p>moveToFirst：移动游标到开头。<br>
+moveToLast：移动游标到末尾。<br>
+moveToNext：移动游标到下一条记录。<br>
+moveToPrevious：移动游标到上一条记录。<br>
+move：往后移动游标若干条记录。<br>
+moveToPosition：移动游标到指定位置的记录。</p>
+<h4 id="1233-获取记录类方法可获取记录的数量类型以及取值">1.2.3.3 获取记录类方法，可获取记录的数量、类型以及取值</h4>
+<p>getCount：获取结果记录的数量。<br>
+getInt：获取指定字段的整型值。<br>
+getLong：获取指定字段的长整型值。<br>
+getFloat：获取指定字段的浮点数值。<br>
+getString：获取指定字段的字符串值。<br>
+getType：获取指定字段的字段类型。</p>
+<p>整体创建流程见如下代码,效果图不具体展示:
+layout_file</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns:tools=</span><span class="s">&#34;http://schemas.android.com/tools&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">tools:context=</span><span class="s">&#34;.SharePrefrenceActivity&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:orientation=</span><span class="s">&#34;vertical&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;LinearLayout</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:orientation=</span><span class="s">&#34;horizontal&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextView</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;120dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;姓名:&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textColor=</span><span class="s">&#34;@color/black&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;EditText</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/et_name&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;40dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:hint=</span><span class="s">&#34;请输入您的名字&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:inputType=</span><span class="s">&#34;text&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:background=</span><span class="s">&#34;@drawable/editext_selector&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/LinearLayout&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;LinearLayout</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:orientation=</span><span class="s">&#34;horizontal&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextView</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;120dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;年龄:&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textColor=</span><span class="s">&#34;@color/black&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;EditText</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/et_age&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;40dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:hint=</span><span class="s">&#34;请输入您的年龄&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:inputType=</span><span class="s">&#34;number&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:background=</span><span class="s">&#34;@drawable/editext_selector&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/LinearLayout&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;LinearLayout</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:orientation=</span><span class="s">&#34;horizontal&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextView</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;120dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;身高:&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textColor=</span><span class="s">&#34;@color/black&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;EditText</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/et_height&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;40dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:hint=</span><span class="s">&#34;请输入您的身高&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:inputType=</span><span class="s">&#34;number&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:background=</span><span class="s">&#34;@drawable/editext_selector&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/LinearLayout&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;LinearLayout</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:orientation=</span><span class="s">&#34;horizontal&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextView</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;120dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;体重:&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textColor=</span><span class="s">&#34;@color/black&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;EditText</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/et_weight&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;40dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:hint=</span><span class="s">&#34;请输入您的体重&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:inputType=</span><span class="s">&#34;number&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:background=</span><span class="s">&#34;@drawable/editext_selector&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/LinearLayout&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;CheckBox</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/ck_isMarried&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;40dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:text=</span><span class="s">&#34;婚否&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/btn_insert&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:text=</span><span class="s">&#34;insert&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textColor=</span><span class="s">&#34;@color/black&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/btn_delete&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:text=</span><span class="s">&#34;delete&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textColor=</span><span class="s">&#34;@color/black&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/btn_update&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:text=</span><span class="s">&#34;update&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textColor=</span><span class="s">&#34;@color/black&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/btn_query&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:text=</span><span class="s">&#34;query&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:textColor=</span><span class="s">&#34;@color/black&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;TextView</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/tv_result&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/LinearLayout&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.dongnaoedu.chapter06.database</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">android.content.ContentValues</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">android.database.Cursor</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">android.database.sqlite.SQLiteDatabase</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">android.database.sqlite.SQLiteOpenHelper</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">android.view.WindowAnimationFrameStats</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.dongnaoedu.chapter06.enity.User</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDBHelper</span> <span class="kd">extends</span> <span class="n">SQLiteOpenHelper</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_NAME</span> <span class="o">=</span> <span class="s">&#34;user.db&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TABLE_NAME</span> <span class="o">=</span> <span class="s">&#34;user_info&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">DB_VERSION</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">UserDBHelper</span> <span class="n">mHelper</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">SQLiteDatabase</span> <span class="n">mRDB</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">SQLiteDatabase</span> <span class="n">mWDB</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="nf">UserDBHelper</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">DB_NAME</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">DB_VERSION</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 利用单例模式获取数据库帮助器的唯一实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">UserDBHelper</span> <span class="nf">getInstance</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">mHelper</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserDBHelper</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">mHelper</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 打开数据库的读连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">SQLiteDatabase</span> <span class="nf">openReadLink</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">mRDB</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="o">!</span><span class="n">mRDB</span><span class="o">.</span><span class="na">isOpen</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mRDB</span> <span class="o">=</span> <span class="n">mHelper</span><span class="o">.</span><span class="na">getReadableDatabase</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">mRDB</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 打开数据库的写连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">SQLiteDatabase</span> <span class="nf">openWriteLink</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">mWDB</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="o">!</span><span class="n">mWDB</span><span class="o">.</span><span class="na">isOpen</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mWDB</span> <span class="o">=</span> <span class="n">mHelper</span><span class="o">.</span><span class="na">getWritableDatabase</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">mWDB</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 关闭数据库连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">closeLink</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">mRDB</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mRDB</span><span class="o">.</span><span class="na">isOpen</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mRDB</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mRDB</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">mWDB</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mWDB</span><span class="o">.</span><span class="na">isOpen</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mWDB</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mWDB</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建数据库，执行建表语句
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">SQLiteDatabase</span> <span class="n">db</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;CREATE TABLE IF NOT EXISTS &#34;</span> <span class="o">+</span> <span class="n">TABLE_NAME</span> <span class="o">+</span> <span class="s">&#34; (&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34; name VARCHAR NOT NULL,&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34; age INTEGER NOT NULL,&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34; height LONG NOT NULL,&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34; weight FLOAT NOT NULL,&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34; married INTEGER NOT NULL);&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onUpgrade</span><span class="o">(</span><span class="n">SQLiteDatabase</span> <span class="n">db</span><span class="o">,</span> <span class="kt">int</span> <span class="n">oldVersion</span><span class="o">,</span> <span class="kt">int</span> <span class="n">newVersion</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;ALTER TABLE &#34;</span> <span class="o">+</span> <span class="n">TABLE_NAME</span> <span class="o">+</span> <span class="s">&#34; ADD COLUMN phone VARCHAR;&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;ALTER TABLE &#34;</span> <span class="o">+</span> <span class="n">TABLE_NAME</span> <span class="o">+</span> <span class="s">&#34; ADD COLUMN password VARCHAR;&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">insert</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ContentValues</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContentValues</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">age</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;height&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">height</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;weight&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">weight</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;married&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">married</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 执行插入记录动作，该语句返回插入记录的行号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 如果第三个参数values 为Null或者元素个数为0， 由于insert()方法要求必须添加一条除了主键之外其它字段为Null值的记录，
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 为了满足SQL语法的需要， insert语句必须给定一个字段名 ，如：insert into person(name) values(NULL)，
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 倘若不给定字段名 ， insert语句就成了这样： insert into person() values()，显然这不满足标准SQL的语法。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 如果第三个参数values 不为Null并且元素的个数大于0 ，可以把第二个参数设置为null 。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//return mWDB.insert(TABLE_NAME, null, values);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mWDB</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mWDB</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">TABLE_NAME</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">values</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//int i = 10 / 0;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">mWDB</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">TABLE_NAME</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">values</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mWDB</span><span class="o">.</span><span class="na">setTransactionSuccessful</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mWDB</span><span class="o">.</span><span class="na">endTransaction</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">deleteByName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//删除所有
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//mWDB.delete(TABLE_NAME, &#34;1=1&#34;, null);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">mWDB</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">TABLE_NAME</span><span class="o">,</span> <span class="s">&#34;name=?&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">name</span><span class="o">});</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">update</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ContentValues</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContentValues</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">age</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;height&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">height</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;weight&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">weight</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;married&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">married</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">mWDB</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">TABLE_NAME</span><span class="o">,</span> <span class="n">values</span><span class="o">,</span> <span class="s">&#34;name=?&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">user</span><span class="o">.</span><span class="na">name</span><span class="o">});</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">queryAll</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 执行记录查询动作，该语句返回结果集的游标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Cursor</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">mRDB</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="n">TABLE_NAME</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 循环取出游标指向的每条记录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">while</span> <span class="o">(</span><span class="n">cursor</span><span class="o">.</span><span class="na">moveToNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">height</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getLong</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getFloat</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//SQLite没有布尔型，用0表示false，用1表示true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">user</span><span class="o">.</span><span class="na">married</span> <span class="o">=</span> <span class="o">(</span><span class="n">cursor</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">queryByName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 执行记录查询动作，该语句返回结果集的游标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Cursor</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">mRDB</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="n">TABLE_NAME</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="s">&#34;name=?&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">name</span><span class="o">},</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 循环取出游标指向的每条记录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">while</span> <span class="o">(</span><span class="n">cursor</span><span class="o">.</span><span class="na">moveToNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">height</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getLong</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">getFloat</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//SQLite没有布尔型，用0表示false，用1表示true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">user</span><span class="o">.</span><span class="na">married</span> <span class="o">=</span> <span class="o">(</span><span class="n">cursor</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="13-存储卡的文件操作">1.3 存储卡的文件操作</h2>
+<p>本节介绍Android的文件存储方式—在存储卡上读写文件，包括：公有存储空间与私有存储空间有什么
+区别、如何利用存储卡读写文本文件、如何利用存储卡读写图片文件等。</p>
+<h3 id="131-私有存储空间与公共存储空间">1.3.1 　私有存储空间与公共存储空间</h3>
+<p>为了更规范地管理手机存储空间，Android从7.0开始将存储卡划分为私有存储和公共存储两大部分，也就是分区存储方式，系统给每个App都分配了默认的私有存储空间。App在私有空间上读写文件无何授权，但是若想在公共空间读写文件，则要在AndroidManifest.xml里面添加下述的权限配置。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- 存储卡读写 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.WRITE_EXTERNAL_STORAGE&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.READ_EXTERNAL_STORAG&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>但是即使App声明了完整的存储卡操作权限，系统仍然默认禁止该App访问公共空间。打开手机的系统设置界面，进入到具体应用的管理页面，会发现该应用的存储访问权限被禁止了，如图2所示。<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../images/Android/AndroidBasic/sdCardPermission.png"
+        data-srcset="../images/Android/AndroidBasic/sdCardPermission.png, ../images/Android/AndroidBasic/sdCardPermission.png 1.5x, ../images/Android/AndroidBasic/sdCardPermission.png 2x"
+        data-sizes="auto"
+        alt="../images/Android/AndroidBasic/sdCardPermission.png"
+        title="图2.系统设置页面里的存储访问权限开关" /></p>
+<p>当然图示的禁止访问只是不让访问存储卡的公共空间，App自身的私有空间依旧可以正常读写。这缘于
+Android把存储卡分成了两块区域，一块是所有应用均可访问的公共空间，另一块是只有应用自己才可
+访问的专享空间。虽然Android给每个应用都分配了单独的安装目录，但是安装目录的空间很紧张，所
+以Android在存储卡的“Android/data”目录下给每个应用又单独建了一个文件目录，用来保存应用自己
+需要处理的临时文件。这个目录只有当前应用才能够读写文件，其他应用是不允许读写的。由于私有空
+间本身已经加了访问权限控制，因此它不受系统禁止访问的影响，应用操作自己的文件目录自然不成问
+题。因为私有的文件目录只有属主应用才能访问，所以一旦属主应用被卸载，那么对应的目录也会被删
+掉。</p>
+<p>既然存储卡分为公共空间和私有空间两部分，它们的空间路径获取也就有所不同。若想获取公共空间的
+存储路径，调用的是Environment.getExternalStoragePublicDirectory方法；若想获取应用私有空间的
+存储路径，调用的是getExternalFilesDir方法。下面是分别获取两个空间路径的代码例子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">        <span class="c1">//获取系统公共存储路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">publicPath</span> <span class="o">=</span> <span class="n">Environment</span><span class="o">.</span><span class="na">getExternalStoragePublicDirectory</span><span class="o">(</span><span class="n">Environment</span><span class="o">.</span><span class="na">DIRECTORY_DOWNLOADS</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//当前app的私有路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">privatePath</span> <span class="o">=</span> <span class="n">getExternalFilesDir</span><span class="o">(</span><span class="n">Environment</span><span class="o">.</span><span class="na">DIRECTORY_DOWNLOADS</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">boolean</span> <span class="n">isLegacy</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Build</span><span class="o">.</span><span class="na">VERSION</span><span class="o">.</span><span class="na">SDK_INT</span> <span class="o">&gt;=</span> <span class="n">Build</span><span class="o">.</span><span class="na">VERSION_CODES</span><span class="o">.</span><span class="na">Q</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Android10的存储空间默认采取分区方式，此处判断是传统方式还是分区方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">isLegacy</span> <span class="o">=</span> <span class="n">Environment</span><span class="o">.</span><span class="na">isExternalStorageLegacy</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="s">&#34;系统的公共存储路径位于&#34;</span> <span class="o">+</span> <span class="n">publicPath</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n\n当前App的私有存储路径位于&#34;</span> <span class="o">+</span> <span class="n">privatePath</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n\nAndroid7.0之后默认禁止访问公共存储目录&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n\n当前App的存储空间采取&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="n">isLegacy</span><span class="o">?</span><span class="s">&#34;传统方式&#34;</span><span class="o">:</span><span class="s">&#34;分区方式&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tv_show</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">desc</span><span class="o">);</span>
+</span></span></code></pre></div><hr>
+<h3 id="132-在存储卡上读写文本文件">1.3.2 在存储卡上读写文本文件</h3>
+<p>公共区域和私有区域的读写，均依赖于IO流的读写。下面代码定义了读写的FILE工具类:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileUtil</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//把字符串保存到指定路径的文本文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">saveText</span><span class="o">(</span><span class="n">String</span> <span class="n">path</span><span class="o">,</span><span class="n">String</span> <span class="n">text</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="n">FileWriter</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">bw</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//从指定路径抽出文本
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">readText</span><span class="o">(</span><span class="n">String</span> <span class="n">path</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span><span class="o">((</span><span class="n">str</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">())!=</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">br</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>需要在公共区域写入文件时,可以传入path</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Environment</span><span class="o">.</span><span class="na">getExternalStoragePublicDirectory</span><span class="o">(</span><span class="n">Environment</span><span class="o">.</span><span class="na">DIRECTORY_DOWNLOADS</span><span class="o">).</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span>  <span class="n">File</span><span class="o">.</span><span class="na">separatorChar</span> <span class="o">+</span> <span class="n">filename</span><span class="o">;</span>  
+</span></span></code></pre></div><p>需要在私有区域写入文件时，可以传入path</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="n">getExternalFilesDir</span><span class="o">(</span><span class="n">Environment</span><span class="o">.</span><span class="na">DIRECTORY_DOWNLOADS</span><span class="o">).</span><span class="na">toString</span><span class="o">()</span> <span class="n">File</span><span class="o">.</span><span class="na">separatorChar</span> <span class="o">+</span> <span class="n">filename</span><span class="o">;</span>  
+</span></span></code></pre></div><hr>
+<h3 id="133-在存储卡上读取图片">1.3.3 在存储卡上读取图片</h3>
+<p>文本文件读写可以转换为对字符串的读写，而图片文件保存的是图像数据，需要专门的位图工具Bitmap
+处理。位图对象依据来源不同又分成3种获取方式，分别对应位图工厂BitmapFactory的下列3种方法：</p>
+<p>decodeResource：从指定的资源文件中获取位图数据<br>
+decodeFile：从指定路径的文件中获取位图数据。注意从Android 10开始，该方法只适用于私有目
+录下的图片，不适用公共空间下的图片。<br>
+decodeStream：从指定的输入流中获取位图数据。比如使用IO流打开图片文件，此时文件输入流
+对象即可作为decodeStream方法的入参。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="c1">//从文件读取位图信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Bitmap</span> <span class="nf">readImage</span><span class="o">(</span><span class="n">String</span> <span class="n">path</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Bitmap</span> <span class="n">b1</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BufferedInputStream</span> <span class="n">bis</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">bis</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedInputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">b1</span> <span class="o">=</span> <span class="n">BitmapFactory</span><span class="o">.</span><span class="na">decodeStream</span><span class="o">(</span><span class="n">bis</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">bis</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">bis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>  <span class="n">b1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><p>得到位图对象之后，就能在图像视图上显示位图。图像视图ImageView提供了下列方法显示各种来源的
+图片：
+setImageResource：设置图像视图的图片资源，该方法的入参为资源图片的编号，形如“R.drawable.去掉扩展名的图片名称”。<br>
+setImageBitmap：设置图像视图的位图对象，该方法的入参为Bitmap类型。<br>
+setImageURI：设置图像视图的路径对象，该方法的入参为Uri类型。字符串格式的文件路径可通过代码“Uri.parse(file_path)”转换成路径对象。<br>
+读取图片文件的花样倒是挺多，把位图数据写入图片文件却只有一种，即通过位图对象的compress方法
+将位图数据压缩到文件输出流。具体的图片写入代码如下所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="c1">//将图片写入文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">saveImage</span><span class="o">(</span><span class="n">String</span> <span class="n">path</span><span class="o">,</span> <span class="n">Bitmap</span> <span class="n">bitmap</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BufferedOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">path</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">bitmap</span><span class="o">.</span><span class="na">compress</span><span class="o">(</span><span class="n">Bitmap</span><span class="o">.</span><span class="na">CompressFormat</span><span class="o">.</span><span class="na">JPEG</span><span class="o">,</span><span class="mi">100</span><span class="o">,</span><span class="n">bos</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">bos</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">bos</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="14-应用组件application">1.4 应用组件Application</h2>
+<p>本节介绍Android重要组件Application的基本概念和常见用法。首先说明Application的生命周期贯穿了
+App的整个运行过程，接着利用Application实现App全局变量的读写，然后阐述了如何借助App实例来
+操作Room数据库框架。</p>
+<h3 id="141-application的生命周期">1.4.1 Application的生命周期</h3>
+<p>Application是Android的一大组件，在App运行过程中有且仅有一个Application对象贯穿应用的整个生
+命周期。打开AndroidManifest.xml，发现activity节点的上级正是application节点，不过该节点并未指
+定name属性，此时App采用默认的Application实例。<br>
+注意到每个activity节点都指定了name属性，譬如常见的name属性值为.MainActivity，让人知晓该
+activity的入口代码是MainActivity.java。现在尝试给application节点加上name属性，看看其庐山真面
+目，具体步骤说明如下：<br>
+（1）打开AndroidManifest.xml，给application节点加上name属性，表示application的入口代码是
+MainApplication.java。修改后的application节点示例如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;application</span>
+</span></span><span class="line"><span class="cl"><span class="na">android:name=</span><span class="s">&#34;.MainApplication&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">android:icon=</span><span class="s">&#34;@mipmap/ic_launcher&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">android:label=</span><span class="s">&#34;@string/app_name&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">android:theme=</span><span class="s">&#34;@style/AppTheme&#34;</span><span class="nt">&gt;</span>
+</span></span></code></pre></div><p>（2）在Java代码的包名目录下创建MainApplication.java，要求该类继承Application，继承之后可供重
+写的方法主要有以下3个。<br>
+onCreate：在App启动时调用。<br>
+onTerminate：在App终止时调用（按字面意思）。<br>
+onConfigurationChanged：在配置改变时调用，例如从竖屏变为横屏。<br>
+光看字面意思的话，与生命周期有关的方法是onCreate和onTerminate，那么重写这两个方法，并在重
+写后的方法中打印日志，修改后的Java代码如下所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;zhao&#34;</span><span class="o">,</span><span class="s">&#34;onCreate&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onTerminate</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onTerminate</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;zhao&#34;</span><span class="o">,</span><span class="s">&#34;onTerminate&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onConfigurationChanged</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="n">Configuration</span> <span class="n">newConfig</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onConfigurationChanged</span><span class="o">(</span><span class="n">newConfig</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;zhao&#34;</span><span class="o">,</span><span class="s">&#34;onConfigurationChanged&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div><p>(3)运行测试App，在logcat窗口观察应用日志。但是只在启动一开始看到MainApplication的
+onCreate日志（该日志先于MainActivity的onCreate日志），却始终无法看到它的onTerminate日志，
+无论是自行退出App还是强行杀掉App，日志都不会打印onTerminate。</p>
+<p>无论你怎么折腾，这个onTerminate日志都不会出来。Android明明提供了这个方法，同时提供了关于
+该方法的解释，说明文字如下：This method is for use in emulated process environments．It will
+never be called on a production Android device, where processes are removed by simply killing
+them; no user code (including this callback) is executed when doing so。这段话的意思是：该方法
+供模拟环境使用，它在真机上永远不会被调用，无论是直接杀进程还是代码退出；执行该操作时，不会
+执行任何用户代码。<br>
+现在很明确了，onTerminate方法就是个摆设，中看不中用。如果读者想在App退出前回收系统资源，
+就不能指望onTerminate方法的回调了。</p>
+<hr>
+<h3 id="142-利用application操作全局变量">1.4.2 利用Application操作全局变量</h3>
+<p>C/C++有全局变量的概念，因为全局变量保存在内存中，所以操作全局变量就是操作内存，显然内存的
+读写速度远比读写数据库或读写文件快得多。所谓全局，指的是其他代码都可以引用该变量，因此全局
+变量是共享数据和消息传递的好帮手。不过Java没有全局变量的概念，与之比较接近的是类里面的静态
+成员变量，该变量不但能被外部直接引用，而且它在不同地方引用的值是一样的（前提是在引用期间不
+能改动变量值），所以借助静态成员变量也能实现类似全局变量的功能。<br>
+根据上一小节的介绍可知，Application的生命周期覆盖了App运行的全过程。不像短暂的Activity生命周
+期，一旦退出该页面，Activity实例就被销毁。因此，利用Application的全生命特性，能够在
+Application实例中保存全局变量。<br>
+适合在Application中保存的全局变量主要有下面3类数据：<br>
+（1）会频繁读取的信息，例如用户名、手机号码等。<br>
+（2）不方便由意图传递的数据，例如位图对象、非字符串类型的集合对象等。<br>
+（3）容易因频繁分配内存而导致内存泄漏的对象，例如Handler处理器实例等。<br>
+要想通过Application实现全局内存的读写，得完成以下3项工作：<br>
+（1）编写一个继承自Application的新类MainApplication。该类采用单例模式，内部先声明自身类的一
+个静态成员对象，在创建App时把自身赋值给这个静态对象，然后提供该对象的获取方法getInstance。
+具体实现代码示例如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">MainApplication</span> <span class="n">mApp</span><span class="o">;</span> <span class="c1">// 声明一个当前应用的静态实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 声明一个公共的信息映射对象，可当作全局变量使用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">infoMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 利用单例模式获取当前应用的唯一实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">MainApplication</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">mApp</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;zhao&#34;</span><span class="o">,</span><span class="s">&#34;onCreate&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onTerminate</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onTerminate</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;zhao&#34;</span><span class="o">,</span><span class="s">&#34;onTerminate&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onConfigurationChanged</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="n">Configuration</span> <span class="n">newConfig</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onConfigurationChanged</span><span class="o">(</span><span class="n">newConfig</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;zhao&#34;</span><span class="o">,</span><span class="s">&#34;onConfigurationChanged&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>在活动页面代码中调用MainApplication的getInstance方法，获得它的一个静态对象，再通过该对
+象访问MainApplication的公共变量和公共方法。<br>
+不要忘了在AndroidManifest.xml中注册新定义的Application类名，也就是给application节点增
+加android:name属性，其值为.MainApplication。<br>
+接下来演示如何读写内存中的全局变量，首先分别创建写内存页面和读内存页面，其中写内存页面把用
+户的注册信息保存到全局变量infoMap</p>
+<hr>
+<h3 id="143-利用room简化数据库操作">1.4.3 利用Room简化数据库操作</h3>
+<p>虽然Android提供了数据库帮助器，但是开发者在进行数据库编程时仍有诸多不便，比如每次增加一张
+新表，开发者都得手工实现以下代码逻辑：<br>
+（1）重写数据库帮助器的onCreate方法，添加该表的建表语句。<br>
+（2）在插入记录之时，必须将数据实例的属性值逐一赋给该表的各字段。<br>
+（3）在查询记录之时，必须遍历结果集游标，把各字段值逐一赋给数据实例。<br>
+（4）每次读写操作之前，都要先开启数据库连接；读写操作之后，又要关闭数据库连接。<br>
+上述的处理操作无疑存在不少重复劳动，数年来引得开发者叫苦连连。为此各类数据库处理框架纷纷涌
+现，包括GreenDao、OrmLite、Realm等，可谓百花齐放。眼见SQLite渐渐乏人问津，谷歌公司干脆整
+了个自己的数据库框架—Room，该框架同样基于SQLite，但它通过注解技术极大地简化了数据库操
+作，减少了原来相当一部分编码工作量。<br>
+由于Room并未集成到SDK中，而是作为第三方框架提供，因此要修改模块的build.gradle文件，往
+dependencies节点添加下面两行配置，表示导入指定版本的Room库：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">    def room_version = &#34;2.5.1&#34;//目前最新的稳定版本
+</span></span><span class="line"><span class="cl">    implementation &#34;androidx.room:room-runtime:$room_version&#34;
+</span></span><span class="line"><span class="cl">    annotationProcessor &#34;androidx.room:room-compiler:$room_version&#34;
+</span></span></code></pre></div><p>添加依赖之后。我们需要进行如下五个步骤<br>
+1.编写信息表对应的实体类，该类添加&quot;@Entitiy&quot;注解<br>
+2.编写信息表对应的持久化类，该类添加&quot;@Dao&quot;注解<br>
+3.编写信息表对应的数据库类，该类继承RoomDatabase，并添加&quot;@Database&quot;注解<br>
+4.在自定义的application类中声明数据库的唯一实例<br>
+5.在操作信息表的地方获取数据表的持久化对象</p>
+<h4 id="1编写信息表的entity类">1.编写信息表的Entity类</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.example.chapter06review.Entity</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">androidx.room.ColumnInfo</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">androidx.room.Entity</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">androidx.room.PrimaryKey</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Entity</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookInfo</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@PrimaryKey</span><span class="o">(</span><span class="n">autoGenerate</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;name&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;author&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;press&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">press</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;price&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">double</span> <span class="n">price</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;BookInfo{&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;id=&#34;</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, name=&#39;&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, author=&#39;&#34;</span> <span class="o">+</span> <span class="n">author</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, press=&#39;&#34;</span> <span class="o">+</span> <span class="n">press</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, price=&#34;</span> <span class="o">+</span> <span class="n">price</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getAuthor</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">author</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAuthor</span><span class="o">(</span><span class="n">String</span> <span class="n">author</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">author</span> <span class="o">=</span> <span class="n">author</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getPress</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">press</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPress</span><span class="o">(</span><span class="n">String</span> <span class="n">press</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">press</span> <span class="o">=</span> <span class="n">press</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getPrice</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">price</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPrice</span><span class="o">(</span><span class="kt">double</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h4 id="2编写信息表对应的持久化类">2.编写信息表对应的持久化类</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Dao</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BookInfoDao</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Insert</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">insert</span><span class="o">(</span><span class="n">BookInfo</span><span class="o">...</span> <span class="n">bookInfo</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Delete</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="n">BookInfo</span><span class="o">...</span> <span class="n">bookInfo</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Update</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">BookInfo</span><span class="o">...</span> <span class="n">bookInfo</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//根据名字查询
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Query</span><span class="o">(</span><span class="s">&#34;SELECT * FROM BookInfo WHERE name = :name ORDER BY uid DESC limit 1&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">BookInfo</span> <span class="nf">queryByName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span> <span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//查询所有信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Query</span><span class="o">(</span><span class="s">&#34;SELECT * FROM BOOKINFO&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">BookInfo</span><span class="o">&gt;</span> <span class="nf">queryAll</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<h3 id="3编写信息表对应的database类">3.编写信息表对应的Database类</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//entities表示该数据库有哪些表，version表示数据库的版本号
+</span></span></span><span class="line"><span class="cl"><span class="c1">//exportSchema表示是否导出数据库信息的json串，建议设为false，若设为true还需指定json文件的保存路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Database</span><span class="o">(</span><span class="n">entities</span> <span class="o">=</span> <span class="o">{</span><span class="n">BookInfo</span><span class="o">.</span><span class="na">class</span><span class="o">},</span><span class="n">version</span> <span class="o">=</span> <span class="mi">1</span><span class="o">,</span> <span class="n">exportSchema</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BookDatabase</span> <span class="kd">extends</span> <span class="n">RoomDatabase</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取该数据库中某张表的持久化对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">abstract</span> <span class="n">BookDao</span> <span class="nf">bookDao</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="4在自定义的application类中声明图书数据库的唯一实例">4.在自定义的Application类中声明图书数据库的唯一实例</h3>
+<p>为了避免重复打开数据库造成的内存泄漏问题，每个数据库在App运行过程中理应只有一个实例，此时
+要求开发者自定义新的Application类，在该类中声明并获取图书数据库的实例，并将自定义的
+Application类设为单例模式，保证App运行之时有且仅有一个应用实例。下面是自定义Application类的
+代码例子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">MyApplication</span> <span class="n">mApp</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">MyApplication</span> <span class="nf">getInstance</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">mApp</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//声明一个书籍数据库对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">BookInfoDatabase</span> <span class="n">bookInfoDatabase</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mApp</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;zhao&#34;</span><span class="o">,</span><span class="s">&#34;onCreate&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//构建数据库实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">bookInfoDatabase</span> <span class="o">=</span> <span class="n">Room</span><span class="o">.</span><span class="na">databaseBuilder</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">BookInfoDatabase</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="s">&#34;book&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//允许迁移数据库(数据库发生变更是，Room默认删除源数据库再创建新数据库，如此一来原来的记录就会丢失，故而要改用迁移方式以保存原有记录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">addMigrations</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//允许在主线程中操作数据库
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">allowMainThreadQueries</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//获取数据库实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">BookInfoDatabase</span> <span class="nf">getBookInfoDatabase</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">bookInfoDatabase</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h4 id="5在操作图书信息表的地方获取数据表的持久化对象">5.在操作图书信息表的地方获取数据表的持久化对象</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">        <span class="c1">//构建
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">bookInfoDao</span> <span class="o">=</span> <span class="n">MyApplication</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getBookInfoDatabase</span><span class="o">().</span><span class="na">bookInfoDao</span><span class="o">();</span>
+</span></span></code></pre></div><p>完成以上5个编码步骤之后，接着调用持久化对象的queryXXX、insertXXX、updateXXX、deleteXXX等
+方法，就能实现图书信息的增删改查操作了。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-05-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" data-title="Android基础学习_数据存储" data-via="https://twitter.com/ZXLKG" data-hashtags="Android"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" data-hashtag="Android"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" data-title="Android基础学习_数据存储"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" data-title="Android基础学习_数据存储"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" data-title="Android基础学习_数据存储"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/android/">Android</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/" class="prev" rel="prev" title="Android基础学习_中级控件"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Android基础学习_中级控件</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
