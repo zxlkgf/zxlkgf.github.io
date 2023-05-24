@@ -1,0 +1,88 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - Category - Cyo&#39;s Website</title>
+        <link>http://example.org/categories/</link>
+        <description>Categories - Category - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Fri, 05 May 2023 10:03:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Andorid基础</title>
+    <link>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</link>
+    <pubDate>Fri, 05 May 2023 10:03:00 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>力扣hot100</title>
+    <link>http://example.org/categories/%E5%8A%9B%E6%89%A3hot100/</link>
+    <pubDate>Thu, 16 Mar 2023 18:20:14 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/%E5%8A%9B%E6%89%A3hot100/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Linux网络编程实战</title>
+    <link>http://example.org/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/</link>
+    <pubDate>Mon, 06 Mar 2023 13:52:16 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Linux网络编程</title>
+    <link>http://example.org/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+    <pubDate>Mon, 06 Mar 2023 08:52:16 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Linux多线程开发</title>
+    <link>http://example.org/categories/linux%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%BC%80%E5%8F%91/</link>
+    <pubDate>Fri, 03 Mar 2023 09:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/linux%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%BC%80%E5%8F%91/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Linux多进程开发</title>
+    <link>http://example.org/categories/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/</link>
+    <pubDate>Thu, 02 Mar 2023 08:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Git使用</title>
+    <link>http://example.org/categories/git%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/git%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>hugo使用</title>
+    <link>http://example.org/categories/hugo%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/hugo%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Linux编程入门</title>
+    <link>http://example.org/categories/linux%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
+    <pubDate>Tue, 07 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/linux%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Linux</title>
+    <link>http://example.org/categories/linux/</link>
+    <pubDate>Sun, 05 Feb 2023 20:55:47 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/linux/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>
