@@ -3,7 +3,7 @@
         <title>SpringBoot - Category - Cyo&#39;s Website</title>
         <link>http://example.org/categories/springboot/</link>
         <description>SpringBoot - Category - Cyo&#39;s Website</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
             <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 23 Oct 2022 20:19:14 &#43;0900</lastBuildDate><atom:link href="http://example.org/categories/springboot/" rel="self" type="application/rss+xml" /><item>
     <title>SpringBoot项目-Kaptcha</title>
     <link>http://example.org/springboot%E9%A1%B9%E7%9B%AE-kaptcha/</link>

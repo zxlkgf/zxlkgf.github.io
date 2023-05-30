@@ -3,7 +3,7 @@
         <title>Git - Tag - Cyo&#39;s Website</title>
         <link>http://example.org/tags/git/</link>
         <description>Git - Tag - Cyo&#39;s Website</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
             <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Mon, 14 Nov 2022 20:11:22 &#43;0900</lastBuildDate><atom:link href="http://example.org/tags/git/" rel="self" type="application/rss+xml" /><item>
     <title>关于.gitignore详解</title>
     <link>http://example.org/%E5%85%B3%E4%BA%8Egitignore%E8%AF%A6%E8%A7%A3/</link>

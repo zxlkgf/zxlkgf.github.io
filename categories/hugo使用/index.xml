@@ -3,7 +3,7 @@
         <title>hugo使用 - Category - Cyo&#39;s Website</title>
         <link>http://example.org/categories/hugo%E4%BD%BF%E7%94%A8/</link>
         <description>hugo使用 - Category - Cyo&#39;s Website</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
             <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 28 Feb 2023 09:26:25 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/hugo%E4%BD%BF%E7%94%A8/" rel="self" type="application/rss+xml" /><item>
     <title>Hugo &#43; GitHub Action &#43; 腾讯云 搭建你的博客自动发布系统</title>
     <link>http://example.org/gitaction_hugo/</link>
