@@ -4,9 +4,17 @@
         <link>http://example.org/</link>
         <description>Cyo&#39;s website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 04 Jun 2023 10:03:00 &#43;0800</lastBuildDate>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 06 Jun 2023 22:03:00 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>TelePhonyManager</title>
+    <link>http://example.org/telephonymanager/</link>
+    <pubDate>Tue, 06 Jun 2023 22:03:00 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/telephonymanager/</guid>
+    <description><![CDATA[TelephonyManager类笔记 提供对有关设备上的电话服务的信息的访问。应用程序可以使用此类中的方法来确定电话服务和状态，以及访问某些]]></description>
+</item>
+<item>
     <title>Android基础学习_MediaPlayer(音乐播放器)</title>
     <link>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/</link>
     <pubDate>Sun, 04 Jun 2023 10:03:00 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>Cyo</author>
     <guid>http://example.org/%E5%8A%9B%E6%89%A3hot17_%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/</guid>
     <description><![CDATA[搜索旋转排序数组 搜索旋转排序数组 整数数组 nums 按升序排列，数组中的值 互不相同 。 在传递给函数之前，nums 在预先未知的某个下标 k（0 &lt;= k &lt; nums]]></description>
-</item>
-<item>
-    <title>力扣hot100_13_括号生成</title>
-    <link>http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/</link>
-    <pubDate>Fri, 10 Mar 2023 09:20:14 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/%E5%8A%9B%E6%89%A3hot13_%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/</guid>
-    <description><![CDATA[括号生成 括号生成 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。 示例1 输入：n = 3 输出：[&#34;(]]></description>
 </item>
 </channel>
 </rss>
