@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>ZRP - Tag - Cyo&#39;s Website</title>
-        <link>http://zxlkgf.github.io/tags/zrp/</link>
+        <link>http://example.org/tags/zrp/</link>
         <description>ZRP - Tag - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Fri, 02 Dec 2022 18:15:10 &#43;0900</lastBuildDate><atom:link href="http://zxlkgf.github.io/tags/zrp/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Fri, 02 Dec 2022 18:15:10 &#43;0900</lastBuildDate><atom:link href="http://example.org/tags/zrp/" rel="self" type="application/rss+xml" /><item>
     <title>区域半径协议ZRP</title>
-    <link>http://zxlkgf.github.io/%E5%8C%BA%E5%9F%9F%E5%8D%8A%E5%BE%84%E5%8D%8F%E8%AE%AEzrp/</link>
+    <link>http://example.org/%E5%8C%BA%E5%9F%9F%E5%8D%8A%E5%BE%84%E5%8D%8F%E8%AE%AEzrp/</link>
     <pubDate>Fri, 02 Dec 2022 18:15:10 &#43;0900</pubDate>
     <author>Cyo</author>
-    <guid>http://zxlkgf.github.io/%E5%8C%BA%E5%9F%9F%E5%8D%8A%E5%BE%84%E5%8D%8F%E8%AE%AEzrp/</guid>
+    <guid>http://example.org/%E5%8C%BA%E5%9F%9F%E5%8D%8A%E5%BE%84%E5%8D%8F%E8%AE%AEzrp/</guid>
     <description><![CDATA[ZRP(区域半径协议)详解 1.默认配置参数Constants.h #ifndef _constants_h_ #define _constants_h_ // General OR Common Constants //DEBUG 参数 #define DEBUG 0 // 1 = Enabled; 0 = Disabled //Router_PORT #define ROUTER_PORT 0xff #define TRUE 1 #define FALSE 0 #define LINKUP 1 #define LINKDOWN 0]]></description>
 </item>
 </channel>

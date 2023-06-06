@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Android基础学习_MediaPlayer(音乐播放器) - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="Android基础学习_MediaPlayer(音乐播放器)" />
+<meta property="og:description" content="基于原生安卓的音乐播放器 1.Ui界面 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;LinearLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34; android:id=&#34;@&#43;id/ll_main&#34; android:layout_width=&#34;match_parent&#34; android:layout_height=&#34;match_parent&#34; android:background=&#34;@drawable/bg&#34; android:gravity=&#34;center&#34; android:orientation=&#34;vertical&#34;&gt; &lt;LinearLayout android:layout_width=&#34;wrap_content&#34; android:layout_height=&#34;wrap_content&#34; android:orientation=&#34;horizontal&#34; &gt; &lt;TextView android:layout_width=&#34;wrap_content&#34; android:layout_height=&#34;30dp&#34; android:layout_weight=&#34;1&#34; android:textSize=&#34;17sp&#34; android:textColor=&#34;@color/black&#34; android:background=&#34;@color/white&#34; android:text=&#34;选取歌曲&#34;/&" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-04T10:03:00+08:00" />
+<meta property="article:modified_time" content="2023-06-04T10:03:00+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Android基础学习_MediaPlayer(音乐播放器)"/>
+<meta name="twitter:description" content="基于原生安卓的音乐播放器 1.Ui界面 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;LinearLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34; android:id=&#34;@&#43;id/ll_main&#34; android:layout_width=&#34;match_parent&#34; android:layout_height=&#34;match_parent&#34; android:background=&#34;@drawable/bg&#34; android:gravity=&#34;center&#34; android:orientation=&#34;vertical&#34;&gt; &lt;LinearLayout android:layout_width=&#34;wrap_content&#34; android:layout_height=&#34;wrap_content&#34; android:orientation=&#34;horizontal&#34; &gt; &lt;TextView android:layout_width=&#34;wrap_content&#34; android:layout_height=&#34;30dp&#34; android:layout_weight=&#34;1&#34; android:textSize=&#34;17sp&#34; android:textColor=&#34;@color/black&#34; android:background=&#34;@color/white&#34; android:text=&#34;选取歌曲&#34;/&"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/" /><link rel="prev" href="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Android基础学习_MediaPlayer(音乐播放器)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer\/"
+        },"genre": "posts","keywords": "Android","wordcount":  1907 ,
+        "url": "http:\/\/example.org\/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer\/","datePublished": "2023-06-04T10:03:00+08:00","dateModified": "2023-06-04T10:03:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Android基础学习_MediaPlayer(音乐播放器)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/andorid%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Andorid基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-06-04">2023-06-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1907 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1ui界面">1.Ui界面</a></li>
+    <li><a href="#mainactivity部分">MainActivity部分</a></li>
+    <li><a href="#service部分">service部分</a></li>
+    <li><a href="#思路">思路</a>
+      <ul>
+        <li><a href="#ui界面">UI界面</a></li>
+        <li><a href="#主界面">主界面</a></li>
+        <li><a href="#service">Service</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="基于原生安卓的音乐播放器">基于原生安卓的音乐播放器</h1>
+<h2 id="1ui界面">1.Ui界面</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:id=</span><span class="s">&#34;@+id/ll_main&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:background=</span><span class="s">&#34;@drawable/bg&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:gravity=</span><span class="s">&#34;center&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:orientation=</span><span class="s">&#34;vertical&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;LinearLayout</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:orientation=</span><span class="s">&#34;horizontal&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextView</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;30dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textSize=</span><span class="s">&#34;17sp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textColor=</span><span class="s">&#34;@color/black&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:background=</span><span class="s">&#34;@color/white&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;选取歌曲&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Spinner</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/spinner&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:background=</span><span class="s">&#34;@color/white&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;30dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/LinearLayout&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ImageView</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/lv_music&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;240dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;240dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_gravity=</span><span class="s">&#34;center_horizontal&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_margin=</span><span class="s">&#34;15dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:src=</span><span class="s">&#34;@drawable/music_disk&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;SeekBar</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/sb&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:progressBackgroundTint=</span><span class="s">&#34;#fff&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;RelativeLayout</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:paddingLeft=</span><span class="s">&#34;8dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:paddingRight=</span><span class="s">&#34;8dp&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextView</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/tv_progress&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textColor=</span><span class="s">&#34;#fff&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;00:00&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextView</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/tv_total&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_alignParentRight=</span><span class="s">&#34;true&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:textColor=</span><span class="s">&#34;#fff&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;00:00&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/RelativeLayout&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;LinearLayout</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:orientation=</span><span class="s">&#34;horizontal&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Button</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/btn_play&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;0dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:paddingLeft=</span><span class="s">&#34;10dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:paddingRight=</span><span class="s">&#34;10dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;播放音乐&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Button</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/btn_pause&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;0dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:paddingLeft=</span><span class="s">&#34;10dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:paddingRight=</span><span class="s">&#34;10dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;暂停播放&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Button</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/btn_continue&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;0dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:paddingLeft=</span><span class="s">&#34;10dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:paddingRight=</span><span class="s">&#34;10dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;继续播放&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Button</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/btn_exit&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_width=</span><span class="s">&#34;0dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:paddingLeft=</span><span class="s">&#34;10dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:paddingRight=</span><span class="s">&#34;10dp&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:text=</span><span class="s">&#34;退出播放&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/LinearLayout&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/LinearLayout&gt;</span>
+</span></span></code></pre></div><h2 id="mainactivity部分">MainActivity部分</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="s">&#34;MainActivity&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">LinearLayout</span> <span class="n">ll_main</span> <span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Spinner</span> <span class="n">spinner</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ImageView</span> <span class="n">lv_music</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">TextView</span> <span class="n">tv_progress</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">TextView</span> <span class="n">tv_total</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Button</span> <span class="n">btn_play</span><span class="o">,</span><span class="n">btn_pause</span><span class="o">,</span><span class="n">btn_continue</span><span class="o">,</span><span class="n">btn_exit</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ObjectAnimator</span> <span class="n">objectAnimator</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">music_name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Integer</span><span class="o">[]&gt;</span> <span class="n">map</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">MusicControllerService</span><span class="o">.</span><span class="na">musicController</span> <span class="n">musicController</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Handler</span> <span class="n">mHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Handler</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">super</span><span class="o">.</span><span class="na">handleMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Bundle</span> <span class="n">data</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&#34;duration&#34;</span><span class="o">);</span><span class="c1">//获取从子线程发来的音乐总时长
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kt">int</span> <span class="n">currentPosition</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&#34;currentPosition&#34;</span><span class="o">);</span><span class="c1">//获取从子线程发来的播放进度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">seekBar</span><span class="o">.</span><span class="na">setMax</span><span class="o">(</span><span class="n">duration</span><span class="o">);</span><span class="c1">//设置seekBar的最大歌曲时长
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">seekBar</span><span class="o">.</span><span class="na">setProgress</span><span class="o">(</span><span class="n">currentPosition</span><span class="o">);</span><span class="c1">//设置seekBar的进度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">String</span> <span class="n">sDuration</span> <span class="o">=</span> <span class="n">msToMinSec</span><span class="o">(</span><span class="n">duration</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">String</span> <span class="n">currentPos</span> <span class="o">=</span> <span class="n">msToMinSec</span><span class="o">(</span><span class="n">currentPosition</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">tv_progress</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">currentPos</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">tv_total</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sDuration</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ServiceConnection</span> <span class="n">conn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServiceConnection</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onServiceConnected</span><span class="o">(</span><span class="n">ComponentName</span> <span class="n">name</span><span class="o">,</span> <span class="n">IBinder</span> <span class="n">service</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">musicController</span> <span class="o">=</span> <span class="o">(</span><span class="n">MusicControllerService</span><span class="o">.</span><span class="na">musicController</span><span class="o">)</span><span class="n">service</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onServiceDisconnected</span><span class="o">(</span><span class="n">ComponentName</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">musicController</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">init</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ll_main</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">ll_main</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">spinner</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">spinner</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lv_music</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">lv_music</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">seekBar</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">sb</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tv_progress</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">tv_progress</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tv_total</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">tv_total</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">btn_play</span> <span class="o">=</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_play</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">btn_pause</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_pause</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">btn_continue</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_continue</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">btn_exit</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_exit</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">music_name</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getStringArray</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">array</span><span class="o">.</span><span class="na">music_tag</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//构建哈希表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span> <span class="o">,</span><span class="n">Integer</span><span class="o">[]&gt;(){</span>
+</span></span><span class="line"><span class="cl">            <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">put</span><span class="o">(</span><span class="n">music_name</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[]{</span><span class="n">R</span><span class="o">.</span><span class="na">raw</span><span class="o">.</span><span class="na">jjay_xuebuhui</span><span class="o">,</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">bg_xuebuhui</span><span class="o">});</span>
+</span></span><span class="line"><span class="cl">                <span class="n">put</span><span class="o">(</span><span class="n">music_name</span><span class="o">[</span><span class="mi">1</span><span class="o">],</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[]{</span><span class="n">R</span><span class="o">.</span><span class="na">raw</span><span class="o">.</span><span class="na">jjay_shengsheng</span><span class="o">,</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">bg_shengsheng</span><span class="o">});</span>
+</span></span><span class="line"><span class="cl">                <span class="n">put</span><span class="o">(</span><span class="n">music_name</span><span class="o">[</span><span class="mi">2</span><span class="o">],</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[]{</span><span class="n">R</span><span class="o">.</span><span class="na">raw</span><span class="o">.</span><span class="na">jjay_jiaohuanyusheng</span><span class="o">,</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">bg_jiaohuanyusheng</span><span class="o">});</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">onClick</span> <span class="n">onClick</span> <span class="o">=</span> <span class="k">new</span> <span class="n">onClick</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">btn_play</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">onClick</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">btn_pause</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">onClick</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">btn_continue</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">onClick</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">btn_exit</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">onClick</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//对象是lv_music,动作是rotation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">objectAnimator</span> <span class="o">=</span> <span class="n">ObjectAnimator</span><span class="o">.</span><span class="na">ofFloat</span><span class="o">(</span><span class="n">lv_music</span><span class="o">,</span><span class="s">&#34;rotation&#34;</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mf">360.0F</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//设置持续时间，10s一周
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">objectAnimator</span><span class="o">.</span><span class="na">setDuration</span><span class="o">(</span><span class="mi">10000</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//设置旋转为匀速旋转
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">objectAnimator</span><span class="o">.</span><span class="na">setInterpolator</span><span class="o">(</span><span class="k">new</span> <span class="n">LinearInterpolator</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//设置重复次数,-1为持续
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">objectAnimator</span><span class="o">.</span><span class="na">setRepeatCount</span><span class="o">(-</span><span class="mi">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//设置spinner
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//简历adapter并绑定数据源
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">ArrayAdapter</span> <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayAdapter</span><span class="o">&lt;&gt;(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_spinner_item</span><span class="o">,</span><span class="n">music_name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">adapter</span><span class="o">.</span><span class="na">setDropDownViewResource</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_spinner_dropdown_item</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//绑定adapter控件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">spinner</span><span class="o">.</span><span class="na">setAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//设置点击事件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">spinner</span><span class="o">.</span><span class="na">setOnItemSelectedListener</span><span class="o">(</span><span class="k">new</span> <span class="n">AdapterView</span><span class="o">.</span><span class="na">OnItemSelectedListener</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onItemSelected</span><span class="o">(</span><span class="n">AdapterView</span><span class="o">&lt;?&gt;</span> <span class="n">parent</span><span class="o">,</span> <span class="n">View</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">log</span><span class="o">(</span><span class="s">&#34;onItemSelected , position:&#34;</span><span class="o">+</span><span class="n">position</span><span class="o">+</span><span class="s">&#34;,music src:&#34;</span><span class="o">+</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">music_name</span><span class="o">[</span><span class="n">position</span><span class="o">])[</span><span class="mi">0</span><span class="o">]);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ll_main</span><span class="o">.</span><span class="na">setBackgroundResource</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">music_name</span><span class="o">[</span><span class="n">position</span><span class="o">])[</span><span class="mi">1</span><span class="o">]);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">musicController</span><span class="o">.</span><span class="na">setMusicSrc</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">music_name</span><span class="o">[</span><span class="n">position</span><span class="o">])[</span><span class="mi">0</span><span class="o">]);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">objectAnimator</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onNothingSelected</span><span class="o">(</span><span class="n">AdapterView</span><span class="o">&lt;?&gt;</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">MusicControllerService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bindService</span><span class="o">(</span><span class="n">intent</span><span class="o">,</span><span class="n">conn</span><span class="o">,</span><span class="n">BIND_AUTO_CREATE</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">seekBar</span><span class="o">.</span><span class="na">setOnSeekBarChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">SeekBar</span><span class="o">.</span><span class="na">OnSeekBarChangeListener</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onProgressChanged</span><span class="o">(</span><span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">,</span> <span class="kt">int</span> <span class="n">progress</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">fromUser</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//当音乐停止
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span><span class="o">(</span><span class="n">progress</span> <span class="o">==</span> <span class="n">seekBar</span><span class="o">.</span><span class="na">getMax</span><span class="o">()){</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">objectAnimator</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//判断是不是用户拖动
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span><span class="o">(</span><span class="n">fromUser</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">musicController</span><span class="o">.</span><span class="na">seekTo</span><span class="o">(</span><span class="n">progress</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStartTrackingTouch</span><span class="o">(</span><span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">musicController</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStopTrackingTouch</span><span class="o">(</span><span class="n">SeekBar</span> <span class="n">seekBar</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">musicController</span><span class="o">.</span><span class="na">resume</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">});</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">class</span> <span class="nc">onClick</span> <span class="kd">implements</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()==</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_play</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">log</span><span class="o">(</span><span class="s">&#34;play&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//动画开始
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">objectAnimator</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//音乐播放
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">musicController</span><span class="o">.</span><span class="na">play</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">==</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_pause</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">log</span><span class="o">(</span><span class="s">&#34;pause&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//动画暂停
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">objectAnimator</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//音乐暂停
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">musicController</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">==</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_continue</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">log</span><span class="o">(</span><span class="s">&#34;continue&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//动画继续
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">objectAnimator</span><span class="o">.</span><span class="na">resume</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//音乐继续
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">musicController</span><span class="o">.</span><span class="na">resume</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">==</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_exit</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">log</span><span class="o">(</span><span class="s">&#34;exit&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//退出活动
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">finish</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">musicController</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unbindService</span><span class="o">(</span><span class="n">conn</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">log</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">DEBUG</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span><span class="n">str</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">msToMinSec</span><span class="o">(</span><span class="kt">int</span> <span class="n">ms</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">sec</span> <span class="o">=</span> <span class="n">ms</span><span class="o">/</span><span class="mi">1000</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">sec</span><span class="o">/</span><span class="mi">60</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sec</span> <span class="o">-=</span> <span class="n">min</span> <span class="o">*</span> <span class="mi">60</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;%02d:%02d&#34;</span><span class="o">,</span><span class="n">min</span><span class="o">,</span><span class="n">sec</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="service部分">service部分</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MusicControllerService</span> <span class="kd">extends</span> <span class="n">Service</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="s">&#34;MusicController&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">MediaPlayer</span> <span class="n">mediaPlayer</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Timer</span> <span class="n">timer</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span>  <span class="n">Integer</span> <span class="n">music_src</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span>  <span class="kt">void</span> <span class="nf">setMusic_src</span><span class="o">(</span><span class="n">Integer</span> <span class="n">music_src</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">music_src</span> <span class="o">=</span> <span class="n">music_src</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Nullable</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">IBinder</span> <span class="nf">onBind</span><span class="o">(</span><span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">musicController</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mediaPlayer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MediaPlayer</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">music_src</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="na">raw</span><span class="o">.</span><span class="na">jjay_xuebuhui</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">onStartCommand</span><span class="o">(</span><span class="n">Intent</span> <span class="n">intent</span><span class="o">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startId</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onStartCommand</span><span class="o">(</span><span class="n">intent</span><span class="o">,</span> <span class="n">flags</span><span class="o">,</span> <span class="n">startId</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//增加计时器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addTimer</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">timer</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Timer</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">TimerTask</span> <span class="n">timerTask</span>  <span class="o">=</span> <span class="k">new</span> <span class="n">TimerTask</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">getDuration</span><span class="o">();</span><span class="c1">//获取歌曲总时长
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="kt">int</span> <span class="n">currentPos</span> <span class="o">=</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">getCurrentPosition</span><span class="o">();</span><span class="c1">//获取当前进度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//将音乐的总时长和播放进度封装到消息对象中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">bundle</span><span class="o">.</span><span class="na">putInt</span><span class="o">(</span><span class="s">&#34;duration&#34;</span><span class="o">,</span><span class="n">duration</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">bundle</span><span class="o">.</span><span class="na">putInt</span><span class="o">(</span><span class="s">&#34;currentPosition&#34;</span><span class="o">,</span><span class="n">currentPos</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">msg</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">bundle</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//将消息发送到主线程的消息队列
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="n">MainActivity</span><span class="o">.</span><span class="na">mHandler</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">};</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//开启计时任务后的5ms,第一次执行task之后，每500ms执行一次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">timer</span><span class="o">.</span><span class="na">schedule</span><span class="o">(</span><span class="n">timerTask</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">500</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">musicController</span> <span class="kd">extends</span> <span class="n">Binder</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//播放音乐
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">(</span><span class="s">&#34;musicController play&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">reset</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span> <span class="o">=</span> <span class="n">MediaPlayer</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span><span class="n">music_src</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">addTimer</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//暂停
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">pause</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">(</span><span class="s">&#34;musicController pause&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//继续
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">resume</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">(</span><span class="s">&#34;musicController resume&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span><span class="c1">//播放 不会被重置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//停止
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">(</span><span class="s">&#34;musicController stop&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span><span class="c1">//停止音乐
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">timer</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//打带
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">seekTo</span><span class="o">(</span><span class="kt">int</span> <span class="n">ms</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">seekTo</span><span class="o">(</span><span class="n">ms</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMusicSrc</span><span class="o">(</span><span class="kt">int</span> <span class="n">musicSrc</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">music_src</span> <span class="o">=</span> <span class="n">musicSrc</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mediaPlayer</span> <span class="o">=</span> <span class="n">MediaPlayer</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span><span class="n">musicSrc</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">musicSrc</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">log</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">DEBUG</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span><span class="n">str</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="思路">思路</h2>
+<h3 id="ui界面">UI界面</h3>
+<p>创建一个黑胶圆盘，提供播放动画效果<br>
+创建一个SeekBar，提供音乐进度条效果<br>
+创建四个Button，提供播放，暂停，继续，退出的点击事件</p>
+<h3 id="主界面">主界面</h3>
+<p>使用ObjectAnimetor,设置黑胶圆盘的动画效果</p>
+<p>提供一个spinner供选择歌曲<br>
+在Spinner选择item的时候，调用onItemSelete切换背景和歌曲源</p>
+<p>提供一个Service,提供播放，暂停，继续，退出的方法实现<br>
+需要重写ServiceConnetion<br>
+并调用bindservice<br>
+记住 在onDestory的时候调用unbindService方法</p>
+<h3 id="service">Service</h3>
+<p>Service内部维护三个成员变量<br>
+1.MediaPlayer 音乐播放器<br>
+2.Timer类<br>
+3.音乐源节点<br>
+并在内部创建一个内部类继承iBInder<br>
+内部类内提供调用的播放，暂停，继续，退出的方法。</p>
+<p>Timer类作为SeekBar的设置，提供一个TimerTask，在每0.5s的时候构建一个Message，将播放的进度返回，主界面接受消息并设置SeekBar。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-06-04</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/" data-title="Android基础学习_MediaPlayer(音乐播放器)" data-via="https://twitter.com/ZXLKG" data-hashtags="Android"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/" data-hashtag="Android"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/" data-title="Android基础学习_MediaPlayer(音乐播放器)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/" data-title="Android基础学习_MediaPlayer(音乐播放器)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/" data-title="Android基础学习_MediaPlayer(音乐播放器)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/android/">Android</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" class="prev" rel="prev" title="Android基础学习_数据存储"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Android基础学习_数据存储</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.113.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
