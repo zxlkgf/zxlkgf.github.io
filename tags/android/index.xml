@@ -4,7 +4,15 @@
         <link>http://example.org/tags/android/</link>
         <description>Android - Tag - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 06 Jun 2023 22:03:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/android/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 10 Jun 2023 10:03:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/android/" rel="self" type="application/rss+xml" /><item>
+    <title>Android基础学习_MediaPlayer(音乐播放器)利用Message</title>
+    <link>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer2%E5%AE%9E%E7%8E%B0%E9%80%9A%E4%BF%A1/</link>
+    <pubDate>Sat, 10 Jun 2023 10:03:00 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer2%E5%AE%9E%E7%8E%B0%E9%80%9A%E4%BF%A1/</guid>
+    <description><![CDATA[基于原生安卓的音乐播放器 1.BaseFragment public class BaseFragment extends Fragment { private static final String TAG = &#34;ZHAO_BaseFragment&#34;; private static final Boolean DEBUG = true; private static final String MUSIC_BG = &#34;music_bg&#34;; private static final String MUSIC_SRC = &#34;music_src&#34;; private Integer mMusic_bg; private Integer mMusic_src; private View root; public BaseFragment() { } public static BaseFragment newInstance(Integer mMusic_bg, Integer mMusic_src) { BaseFragment fragment]]></description>
+</item>
+<item>
     <title>TelePhonyManager</title>
     <link>http://example.org/telephonymanager/</link>
     <pubDate>Tue, 06 Jun 2023 22:03:00 &#43;0800</pubDate>
