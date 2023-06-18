@@ -150,10 +150,7 @@ recyclerView.setAdapter(adapter);
 
 ```
 
-<<<<<<< HEAD
 ---
-=======
->>>>>>> 45a023e77212cfcd4dc865e0e66dd1e666cc5855
 
 ### 补充
 
@@ -171,13 +168,9 @@ RecyclerView 库提供了三种布局管理器，用于处理最常见的布局�
 ---
 
 #### 关于LayoutInflater
-<<<<<<< HEAD
 
 [参考地址](https://www.runoob.com/w3cnote/android-tutorial-layoutinflater.html)
 
-=======
-[参考地址](https://www.runoob.com/w3cnote/android-tutorial-layoutinflater.html)
->>>>>>> 45a023e77212cfcd4dc865e0e66dd1e666cc5855
 ---
 
 ##### Layout是什么鬼？
