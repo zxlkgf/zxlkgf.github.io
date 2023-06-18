@@ -4,7 +4,15 @@
         <link>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</link>
         <description>Andorid基础 - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 18 Jun 2023 16:33:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 18 Jun 2023 23:33:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+    <title>Android基础学习_RecycleView简单使用</title>
+    <link>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_recycleview/</link>
+    <pubDate>Sun, 18 Jun 2023 23:33:00 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_recycleview/</guid>
+    <description><![CDATA[1.RecycleView 1.1 简介 RecyclerView 可以让您轻松高效地显示大量数据。您提供数据并定义每个列表项的外观，而 RecyclerView 库会根据需要动态创建元素。 顾名思义，RecyclerView]]></description>
+</item>
+<item>
     <title>Android基础学习_SmartRefreshLayout</title>
     <link>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_smartrefreshlayout/</link>
     <pubDate>Sun, 18 Jun 2023 16:33:00 &#43;0800</pubDate>
