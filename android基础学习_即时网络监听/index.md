@@ -7,7 +7,7 @@
 ## 1.1 使用BroadCast监听网络变化
 ---
 
-### 1.1.1 创建广播接受类
+### 1.1.1 创建广播接收类
 1. 创建广播接受类并继承BroadcastReceiver  
 2. 重写onReciver方法  
 3. 根据intent的action判断是不是自己需要反应的动作(本次反应对象为ConnectivityManager.CONNECTIVITY_ACTION)  

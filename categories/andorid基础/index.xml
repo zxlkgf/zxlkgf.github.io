@@ -10,7 +10,7 @@
     <pubDate>Sat, 24 Jun 2023 11:33:00 &#43;0800</pubDate>
     <author>Cyo</author>
     <guid>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E5%8D%B3%E6%97%B6%E7%BD%91%E7%BB%9C%E7%9B%91%E5%90%AC/</guid>
-    <description><![CDATA[1.即时网络监听 1.1 使用BroadCast监听网络变化 1.1.1 创建广播接受类 创建广播接受类并继承BroadcastReceiver 重写onReciv]]></description>
+    <description><![CDATA[1.即时网络监听 1.1 使用BroadCast监听网络变化 1.1.1 创建广播接收类 创建广播接受类并继承BroadcastReceiver 重写onReciv]]></description>
 </item>
 <item>
     <title>Android基础学习_RecycleView简单使用</title>
