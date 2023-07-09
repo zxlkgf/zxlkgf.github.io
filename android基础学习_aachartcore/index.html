@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Android基础学习_AAChartCore - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="Android基础学习_AAChartCore" />
+<meta property="og:description" content="1.AAChartCore AAChartCore,是 AAChartKit 的 Java语言版本,是在流行的开源前端图表框架的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-08T16:33:00+08:00" />
+<meta property="article:modified_time" content="2023-07-08T16:33:00+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Android基础学习_AAChartCore"/>
+<meta name="twitter:description" content="1.AAChartCore AAChartCore,是 AAChartKit 的 Java语言版本,是在流行的开源前端图表框架的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore/" /><link rel="prev" href="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E5%8D%B3%E6%97%B6%E7%BD%91%E7%BB%9C%E7%9B%91%E5%90%AC/" /><link rel="next" href="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_bookkeeping/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Android基础学习_AAChartCore",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore\/"
+        },"genre": "posts","keywords": "Android","wordcount":  626 ,
+        "url": "http:\/\/example.org\/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore\/","datePublished": "2023-07-08T16:33:00+08:00","dateModified": "2023-07-08T16:33:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Android基础学习_AAChartCore</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/andorid%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Andorid基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-08">2023-07-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;626 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-安装">2.1 安装</a>
+      <ul>
+        <li><a href="#211-手动安装">2.1.1 手动安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-使用">2.2 使用</a>
+      <ul>
+        <li><a href="#221-layout_xml文件">2.2.1 layout_xml文件</a></li>
+        <li><a href="#222-activity">2.2.2 Activity</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><hr>
+<h1 id="1aachartcore">1.AAChartCore</h1>
+<p>AAChartCore,是 AAChartKit 的 Java语言版本,是在流行的开源前端图表框架的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件</p>
+<p><a href="https://github.com/AAChartModel/AAChartCore" target="_blank" rel="noopener noreffer ">AAChartCore(Java版)仓库</a><br>
+<a href="https://github.com/AAChartModel/AAChartCore-Kotlin" target="_blank" rel="noopener noreffer ">AAChartCore(Kotlin版)仓库</a><br>
+<a href="https://github.com/AAChartModel/AAChartKit" target="_blank" rel="noopener noreffer ">AAChartCore(ios版)仓库</a><br>
+<a href="https://github.com/AAChartModel/AAChartCore/blob/master/CHINESE-README.md" target="_blank" rel="noopener noreffer ">AAChartCore(Java版)文档</a></p>
+<hr>
+<h1 id="2使用">2.使用</h1>
+<h2 id="21-安装">2.1 安装</h2>
+<h3 id="211-手动安装">2.1.1 手动安装</h3>
+<hr>
+<p>1.使用git指令拉去Java版的AAChartCore，找到Demo文件<br>
+2.将 Demo 文件下的 assets 文件拉取到项目app/src/main下<br>
+2.将 Demo 中的名为 AAChartCoreLib 文件夹拉取到app/src/main/java/下</p>
+<h2 id="22-使用">2.2 使用</h2>
+<h3 id="221-layout_xml文件">2.2.1 layout_xml文件</h3>
+<hr>
+<p>在xml文件内定义一个或者多个AAchartView。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">    <span class="nt">&lt;com.zxl.anan.AAChartCore.AAChartCoreLib.AAChartCreator.AAChartView</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/AAChartView&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">/&gt;</span>
+</span></span></code></pre></div><h3 id="222-activity">2.2.2 Activity</h3>
+<p>chartType有如下多种</p>
+<pre><code>    String Column          = &quot;column&quot;;
+    String Bar             = &quot;bar&quot;;
+    String Area            = &quot;area&quot;;
+    String AreaSpline      = &quot;areaspline&quot;;
+    String Line            = &quot;line&quot;;
+    String Spline          = &quot;spline&quot;;
+    String Scatter         = &quot;scatter&quot;;
+    String Pie             = &quot;pie&quot;;
+    String Bubble          = &quot;bubble&quot;;
+    String Pyramid         = &quot;pyramid&quot;;
+    String Funnel          = &quot;funnel&quot;;
+    String Columnrange     = &quot;columnrange&quot;;
+    String Arearange       = &quot;arearange&quot;;
+    String Areasplinerange = &quot;areasplinerange&quot;;
+    String Boxplot         = &quot;boxplot&quot;;
+    String Waterfall       = &quot;waterfall&quot;;
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initChartView</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">aaChartView</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">AAChartView</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获取当前时间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">calenderTime</span> <span class="o">=</span> <span class="n">Util</span><span class="o">.</span><span class="na">getCalenderTime</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">year</span> <span class="o">=</span> <span class="n">calenderTime</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="n">calenderTime</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;month&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">Util</span><span class="o">.</span><span class="na">getYearMonthStr</span><span class="o">(</span><span class="n">year</span><span class="o">,</span><span class="n">month</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获取数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">typeNameArr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">overview_classification</span> <span class="n">oc</span> <span class="o">=</span> <span class="n">DBManager</span><span class="o">.</span><span class="na">queryTypeSumByYearMonthKind</span><span class="o">(</span><span class="n">year</span><span class="o">,</span> <span class="n">month</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">typeNameArr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">oc</span><span class="o">.</span><span class="na">getTypeName</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ocList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">oc</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获取标签名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">strArray</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">ocList</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Float</span> <span class="n">dataArray</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Float</span><span class="o">[</span><span class="n">ocList</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ocList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">strArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">ocList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getTypeName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dataArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">ocList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getTotalMoney</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">AAChartModel</span> <span class="n">aaChartModel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AAChartModel</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">chartType</span><span class="o">(</span><span class="n">AAChartType</span><span class="o">.</span><span class="na">Column</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">title</span><span class="o">(</span><span class="s">&#34;月度账单总览&#34;</span><span class="o">)</span><span class="c1">//设置标题
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">subtitle</span><span class="o">(</span><span class="n">date</span><span class="o">)</span><span class="c1">//设置副标题
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">backgroundColor</span><span class="o">(</span><span class="s">&#34;#FFFFFF&#34;</span><span class="o">)</span><span class="c1">//设置背景色白色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">categories</span><span class="o">(</span><span class="n">strArray</span><span class="o">)</span>   <span class="c1">//设置标签
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">dataLabelsEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="c1">//点击显示数据标签
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">yAxisGridLineWidth</span><span class="o">(</span><span class="mf">0f</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">series</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">new</span> <span class="n">AASeriesElement</span><span class="o">[]{</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">new</span> <span class="n">AASeriesElement</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">                                <span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">&#34;Out&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="n">dataArray</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl">                <span class="o">});</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//展示
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">aaChartView</span><span class="o">.</span><span class="na">aa_drawChartWithChartModel</span><span class="o">(</span><span class="n">aaChartModel</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-07-08</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore/" data-title="Android基础学习_AAChartCore" data-via="https://twitter.com/ZXLKG" data-hashtags="Android"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore/" data-hashtag="Android"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore/" data-title="Android基础学习_AAChartCore"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore/" data-title="Android基础学习_AAChartCore"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_aachartcore/" data-title="Android基础学习_AAChartCore"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/android/">Android</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E5%8D%B3%E6%97%B6%E7%BD%91%E7%BB%9C%E7%9B%91%E5%90%AC/" class="prev" rel="prev" title="Android基础学习_即时网络监听"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Android基础学习_即时网络监听</a>
+            <a href="/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_bookkeeping/" class="next" rel="next" title="Android基础学习_Bookkeeping">Android基础学习_Bookkeeping<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
