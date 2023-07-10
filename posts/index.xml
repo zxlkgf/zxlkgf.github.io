@@ -4,7 +4,15 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 09 Jul 2023 11:33:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Mon, 10 Jul 2023 16:33:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Android学习_Aidl练习</title>
+    <link>http://example.org/android%E5%AD%A6%E4%B9%A0_aidl/</link>
+    <pubDate>Mon, 10 Jul 2023 16:33:00 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/android%E5%AD%A6%E4%B9%A0_aidl/</guid>
+    <description><![CDATA[Aidl 1.什么是Aidl AIDL 意思即 Android Interface Definition Language，翻译过来就是Android接口定义语言，是用于定义服务器和客户端通信接口的一种描述语言，]]></description>
+</item>
+<item>
     <title>Android基础学习_Bookkeeping</title>
     <link>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_bookkeeping/</link>
     <pubDate>Sun, 09 Jul 2023 11:33:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>Cyo</author>
     <guid>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</guid>
     <description><![CDATA[1.Android开发 数据存储 1.1 共享参数sharePrefrence 本节介绍Android的键值对存储方式——共享参数SharedPrefe]]></description>
-</item>
-<item>
-    <title>Android基础学习_中级控件</title>
-    <link>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/</link>
-    <pubDate>Sat, 29 Apr 2023 22:03:00 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_%E4%B8%AD%E7%BA%A7%E6%8E%A7%E4%BB%B6/</guid>
-    <description><![CDATA[1.Android开发 中级控件 1.1 图形定制 1.1.1 图形Drawable Android把所有能够显示的图形都抽象为Drawable类（可绘制的）。这里]]></description>
 </item>
 </channel>
 </rss>
