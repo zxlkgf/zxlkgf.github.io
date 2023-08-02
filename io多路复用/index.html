@@ -177,7 +177,7 @@
 </span></span><span class="line"><span class="cl">           <span class="o">-</span><span class="n">tv_sec</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span><span class="n">tv_usec</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span> <span class="err">阻塞对应的时间</span>
 </span></span><span class="line"><span class="cl">    <span class="o">-</span><span class="err">返回值：</span>
 </span></span><span class="line"><span class="cl">        <span class="o">--</span><span class="mi">1</span><span class="o">:</span><span class="err">失败</span>
-</span></span><span class="line"><span class="cl">        <span class="o">&gt;</span><span class="mi">0</span><span class="o">:</span><span class="err">检测的集合中有</span><span class="n">n</span><span class="err">个文件描述符发生变化</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&gt;</span><span class="mi">0</span><span class="o">:</span><span class="err">检测的集合中有</span><span class="n">n个文件描述符发生变化</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">//将参数文件描述符fd对应的标志位清零
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">FD_CLR</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span><span class="n">fd_set</span> <span class="o">*</span><span class="n">set</span><span class="p">);</span>
@@ -206,7 +206,7 @@
 </span></span><span class="line"><span class="cl">            <span class="mi">1</span><span class="err">：阻塞，当检测到需要检测的文件描述符有变化，就解除阻塞</span>
 </span></span><span class="line"><span class="cl">    <span class="err">返回值</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">        <span class="o">-</span><span class="mi">1</span><span class="err">：失败</span>
-</span></span><span class="line"><span class="cl">        <span class="o">&gt;</span><span class="mi">0</span><span class="err">：成功</span> <span class="err">表示检测到集合中有</span><span class="n">n</span><span class="err">个文件描述符发生变化。</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&gt;</span><span class="mi">0</span><span class="err">：成功</span> <span class="err">表示检测到集合中有</span><span class="n">n个文件描述符发生变化</span><span class="err">。</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -223,7 +223,7 @@
 </span></span><span class="line"><span class="cl">        <span class="nl">size</span><span class="p">:</span><span class="err">目前乜有意义了，随便写一个就行。</span>
 </span></span><span class="line"><span class="cl">    <span class="o">-</span><span class="err">返回值</span>
 </span></span><span class="line"><span class="cl">        <span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="err">失败</span>
-</span></span><span class="line"><span class="cl">        <span class="o">&gt;</span><span class="mi">0</span><span class="o">:</span><span class="err">文件描述符，操作</span><span class="n">epoll</span><span class="err">实例的</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&gt;</span><span class="mi">0</span><span class="o">:</span><span class="err">文件描述符，操作</span><span class="n">epoll实例的</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">union</span> <span class="nc">epoll_data</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
@@ -239,7 +239,7 @@
 </span></span><span class="line"><span class="cl"><span class="c1">//对epoll实例进行管理：添加，删除，修改
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">epoll_ctl</span><span class="p">(</span><span class="kt">int</span> <span class="n">epfd</span><span class="p">,</span><span class="kt">int</span> <span class="n">op</span><span class="p">,</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span><span class="k">struct</span> <span class="nc">epoll_event</span> <span class="o">*</span><span class="n">event</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="err">参数</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="nl">epfd</span><span class="p">:</span><span class="n">epoll</span><span class="err">实例</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">epfd</span><span class="p">:</span><span class="n">epoll实例</span>
 </span></span><span class="line"><span class="cl">        <span class="n">op</span><span class="err">：进行什么操作</span>
 </span></span><span class="line"><span class="cl">        <span class="n">fd</span><span class="err">：需要操作的文件描述符</span>
 </span></span><span class="line"><span class="cl">        <span class="n">event</span><span class="err">：对该文件描述符需要检测的事件</span>
@@ -247,7 +247,7 @@
 </span></span><span class="line"><span class="cl"><span class="c1">//检测函数
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">epoll_wait</span><span class="p">(</span><span class="kt">int</span> <span class="n">epfd</span><span class="p">,</span><span class="k">struct</span> <span class="nc">epoll_event</span> <span class="o">*</span><span class="n">events</span><span class="p">,</span><span class="kt">int</span> <span class="n">maxevents</span><span class="p">,</span><span class="kt">int</span> <span class="n">timeout</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="err">参数</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="nl">epfd</span><span class="p">:</span><span class="n">epoll</span><span class="err">实例</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">epfd</span><span class="p">:</span><span class="n">epoll实例</span>
 </span></span><span class="line"><span class="cl">        <span class="nl">events</span><span class="p">:</span><span class="err">传出参数，保存了发生变化的文件描述符的信息</span>
 </span></span><span class="line"><span class="cl">        <span class="n">maxevents</span><span class="err">：发生改变的事件的数量</span><span class="p">(</span><span class="err">第二个参数的大小</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">timeout</span><span class="err">：阻塞时间</span>
@@ -301,7 +301,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.116.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.116.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

@@ -182,8 +182,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">socket</span><span class="p">(</span><span class="kt">int</span> <span class="n">domain</span><span class="p">,</span> <span class="kt">int</span> <span class="n">type</span><span class="p">,</span> <span class="kt">int</span> <span class="n">protocol</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nl">domain</span><span class="p">:</span> <span class="err">协议类型，一般为</span><span class="n">AF_INET</span>
-</span></span><span class="line"><span class="cl">    <span class="nl">type</span><span class="p">:</span> <span class="n">socket</span><span class="err">类型</span><span class="p">(</span><span class="n">SOCKET_STREAM</span><span class="p">,</span><span class="n">SOCKET_DGRAM</span><span class="p">,</span><span class="n">SOCKET_RAW</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nl">protocol</span><span class="p">:</span><span class="err">用来指定</span><span class="n">socket</span><span class="err">所使用的传输协议编号，通常设为</span><span class="mi">0</span><span class="err">即可</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">type</span><span class="p">:</span> <span class="n">socket类型</span><span class="p">(</span><span class="n">SOCKET_STREAM</span><span class="p">,</span><span class="n">SOCKET_DGRAM</span><span class="p">,</span><span class="n">SOCKET_RAW</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">protocol</span><span class="p">:</span><span class="err">用来指定</span><span class="n">socket所使用的传输协议编号</span><span class="err">，通常设为</span><span class="mi">0</span><span class="err">即可</span>
 </span></span></code></pre></div><p>2.bind():指定用于通信的IP地址和port端口</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">bind</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="err">头文件：</span>
@@ -191,8 +191,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">bind</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">sockaddr</span> <span class="o">*</span><span class="n">my_addr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">addrlen</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nl">sockfd</span><span class="p">:</span> <span class="n">socket</span><span class="err">描述符</span>
-</span></span><span class="line"><span class="cl">    <span class="nl">my_addr</span><span class="p">:</span><span class="err">是一个指向包含有本机</span><span class="n">ip</span><span class="err">地址和端口号等信息的</span><span class="n">sockaddr</span><span class="err">类型的指针</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">sockfd</span><span class="p">:</span> <span class="n">socket描述符</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">my_addr</span><span class="p">:</span><span class="err">是一个指向包含有本机</span><span class="n">ip地址和端口号等信息的sockaddr类型的指针</span>
 </span></span><span class="line"><span class="cl">    <span class="nl">addrlen</span><span class="p">:</span><span class="err">常被设为</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr</span><span class="p">)</span>
 </span></span></code></pre></div><p>3.listen():把socket设为监听对象</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="mi">3</span> <span class="nf">listen</span><span class="p">()</span>
@@ -200,7 +200,7 @@
 </span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">listen</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">backlog</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="nl">sockfd</span><span class="p">:</span><span class="n">socket</span><span class="p">()</span><span class="err">系统调用返回的</span><span class="n">socket</span><span class="err">描述符</span>
+</span></span><span class="line"><span class="cl"><span class="nl">sockfd</span><span class="p">:</span><span class="n">socket</span><span class="p">()</span><span class="err">系统调用返回的</span><span class="n">socket描述符</span>
 </span></span><span class="line"><span class="cl"><span class="nl">backlog</span><span class="p">:</span><span class="err">指定在请求队列中的最大请求数，进入的连接请求将在队列中等待</span><span class="n">accept</span><span class="p">()</span><span class="err">它们。</span>
 </span></span></code></pre></div><p>4.accept():接受客户端发来的连接请求</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="mi">4</span> <span class="n">accept</span><span class="p">()</span>
@@ -209,8 +209,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp">#inlcude &lt;sys/socket.h&gt;
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">accept</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">addrlen</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nl">sockfd</span><span class="p">:</span><span class="err">是被监听的</span><span class="n">socket</span><span class="err">描述符</span>
-</span></span><span class="line"><span class="cl">    <span class="nl">addr</span><span class="p">:</span><span class="err">通常是一个指向</span><span class="n">sockaddr_in</span><span class="err">变量的指针，该变量用来存放提出连接请求服务的主机的信息</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">sockfd</span><span class="p">:</span><span class="err">是被监听的</span><span class="n">socket描述符</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">addr</span><span class="p">:</span><span class="err">通常是一个指向</span><span class="n">sockaddr_in变量的指针</span><span class="err">，该变量用来存放提出连接请求服务的主机的信息</span>
 </span></span><span class="line"><span class="cl">    <span class="nl">addrlen</span><span class="p">:</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr_in</span><span class="p">)</span>
 </span></span></code></pre></div><p>5.recv()/send():接受或者发送</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">send</span><span class="p">()</span>
@@ -218,7 +218,7 @@
 </span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型：</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">send</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">msg</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nl">sockfd</span><span class="p">:</span><span class="err">用来传输数据的</span><span class="n">socket</span><span class="err">描述符</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">sockfd</span><span class="p">:</span><span class="err">用来传输数据的</span><span class="n">socket描述符</span>
 </span></span><span class="line"><span class="cl">    <span class="nl">msg</span><span class="p">:</span><span class="err">要发送数据的指针</span> 
 </span></span><span class="line"><span class="cl">    <span class="nl">flags</span><span class="p">:</span> <span class="mi">0</span>
 </span></span><span class="line"><span class="cl">
@@ -228,7 +228,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">函数原型</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">recv</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">   <span class="n">sockfd</span><span class="err">：接收数据的</span><span class="n">socket</span><span class="err">描述符</span>
+</span></span><span class="line"><span class="cl">   <span class="n">sockfd</span><span class="err">：接收数据的</span><span class="n">socket描述符</span>
 </span></span><span class="line"><span class="cl">   <span class="nl">buf</span><span class="p">:</span><span class="err">存放数据的缓冲区</span>
 </span></span><span class="line"><span class="cl">   <span class="nl">len</span><span class="p">:</span><span class="err">缓冲的长度</span>
 </span></span><span class="line"><span class="cl">   <span class="nl">flags</span><span class="p">:</span><span class="mi">0</span>
@@ -242,22 +242,22 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">htons</span>
 </span></span><span class="line"><span class="cl"><span class="err">头文件</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">uint16_t</span> <span class="n">htons</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">hostshort</span><span class="p">);</span><span class="err">　</span>
-</span></span><span class="line"><span class="cl"><span class="n">htons</span><span class="err">的功能：</span>
-</span></span><span class="line"><span class="cl"><span class="err">    将一个无符号短整型数值转换为网络字节序，即大端模式</span><span class="p">(</span><span class="n">big</span><span class="o">-</span><span class="n">endian</span><span class="p">)</span><span class="err">　</span>
-</span></span><span class="line"><span class="cl"><span class="err">    参数</span><span class="n">u_short</span> <span class="nl">hostshort</span><span class="p">:</span> <span class="mi">16</span><span class="err">位无符号整数　</span>
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">uint16_t</span> <span class="n">htons</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">hostshort</span><span class="p">);</span>　
+</span></span><span class="line"><span class="cl"><span class="n">htons的功能</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">    <span class="err">将一个无符号短整型数值转换为网络字节序，即大端模式</span><span class="p">(</span><span class="n">big</span><span class="o">-</span><span class="n">endian</span><span class="p">)</span>　
+</span></span><span class="line"><span class="cl">    <span class="err">参数</span><span class="n">u_short</span> <span class="nl">hostshort</span><span class="p">:</span> <span class="mi">16</span><span class="err">位无符号整数</span>　
 </span></span><span class="line"><span class="cl"><span class="err">返回值</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl"><span class="err">    </span><span class="n">TCP</span> <span class="o">/</span> <span class="n">IP</span><span class="err">网络字节顺序</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TCP</span> <span class="o">/</span> <span class="n">IP网络字节顺序</span><span class="p">.</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">htonl</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;arpa/inet.h&gt;　　</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">uint32_t</span> <span class="n">htonl</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">hostlong</span><span class="p">);</span><span class="err">　　</span>
-</span></span><span class="line"><span class="cl"><span class="err">简述：将主机的无符号长整形数转换成网络字节顺序。　</span>
-</span></span><span class="line"><span class="cl"><span class="n">hostlong</span><span class="err">：主机字节顺序表达的</span><span class="mi">32</span><span class="err">位数。　　</span>
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">uint32_t</span> <span class="n">htonl</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">hostlong</span><span class="p">);</span>　　
+</span></span><span class="line"><span class="cl"><span class="err">简述：将主机的无符号长整形数转换成网络字节顺序。</span>　
+</span></span><span class="line"><span class="cl"><span class="n">hostlong</span><span class="err">：主机字节顺序表达的</span><span class="mi">32</span><span class="err">位数。</span>　　
 </span></span><span class="line"><span class="cl"><span class="err">注释：</span>
-</span></span><span class="line"><span class="cl">  <span class="err">　　本函数将一个</span><span class="mi">32</span><span class="err">位数从主机字节顺序转换成网络字节顺序。　　</span>
-</span></span><span class="line"><span class="cl"><span class="err">返回值：　</span>
+</span></span><span class="line"><span class="cl">  　　<span class="err">本函数将一个</span><span class="mi">32</span><span class="err">位数从主机字节顺序转换成网络字节顺序。</span>　　
+</span></span><span class="line"><span class="cl"><span class="err">返回值：</span>　
 </span></span><span class="line"><span class="cl">     <span class="n">htonl</span><span class="p">()</span><span class="err">返回一个网络字节顺序的值。</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="err">使用</span><span class="n">gethostname</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="err">返回如下结构体</span>
@@ -269,19 +269,19 @@
 </span></span><span class="line"><span class="cl">      <span class="kt">char</span> <span class="o">**</span><span class="n">h_addr_list</span><span class="p">;</span>       <span class="cm">/* list of addresses */</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_name</span>
-</span></span><span class="line"><span class="cl"><span class="err">表示的是主机的规范名。例如</span><span class="n">www</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">com</span><span class="err">的规范名其实是</span><span class="n">www</span><span class="p">.</span><span class="n">a</span><span class="p">.</span><span class="n">shifen</span><span class="p">.</span><span class="n">com</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机的规范名。例如</span><span class="n">www</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">com的规范名其实是www</span><span class="p">.</span><span class="n">a</span><span class="p">.</span><span class="n">shifen</span><span class="p">.</span><span class="n">com</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_aliases</span>
-</span></span><span class="line"><span class="cl"><span class="err">表示的是主机的别名。</span><span class="n">www</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">com</span><span class="err">就是</span><span class="n">baidu</span><span class="err">他自己的别名。</span>
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机的别名。</span><span class="n">www</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">com就是baidu他自己的别名</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_addrtype</span>    
-</span></span><span class="line"><span class="cl"><span class="err">表示的是主机</span><span class="n">ip</span><span class="err">地址的类型。只会是</span><span class="n">ipv4</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">)</span><span class="err">，</span> <span class="err">这个函数处理不了</span><span class="n">ipv6</span>
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机</span><span class="n">ip地址的类型</span><span class="err">。只会是</span><span class="n">ipv4</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">)</span><span class="err">，</span> <span class="err">这个函数处理不了</span><span class="n">ipv6</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_length</span>      
-</span></span><span class="line"><span class="cl"><span class="err">表示的是主机</span><span class="n">ip</span><span class="err">地址的长度。</span>
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机</span><span class="n">ip地址的长度</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">hostent</span><span class="o">-&gt;</span><span class="n">h_addr_list</span>
-</span></span><span class="line"><span class="cl"><span class="err">表示的是主机的</span><span class="n">ip</span><span class="err">地址。是网络字节序，需要通过</span><span class="n">inet_ntop</span><span class="err">函数转换。</span>
+</span></span><span class="line"><span class="cl"><span class="err">表示的是主机的</span><span class="n">ip地址</span><span class="err">。是网络字节序，需要通过</span><span class="n">inet_ntop函数转换</span><span class="err">。</span>
 </span></span></code></pre></div><hr>
 <h3 id="代码样例">代码样例</h3>
 <p>需求:客户端向服务器发送消息，服务器回传该消息给客户端。</p>
@@ -440,7 +440,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.116.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.116.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

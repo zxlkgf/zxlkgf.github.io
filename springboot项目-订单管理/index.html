@@ -218,11 +218,11 @@
 <hr>
 <h3 id="731-后端-持久层">7.3.1 后端-持久层</h3>
 <h4 id="1编写sql">1.编写sql</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="err">在</span><span class="n">t_order</span><span class="err">表中插入数据</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_order</span><span class="p">(</span><span class="n">oid</span><span class="err">除外</span><span class="p">)</span><span class="k">VALUES</span><span class="p">(</span><span class="err">字段的值</span><span class="p">)</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="err">在</span><span class="n">t_order表中插入数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_order</span><span class="p">(</span><span class="n">oid除外</span><span class="p">)</span><span class="k">VALUES</span><span class="p">(</span><span class="err">字段的值</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="err">在</span><span class="n">t_order_item</span><span class="err">中插入数据</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_order_item</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="err">除外</span><span class="p">)</span><span class="k">VALUES</span><span class="p">(</span><span class="err">字段的值</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="err">在</span><span class="n">t_order_item中插入数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_order_item</span><span class="w"> </span><span class="p">(</span><span class="n">id除外</span><span class="p">)</span><span class="k">VALUES</span><span class="p">(</span><span class="err">字段的值</span><span class="p">)</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2编写mapper接口的抽象方法">2.编写Mapper接口的抽象方法</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
@@ -334,7 +334,7 @@
 </span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setRecvArea</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getAreaName</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setRecvAddress</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getAddress</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setTotalPrice</span><span class="o">(</span><span class="n">totalPrice</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">//表示未支付
+</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="n">0</span><span class="o">);</span> <span class="c1">//表示未支付
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Date</span> <span class="n">createdTime</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOrderTime</span><span class="o">(</span><span class="n">createdTime</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setPayTime</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
@@ -346,7 +346,7 @@
 </span></span><span class="line"><span class="cl">        <span class="c1">//调用持久层进行插入
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">orderMapper</span><span class="o">.</span><span class="na">insertOrder</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">0</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;服务器出现错误，创建订单失败&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//根据oid查询指定的订单，并返回给控制层
@@ -382,7 +382,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="c1">//调用持久层进行插入
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">orderMapper</span><span class="o">.</span><span class="na">insertOrderItem</span><span class="o">(</span><span class="n">orderItem</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">0</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;服务器出现错误，创建订单失败&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -464,7 +464,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.116.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.116.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
