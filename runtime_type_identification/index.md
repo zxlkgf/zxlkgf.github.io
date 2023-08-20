@@ -125,7 +125,7 @@ int main()
 ---
 
 
-## const_cast
+## 2.const_cast
 const_cast用于改变值为const或Volatile.  
 用法: const_cast<type_name>(expression)  
 返回值为新类型。这里我们需要强调的是**const_cast**主要用于更改指针或引用的**const**或**volatile**限定符。其中，**type_name**必须是指针、引用或者成员指针类型.
@@ -199,7 +199,7 @@ int main()
 
 ---
 
-## static_cast
+## 3.static_cast
 static_cast关键字一般用来将枚举类型转换成整型，或者短整形转换成长整形，又或者整型转换成浮点型。也可以用来将指向父类的指针转换成指向子类的指针。  
 static_cast使用注意事项：
 
@@ -221,7 +221,7 @@ static_cast使用注意事项：
 
 ---
 
-## reinterpret_cast
+## 4.reinterpret_cast
 首先从英文字面的意思理解，interpret是“解释，诠释”的意思，加上前缀“re”，就是“重新诠释”的意思；cast在这里可以翻译成“转型”（在侯捷大大翻译的《深度探索C++对象模型》、《Effective C++（第三版）》中，cast都被翻译成了转型），这样整个词顺下来就是“重新诠释的转型”。我们知道变量在内存中是以“…0101…”二进制格式存储的，一个int型变量一般占用32个位，参考下面的代码  
 
 ```cpp

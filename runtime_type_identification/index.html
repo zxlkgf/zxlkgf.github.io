@@ -127,9 +127,9 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#1-daynamic_cast">1. daynamic_cast</a></li>
-    <li><a href="#const_cast">const_cast</a></li>
-    <li><a href="#static_cast">static_cast</a></li>
-    <li><a href="#reinterpret_cast">reinterpret_cast</a></li>
+    <li><a href="#2const_cast">2.const_cast</a></li>
+    <li><a href="#3static_cast">3.static_cast</a></li>
+    <li><a href="#4reinterpret_cast">4.reinterpret_cast</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="类型转换运算符">类型转换运算符</h1>
@@ -248,7 +248,7 @@ dynamic_cast用于类继承层次间的指针或引用转换.如果是单纯的�
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>补充: 使用引用进行dynamic_cast转换，正确的转换并不会发生任何事，但是，错误的转换不会返回0,而是抛出bad_cast异常。</p>
 <hr>
-<h2 id="const_cast">const_cast</h2>
+<h2 id="2const_cast">2.const_cast</h2>
 <p>const_cast用于改变值为const或Volatile.<br>
 用法: const_cast&lt;type_name&gt;(expression)<br>
 返回值为新类型。这里我们需要强调的是<strong>const_cast</strong>主要用于更改指针或引用的<strong>const</strong>或<strong>volatile</strong>限定符。其中，<strong>type_name</strong>必须是指针、引用或者成员指针类型.
@@ -313,7 +313,7 @@ dynamic_cast用于类继承层次间的指针或引用转换.如果是单纯的�
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><hr>
-<h2 id="static_cast">static_cast</h2>
+<h2 id="3static_cast">3.static_cast</h2>
 <p>static_cast关键字一般用来将枚举类型转换成整型，或者短整形转换成长整形，又或者整型转换成浮点型。也可以用来将指向父类的指针转换成指向子类的指针。<br>
 static_cast使用注意事项：</p>
 <ol>
@@ -340,7 +340,7 @@ static_cast使用注意事项：</p>
 </li>
 </ol>
 <hr>
-<h2 id="reinterpret_cast">reinterpret_cast</h2>
+<h2 id="4reinterpret_cast">4.reinterpret_cast</h2>
 <p>首先从英文字面的意思理解，interpret是“解释，诠释”的意思，加上前缀“re”，就是“重新诠释”的意思；cast在这里可以翻译成“转型”（在侯捷大大翻译的《深度探索C++对象模型》、《Effective C++（第三版）》中，cast都被翻译成了转型），这样整个词顺下来就是“重新诠释的转型”。我们知道变量在内存中是以“…0101…”二进制格式存储的，一个int型变量一般占用32个位，参考下面的代码</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
