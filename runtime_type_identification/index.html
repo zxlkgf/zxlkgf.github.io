@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Runtime_type_identification - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="Runtime_type_identification" />
+<meta property="og:description" content="类型转换运算符 1. daynamic_cast dynamic_cast不能回答指针指向的是哪种类型，但是可以回答是否可以安全的将对象的地址赋值给特定类型的指针。 dyna" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/runtime_type_identification/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-20T20:50:20+08:00" />
+<meta property="article:modified_time" content="2023-08-20T20:50:20+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Runtime_type_identification"/>
+<meta name="twitter:description" content="类型转换运算符 1. daynamic_cast dynamic_cast不能回答指针指向的是哪种类型，但是可以回答是否可以安全的将对象的地址赋值给特定类型的指针。 dyna"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/runtime_type_identification/" /><link rel="prev" href="http://example.org/android%E5%AD%A6%E4%B9%A0_aidl/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Runtime_type_identification",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/runtime_type_identification\/"
+        },"genre": "posts","keywords": "C\u002b\u002b","wordcount":  2660 ,
+        "url": "http:\/\/example.org\/runtime_type_identification\/","datePublished": "2023-08-20T20:50:20+08:00","dateModified": "2023-08-20T20:50:20+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Runtime_type_identification</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-20">2023-08-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2660 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-daynamic_cast">1. daynamic_cast</a></li>
+    <li><a href="#const_cast">const_cast</a></li>
+    <li><a href="#static_cast">static_cast</a></li>
+    <li><a href="#reinterpret_cast">reinterpret_cast</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="类型转换运算符">类型转换运算符</h1>
+<hr>
+<h2 id="1-daynamic_cast">1. daynamic_cast</h2>
+<p>dynamic_cast不能回答指针指向的是哪种类型，但是可以回答是否可以<strong>安全的</strong>将对象的地址赋值给特定类型的指针。<br>
+dynamic_cast用于类继承层次间的指针或引用转换.如果是单纯的派生类指针或引用转换为基类的指针或引用，这本是就是安全的。使用dynamic_cast略显多余。<br>
+如下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;ctime&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Grand</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">hold</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Grand</span><span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">hold</span><span class="p">(</span><span class="n">h</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Speak</span><span class="p">()</span><span class="k">const</span><span class="p">{</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am a grand class!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Value</span><span class="p">()</span> <span class="k">const</span><span class="p">{</span><span class="k">return</span> <span class="n">hold</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Superb</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Grand</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Superb</span><span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">Grand</span><span class="p">(</span><span class="n">h</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">Speak</span><span class="p">()</span><span class="k">const</span><span class="p">{</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am a superb class!!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Say</span><span class="p">()</span> <span class="k">const</span><span class="p">{</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I hold the superb value of &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">Value</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Magnificent</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Superb</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Magnificent</span><span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;A&#39;</span><span class="p">)</span><span class="o">:</span><span class="n">Superb</span><span class="p">(</span><span class="n">h</span><span class="p">),</span><span class="n">ch</span><span class="p">(</span><span class="n">c</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">Speak</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am a Magnificent class !!!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">Say</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I hold the character &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">ch</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; and the integer &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">Value</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Grand</span> <span class="o">*</span> <span class="n">pg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Magnificent</span> <span class="o">*</span> <span class="n">ps</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Magnificent</span><span class="p">();</span>     
+</span></span><span class="line"><span class="cl">    <span class="n">pg</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Grand</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">ps</span><span class="p">);</span>     <span class="c1">// 正确，但是没有必要，向上转型总是安全的，而且dynamic_cast有开销
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">pg</span><span class="o">-&gt;</span><span class="n">Speak</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">delete</span> <span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
+<p>dynamic_cast 真正的作用是进行安全的向下转型。</p>
+<ol>
+<li>基类指针指向派生类，将该指针转化为派生类的指针。成功返回派生类指针。</li>
+<li>基类指针指向基类，将该指针转化为派生类指针，失败返回0(NULL)<br>
+如下:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;ctime&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Grand</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">hold</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Grand</span><span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">hold</span><span class="p">(</span><span class="n">h</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Speak</span><span class="p">()</span><span class="k">const</span><span class="p">{</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am a grand class!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Value</span><span class="p">()</span> <span class="k">const</span><span class="p">{</span><span class="k">return</span> <span class="n">hold</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Superb</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Grand</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Superb</span><span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">Grand</span><span class="p">(</span><span class="n">h</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">Speak</span><span class="p">()</span><span class="k">const</span><span class="p">{</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am a superb class!!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Say</span><span class="p">()</span> <span class="k">const</span><span class="p">{</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I hold the superb value of &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">Value</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Magnificent</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Superb</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Magnificent</span><span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;A&#39;</span><span class="p">)</span><span class="o">:</span><span class="n">Superb</span><span class="p">(</span><span class="n">h</span><span class="p">),</span><span class="n">ch</span><span class="p">(</span><span class="n">c</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">Speak</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am a Magnificent class !!!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">Say</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I hold the character &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">ch</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; and the integer &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">Value</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Grand</span> <span class="o">*</span> <span class="n">ps</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Magnificent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ps</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Superb</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ps</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Grand</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Superb</span> <span class="o">*</span> <span class="n">pb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">pb</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Superb</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">ps</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pb</span><span class="o">-&gt;</span><span class="n">Say</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;错误的转换&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">delete</span> <span class="n">ps</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>补充: 使用引用进行dynamic_cast转换，正确的转换并不会发生任何事，但是，错误的转换不会返回0,而是抛出bad_cast异常。</p>
+<hr>
+<h2 id="const_cast">const_cast</h2>
+<p>const_cast用于改变值为const或Volatile.<br>
+用法: const_cast&lt;type_name&gt;(expression)<br>
+返回值为新类型。这里我们需要强调的是<strong>const_cast</strong>主要用于更改指针或引用的<strong>const</strong>或<strong>volatile</strong>限定符。其中，<strong>type_name</strong>必须是指针、引用或者成员指针类型.
+如下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">change</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">pt</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">pop1</span> <span class="o">=</span> <span class="mi">38383</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">int</span> <span class="n">pop2</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;pop1: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">pop1</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,address: &#34;</span><span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">pop1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;pop2: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">pop2</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,address: &#34;</span><span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">pop2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">change</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pop1</span><span class="p">,</span> <span class="o">-</span><span class="mi">103</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">change</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pop2</span><span class="p">,</span> <span class="o">-</span><span class="mi">103</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;pop1: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">pop1</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,address: &#34;</span><span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">pop1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;pop2: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">pop2</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,address: &#34;</span><span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">pop2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">change</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">pt</span><span class="p">,</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="o">*</span> <span class="n">pc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pc</span> <span class="o">=</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">int</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span><span class="n">pc</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ps: &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">pt</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,address: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">pt</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">result:
+</span></span><span class="line"><span class="cl">pop1: 38383,address: 0x7ffda82a80e0
+</span></span><span class="line"><span class="cl">pop2: 2000,address: 0x7ffda82a80e4
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ps: 38280,address: 0x7ffda82a80e0
+</span></span><span class="line"><span class="cl">ps: 1897,address: 0x7ffda82a80e4
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pop1: 38280,address: 0x7ffda82a80e0
+</span></span><span class="line"><span class="cl">pop2: 2000,address: 0x7ffda82a80e4
+</span></span></code></pre></div><p>从运行结果可以看出，pop1和ps的地址相同，pop2和ps的地址相同，在函数内部,该地址所对应的值已经被-103，但是通过函数之后最终pop2却没有修改，为什么会出现这种结果呢?<br>
+实际上这就是因为编译器优化结果造成的，因为在声明pop2的时候，其类型是const int，在编译阶段，编译器认为它就是不变的类型，当编译到cout &laquo; &ldquo;pop2: &quot; &laquo; pop2 &laquo; &ldquo;,address: &ldquo;&laquo; &amp;pop2 &laquo; endl;时，会将pop2直接替换为常量2000，即cout &laquo; &ldquo;pop2: &quot; &laquo; 2000 &laquo; &ldquo;,address: &ldquo;&laquo; &amp;pop2 &laquo; endl;，因此打印出来的就过就是2000。也正是由于该行为是未定义的行为，才导致输出结果与我们的预期不一致。所以，在我们日常使用中，const_cast可以用用来修改最初声明非const的值，而且应该尽量避免常量转换，除非我们真的需要使用它。</p>
+<hr>
+<p>const_cast另一个作用<br>
+将volatile丢弃，例子如下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;typeinfo&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">volatile</span> <span class="kt">int</span> <span class="o">*</span><span class="n">atemp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="k">typeid</span><span class="p">(</span><span class="n">a</span><span class="p">).</span><span class="n">name</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="k">typeid</span><span class="p">(</span><span class="n">atemp</span><span class="p">).</span><span class="n">name</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;将Volatile int *转换为 int * ...&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="o">*</span> <span class="n">aptr</span> <span class="o">=</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">int</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">atemp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="k">typeid</span><span class="p">(</span><span class="n">aptr</span><span class="p">).</span><span class="n">name</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="static_cast">static_cast</h2>
+<p>static_cast关键字一般用来将枚举类型转换成整型，或者短整形转换成长整形，又或者整型转换成浮点型。也可以用来将指向父类的指针转换成指向子类的指针。<br>
+static_cast使用注意事项：</p>
+<ol>
+<li>
+<p>static_cast可以用于基本类型的转换，如short与int、int与float、enum与int之间；</p>
+</li>
+<li>
+<p>static_cast也可以用于类类型的转换，但目标类型必须含有相应的构造函数；</p>
+</li>
+<li>
+<p>static_cast还可以转换对象的指针类型，但它不进行运行时类型检查，所以是不安全的；</p>
+</li>
+<li>
+<p>static_cast甚至可以把任何表达式都转换成void类型；</p>
+</li>
+<li>
+<p>satic_cast不能移除变量的const属性，请参考const_cast操作符；</p>
+</li>
+<li>
+<p>static_cast进行的是简单粗暴的转换（仅仅依靠尖括号中的类型），所以其正确性完全由程序员自己保证。</p>
+</li>
+<li>
+<p>static_cast是在编译时进行的，这与dynamic_cast正好相反。</p>
+</li>
+</ol>
+<hr>
+<h2 id="reinterpret_cast">reinterpret_cast</h2>
+<p>首先从英文字面的意思理解，interpret是“解释，诠释”的意思，加上前缀“re”，就是“重新诠释”的意思；cast在这里可以翻译成“转型”（在侯捷大大翻译的《深度探索C++对象模型》、《Effective C++（第三版）》中，cast都被翻译成了转型），这样整个词顺下来就是“重新诠释的转型”。我们知道变量在内存中是以“…0101…”二进制格式存储的，一个int型变量一般占用32个位，参考下面的代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">0x00636261</span><span class="p">;</span><span class="c1">//用16进制表示32位int，0x61是字符&#39;a&#39;的ASCII码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span> <span class="o">*</span> <span class="n">pnum</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span> <span class="o">*</span> <span class="n">pstr</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">pnum</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;pnum指针的值: &#34;</span><span class="o">&lt;&lt;</span><span class="n">pnum</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;pstr指针的值: &#34;</span><span class="o">&lt;&lt;</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">void</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">pstr</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="c1">//直接输出pstr会输出其指向的字符串，这里的类型转换是为了保证输出pstr的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;pnum指向的内容: &#34;</span><span class="o">&lt;&lt;</span><span class="n">hex</span><span class="o">&lt;&lt;*</span><span class="n">pnum</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;pstr指向的内容: &#34;</span><span class="o">&lt;&lt;</span><span class="n">pstr</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">result:
+</span></span><span class="line"><span class="cl">pnum指针的值: 0x7ffd7246df64
+</span></span><span class="line"><span class="cl">pstr指针的值: 0x7ffd7246df64
+</span></span><span class="line"><span class="cl">pnum指向的内容: 636261
+</span></span><span class="line"><span class="cl">pstr指向的内容: abc
+</span></span></code></pre></div><p>第6行定义了一个整型变量num，并初始化为0x00636261（十六进制表示），然后取num的地址用来初始化整型指针变量pnum。接着到了关键的地方，使用reinterpret_cast运算符把pnum从int<em>转变成char</em>类型并用于初始化pstr。</p>
+<p>将pnum和pstr两个指针的值输出，对比发现，两个指针的值是完全相同的，这是因为“reinterpret_cast 运算符并不会改变括号中运算对象的值，而是对该对象从位模式上进行重新解释”。如何理解位模式上的重新解释呢？通过推敲代码11行和12行的输出内容，就可见一斑。</p>
+<p>很显然，按照十六进制输出pnum指向的内容，得到636261；但是输出pstr指向的内容，为什么会得到”abc”呢？
+可以参考char占一个byte,但是由于int4byte内没有定义&rsquo;\0&rsquo;所以一直输出，直到遇到0。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-08-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/runtime_type_identification/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/runtime_type_identification/" data-title="Runtime_type_identification" data-via="https://twitter.com/ZXLKG" data-hashtags="C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/runtime_type_identification/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/runtime_type_identification/" data-title="Runtime_type_identification"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/runtime_type_identification/" data-title="Runtime_type_identification"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/android%E5%AD%A6%E4%B9%A0_aidl/" class="prev" rel="prev" title="Android学习_Aidl练习"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Android学习_Aidl练习</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

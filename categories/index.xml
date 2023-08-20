@@ -4,7 +4,15 @@
         <link>http://example.org/categories/</link>
         <description>Categories - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Mon, 10 Jul 2023 16:33:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 20 Aug 2023 20:50:20 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43;基础</title>
+    <link>http://example.org/categories/c&#43;&#43;%E5%9F%BA%E7%A1%80/</link>
+    <pubDate>Sun, 20 Aug 2023 20:50:20 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/c&#43;&#43;%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Andorid基础</title>
     <link>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</link>
     <pubDate>Mon, 10 Jul 2023 16:33:00 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
     <pubDate>Tue, 07 Feb 2023 20:55:47 &#43;0800</pubDate>
     <author>Cyo</author>
     <guid>http://example.org/categories/linux%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Linux</title>
-    <link>http://example.org/categories/linux/</link>
-    <pubDate>Sun, 05 Feb 2023 20:55:47 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/categories/linux/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

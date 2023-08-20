@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>C&#43;&#43;基础 - Category - Cyo&#39;s Website</title>
+        <link>http://example.org/categories/c&#43;&#43;%E5%9F%BA%E7%A1%80/</link>
+        <description>C&#43;&#43;基础 - Category - Cyo&#39;s Website</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 20 Aug 2023 20:50:20 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/c&#43;&#43;%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+    <title>Runtime_type_identification</title>
+    <link>http://example.org/runtime_type_identification/</link>
+    <pubDate>Sun, 20 Aug 2023 20:50:20 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/runtime_type_identification/</guid>
+    <description><![CDATA[类型转换运算符 1. daynamic_cast dynamic_cast不能回答指针指向的是哪种类型，但是可以回答是否可以安全的将对象的地址赋值给特定类型的指针。 dyna]]></description>
+</item>
+</channel>
+</rss>
