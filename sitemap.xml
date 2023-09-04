@@ -2,13 +2,13 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://example.org/tags/c&#43;&#43;/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/categories/c&#43;&#43;%E5%9F%BA%E7%A1%80/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/categories/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/runtime_type_identification/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/tags/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://example.org/tags/c&#43;&#43;/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://example.org/categories/c&#43;&#43;%E5%9F%BA%E7%A1%80/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://example.org/categories/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://example.org/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://example.org/runtime_type_identification/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://example.org/tags/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</loc><lastmod>2023-07-10T16:33:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/tags/android/</loc><lastmod>2023-07-10T16:33:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/android%E5%AD%A6%E4%B9%A0_aidl/</loc><lastmod>2023-07-10T16:33:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
