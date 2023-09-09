@@ -4,20 +4,20 @@
         <link>http://example.org/categories/</link>
         <description>Categories - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 20 Aug 2023 20:50:20 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 09 Sep 2023 16:26:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Andorid基础</title>
+    <link>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</link>
+    <pubDate>Sat, 09 Sep 2023 16:26:38 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>C&#43;&#43;基础</title>
     <link>http://example.org/categories/c&#43;&#43;%E5%9F%BA%E7%A1%80/</link>
     <pubDate>Sun, 20 Aug 2023 20:50:20 &#43;0800</pubDate>
     <author>Cyo</author>
     <guid>http://example.org/categories/c&#43;&#43;%E5%9F%BA%E7%A1%80/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Andorid基础</title>
-    <link>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</link>
-    <pubDate>Mon, 10 Jul 2023 16:33:00 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>

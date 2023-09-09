@@ -4,20 +4,20 @@
         <link>http://example.org/tags/</link>
         <description>Tags - Tag - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sun, 20 Aug 2023 20:50:20 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 09 Sep 2023 16:26:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Android</title>
+    <link>http://example.org/tags/android/</link>
+    <pubDate>Sat, 09 Sep 2023 16:26:38 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/tags/android/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>C&#43;&#43;</title>
     <link>http://example.org/tags/c&#43;&#43;/</link>
     <pubDate>Sun, 20 Aug 2023 20:50:20 &#43;0800</pubDate>
     <author>Cyo</author>
     <guid>http://example.org/tags/c&#43;&#43;/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Android</title>
-    <link>http://example.org/tags/android/</link>
-    <pubDate>Mon, 10 Jul 2023 16:33:00 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/tags/android/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
