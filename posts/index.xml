@@ -4,7 +4,15 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 09 Sep 2023 16:26:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 12 Sep 2023 20:05:57 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>SELinux配置和概念</title>
+    <link>http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/</link>
+    <pubDate>Tue, 12 Sep 2023 20:05:57 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/</guid>
+    <description><![CDATA[1.概述 1.1 概念 作为 Android 安全模型的一部分，Android 使用安全增强型 Linux (SELinux) 对所有进程强制执行强制访问控制 (MAC)，甚至包括以 Root/超级用户]]></description>
+</item>
+<item>
     <title>Okhttp详解</title>
     <link>http://example.org/okhttp%E8%AF%A6%E8%A7%A3/</link>
     <pubDate>Sat, 09 Sep 2023 16:26:38 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>Cyo</author>
     <guid>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer2%E5%AE%9E%E7%8E%B0%E9%80%9A%E4%BF%A1/</guid>
     <description><![CDATA[基于原生安卓的音乐播放器 1.BaseFragment public class BaseFragment extends Fragment { private static final String TAG = &#34;ZHAO_BaseFragment&#34;; private static final Boolean DEBUG = true; private static final String MUSIC_BG = &#34;music_bg&#34;; private static final String MUSIC_SRC = &#34;music_src&#34;; private Integer mMusic_bg; private Integer mMusic_src; private View root; public BaseFragment() { } public static BaseFragment newInstance(Integer mMusic_bg, Integer mMusic_src) { BaseFragment fragment]]></description>
-</item>
-<item>
-    <title>TelePhonyManager</title>
-    <link>http://example.org/telephonymanager/</link>
-    <pubDate>Tue, 06 Jun 2023 22:03:00 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/telephonymanager/</guid>
-    <description><![CDATA[TelephonyManager类笔记 提供对有关设备上的电话服务的信息的访问。应用程序可以使用此类中的方法来确定电话服务和状态，以及访问某些]]></description>
 </item>
 </channel>
 </rss>

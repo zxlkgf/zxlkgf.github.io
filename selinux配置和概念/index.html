@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>SELinux配置和概念 - Cyo&#39;s Website</title><meta name="Description" content="Cyo&#39;s website"><meta property="og:title" content="SELinux配置和概念" />
+<meta property="og:description" content="1.概述 1.1 概念 作为 Android 安全模型的一部分，Android 使用安全增强型 Linux (SELinux) 对所有进程强制执行强制访问控制 (MAC)，甚至包括以 Root/超级用户" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-12T20:05:57+08:00" />
+<meta property="article:modified_time" content="2023-09-12T20:05:57+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="SELinux配置和概念"/>
+<meta name="twitter:description" content="1.概述 1.1 概念 作为 Android 安全模型的一部分，Android 使用安全增强型 Linux (SELinux) 对所有进程强制执行强制访问控制 (MAC)，甚至包括以 Root/超级用户"/>
+<meta name="application-name" content="Cyo&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/" /><link rel="prev" href="http://example.org/okhttp%E8%AF%A6%E8%A7%A3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SELinux配置和概念",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5\/"
+        },"genre": "posts","keywords": "Android","wordcount":  3186 ,
+        "url": "http:\/\/example.org\/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5\/","datePublished": "2023-09-12T20:05:57+08:00","dateModified": "2023-09-12T20:05:57+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Cyo"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cyo&#39;s Website"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/headeravatar.jpeg"
+        data-srcset="/headeravatar.jpeg, /headeravatar.jpeg 1.5x, /headeravatar.jpeg 2x"
+        data-sizes="auto"
+        alt="/headeravatar.jpeg"
+        title="/headeravatar.jpeg" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="请输入想要查找的标题" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SELinux配置和概念</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/zxlkgf" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Cyo</a></span>&nbsp;<span class="post-category">included in <a href="/categories/andorid%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Andorid基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-09-12">2023-09-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3186 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1概述">1.概述</a>
+      <ul>
+        <li><a href="#11-概念">1.1 概念</a></li>
+        <li><a href="#12-mac-和-dac">1.2 MAC 和 DAC</a></li>
+        <li><a href="#13-类型属性别名和规则">1.3 类型,属性,别名和规则</a></li>
+        <li><a href="#14-安全上下文">1.4 安全上下文</a></li>
+        <li><a href="#15-te文件内容的语法规则">1.5 te文件内容的语法规则</a></li>
+      </ul>
+    </li>
+    <li><a href="#2selinux的实现">2.SELinux的实现</a>
+      <ul>
+        <li><a href="#21-selinux的核心文件">2.1 SELinux的核心文件</a></li>
+        <li><a href="#21-构建和编译sepolicy">2.1 构建和编译sepolicy</a></li>
+      </ul>
+    </li>
+    <li><a href="#3调试验证">3,调试验证</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1概述">1.概述</h2>
+<h3 id="11-概念">1.1 概念</h3>
+<p>作为 Android 安全模型的一部分，Android 使用安全增强型 Linux (SELinux) 对所有进程强制执行强制访问控制 (MAC)，甚至包括以 Root/超级用户权限运行的进程（Linux 功能）。借助 SELinux，Android 可以更好地保护和限制系统服务、控制对应用数据和系统日志的访问、降低恶意软件的影响，并保护用户免遭移动设备上的代码可能存在的缺陷的影响。</p>
+<p>SELinux 按照默认拒绝的原则运行：任何未经明确允许的行为都会被拒绝。SELinux 可按两种全局模式运行：
+宽容模式：权限拒绝事件会被记录下来，但不会被强制执行。
+强制模式：权限拒绝事件会被记录下来并强制执行。</p>
+<p>可以通过
+adb shell set enforece 0 ，将其设置为宽容模式
+adb shell set enforece 1 ，将其设置为强制模式</p>
+<hr>
+<h3 id="12-mac-和-dac">1.2 MAC 和 DAC</h3>
+<p>DEC系统(自主访问控制),其存在所有权的概念，即特定的资源所有者可以控制该资源关联的访问权限。这种系统通常比较粗放。并且容易出现无意中提权的问题。MAC系统则会在每次收到访问请求时都先咨询核心机构，再做出决定。</p>
+<h3 id="13-类型属性别名和规则">1.3 类型,属性,别名和规则</h3>
+<p>Android 依靠 SELinux 的类型强制执行 (TE) 组件来实施其政策。
+这表示所有对象（例如文件、进程或套接字）都具有相关联的类型。
+例如，默认情况下，应用的类型为 untrusted_app。对于进程而言，其类型也称为域。可以使用一个或多个属性为类型添加注解。属性可用于同时指代多种类型。</p>
+<p>对象会映射到类（例如文件、目录、符号链接、socket套接字），并且每个类的不同访问权限类型由权限表示。
+例如，file类存在权限open。虽然类型和属性作为Android SELinux政策的一部分会进行定期更新，但权限和类是静态定义的，并且作为新Linux版本的一部分也很少进行更新。</p>
+<p>政策规则采用以下格式：allow source target:class permissions;，其中：
+source - 规则主题的类型（或属性）。谁正在请求访问权限？
+目标 - 对象的类型（或属性）。对哪些内容提出了访问权限请求？
+类 - 要访问的对象（例如，文件、套接字）的类型
+权限 - 要执行的操作（或一组操作，例如读取、写入）</p>
+<p>例如 我们可以在logcat内对tag:avc进行过滤，来看到不被允许的操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">denied { set } for property=persist.vendor.vt.video_conference_support pid=12424 uid=1000 gid=1000 scontext=u:r:system_app:s0 tcontext=u:object_r:vendor_mtk_vendor_vt_prop:s0 tclass=property_service permissive=0&#39;
+</span></span></code></pre></div><p>可以看到上述avc输出：
+source : u:r:system_app:s0
+tcontext : u:object_r:vendor_mtk_vendor_vt_prop:s0
+tclass: property_service
+当前的SELinux的状态 permissive = 0 强制模式</p>
+<hr>
+<h4 id="131-类型声明">1.3.1 类型声明</h4>
+<p>区别客体类别。这里所说的类型指的是域类型和客体类型。
+语法：type 类型名(例如system_prop)
+type 类型名 [属性集,] [属性集,]&hellip;..
+SELinux没有预定的类型，所以我们需要声明我们所需的类型。</p>
+<hr>
+<h4 id="132-属性">1.3.2 属性</h4>
+<p>规则默认是拒绝所有访问的，每一个访问都需要被声明。
+如果我们想要让程序访问所有的文件，首先我们需要创建一个对应的域类型(system_app)，并允许它访问任何类型的文件。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">type system_app;  //声明域类型
+</span></span><span class="line"><span class="cl">allow system_app xxx_prop_t : file {read write open close}; 
+</span></span><span class="line"><span class="cl">//允许该域类型对xxx_prop具有读写打开关闭操作。(单个权限不需要{})
+</span></span><span class="line"><span class="cl">allow system_app http_file_t : file {read write open close};
+</span></span></code></pre></div><p>然而system_app需要对多文件进行访问权限操作，这样我们就需要编写很多allow语句，所以我们需要使用属性。
+attribute直接翻译过来叫属性， 主要用于在声明type的时候进行关联。 属性类似一个组，type关联属性之后， 新增的type就可以加入到这个属性组中，这个属性(组)拥有的权限， 新增的type也就自然拥有了这个权限），举例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">type xxx_prop_t , coredomain, domain;
+</span></span><span class="line"><span class="cl">type http_file_t , domain, coredomain;
+</span></span><span class="line"><span class="cl">{ xxx_prop_t , http_file_t }都关联(加入)了domain属性组
+</span></span></code></pre></div><p>这样我们需要让system_app对所有文件进行{read,write,open,close}操作的时候
+可以直接使用如下语法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">allow system_app domain: file {read write open close};
+</span></span></code></pre></div><hr>
+<h4 id="133-宏">1.3.3 宏</h4>
+<p>特别是对于文件访问权限，有很多种权限需要考虑。例如，read 权限不足以打开相应文件或对其调用 stat。为了简化规则定义，Android 提供了一组宏来处理最常见的情况。例如，若要添加 open 等缺少的权限，可以将上述规则改写为：
+allow appdomain app_data_file:file rw_file_perms;
+如需查看实用宏的更多示例，请参阅 global_macros 和 te_macros</p>
+<hr>
+<h3 id="14-安全上下文">1.4 安全上下文</h3>
+<p>调试SELinux政策或为文件添加标签时（通过file_contexts或运行ls -Z），可能会遇到安全上下文（也称为标签）</p>
+<p>安全上下文格式：user:role:type:sensitivity[:categories]
+user: 用户，目前SEAndroid上只定义一个SELinux用户，值为u
+role:角色，r（适用于主题）和 object_r（适用于对象）
+type: 主体/客体类型，一般定义在具体的te文件中
+sensitivity[:categories]:安全级别
+sensitivity:敏感度
+category:类别。</p>
+<hr>
+<h3 id="15-te文件内容的语法规则">1.5 te文件内容的语法规则</h3>
+<p>rule_name  source_type  target_type : class  permission_set
+rule_name: 赋予权限的规则,
+包含allow：允许
+dontaudit：不记录某项操作失败
+auditallow：记录操作
+neverallow：检查安全策略中是否存在违反neverallow规则的allow语句。</p>
+<p>source_type: 访问target_type的主体或主体集合（域），可自定义
+target_type:接受主体访问的客体或客体集合（域），可自定义
+class : 客体资源类型，不同的资源类型具有不同访问权限，可自定义、可继承
+perm_set：客体予以主体的权限说明。是class中具有的权限的子集</p>
+<p>其中source_type和target_type可以按照上述的attribute配置集合。</p>
+<hr>
+<h2 id="2selinux的实现">2.SELinux的实现</h2>
+<h3 id="21-selinux的核心文件">2.1 SELinux的核心文件</h3>
+<p>如果需要集成启动SELinux,需要下载<a href="https://android.googlesource.com/kernel/common/" target="_blank" rel="noopener noreffer ">最新Android内核</a>,并对其中的system/sepolicy目录下的文件进行修改。这些修改后的文件再编译后会包含SELinux内核安全政策，并涵盖上游Android系统。</p>
+<p>常情况下，您不能直接修改 system/sepolicy 文件，但您可以添加或修改自己的设备专用政策文件（位于 /device/manufacturer/device-name/sepolicy 目录中）。在 Android 8.0 及更高版本中，您对这些文件所做的更改只会影响供应商目录中的政策
+如需详细了解 Android 8.0 及更高版本中的公共 sepolicy 分离，请参阅在 Android 8.0 及更高版本中自定义 SEPolicy。</p>
+<p>在Android8.0及其更高版本中,sepolicy位于AOSP中的以下位置：
+system/sepolicy/public: 此目录可以处理privat和vendor之间的接口的所有内容。因此需要对其加以限制。
+system/sepolicy/private:此目录下不可以访问vendor下的任何安全策略，其中的内容包含所有system的所有私有内容。
+system/sepolicy/vendor: 此目录下不可访问private下的任何安全政策。属于供应商的安全政策。
+device/manufacturer/device-name/sepolicy。包含设备专用策略，已经对sepolicy的自定义。</p>
+<p>上下文描述文件:
+详细上下文参考
+查看上下文描述文件
+file_contexts //系统中所有file_contexts安全上下文
+seapp_contexts //app安全上下文
+property_contexts //属性的安全上下文
+service_contexts    //service文件安全上下文
+genfs_contexts //虚拟文件系统安全上下文</p>
+<hr>
+<h3 id="21-构建和编译sepolicy">2.1 构建和编译sepolicy</h3>
+<p>前提需要下载Android内核代码：<br>
+<a href="https://android.googlesource.com/kernel/common/" target="_blank" rel="noopener noreffer ">最新Android内核</a><br>
+参考：<br>
+<a href="https://source.android.com/docs/security/features/selinux/build?hl=zh-cn" target="_blank" rel="noopener noreffer ">构建sepolicy</a><br>
+<a href="https://source.android.com/docs/security/features/selinux/implement?hl=zh-cn" target="_blank" rel="noopener noreffer ">实现sepolicy</a></p>
+<hr>
+<h2 id="3调试验证">3,调试验证</h2>
+<p>SELinux 日志消息中包含“avc:”字样，因此可使用 grep 轻松找到。
+您可以通过运行 cat /proc/kmsg 来获取当前的拒绝事件日志，也可以通过运行 cat /sys/fs/pstore/console-ramoops 来获取上次启动时的拒绝事件日志 。</p>
+<p>你也可以通过过滤tag:avc 在logcat上查看输出。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">avc: denied  { connectto } for  pid=2671 comm=&#34;ping&#34; path=&#34;/dev/socket/dnsproxyd&#34;
+</span></span><span class="line"><span class="cl">scontext=u:r:shell:s0 tcontext=u:r:netd:s0 tclass=unix_stream_socket
+</span></span></code></pre></div><p>该输出的解读如下：
+上方的 { connectto } 表示执行的操作。根据它和末尾的 tclass (unix_stream_socket)，您可以大致了解是对什么对象执行什么操作。在此例中，是操作方正在试图连接到 UNIX 信息流套接字。
+scontext (u:r:shell:s0) 表示发起相应操作的环境，在此例中是 shell 中运行的某个程序。
+tcontext (u:r:netd:s0) 表示操作目标的环境，在此例中是归 netd 所有的某个 unix_stream_socket。
+顶部的 comm=&ldquo;ping&rdquo; 可帮助您了解拒绝事件发生时正在运行的程序。在此示例中，给出的信息非常清晰明了。</p>
+<p>具体调试策略:请参考<a href="https://source.android.com/docs/security/features/selinux/validate?hl=zh-cn" target="_blank" rel="noopener noreffer ">google sepolicy调试</a></p>
+<hr>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-09-12</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/" data-title="SELinux配置和概念" data-via="https://twitter.com/ZXLKG" data-hashtags="Android"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/" data-hashtag="Android"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/" data-title="SELinux配置和概念"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/" data-title="SELinux配置和概念"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/android/">Android</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/okhttp%E8%AF%A6%E8%A7%A3/" class="prev" rel="prev" title="Okhttp详解"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Okhttp详解</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.118.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.example.com/some.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Cyo's blog","id-2":"Cyo's blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

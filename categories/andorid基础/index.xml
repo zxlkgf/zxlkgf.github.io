@@ -4,7 +4,15 @@
         <link>http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/</link>
         <description>Andorid基础 - Category - Cyo&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>z514111073@gmail.com (Cyo)</managingEditor>
-            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Sat, 09 Sep 2023 16:26:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>z514111073@gmail.com (Cyo)</webMaster><lastBuildDate>Tue, 12 Sep 2023 20:05:57 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/andorid%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+    <title>SELinux配置和概念</title>
+    <link>http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/</link>
+    <pubDate>Tue, 12 Sep 2023 20:05:57 &#43;0800</pubDate>
+    <author>Cyo</author>
+    <guid>http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/</guid>
+    <description><![CDATA[1.概述 1.1 概念 作为 Android 安全模型的一部分，Android 使用安全增强型 Linux (SELinux) 对所有进程强制执行强制访问控制 (MAC)，甚至包括以 Root/超级用户]]></description>
+</item>
+<item>
     <title>Okhttp详解</title>
     <link>http://example.org/okhttp%E8%AF%A6%E8%A7%A3/</link>
     <pubDate>Sat, 09 Sep 2023 16:26:38 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>Cyo</author>
     <guid>http://example.org/telephonymanager/</guid>
     <description><![CDATA[TelephonyManager类笔记 提供对有关设备上的电话服务的信息的访问。应用程序可以使用此类中的方法来确定电话服务和状态，以及访问某些]]></description>
-</item>
-<item>
-    <title>Android基础学习_MediaPlayer(音乐播放器)</title>
-    <link>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/</link>
-    <pubDate>Sun, 04 Jun 2023 10:03:00 &#43;0800</pubDate>
-    <author>Cyo</author>
-    <guid>http://example.org/android%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0_mediaplayer/</guid>
-    <description><![CDATA[基于原生安卓的音乐播放器 1.Ui界面 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;LinearLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34; android:id=&#34;@+id/ll_main&#34; android:layout_width=&#34;match_parent&#34; android:layout_height=&#34;match_parent&#34; android:background=&#34;@drawable/bg&#34; android:gravity=&#34;center&#34; android:orientation=&#34;vertical&#34;&gt; &lt;LinearLayout android:layout_width=&#34;wrap_content&#34; android:layout_height=&#34;wrap_content&#34; android:orientation=&#34;horizontal&#34; &gt; &lt;TextView android:layout_width=&#34;wrap_content&#34; android:layout_height=&#34;30dp&#34; android:layout_weight=&#34;1&#34; android:textSize=&#34;17sp&#34; android:textColor=&#34;@color/black&#34; android:background=&#34;@color/white&#34; android:text=&#34;选取歌曲&#34;/&]]></description>
 </item>
 </channel>
 </rss>
