@@ -9,7 +9,7 @@
             <loc>http://example.org/posts/</loc><lastmod>2023-09-12T20:05:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>http://example.org/selinux%E9%85%8D%E7%BD%AE%E5%92%8C%E6%A6%82%E5%BF%B5/</loc><lastmod>2023-09-12T20:05:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>http://example.org/tags/</loc><lastmod>2023-09-12T20:05:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/okhttp%E8%AF%A6%E8%A7%A3/</loc><lastmod>2023-09-09T16:26:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://example.org/okhttp%E8%AF%A6%E8%A7%A3/</loc><lastmod>2023-09-09T16:26:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://example.org/tags/c&#43;&#43;/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/categories/c&#43;&#43;%E5%9F%BA%E7%A1%80/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/runtime_type_identification/</loc><lastmod>2023-08-20T20:50:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
