@@ -397,7 +397,7 @@ modified_time:增删改时间<br>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">user</span><span class="o">.</span><span class="na">setSalt</span><span class="o">(</span><span class="n">salt</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">newPass</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//修改逻辑删除判定
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">user</span><span class="o">.</span><span class="na">setIsDelete</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">user</span><span class="o">.</span><span class="na">setIsDelete</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//补全四个操作字段
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Date</span> <span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setCreatedTime</span><span class="o">(</span><span class="n">currentTime</span><span class="o">);</span>
@@ -408,7 +408,7 @@ modified_time:增删改时间<br>
 </span></span><span class="line"><span class="cl">        <span class="c1">//调用插入方法 插入用户数据
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">addUser</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//判断插入结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="o">){</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;处理用户注册过程出现未知异常&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -417,7 +417,7 @@ modified_time:增删改时间<br>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="nf">getMD5Password</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">,</span><span class="n">String</span> <span class="n">salt</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//加密算法
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//加密之后的密匙
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">3</span> <span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">            <span class="n">password</span> <span class="o">=</span> <span class="n">DigestUtils</span><span class="o">.</span><span class="na">md5DigestAsHex</span><span class="o">((</span><span class="n">salt</span> <span class="o">+</span> <span class="n">password</span> <span class="o">+</span> <span class="n">salt</span><span class="o">).</span><span class="na">getBytes</span><span class="o">()).</span><span class="na">toUpperCase</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">password</span><span class="o">;</span>
@@ -470,7 +470,7 @@ modified_time:增删改时间<br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/*控制层的基类*/</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseController</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/*操作成功状态码*/</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">OK</span> <span class="o">=</span> <span class="n">200</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">OK</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 1.当出现了value内的异常之一，就会将下方的方法作为新的控制器方法进行执行
 </span></span></span><span class="line"><span class="cl"><span class="cm">     *   因此该方法的返回值也同时是返回给前端的页面
@@ -480,13 +480,13 @@ modified_time:增删改时间<br>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">handleException</span><span class="o">(</span><span class="n">Throwable</span> <span class="n">e</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">        <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">e</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">e</span> <span class="k">instanceof</span> <span class="n">UsernameDuplicateException</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">result</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="n">4000</span><span class="o">);</span> <span class="c1">//表示用户名重复
+</span></span><span class="line"><span class="cl">            <span class="n">result</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="mi">4000</span><span class="o">);</span> <span class="c1">//表示用户名重复
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">result</span><span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">e</span> <span class="k">instanceof</span> <span class="n">UserNotFoundException</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">result</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="n">4001</span><span class="o">);</span> <span class="c1">//表示用户数据不存在
+</span></span><span class="line"><span class="cl">            <span class="n">result</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="mi">4001</span><span class="o">);</span> <span class="c1">//表示用户数据不存在
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">result</span><span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">e</span> <span class="k">instanceof</span> <span class="n">InsertException</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">result</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="n">5000</span><span class="o">);</span> <span class="c1">//数据库或服务器有问题
+</span></span><span class="line"><span class="cl">            <span class="n">result</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span> <span class="c1">//数据库或服务器有问题
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">result</span><span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//返回异常处理结果
@@ -637,7 +637,7 @@ modified_time:增删改时间<br>
 </span></span><span class="line"><span class="cl">        <span class="c1">//查询用户是否在数据库中
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">User</span> <span class="n">res</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">findUserByUsername</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//判断结果为空或者逻辑删除
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||(</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="n">1</span><span class="o">)){</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||(</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="mi">1</span><span class="o">)){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UserNotFoundException</span><span class="o">(</span><span class="s">&#34;用户数据不存在&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//密码校验
@@ -866,10 +866,10 @@ modified_time:增删改时间<br>
 <p>1.异常处理，创建一个表示密码不匹配的异常，比如原密码不对</p>
 <p>2.定义Userservice的抽象方法</p>
 <p>3.编写实现类实现接口方法的业务处理逻辑</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">1</span><span class="o">.</span><span class="na">密码不匹配错误</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="mi">1</span><span class="o">.</span><span class="na">密码不匹配错误</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PasswordNotMatchException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">2</span><span class="o">.</span><span class="na">IUserService的抽象方法</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="o">.</span><span class="na">IUserService的抽象方法</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 更改用户密码
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户id
@@ -879,12 +879,12 @@ modified_time:增删改时间<br>
 </span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">changePasswrod</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">String</span> <span class="n">username</span><span class="o">,</span><span class="n">String</span> <span class="n">oldPassword</span><span class="o">,</span><span class="n">String</span> <span class="n">newPasswrod</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">3</span><span class="o">.</span><span class="na">IUserServiceImpl</span> <span class="n">实体类的方法</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="o">.</span><span class="na">IUserServiceImpl</span> <span class="n">实体类的方法</span>
 </span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changePasswrod</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="n">String</span> <span class="n">oldPassword</span><span class="o">,</span> <span class="n">String</span> <span class="n">newPasswrod</span><span class="o">)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//先查询用户数据是否为空或者逻辑删除
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">User</span> <span class="n">res</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">findByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="n">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UserNotFoundException</span><span class="o">(</span><span class="s">&#34;用户数据不存在&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//数据库密码和旧密码对比
@@ -896,7 +896,7 @@ modified_time:增删改时间<br>
 </span></span><span class="line"><span class="cl">        <span class="c1">//插入新密码插入数据库，更新操作人和操作时间
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">newPass</span> <span class="o">=</span> <span class="n">getMD5Password</span><span class="o">(</span><span class="n">newPasswrod</span><span class="o">,</span> <span class="n">res</span><span class="o">.</span><span class="na">getSalt</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">updatePasswordByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">newPass</span><span class="o">,</span> <span class="n">username</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;更新数据时产生未知异常&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -1030,8 +1030,8 @@ HttpSession session</p>
 <h5 id="1定义异常无">1.定义异常（无）</h5>
 <h5 id="2定义iuserservice接口的抽象方法">2.定义IUserService接口的抽象方法</h5>
 <h5 id="3实现抽象方法编辑业务逻辑">3.实现抽象方法，编辑业务逻辑</h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">1</span><span class="o">.</span><span class="na">定义异常</span> <span class="err">（</span><span class="n">无</span><span class="err">）</span>
-</span></span><span class="line"><span class="cl"><span class="n">2</span><span class="o">.</span><span class="na">定义IUserService接口的抽象方法</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="mi">1</span><span class="o">.</span><span class="na">定义异常</span> <span class="err">（</span><span class="n">无</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="o">.</span><span class="na">定义IUserService接口的抽象方法</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户的id查询用户的数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户id
@@ -1047,11 +1047,11 @@ HttpSession session</p>
 </span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">changeInfo</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">String</span> <span class="n">username</span><span class="o">,</span><span class="n">User</span> <span class="n">user</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">3</span><span class="o">.</span><span class="na">实现抽象方法</span><span class="err">，</span><span class="n">编写业务逻辑</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="o">.</span><span class="na">实现抽象方法</span><span class="err">，</span><span class="n">编写业务逻辑</span>
 </span></span><span class="line"><span class="cl">   <span class="nd">@Override</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">User</span> <span class="nf">getByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">User</span> <span class="n">res</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">findByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="n">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UserNotFoundException</span><span class="o">(</span><span class="s">&#34;用户数据不存在&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="n">User</span> <span class="n">usr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
@@ -1067,7 +1067,7 @@ HttpSession session</p>
 </span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changeInfo</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">User</span> <span class="n">res</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">findByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="n">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UserNotFoundException</span><span class="o">(</span><span class="s">&#34;用户数据不存在&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
@@ -1076,7 +1076,7 @@ HttpSession session</p>
 </span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setModifiedTime</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">updateInfoByUid</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;更新时数据产生未知异常&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -1240,7 +1240,7 @@ HttpSession session</p>
 <h5 id="1异常规划-例如用户数据不存在服务器宕机等">1.异常规划 例如用户数据不存在，服务器宕机等</h5>
 <h5 id="2定义service层接口抽象方法">2.定义service层接口抽象方法</h5>
 <h5 id="3实现类重写抽象方法编写业务处理逻辑">3.实现类重写抽象方法，编写业务处理逻辑</h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">2</span><span class="o">.</span><span class="na">定义Service层接口抽象方法</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="mi">2</span><span class="o">.</span><span class="na">定义Service层接口抽象方法</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 更新用户的头像操作
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid   用户id
@@ -1248,17 +1248,17 @@ HttpSession session</p>
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param username  修改的执行者
 </span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">changeAvatar</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">String</span> <span class="n">avatar</span><span class="o">,</span><span class="n">String</span> <span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">3</span><span class="o">.</span><span class="na">实现类重写抽象方法</span><span class="err">，</span><span class="n">编写业务层逻辑</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="o">.</span><span class="na">实现类重写抽象方法</span><span class="err">，</span><span class="n">编写业务层逻辑</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/**/</span>
 </span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changeAvatar</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">String</span> <span class="n">avatar</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//查询当前的用户数据是否存在
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">User</span> <span class="n">res</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">findByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="n">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">res</span><span class="o">.</span><span class="na">getIsDelete</span><span class="o">()==</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UserNotFoundException</span><span class="o">(</span><span class="s">&#34;用户数据不存在&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">updateAvatarByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">avatar</span><span class="o">,</span> <span class="n">username</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;更新时数据产生未知异常&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -1295,7 +1295,7 @@ HttpSession session</p>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IUserService</span> <span class="n">userService</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/*设置上传文件的最大值*/</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">AVATAR_MAX_SIZE</span><span class="o">=</span><span class="n">10</span> <span class="o">*</span> <span class="n">1024</span> <span class="o">*</span> <span class="n">1024</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">AVATAR_MAX_SIZE</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/*限制上传文件的类型*/</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">AVATAR_TYPES</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="o">{</span>
@@ -1345,7 +1345,7 @@ HttpSession session</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">suffix</span> <span class="o">=</span><span class="s">&#34;&#34;</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">originalFilename</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">beginIndex</span> <span class="o">=</span> <span class="n">originalFilename</span><span class="o">.</span><span class="na">lastIndexOf</span><span class="o">(</span><span class="s">&#34;.&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">beginIndex</span><span class="o">&gt;</span><span class="n">0</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">beginIndex</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="n">suffix</span> <span class="o">=</span> <span class="n">originalFilename</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">beginIndex</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span> <span class="n">suffix</span><span class="o">;</span>
@@ -1451,7 +1451,7 @@ HttpSession session</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.118.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

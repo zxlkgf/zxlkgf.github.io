@@ -183,7 +183,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//pageNum是当前页,pageSize是每页显示的数据量
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">PageHelper</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="n">pageNum</span><span class="o">,</span><span class="n">pageSize</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span> <span class="n">favorites</span> <span class="o">=</span> <span class="n">favoriteMapper</span><span class="o">.</span><span class="na">findFavoritesByUidAndStatus</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span> <span class="n">favorites</span> <span class="o">=</span> <span class="n">favoriteMapper</span><span class="o">.</span><span class="na">findFavoritesByUidAndStatus</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span> <span class="n">pageInfo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PageInfo</span><span class="o">&lt;&gt;(</span><span class="n">favorites</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">pageInfo</span><span class="o">;</span>
@@ -287,7 +287,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.118.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

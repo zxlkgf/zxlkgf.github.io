@@ -225,7 +225,7 @@ AIDL文件以 .aidl 为后缀名</p>
 </span></span><span class="line"><span class="cl">        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">book</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">mListener</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">mListener</span><span class="o">.</span><span class="na">beginBroadcast</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">                <span class="n">IOnServerCallback</span> <span class="n">broadcastItem</span> <span class="o">=</span> <span class="n">mListener</span><span class="o">.</span><span class="na">getBroadcastItem</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">                <span class="n">broadcastItem</span><span class="o">.</span><span class="na">onBookRecived</span><span class="o">(</span><span class="n">book</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="o">}</span>
@@ -295,7 +295,7 @@ AIDL文件以 .aidl 为后缀名</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">describeContents</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
@@ -358,13 +358,13 @@ aidl接口如下</p>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Button</span> <span class="n">btnBind</span><span class="o">,</span><span class="n">btnUnBind</span><span class="o">,</span><span class="n">btnAddBook</span><span class="o">,</span><span class="n">BtnGetBookList</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">TextView</span> <span class="n">showBookList</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IBookManager</span> <span class="n">bookManager</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IBinder</span><span class="o">.</span><span class="na">DeathRecipient</span> <span class="n">mDeathRecipient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IBinder</span><span class="o">.</span><span class="na">DeathRecipient</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nd">@Override</span>
 </span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">binderDied</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">(</span><span class="s">&#34;binderDied&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">bookManager</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span> <span class="k">return</span><span class="o">;}</span>
-</span></span><span class="line"><span class="cl">            <span class="n">bookManager</span><span class="o">.</span><span class="na">asBinder</span><span class="o">().</span><span class="na">unlinkToDeath</span><span class="o">(</span><span class="k">this</span><span class="o">,</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">bookManager</span><span class="o">.</span><span class="na">asBinder</span><span class="o">().</span><span class="na">unlinkToDeath</span><span class="o">(</span><span class="k">this</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">};</span>
 </span></span><span class="line"><span class="cl">
@@ -425,7 +425,7 @@ aidl接口如下</p>
 </span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">(</span><span class="s">&#34;onServiceConnected&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="n">bookManager</span> <span class="o">=</span> <span class="n">IBookManager</span><span class="o">.</span><span class="na">Stub</span><span class="o">.</span><span class="na">asInterface</span><span class="o">(</span><span class="n">service</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="k">try</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">                <span class="n">service</span><span class="o">.</span><span class="na">linkToDeath</span><span class="o">(</span><span class="n">mDeathRecipient</span><span class="o">,</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">service</span><span class="o">.</span><span class="na">linkToDeath</span><span class="o">(</span><span class="n">mDeathRecipient</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">                <span class="n">bookManager</span><span class="o">.</span><span class="na">registerCallback</span><span class="o">(</span><span class="n">serverListener</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">RemoteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">                <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
@@ -518,7 +518,7 @@ aidl接口如下</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.118.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

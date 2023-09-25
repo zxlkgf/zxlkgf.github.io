@@ -341,8 +341,8 @@
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">AddressCountLimitException</span><span class="o">(</span><span class="s">&#34;用户地址已经到达上限，请删除部分地址&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//判断当前地址是否为0
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">==</span><span class="n">0</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setIsDefault</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setIsDefault</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//补全四项日志
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Date</span> <span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
@@ -353,7 +353,7 @@
 </span></span><span class="line"><span class="cl">        <span class="c1">//插入
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">addAddress</span><span class="o">(</span><span class="n">address</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//判断插入结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="o">){</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;插入时产生未知异常&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -472,7 +472,7 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">**</span>
 </span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@author</span> <span class="n">zxl</span>
 </span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@description</span> <span class="n">省市区的实体类</span>
-</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@date</span> <span class="n">2022</span><span class="o">/</span><span class="n">11</span><span class="o">/</span><span class="n">3</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@date</span> <span class="mi">2022</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">3</span>
 </span></span><span class="line"><span class="cl"> <span class="o">*/</span>
 </span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
 </span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
@@ -1007,12 +1007,12 @@
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//先将所有的地址设为非默认地址
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">updateNoneDefault</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">&lt;</span><span class="n">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UpdateException</span><span class="o">(</span><span class="s">&#34;将所有地址设置为非默认地址时出现异常&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//按照aid将收货地址设置为默认地址
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">updateRow</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">updateDefault</span><span class="o">(</span><span class="n">aid</span><span class="o">,</span> <span class="n">username</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">updateRow</span><span class="o">!=</span><span class="n">0</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">updateRow</span><span class="o">!=</span><span class="mi">0</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UpdateException</span><span class="o">(</span><span class="s">&#34;设置默认地址时出现异常&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -1119,12 +1119,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Address</span> <span class="n">byAid</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">byAid</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">AddressNotFoundException</span><span class="o">(</span><span class="s">&#34;用户收货地址不存在&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//如果地址多条 而且当前要删除的地址为默认地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">&gt;</span><span class="n">1</span><span class="o">&amp;&amp;</span><span class="n">byAid</span><span class="o">.</span><span class="na">getIsDefault</span><span class="o">()==</span><span class="n">1</span><span class="o">){</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&amp;&amp;</span><span class="n">byAid</span><span class="o">.</span><span class="na">getIsDefault</span><span class="o">()==</span><span class="mi">1</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">//先删除当前地址
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//按照用户aid删除
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">DeleteAddressByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">//判断是否出现异常
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">//查询所有的地址，由于查询是按照创造时间排序的
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="n">byUid</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">//设置默认地址
@@ -1135,7 +1135,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//按照用户aid删除
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">DeleteAddressByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//判断是否出现异常
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span></code></pre></div><hr>
 <h4 id="4单元测试-5">4.单元测试</h4>
@@ -1219,7 +1219,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.118.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
