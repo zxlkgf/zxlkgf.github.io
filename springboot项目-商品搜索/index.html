@@ -10,11 +10,13 @@
 <meta property="og:url" content="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-20T20:19:14+09:00" />
 <meta property="article:modified_time" content="2022-10-20T20:19:14+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
 <meta name="twitter:title" content="SpringBoot项目-商品搜索"/>
 <meta name="twitter:description" content="9 商品搜索 9.1 关于商品的模糊搜索 9.1.1 后端-持久层 1.编写sql SELECT id,title,sell_point,price,image FROM t_product WHERE STATUS = 1 AND title LIKE &#39;%${title}%&#39; ORDER BY priority DESC; 2.编写Mapper接口的抽象方法 /** * 按照输入的标"/>
+<meta name="twitter:site" content="@https://twitter.com/ZXLKG"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -147,13 +149,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2编写mapper接口的抽象方法">2.编写Mapper接口的抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照输入的标题查找
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param title
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findProductByTitle</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findProductByTitle</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写mapper接口的映射文件">3.编写Mapper接口的映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;Product&gt; findProductByTitle(String title);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findProductByTitle&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Product&#34;</span><span class="nt">&gt;</span>
@@ -168,26 +170,26 @@
 <h4 id="1处理异常">1.处理异常</h4>
 <hr>
 <h4 id="2编写业务层抽象方法">2.编写业务层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照标题查询
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param title
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pageNum
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pageSize
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findProductByTitle</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">,</span><span class="n">Integer</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageSize</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findProductByTitle</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">pageNum</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageSize</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写业务层逻辑">3.编写业务层逻辑</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">findProductByTitle</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageSize</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//开启分页功能
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">PageHelper</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="n">pageNum</span><span class="o">,</span><span class="n">pageSize</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//查询结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">productMapper</span><span class="o">.</span><span class="na">findProductByTitle</span><span class="o">(</span><span class="n">title</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//返回结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">PageInfo</span><span class="o">&lt;&gt;(</span><span class="n">res</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findProductByTitle</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageNum</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//开启分页功能</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">PageHelper</span><span class="p">.</span><span class="na">startPage</span><span class="p">(</span><span class="n">pageNum</span><span class="p">,</span><span class="n">pageSize</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//查询结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productMapper</span><span class="p">.</span><span class="na">findProductByTitle</span><span class="p">(</span><span class="n">title</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//返回结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PageInfo</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">res</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h3 id="913-后端-控制层">9.1.3 后端-控制层</h3>
 <hr>
 <h4 id="1处理异常-1">1.处理异常</h4>
@@ -199,14 +201,14 @@
 <p>响应类型：JsonResult&lt;PageInfo&lt; Product&raquo;</p>
 <hr>
 <h4 id="3处理请求编写控制层方法">3.处理请求，编写控制层方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/{pageNum}/{pageSize}/{title}&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;&gt;</span> <span class="nf">findWithTitle</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;pageNum&#34;</span><span class="o">)</span> <span class="n">Integer</span> <span class="n">pageNum</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">                                                       <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;pageSize&#34;</span><span class="o">)</span> <span class="n">Integer</span> <span class="n">pageSize</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">                                                       <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;title&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">title</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">productService</span><span class="o">.</span><span class="na">findProductByTitle</span><span class="o">(</span><span class="n">title</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">res</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/{pageNum}/{pageSize}/{title}&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">GET</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">findWithTitle</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;pageNum&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageNum</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                                       </span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;pageSize&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageSize</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                                       </span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;title&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">findProductByTitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">pageNum</span><span class="p">,</span><span class="w"> </span><span class="n">pageSize</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">,</span><span class="n">res</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面">4.前端页面</h4>
 <p>具体请参考github</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">		<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
@@ -416,7 +418,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

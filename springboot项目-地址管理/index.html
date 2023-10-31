@@ -10,11 +10,13 @@
 <meta property="og:url" content="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E5%9C%B0%E5%9D%80%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-14T20:19:14+09:00" />
 <meta property="article:modified_time" content="2022-10-14T20:19:14+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
 <meta name="twitter:title" content="SpringBoot项目-地址管理"/>
 <meta name="twitter:description" content="4.地址管理 收货地址的功能模块:列表展示，修改，删除，设置默认，新增收货地址 开发的顺序:新增收货地址-&gt;列表展示-&gt;设置默认收货"/>
+<meta name="twitter:site" content="@https://twitter.com/ZXLKG"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -195,11 +197,11 @@
 </span></span></span></code></pre></div><hr>
 <h3 id="42-创建实体类">4.2 创建实体类</h3>
 <p>地址类</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@NoArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Address</span> <span class="kd">extends</span> <span class="n">BaseEntity</span><span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/*
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@AllArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@NoArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Address</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseEntity</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * aid INT AUTO_INCREMENT COMMENT &#39;收货地址id&#39;,
 </span></span></span><span class="line"><span class="cl"><span class="cm">    uid INT COMMENT &#39;归属的用户id&#39;,
 </span></span></span><span class="line"><span class="cl"><span class="cm">    name VARCHAR(20) COMMENT &#39;收货人姓名&#39;,
@@ -219,24 +221,24 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">    created_time DATETIME COMMENT &#39;创建时间&#39;,
 </span></span></span><span class="line"><span class="cl"><span class="cm">    modified_user VARCHAR(20) COMMENT &#39;修改人&#39;,
 </span></span></span><span class="line"><span class="cl"><span class="cm">    modified_time DATETIME COMMENT &#39;修改时间&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">aid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">uid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">provinceName</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">provinceCode</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">cityName</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">cityCode</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">areaName</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">areaCode</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">zip</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">phone</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">tel</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">tag</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">isDefault</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">provinceName</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">provinceCode</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">cityName</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">cityCode</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">areaName</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">areaCode</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">zip</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">address</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">tel</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">isDefault</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h3 id="43-新增地址">4.3 新增地址</h3>
 <h4 id="431-后端-持久层">4.3.1 后端-持久层</h4>
 <h5 id="1编写sql语句">1.编写sql语句</h5>
@@ -251,23 +253,23 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @version 1.0.0
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/02
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @desciption Address所对应的Mapper接口
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">AddressMapper</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">AddressMapper</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 插入用户的收货地址数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param address 收货地址
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return {@link Integer} 受影响的行数
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">addAddress</span><span class="o">(</span><span class="n">Address</span> <span class="n">address</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">addAddress</span><span class="p">(</span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户id统计用户收货地址数量
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return {@link Integer} 返回当前用户的收货地址总数
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">userAddressCount</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">userAddressCount</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h5 id="3实现mapper接口的映射">3.实现Mapper接口的映射</h5>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;com.zxl.store.mappers.AddressMapper&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!--addAddress 插入用户的地址--&gt;</span>
@@ -297,68 +299,68 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 用户地址数目超出异常
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/2
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddressCountLimitException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AddressCountLimitException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h5 id="2接口和抽象方法">2.接口和抽象方法</h5>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 收货地址业务层接口
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/2
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IAddressService</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">IAddressService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 添加用户地址
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid      用户uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param username 用户名
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param address  地址
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">addAddress</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="n">Address</span> <span class="n">address</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">addAddress</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h5 id="3实现抽象方法">3.实现抽象方法</h5>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 收货地址业务层的实现类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/2
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IAddressServiceImpl</span> <span class="kd">implements</span> <span class="n">IAddressService</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">AddressMapper</span> <span class="n">addressMapper</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${user.address.max-count}&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">maxCount</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addAddress</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="n">Address</span> <span class="n">address</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//先判断用户地址的条数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">count</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">userAddressCount</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断是否超过20条记录
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">&gt;=</span><span class="n">maxCount</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">AddressCountLimitException</span><span class="o">(</span><span class="s">&#34;用户地址已经到达上限，请删除部分地址&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断当前地址是否为0
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setIsDefault</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//补全四项日志
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Date</span> <span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">address</span><span class="o">.</span><span class="na">setCreatedUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">address</span><span class="o">.</span><span class="na">setCreatedTime</span><span class="o">(</span><span class="n">currentTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">address</span><span class="o">.</span><span class="na">setModifiedUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">address</span><span class="o">.</span><span class="na">setModifiedTime</span><span class="o">(</span><span class="n">currentTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//插入
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">addAddress</span><span class="o">(</span><span class="n">address</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断插入结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;插入时产生未知异常&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IAddressServiceImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">IAddressService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">AddressMapper</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Value</span><span class="p">(</span><span class="s">&#34;${user.address.max-count}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">maxCount</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addAddress</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//先判断用户地址的条数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">userAddressCount</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断是否超过20条记录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">&gt;=</span><span class="n">maxCount</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AddressCountLimitException</span><span class="p">(</span><span class="s">&#34;用户地址已经到达上限，请删除部分地址&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断当前地址是否为0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">==</span><span class="n">0</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setIsDefault</span><span class="p">(</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//补全四项日志</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Date</span><span class="w"> </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">address</span><span class="p">.</span><span class="na">setCreatedUser</span><span class="p">(</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">address</span><span class="p">.</span><span class="na">setCreatedTime</span><span class="p">(</span><span class="n">currentTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">address</span><span class="p">.</span><span class="na">setModifiedUser</span><span class="p">(</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">address</span><span class="p">.</span><span class="na">setModifiedTime</span><span class="p">(</span><span class="n">currentTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//插入</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">addAddress</span><span class="p">(</span><span class="n">address</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断插入结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InsertException</span><span class="p">(</span><span class="s">&#34;插入时产生未知异常&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h5 id="4单元测试">4.单元测试</h5>
 <hr>
 <h4 id="433-后端控制层">4.3.3 后端控制层</h4>
@@ -376,30 +378,30 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 地址操作的控制层
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/2
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/address&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddressController</span> <span class="kd">extends</span> <span class="n">BaseController</span><span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IAddressService</span> <span class="n">addressService</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/address&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AddressController</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseController</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">IAddressService</span><span class="w"> </span><span class="n">addressService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 处理用户添加地址的操作
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param address 添加的地址
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param session 项目自动生成的Session
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return {@link JsonResult}&lt;{@link Void}&gt;
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@PostMapping</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">addAddress</span><span class="o">(</span><span class="n">Address</span> <span class="n">address</span><span class="o">,</span> <span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//从Session中获取Uid和Username
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">getUsernameFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//添加
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">addressService</span><span class="o">.</span><span class="na">addAddress</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span><span class="n">username</span><span class="o">,</span><span class="n">address</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@PostMapping</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">addAddress</span><span class="p">(</span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//从Session中获取Uid和Username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUserIdFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUsernameFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//添加</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">addressService</span><span class="p">.</span><span class="na">addAddress</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">address</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h5 id="4前端页面">4.前端页面</h5>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -469,21 +471,21 @@
 </span></span></span></code></pre></div><hr>
 <h3 id="442-创建实体类">4.4.2 创建实体类</h3>
 <p>创建District实体类</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">**</span>
-</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@author</span> <span class="n">zxl</span>
-</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@description</span> <span class="n">省市区的实体类</span>
-</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nd">@date</span> <span class="mi">2022</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">3</span>
-</span></span><span class="line"><span class="cl"> <span class="o">*/</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@NoArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">District</span> <span class="kd">extends</span> <span class="n">BaseEntity</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">parent</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">code</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">**</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nd">@author</span><span class="w"> </span><span class="n">zxl</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nd">@description</span><span class="w"> </span><span class="n">省市区的实体类</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nd">@date</span><span class="w"> </span><span class="n">2022</span><span class="o">/</span><span class="n">11</span><span class="o">/</span><span class="n">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@AllArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@NoArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">District</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseEntity</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h3 id="443-后端-持久层">4.4.3 后端-持久层</h3>
 <h4 id="1编写sql语句-1">1.编写sql语句</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="mi">1</span><span class="p">.</span><span class="err">查询语句，根据父代号查询</span><span class="w"> </span><span class="p">(</span><span class="k">ASC</span><span class="w"> </span><span class="err">升序</span><span class="p">)</span><span class="w">
@@ -492,22 +494,22 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_dict_district</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2定义mapper接口和抽象方法-1">2.定义Mapper接口和抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DistrictMapper</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">DistrictMapper</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户的父代号查询区域信息
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param parent 父代号
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 某个父区域下的所有区域列表
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="nf">findDistrictByParent</span><span class="o">(</span><span class="n">String</span> <span class="n">parent</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findDistrictByParent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">parent</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据code查询区域名称
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param code 区域代号
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回区域名称
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="nf">findNameByCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">findNameByCode</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写映射文件">3.编写映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;com.zxl.store.mappers.DistrictMapper&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;District&gt; findDistrictByParent(String parent);--&gt;</span>
@@ -531,53 +533,53 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description District业务层的接口类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/3
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IDistrictService</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">IDistrictService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据父代号查询区域信息(省市区)
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param parent 父代号
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回多个查询结果
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="nf">getDistrictByParent</span><span class="o">(</span><span class="n">String</span> <span class="n">parent</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getDistrictByParent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">parent</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照code查询当前省市区名称
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param code code
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回省市区名称
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="nf">getNameByCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">getNameByCode</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写具体的实现方法和处理逻辑">3.编写具体的实现方法和处理逻辑</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 处理省市区业务层接口的实现类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/3
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IDistrictServiceImpl</span> <span class="kd">implements</span> <span class="n">IDistrictService</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">DistrictMapper</span> <span class="n">districtMapper</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//根据父代号查询省市区的信息
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="nf">getDistrictByParent</span><span class="o">(</span><span class="n">String</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="n">districtByParent</span> <span class="o">=</span> <span class="n">districtMapper</span><span class="o">.</span><span class="na">findDistrictByParent</span><span class="o">(</span><span class="n">parent</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//无效数据设为null
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">District</span> <span class="n">district</span> <span class="o">:</span> <span class="n">districtByParent</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">district</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">district</span><span class="o">.</span><span class="na">setParent</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">districtByParent</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//根据code查询省市区的名称
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getNameByCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">districtMapper</span><span class="o">.</span><span class="na">findNameByCode</span><span class="o">(</span><span class="n">code</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IDistrictServiceImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">IDistrictService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="p">(</span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">DistrictMapper</span><span class="w"> </span><span class="n">districtMapper</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//根据父代号查询省市区的信息</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getDistrictByParent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">parent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span><span class="w"> </span><span class="n">districtByParent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">districtMapper</span><span class="p">.</span><span class="na">findDistrictByParent</span><span class="p">(</span><span class="n">parent</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//无效数据设为null</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">District</span><span class="w"> </span><span class="n">district</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">districtByParent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">district</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">district</span><span class="p">.</span><span class="na">setParent</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">districtByParent</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//根据code查询省市区的名称</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNameByCode</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">districtMapper</span><span class="p">.</span><span class="na">findNameByCode</span><span class="p">(</span><span class="n">code</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-2">4.单元测试</h4>
 <hr>
 <h3 id="445-后端-控制层">4.4.5 后端-控制层</h3>
@@ -595,22 +597,22 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 处理省市区相关业务的控制层
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/3
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/district&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DistrictController</span> <span class="kd">extends</span> <span class="n">BaseController</span><span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IDistrictService</span> <span class="n">districtService</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/parent&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;&gt;</span> <span class="nf">getDistrictByParent</span><span class="o">(</span><span class="n">String</span> <span class="n">parent</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//查询数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span> <span class="n">Data</span> <span class="o">=</span> <span class="n">districtService</span><span class="o">.</span><span class="na">getDistrictByParent</span><span class="o">(</span><span class="n">parent</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//返回数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">Data</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/district&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DistrictController</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseController</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="p">(</span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">IDistrictService</span><span class="w"> </span><span class="n">districtService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/parent&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">GET</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">getDistrictByParent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">parent</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//查询数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">District</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">districtService</span><span class="p">.</span><span class="na">getDistrictByParent</span><span class="p">(</span><span class="n">parent</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//返回数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">,</span><span class="n">Data</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面-1">4. 前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -796,13 +798,13 @@
 </span></span></span></code></pre></div><hr>
 <h4 id="2定义抽象方法">2.定义抽象方法</h4>
 <p>只需要在AddressMapper接口中定义新的抽象方法即可</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户的uid查询用户的收货地址集合
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid 
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回收货地址数据
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="nf">findByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findByUid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写映射文件-1">3.编写映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;Address&gt; findByUid(Integer uid);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findByUid&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Address&#34;</span><span class="nt">&gt;</span>
@@ -815,39 +817,39 @@
 <h4 id="1异常控制">1.异常控制</h4>
 <hr>
 <h4 id="2定义业务层抽象方法">2.定义业务层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户的uid获取用户的收货地址信息集
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid   用户的uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回用户的地址集合
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="nf">getAddressByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAddressByUid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写具体的业务处理逻辑">3.编写具体的业务处理逻辑</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">   <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">   </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照用户uid查询用户的收货地址集合
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid   用户的uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回用户的收货地址的集合
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="nf">getAddressByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//获取结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//由于网页端只需要地址类型，收件人姓名，详细地址，联系电话，所以对信息进行部分过滤
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">Address</span> <span class="n">address</span> <span class="o">:</span> <span class="n">res</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setUid</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setProvinceCode</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setCityCode</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setAreaCode</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setTel</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setCreatedTime</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setCreatedUser</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setModifiedTime</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setModifiedUser</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">address</span><span class="o">.</span><span class="na">setIsDefault</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAddressByUid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//获取结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">findByUid</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//由于网页端只需要地址类型，收件人姓名，详细地址，联系电话，所以对信息进行部分过滤</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setUid</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setProvinceCode</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setCityCode</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setAreaCode</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setTel</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setCreatedTime</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setCreatedUser</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setModifiedTime</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setModifiedUser</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="na">setIsDefault</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4编写业务层单元测试">4.编写业务层单元测试</h4>
 <hr>
 <h3 id="453-后端-控制层">4.5.3 后端-控制层</h3>
@@ -860,17 +862,17 @@
 <p>相应类型:JsonResult&lt;List<!-- raw HTML omitted -->&gt;</p>
 <hr>
 <h4 id="3处理请求编写控制层">3.处理请求，编写控制层</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 处理网页端自动显示用户收货地址的请求
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param session 项目自动生成的session
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回JsonResult&lt;List&lt;Address&gt;&gt;
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@GetMapping</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;&gt;</span> <span class="nf">queryAllAddress</span><span class="o">(</span><span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">addressService</span><span class="o">.</span><span class="na">getAddressByUid</span><span class="o">(</span><span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">res</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">queryAllAddress</span><span class="p">(</span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressService</span><span class="p">.</span><span class="na">getAddressByUid</span><span class="p">(</span><span class="n">getUserIdFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">,</span><span class="n">res</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面-2">4.前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="c1">//页面初始化加载用户收货地址信息
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -938,29 +940,29 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">aid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2定义mapper接口抽象方法">2.定义Mapper接口抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户收货地址aid查询收货地址
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 收货地址id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回地址
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Address</span> <span class="nf">findByAid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Address</span><span class="w"> </span><span class="nf">findByAid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户uid将所有地址设为非默认地址
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回影响行数
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">updateNoneDefault</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">updateNoneDefault</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照aid将该条收货地址设为默认地址
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 用户收货地址aid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param modifiedUser 执行操作的操作人
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param modifiedTime 执行操作的操作时间
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回影响行数
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">updateDefault</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span> <span class="n">String</span> <span class="n">modifiedUser</span><span class="o">,</span> <span class="n">Date</span> <span class="n">modifiedTime</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">updateDefault</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">modifiedUser</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">modifiedTime</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写mapper接口的映射文件">3.编写Mapper接口的映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    Address findByAid(Integer aid);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findByAid&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Address&#34;</span><span class="nt">&gt;</span>
@@ -985,38 +987,38 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 用户地址未找到异常
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/3
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddressNotFoundException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AddressNotFoundException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="2定义service层抽象方法">2.定义Service层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">   <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">   </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     *　修改用户选中地址为默认收货地址
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 收货地址id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param username 操作人
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return void
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setDefault</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span><span class="n">String</span> <span class="n">username</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setDefault</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写方法的具体逻辑">3.编写方法的具体逻辑</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDefault</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Address</span> <span class="n">res</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">AddressNotFoundException</span><span class="o">(</span><span class="s">&#34;用户收货地址不存在&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//先将所有的地址设为非默认地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">updateNoneDefault</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UpdateException</span><span class="o">(</span><span class="s">&#34;将所有地址设置为非默认地址时出现异常&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//按照aid将收货地址设置为默认地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">updateRow</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">updateDefault</span><span class="o">(</span><span class="n">aid</span><span class="o">,</span> <span class="n">username</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">updateRow</span><span class="o">!=</span><span class="mi">0</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UpdateException</span><span class="o">(</span><span class="s">&#34;设置默认地址时出现异常&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setDefault</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Address</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">findByAid</span><span class="p">(</span><span class="n">aid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AddressNotFoundException</span><span class="p">(</span><span class="s">&#34;用户收货地址不存在&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//先将所有的地址设为非默认地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">updateNoneDefault</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">row</span><span class="o">&lt;</span><span class="n">1</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UpdateException</span><span class="p">(</span><span class="s">&#34;将所有地址设置为非默认地址时出现异常&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//按照aid将收货地址设置为默认地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">updateRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">updateDefault</span><span class="p">(</span><span class="n">aid</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">updateRow</span><span class="o">!=</span><span class="n">0</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UpdateException</span><span class="p">(</span><span class="s">&#34;设置默认地址时出现异常&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-3">4.单元测试</h4>
 <hr>
 <h3 id="463-后端-控制层">4.6.3 后端-控制层</h3>
@@ -1030,22 +1032,22 @@
 <p>响应类型：JsonResult&lt; void&gt;</p>
 <hr>
 <h4 id="3处理请求编写控制层-1">3.处理请求，编写控制层</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 处理设置默认地址的请求
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 被设置为默认的收货地址id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param session 项目启动时生成的session
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回void
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/set_default/{aid}&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">setDefault</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;aid&#34;</span><span class="o">)</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span><span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//获取uid，username
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">getUsernameFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//设置默认
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">addressService</span><span class="o">.</span><span class="na">setDefault</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span><span class="n">aid</span><span class="o">,</span><span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/set_default/{aid}&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">POST</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">setDefault</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;aid&#34;</span><span class="p">)</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//获取uid，username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUserIdFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUsernameFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//设置默认</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">addressService</span><span class="p">.</span><span class="na">setDefault</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span><span class="n">aid</span><span class="p">,</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面-3">4.  前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="c1">//为设置默认按钮绑定事件
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">function</span> <span class="nx">setDefault</span><span class="p">(</span><span class="nx">aid</span><span class="p">)</span> <span class="p">{</span>
@@ -1078,13 +1080,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_address</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">aid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="n">aid</span><span class="err">}</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2定义mapper接口抽象方法-1">2.定义Mapper接口抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照aid删除用户的收货地址
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 用户的收货地址id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回影响行数
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">DeleteAddressByAid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">DeleteAddressByAid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写mapper接口的映射文件-1">3.编写Mapper接口的映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    Integer DeleteAddressByAid(Integer aid);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">&#34;DeleteAddressByAid&#34;</span><span class="nt">&gt;</span>
@@ -1100,44 +1102,44 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 数据库删除时异常
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DeleteException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DeleteException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="2定义抽象方法-1">2.定义抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照收货地址id删除收货地址
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 收货地址id
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">deleteAddressByAid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteAddressByAid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写实现逻辑">3.编写实现逻辑</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteAddressByAid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//需要先判断用户有多少条地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">count</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">userAddressCount</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断用户收货地址是否存在
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Address</span> <span class="n">byAid</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">byAid</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">AddressNotFoundException</span><span class="o">(</span><span class="s">&#34;用户收货地址不存在&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//如果地址多条 而且当前要删除的地址为默认地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&amp;&amp;</span><span class="n">byAid</span><span class="o">.</span><span class="na">getIsDefault</span><span class="o">()==</span><span class="mi">1</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//先删除当前地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//按照用户aid删除
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">DeleteAddressByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//判断是否出现异常
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//查询所有的地址，由于查询是按照创造时间排序的
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span> <span class="n">byUid</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">findByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//设置默认地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">addressMapper</span><span class="o">.</span><span class="na">updateDefault</span><span class="o">(</span><span class="n">aid</span><span class="o">,</span><span class="n">username</span><span class="o">,</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//如果只有一条，就不用判断是否需要再次设置默认地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//按照用户aid删除
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">addressMapper</span><span class="o">.</span><span class="na">DeleteAddressByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断是否出现异常
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteAddressByAid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//需要先判断用户有多少条地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">userAddressCount</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断用户收货地址是否存在</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Address</span><span class="w"> </span><span class="n">byAid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">findByAid</span><span class="p">(</span><span class="n">aid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">byAid</span><span class="o">==</span><span class="kc">null</span><span class="p">)</span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AddressNotFoundException</span><span class="p">(</span><span class="s">&#34;用户收货地址不存在&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//如果地址多条 而且当前要删除的地址为默认地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">&gt;</span><span class="n">1</span><span class="o">&amp;&amp;</span><span class="n">byAid</span><span class="p">.</span><span class="na">getIsDefault</span><span class="p">()</span><span class="o">==</span><span class="n">1</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//先删除当前地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//按照用户aid删除</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Integer</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">DeleteAddressByAid</span><span class="p">(</span><span class="n">aid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//判断是否出现异常</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="p">)</span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DeleteException</span><span class="p">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//查询所有的地址，由于查询是按照创造时间排序的</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span><span class="w"> </span><span class="n">byUid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">findByUid</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//设置默认地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">updateDefault</span><span class="p">(</span><span class="n">aid</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//如果只有一条，就不用判断是否需要再次设置默认地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//按照用户aid删除</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressMapper</span><span class="p">.</span><span class="na">DeleteAddressByAid</span><span class="p">(</span><span class="n">aid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断是否出现异常</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="p">)</span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DeleteException</span><span class="p">(</span><span class="s">&#34;删除用户收货地址时出现未知异常&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-5">4.单元测试</h4>
 <hr>
 <h3 id="473-后端-控制层">4.7.3 后端-控制层</h3>
@@ -1151,23 +1153,23 @@
 <p>响应类型：JsonResult&lt; void&gt;</p>
 <hr>
 <h4 id="3处理请求编写控制方法">3.处理请求，编写控制方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 处理删除地址的请求
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 需要删除的收货地址的id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回OK
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/delete_address/{aid}&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">deleteAddressByAid</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;aid&#34;</span><span class="o">)</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span><span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//获取uid
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//获取username
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">getUsernameFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//执行删除
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">addressService</span><span class="o">.</span><span class="na">deleteAddressByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">,</span><span class="n">uid</span><span class="o">,</span><span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//执行成功返回数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/delete_address/{aid}&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">POST</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">deleteAddressByAid</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;aid&#34;</span><span class="p">)</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//获取uid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUserIdFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//获取username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUsernameFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//执行删除</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">addressService</span><span class="p">.</span><span class="na">deleteAddressByAid</span><span class="p">(</span><span class="n">aid</span><span class="p">,</span><span class="n">uid</span><span class="p">,</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//执行成功返回数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面-4">4.前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="c1">//为删除按钮定义事件
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">function</span> <span class="nx">deleteAddress</span><span class="p">(</span><span class="nx">aid</span><span class="p">)</span> <span class="p">{</span>
@@ -1219,7 +1221,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

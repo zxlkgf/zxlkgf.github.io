@@ -10,11 +10,13 @@
 <meta property="og:url" content="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E6%94%B6%E8%97%8F%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-18T20:19:14+09:00" />
 <meta property="article:modified_time" content="2022-10-18T20:19:14+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
 <meta name="twitter:title" content="SpringBoot项目-收藏管理"/>
 <meta name="twitter:description" content="8 收藏管理 8.1 创建实体类 CREATE TABLE t_favorites( fid INT PRIMARY KEY AUTO_INCREMENT COMMENT &#39;收藏商品在数据表的id&#39;, uid INT COMMENT &#39;归属的用户id&#39;, pid INT COMMENT &#39"/>
+<meta name="twitter:site" content="@https://twitter.com/ZXLKG"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -173,21 +175,21 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 收藏实体类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/6
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@NoArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Favorite</span> <span class="kd">extends</span> <span class="n">BaseEntity</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">fid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">uid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">pid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">image</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">price</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">sellPoint</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">status</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@AllArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@NoArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Favorite</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseEntity</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">fid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">image</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sellPoint</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h2 id="83-加入收藏">8.3 加入收藏</h2>
 <h3 id="831-后端-持久层">8.3.1 后端-持久层</h3>
 <hr>
@@ -198,21 +200,21 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_favorite</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2编写mapper接口">2.编写Mapper接口</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据pid和uid查询收藏商品是否在库
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Favorite</span> <span class="nf">findFavoriteByPidAndUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Favorite</span><span class="w"> </span><span class="nf">findFavoriteByPidAndUid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 插入收藏
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param favorite 收藏数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">addFavorite</span><span class="o">(</span><span class="n">Favorite</span> <span class="n">favorite</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">addFavorite</span><span class="p">(</span><span class="n">Favorite</span><span class="w"> </span><span class="n">favorite</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写映射文件">3.编写映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;com.zxl.store.mappers.FavoriteMapper&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="c">&lt;!--    Integer addFavorite(Favorite favorite);--&gt;</span>
@@ -246,66 +248,66 @@
 <hr>
 <h3 id="832-后端-业务层">8.3.2 后端-业务层</h3>
 <h4 id="1编写异常">1.编写异常</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//收藏已经存在异常
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FavoriteExistException</span> <span class="kd">extends</span> <span class="n">ServiceException</span> <span class="o">{}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//收藏已经存在异常</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FavoriteExistException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="2编写业务层抽象方法">2.编写业务层抽象方法</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 收藏业务层的接口
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/6
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IFavoriteService</span>  <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">IFavoriteService</span><span class="w">  </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 插入收藏
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pid
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">addFavorite</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h4 id="3编写实现逻辑">3.编写实现逻辑</h4>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">addFavorite</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="3编写实现逻辑">3.编写实现逻辑</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 收藏接口的业务层实现类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/6
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IFavoriteServiceImpl</span> <span class="kd">implements</span> <span class="n">IFavoriteService</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">FavoriteMapper</span> <span class="n">favoriteMapper</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IProductService</span> <span class="n">productService</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">addFavorite</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pid</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//先判断是否已经存在收藏
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Favorite</span> <span class="n">res</span> <span class="o">=</span> <span class="n">favoriteMapper</span><span class="o">.</span><span class="na">findFavoriteByPidAndUid</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">FavoriteExistException</span><span class="o">(</span><span class="s">&#34;该收藏品已经存在！&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//商品不存在的话，执行下一步
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Favorite</span> <span class="n">favorite</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Favorite</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//根据pid查询信息
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Product</span> <span class="n">p</span> <span class="o">=</span> <span class="n">productService</span><span class="o">.</span><span class="na">findProductById</span><span class="o">(</span><span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//加入数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">favorite</span><span class="o">.</span><span class="na">setUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">favorite</span><span class="o">.</span><span class="na">setPid</span><span class="o">(</span><span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">favorite</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">favorite</span><span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">favorite</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">favorite</span><span class="o">.</span><span class="na">setSellPoint</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getSellPoint</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">favorite</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getStatus</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//执行插入
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">favoriteMapper</span><span class="o">.</span><span class="na">addFavorite</span><span class="o">(</span><span class="n">favorite</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断插入结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;插入收藏时出现未知错误&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">favorite</span><span class="o">.</span><span class="na">getFid</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">favorite</span><span class="o">.</span><span class="na">getFid</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IFavoriteServiceImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">IFavoriteService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="p">(</span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">FavoriteMapper</span><span class="w"> </span><span class="n">favoriteMapper</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">IProductService</span><span class="w"> </span><span class="n">productService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">addFavorite</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//先判断是否已经存在收藏</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Favorite</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">favoriteMapper</span><span class="p">.</span><span class="na">findFavoriteByPidAndUid</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">res</span><span class="o">!=</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FavoriteExistException</span><span class="p">(</span><span class="s">&#34;该收藏品已经存在！&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//商品不存在的话，执行下一步</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Favorite</span><span class="w"> </span><span class="n">favorite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Favorite</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//根据pid查询信息</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">findProductById</span><span class="p">(</span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//加入数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">favorite</span><span class="p">.</span><span class="na">setUid</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">favorite</span><span class="p">.</span><span class="na">setPid</span><span class="p">(</span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">favorite</span><span class="p">.</span><span class="na">setImage</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getImage</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">favorite</span><span class="p">.</span><span class="na">setPrice</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">favorite</span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getTitle</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">favorite</span><span class="p">.</span><span class="na">setSellPoint</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getSellPoint</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">favorite</span><span class="p">.</span><span class="na">setStatus</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getStatus</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//执行插入</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">favoriteMapper</span><span class="p">.</span><span class="na">addFavorite</span><span class="p">(</span><span class="n">favorite</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断插入结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="p">)</span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InsertException</span><span class="p">(</span><span class="s">&#34;插入收藏时出现未知错误&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">favorite</span><span class="p">.</span><span class="na">getFid</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">favorite</span><span class="p">.</span><span class="na">getFid</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-1">4.单元测试</h4>
 <hr>
 <h3 id="833-后端-控制层">8.3.3 后端-控制层</h3>
@@ -323,23 +325,23 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 添加收藏的控制类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/6
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/favorite&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FavoriteController</span> <span class="kd">extends</span> <span class="n">BaseController</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IFavoriteService</span> <span class="n">favoriteService</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/addFavorite&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">addFavorite</span><span class="o">(</span><span class="n">Integer</span> <span class="n">pid</span><span class="o">,</span> <span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//uid
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//执行插入
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">fid</span> <span class="o">=</span> <span class="n">favoriteService</span><span class="o">.</span><span class="na">addFavorite</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">fid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/favorite&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FavoriteController</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">IFavoriteService</span><span class="w"> </span><span class="n">favoriteService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/addFavorite&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">POST</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">addFavorite</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//uid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUserIdFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//执行插入</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">fid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">favoriteService</span><span class="p">.</span><span class="na">addFavorite</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">,</span><span class="n">fid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面">4.前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">                <span class="c1">//绑定收藏事件
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#btn-add-to-collect&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -371,14 +373,14 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_favorite</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="n">uid</span><span class="err">}</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">status</span><span class="o">=#</span><span class="err">{</span><span class="n">status</span><span class="err">}</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2编写mapper接口抽象方法">2.编写Mapper接口抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照uid和status查找用户的收藏列表
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户的id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param status 商品状态
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回结果集合
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span> <span class="nf">findFavoritesByUidAndStatus</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">status</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findFavoritesByUidAndStatus</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">status</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写映射文件-1">3.编写映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;Favorite&gt; findFavoritesByUidAndStatus(Integer uid,Integer status);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findFavoritesByUidAndStatus&#34;</span><span class="nt">&gt;</span>
@@ -392,28 +394,28 @@
 <h4 id="1编写异常-1">1.编写异常</h4>
 <hr>
 <h4 id="2编写业务层抽象方法-1">2.编写业务层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 查找指定条件的收藏
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pageNum 当前页码
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pageSize 每页数据多少
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span> <span class="nf">findFavorite</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageSize</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findFavorite</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageNum</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageSize</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写实现逻辑-1">3.编写实现逻辑</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span> <span class="nf">findFavorite</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageSize</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//开启分页功能
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//pageNum是当前页,pageSize是每页显示的数据量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">PageHelper</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="n">pageNum</span><span class="o">,</span><span class="n">pageSize</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span> <span class="n">favorites</span> <span class="o">=</span> <span class="n">favoriteMapper</span><span class="o">.</span><span class="na">findFavoritesByUidAndStatus</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span> <span class="n">pageInfo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PageInfo</span><span class="o">&lt;&gt;(</span><span class="n">favorites</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">pageInfo</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findFavorite</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageNum</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//开启分页功能</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//pageNum是当前页,pageSize是每页显示的数据量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">PageHelper</span><span class="p">.</span><span class="na">startPage</span><span class="p">(</span><span class="n">pageNum</span><span class="p">,</span><span class="n">pageSize</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span><span class="w"> </span><span class="n">favorites</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">favoriteMapper</span><span class="p">.</span><span class="na">findFavoritesByUidAndStatus</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pageInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PageInfo</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">favorites</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pageInfo</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-3">4.单元测试</h4>
 <hr>
 <h3 id="843-后端-控制层">8.4.3 后端-控制层</h3>
@@ -427,14 +429,14 @@
 <p>响应类型：JsonResult<!-- raw HTML omitted --></p>
 <hr>
 <h4 id="3处理请求-编写控制方法">3.处理请求 编写控制方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="c1">//查询
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/findFavorites&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;&gt;</span> <span class="nf">findFavorites</span><span class="o">(</span><span class="n">HttpSession</span> <span class="n">session</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">pageSize</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span> <span class="n">favorites</span> <span class="o">=</span> <span class="n">favoriteService</span><span class="o">.</span><span class="na">findFavorite</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">pageNum</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">favorites</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//查询</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/findFavorites&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">GET</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">findFavorites</span><span class="p">(</span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageNum</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pageSize</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUserIdFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">PageInfo</span><span class="o">&lt;</span><span class="n">Favorite</span><span class="o">&gt;</span><span class="w"> </span><span class="n">favorites</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">favoriteService</span><span class="p">.</span><span class="na">findFavorite</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">pageNum</span><span class="p">,</span><span class="w"> </span><span class="n">pageSize</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">,</span><span class="n">favorites</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面-1">4.前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">//为了查询设置的全局参数
@@ -559,13 +561,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_favorite</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">fid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="n">fid</span><span class="err">}</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2编写mapper抽象方法">2.编写Mapper抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 删除收藏
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param fid 收藏id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">deleteCollect</span><span class="o">(</span><span class="n">Integer</span> <span class="n">fid</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">deleteCollect</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">fid</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写mapper映射">3.编写Mapper映射</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    Integer deleteCollect(Integer fid);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">&#34;deleteCollect&#34;</span><span class="nt">&gt;</span>
@@ -580,19 +582,19 @@
 <p>删除异常已经定义</p>
 <hr>
 <h4 id="2编写业务层抽象方法-2">2.编写业务层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 删除收藏
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param fid
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">deleteCollect</span><span class="o">(</span><span class="n">Integer</span> <span class="n">fid</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteCollect</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">fid</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写实现逻辑-2">3.编写实现逻辑</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteCollect</span><span class="o">(</span><span class="n">Integer</span> <span class="n">fid</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">favoriteMapper</span><span class="o">.</span><span class="na">deleteCollect</span><span class="o">(</span><span class="n">fid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">)</span><span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;删除收藏是出现错误&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteCollect</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">fid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">favoriteMapper</span><span class="p">.</span><span class="na">deleteCollect</span><span class="p">(</span><span class="n">fid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="p">)</span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DeleteException</span><span class="p">(</span><span class="s">&#34;删除收藏是出现错误&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-5">4.单元测试</h4>
 <hr>
 <h3 id="853-后端-控制层">8.5.3 后端-控制层</h3>
@@ -606,13 +608,13 @@
 <p>响应类型：JsonResult<!-- raw HTML omitted --></p>
 <hr>
 <h4 id="3处理请求-编写控制方法-1">3.处理请求 编写控制方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="c1">//删除
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/cancelFavorite&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">cancelFavorite</span> <span class="o">(</span><span class="n">Integer</span> <span class="n">fid</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">favoriteService</span><span class="o">.</span><span class="na">deleteCollect</span><span class="o">(</span><span class="n">fid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//删除</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/cancelFavorite&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">POST</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">cancelFavorite</span><span class="w"> </span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">fid</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">favoriteService</span><span class="p">.</span><span class="na">deleteCollect</span><span class="p">(</span><span class="n">fid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面-2">4.前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="c1">//取消收藏
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">function</span> <span class="nx">CancelCollect</span><span class="p">(</span><span class="nx">fid</span><span class="p">)</span> <span class="p">{</span>
@@ -684,7 +686,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

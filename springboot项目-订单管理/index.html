@@ -10,11 +10,13 @@
 <meta property="og:url" content="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-17T20:19:14+09:00" />
 <meta property="article:modified_time" content="2022-10-17T20:19:14+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
 <meta name="twitter:title" content="SpringBoot项目-订单管理"/>
 <meta name="twitter:description" content="订单管理 7.1 创建数据表 CREATE TABLE t_order ( oid INT AUTO_INCREMENT COMMENT &#39;订单id&#39;, uid INT NOT NULL COMMENT &#39;用户id&#39;, aid INT NOT NULL COMMENT &#39;收货地址id&"/>
+<meta name="twitter:site" content="@https://twitter.com/ZXLKG"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -180,40 +182,40 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description t_order表对应的实体类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/6
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@NoArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="kd">extends</span> <span class="n">BaseEntity</span><span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">oid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">uid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">aid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">recvName</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">recvPhone</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">recvProvince</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">recvCity</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">recvArea</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">recvAddress</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">totalPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">status</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Date</span> <span class="n">orderTime</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Date</span> <span class="n">payTime</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@AllArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@NoArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Order</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseEntity</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">oid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">recvName</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">recvPhone</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">recvProvince</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">recvCity</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">recvArea</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">recvAddress</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">totalPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">orderTime</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">payTime</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description t_order_item表对应的实体类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/6
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderItem</span> <span class="kd">extends</span> <span class="n">BaseEntity</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">oid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">pid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">image</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">price</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">num</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderItem</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseEntity</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">oid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">image</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h2 id="73-创建订单">7.3 创建订单</h2>
 <hr>
 <h3 id="731-后端-持久层">7.3.1 后端-持久层</h3>
@@ -229,23 +231,23 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 订单类的Mapper接口
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/6
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">OrderMapper</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">OrderMapper</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 插入order
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param order 订单数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">insertOrder</span><span class="o">(</span><span class="n">Order</span> <span class="n">order</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">insertOrder</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 插入order_item数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param orderItem
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">insertOrderItem</span><span class="o">(</span><span class="n">OrderItem</span> <span class="n">orderItem</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">insertOrderItem</span><span class="p">(</span><span class="n">OrderItem</span><span class="w"> </span><span class="n">orderItem</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写mapper接口的映射文件">3.编写Mapper接口的映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;com.zxl.store.mappers.OrderMapper&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!--    Integer insertOrder(Order order);--&gt;</span>
@@ -279,115 +281,115 @@
 <p>插入失败，已经被定义</p>
 <hr>
 <h4 id="2编写业务层抽象方法">2.编写业务层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 插入订单数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 收货地址id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param totalPrice 商品总价
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param username 操作人
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Order</span> <span class="nf">insertOrder</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">Long</span> <span class="n">totalPrice</span><span class="o">,</span><span class="n">String</span> <span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Order</span><span class="w"> </span><span class="nf">insertOrder</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="n">Long</span><span class="w"> </span><span class="n">totalPrice</span><span class="p">,</span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 添加orderItem
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param oid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param num
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param username
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">insertOrderItem</span><span class="o">(</span><span class="n">Integer</span> <span class="n">oid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">num</span><span class="o">,</span><span class="n">String</span> <span class="n">username</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">insertOrderItem</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">oid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3实现逻辑">3.实现逻辑</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description  订单的业务层接口实现类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/6
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IOrderServiceImpl</span> <span class="kd">implements</span> <span class="n">IOrderService</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">OrderMapper</span> <span class="n">orderMapper</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IAddressService</span> <span class="n">addressService</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ICartService</span> <span class="n">cartService</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IProductService</span> <span class="n">productService</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Order</span> <span class="nf">insertOrder</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span> <span class="n">Long</span> <span class="n">totalPrice</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//根据控制层传入的aid进行查询
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Address</span> <span class="n">address</span> <span class="o">=</span> <span class="n">addressService</span><span class="o">.</span><span class="na">findAddressByAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//创建一个用于向持久层传输的Order实体类对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//补全order对象的空白字段
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">order</span><span class="o">.</span><span class="na">setUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setAid</span><span class="o">(</span><span class="n">aid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setRecvName</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setRecvPhone</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getPhone</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setRecvProvince</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getProvinceName</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setRecvCity</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getCityName</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setRecvArea</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getAreaName</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setRecvAddress</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getAddress</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setTotalPrice</span><span class="o">(</span><span class="n">totalPrice</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">//表示未支付
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Date</span> <span class="n">createdTime</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOrderTime</span><span class="o">(</span><span class="n">createdTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setPayTime</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setCreatedUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setModifiedUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setCreatedTime</span><span class="o">(</span><span class="n">createdTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setModifiedTime</span><span class="o">(</span><span class="n">createdTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//调用持久层进行插入
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">orderMapper</span><span class="o">.</span><span class="na">insertOrder</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;服务器出现错误，创建订单失败&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//根据oid查询指定的订单，并返回给控制层
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span>  <span class="n">orderMapper</span><span class="o">.</span><span class="na">findOrderByOid</span><span class="o">(</span><span class="n">order</span><span class="o">.</span><span class="na">getOid</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertOrderItem</span><span class="o">(</span><span class="n">Integer</span> <span class="n">oid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">cid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//根据cid查询订单获取pid
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Cart</span> <span class="n">cart</span> <span class="o">=</span> <span class="n">cartService</span><span class="o">.</span><span class="na">findCartByCid</span><span class="o">(</span><span class="n">cid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//取出pid的值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">cart</span><span class="o">.</span><span class="na">getPid</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//根据pid查询商品信息
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Product</span> <span class="n">product</span> <span class="o">=</span> <span class="n">productService</span><span class="o">.</span><span class="na">findProductById</span><span class="o">(</span><span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//创建一个用于向持久层传输的OrderItem实体类对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">OrderItem</span> <span class="n">orderItem</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OrderItem</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//补全orderItem对象的空白字段
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">orderItem</span><span class="o">.</span><span class="na">setOid</span><span class="o">(</span><span class="n">oid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">orderItem</span><span class="o">.</span><span class="na">setPid</span><span class="o">(</span><span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">orderItem</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">product</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">orderItem</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">product</span><span class="o">.</span><span class="na">getImage</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">orderItem</span><span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="n">product</span><span class="o">.</span><span class="na">getPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">orderItem</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Date</span> <span class="n">createdTime</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">orderItem</span><span class="o">.</span><span class="na">setCreatedUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">orderItem</span><span class="o">.</span><span class="na">setCreatedTime</span><span class="o">(</span><span class="n">createdTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">orderItem</span><span class="o">.</span><span class="na">setModifiedUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">orderItem</span><span class="o">.</span><span class="na">setModifiedTime</span><span class="o">(</span><span class="n">createdTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//调用持久层进行插入
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">orderMapper</span><span class="o">.</span><span class="na">insertOrderItem</span><span class="o">(</span><span class="n">orderItem</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;服务器出现错误，创建订单失败&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IOrderServiceImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">IOrderService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="p">(</span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">OrderMapper</span><span class="w"> </span><span class="n">orderMapper</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">IAddressService</span><span class="w"> </span><span class="n">addressService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ICartService</span><span class="w"> </span><span class="n">cartService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">IProductService</span><span class="w"> </span><span class="n">productService</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Order</span><span class="w"> </span><span class="nf">insertOrder</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">totalPrice</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//根据控制层传入的aid进行查询</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Address</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addressService</span><span class="p">.</span><span class="na">findAddressByAid</span><span class="p">(</span><span class="n">aid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//创建一个用于向持久层传输的Order实体类对象</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//补全order对象的空白字段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setUid</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setAid</span><span class="p">(</span><span class="n">aid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setRecvName</span><span class="p">(</span><span class="n">address</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setRecvPhone</span><span class="p">(</span><span class="n">address</span><span class="p">.</span><span class="na">getPhone</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setRecvProvince</span><span class="p">(</span><span class="n">address</span><span class="p">.</span><span class="na">getProvinceName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setRecvCity</span><span class="p">(</span><span class="n">address</span><span class="p">.</span><span class="na">getCityName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setRecvArea</span><span class="p">(</span><span class="n">address</span><span class="p">.</span><span class="na">getAreaName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setRecvAddress</span><span class="p">(</span><span class="n">address</span><span class="p">.</span><span class="na">getAddress</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setTotalPrice</span><span class="p">(</span><span class="n">totalPrice</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setStatus</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w"> </span><span class="c1">//表示未支付</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Date</span><span class="w"> </span><span class="n">createdTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setOrderTime</span><span class="p">(</span><span class="n">createdTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setPayTime</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setCreatedUser</span><span class="p">(</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setModifiedUser</span><span class="p">(</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setCreatedTime</span><span class="p">(</span><span class="n">createdTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setModifiedTime</span><span class="p">(</span><span class="n">createdTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//调用持久层进行插入</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderMapper</span><span class="p">.</span><span class="na">insertOrder</span><span class="p">(</span><span class="n">order</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InsertException</span><span class="p">(</span><span class="s">&#34;服务器出现错误，创建订单失败&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//根据oid查询指定的订单，并返回给控制层</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w">  </span><span class="n">orderMapper</span><span class="p">.</span><span class="na">findOrderByOid</span><span class="p">(</span><span class="n">order</span><span class="p">.</span><span class="na">getOid</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">insertOrderItem</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">oid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//根据cid查询订单获取pid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Cart</span><span class="w"> </span><span class="n">cart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartService</span><span class="p">.</span><span class="na">findCartByCid</span><span class="p">(</span><span class="n">cid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//取出pid的值</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cart</span><span class="p">.</span><span class="na">getPid</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//根据pid查询商品信息</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">findProductById</span><span class="p">(</span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//创建一个用于向持久层传输的OrderItem实体类对象</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">OrderItem</span><span class="w"> </span><span class="n">orderItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderItem</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//补全orderItem对象的空白字段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setOid</span><span class="p">(</span><span class="n">oid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setPid</span><span class="p">(</span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="n">product</span><span class="p">.</span><span class="na">getTitle</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setImage</span><span class="p">(</span><span class="n">product</span><span class="p">.</span><span class="na">getImage</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setPrice</span><span class="p">(</span><span class="n">product</span><span class="p">.</span><span class="na">getPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setNum</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Date</span><span class="w"> </span><span class="n">createdTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setCreatedUser</span><span class="p">(</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setCreatedTime</span><span class="p">(</span><span class="n">createdTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setModifiedUser</span><span class="p">(</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">orderItem</span><span class="p">.</span><span class="na">setModifiedTime</span><span class="p">(</span><span class="n">createdTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//调用持久层进行插入</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderMapper</span><span class="p">.</span><span class="na">insertOrderItem</span><span class="p">(</span><span class="n">orderItem</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InsertException</span><span class="p">(</span><span class="s">&#34;服务器出现错误，创建订单失败&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试">4.单元测试</h4>
 <hr>
 <h3 id="733-后端控制层">7.3.3 后端控制层</h3>
@@ -405,35 +407,35 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/6
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/Order&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderController</span> <span class="kd">extends</span> <span class="n">BaseController</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IOrderService</span> <span class="n">orderService</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/Order&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderController</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">IOrderService</span><span class="w"> </span><span class="n">orderService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * Description : 处理用户创建order订单的请求
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @date 2022/7/18
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param aid 用户选中的地址aid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param totalPrice 商品的总金额
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param session 项目启动自动生成的session对象
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return top.year21.computerstore.utils.JsonResult&lt;java.lang.Void&gt;
-</span></span></span><span class="line"><span class="cl"><span class="cm">     **/</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@PostMapping</span><span class="o">(</span><span class="s">&#34;/createOrder&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span> <span class="nf">createOrder</span><span class="o">(</span><span class="n">Integer</span> <span class="n">aid</span><span class="o">,</span> <span class="n">Long</span> <span class="n">totalPrice</span><span class="o">,</span> <span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//从session中取出用户名和uid
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">getUsernameFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//调用业务层方法执行插入操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="n">orderService</span><span class="o">.</span><span class="na">insertOrder</span><span class="o">(</span><span class="n">aid</span><span class="o">,</span><span class="n">uid</span><span class="o">,</span> <span class="n">totalPrice</span><span class="o">,</span><span class="n">username</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">order</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     **/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&#34;/createOrder&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createOrder</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">aid</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">totalPrice</span><span class="p">,</span><span class="w"> </span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//从session中取出用户名和uid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUserIdFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUsernameFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//调用业务层方法执行插入操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderService</span><span class="p">.</span><span class="na">insertOrder</span><span class="p">(</span><span class="n">aid</span><span class="p">,</span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">totalPrice</span><span class="p">,</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">,</span><span class="n">order</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面">4.前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"></code></pre></div><hr>
 </div><div class="post-footer" id="post-footer">
@@ -464,7 +466,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

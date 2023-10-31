@@ -10,11 +10,13 @@
 <meta property="og:url" content="http://example.org/springboot%E9%A1%B9%E7%9B%AE-%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-16T20:19:14+09:00" />
 <meta property="article:modified_time" content="2022-10-16T20:19:14+09:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
 <meta name="twitter:title" content="SpringBoot项目-购物车管理"/>
 <meta name="twitter:description" content="6 购物车 6.1 创建数据表 CREATE TABLE t_cart ( cid INT AUTO_INCREMENT COMMENT &#39;购物车数据id&#39;, uid INT NOT NULL COMMENT &#39;用户id&#39;, pid INT NOT NULL COMMENT &#39;商品id"/>
+<meta name="twitter:site" content="@https://twitter.com/ZXLKG"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -187,27 +189,27 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description   购物车商品信息实体类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@NoArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cart</span> <span class="kd">extends</span> <span class="n">BaseEntity</span><span class="o">{</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//    cid INT AUTO_INCREMENT COMMENT &#39;购物车数据id&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="c1">//    uid INT NOT NULL COMMENT &#39;用户id&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="c1">//    pid INT NOT NULL COMMENT &#39;商品id&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="c1">//    price BIGINT COMMENT &#39;加入时商品单价&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="c1">//    num INT COMMENT &#39;商品数量&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="c1">//    created_user VARCHAR(20) COMMENT &#39;创建人&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="c1">//    created_time DATETIME COMMENT &#39;创建时间&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="c1">//    modified_user VARCHAR(20) COMMENT &#39;修改人&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="c1">//    modified_time DATETIME COMMENT &#39;修改时间&#39;,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">cid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">uid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">pid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">price</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">num</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@AllArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@NoArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cart</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseEntity</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//    cid INT AUTO_INCREMENT COMMENT &#39;购物车数据id&#39;,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//    uid INT NOT NULL COMMENT &#39;用户id&#39;,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//    pid INT NOT NULL COMMENT &#39;商品id&#39;,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//    price BIGINT COMMENT &#39;加入时商品单价&#39;,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//    num INT COMMENT &#39;商品数量&#39;,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//    created_user VARCHAR(20) COMMENT &#39;创建人&#39;,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//    created_time DATETIME COMMENT &#39;创建时间&#39;,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//    modified_user VARCHAR(20) COMMENT &#39;修改人&#39;,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//    modified_time DATETIME COMMENT &#39;修改时间&#39;,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h2 id="63--加入购物车">6.3  加入购物车</h2>
 <hr>
 <h3 id="631-后端-持久层">6.3.1 后端-持久层</h3>
@@ -226,35 +228,35 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 购物车持久层的Mapper接口
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CartMapper</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CartMapper</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 插入Cart数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cart 购物车数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">addCart</span><span class="o">(</span><span class="n">Cart</span> <span class="n">cart</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">addCart</span><span class="p">(</span><span class="n">Cart</span><span class="w"> </span><span class="n">cart</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 更新Cart内容
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cid 购物车id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param num 更新物品数量
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param modifiedUser 更新人
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param modifiedTime 更新时间
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">updateCartInfo</span><span class="o">(</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">modifiedUser</span><span class="o">,</span> <span class="n">Date</span> <span class="n">modifiedTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">updateCartInfo</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">modifiedUser</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">modifiedTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照用户的uid和商品的pid查找某条购物车数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户的uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pid 商品的id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回购物车数据
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Cart</span> <span class="nf">findCartByUidAndPid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Cart</span><span class="w"> </span><span class="nf">findCartByUidAndPid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写mapper接口的映射文件">3.编写Mapper接口的映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;com.zxl.store.mappers.CartMapper&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!--    Integer addCart(Cart cart);--&gt;</span>
@@ -280,70 +282,70 @@
 <h4 id="1规划异常">1.规划异常</h4>
 <hr>
 <h4 id="2编写业务层接口和抽象方法">2.编写业务层接口和抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 将商品加入购物车
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pid 商品id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param num 商品数量
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param username  用户名
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">addCart</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">pid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">num</span><span class="o">,</span><span class="n">Integer</span> <span class="n">username</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">addCart</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">username</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写抽象方法的具体实现逻辑">3.编写抽象方法的具体实现逻辑</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 购物车业务层接口的实现类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/4
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ICartServiceImpl</span> <span class="kd">implements</span> <span class="n">ICartService</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">CartMapper</span> <span class="n">cartMapper</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addCart</span><span class="o">(</span><span class="n">Cart</span> <span class="n">cart</span><span class="o">,</span> <span class="n">String</span> <span class="n">createdUser</span><span class="o">,</span> <span class="n">Date</span> <span class="n">createdTime</span><span class="o">,</span> <span class="n">String</span> <span class="n">modifiedUser</span><span class="o">,</span> <span class="n">Date</span> <span class="n">modifiedTime</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//查询当前商品是否在购物车存在
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">pid</span> <span class="o">=</span>  <span class="n">cart</span><span class="o">.</span><span class="na">getPid</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span>  <span class="n">cart</span><span class="o">.</span><span class="na">getUid</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Cart</span> <span class="n">destCart</span> <span class="o">=</span> <span class="n">cartMapper</span><span class="o">.</span><span class="na">findCartByUidAndPid</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断查询结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">destCart</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span><span class="c1">//如果不存在
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//补全四个字段
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">cart</span><span class="o">.</span><span class="na">setCreatedUser</span><span class="o">(</span><span class="n">createdUser</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">cart</span><span class="o">.</span><span class="na">setModifiedUser</span><span class="o">(</span><span class="n">modifiedUser</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">cart</span><span class="o">.</span><span class="na">setCreatedTime</span><span class="o">(</span><span class="n">createdTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">cart</span><span class="o">.</span><span class="na">setModifiedTime</span><span class="o">(</span><span class="n">modifiedTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="c1">//执行插入操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Integer</span> <span class="n">integer</span> <span class="o">=</span> <span class="n">cartMapper</span><span class="o">.</span><span class="na">addCart</span><span class="o">(</span><span class="n">cart</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//判断插入结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span><span class="o">(</span><span class="n">integer</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">                <span class="k">throw</span> <span class="k">new</span> <span class="n">InsertException</span><span class="o">(</span><span class="s">&#34;插入购物车数据时遭遇未知异常&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">else</span><span class="o">{</span><span class="c1">//表示该商品存在数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//取出查询的数据数量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Integer</span> <span class="n">destNum</span> <span class="o">=</span> <span class="n">destCart</span><span class="o">.</span><span class="na">getNum</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//取出新添加产品的数量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Integer</span> <span class="n">cartNum</span> <span class="o">=</span> <span class="n">cart</span><span class="o">.</span><span class="na">getNum</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//计算结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Integer</span> <span class="n">num</span> <span class="o">=</span> <span class="n">destNum</span> <span class="o">+</span> <span class="n">cartNum</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="c1">//设置需要更新的字段
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">cart</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">cart</span><span class="o">.</span><span class="na">setModifiedUser</span><span class="o">(</span><span class="n">modifiedUser</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">cart</span><span class="o">.</span><span class="na">setModifiedTime</span><span class="o">(</span><span class="n">modifiedTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="c1">//执行更新操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">cartMapper</span><span class="o">.</span><span class="na">updateCartInfo</span><span class="o">(</span><span class="n">cart</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">row</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">){</span>
-</span></span><span class="line"><span class="cl">                <span class="k">throw</span> <span class="k">new</span> <span class="n">UpdateException</span><span class="o">(</span><span class="s">&#34;更新购物车数据是遭遇未知异常&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ICartServiceImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ICartService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="p">(</span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CartMapper</span><span class="w"> </span><span class="n">cartMapper</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addCart</span><span class="p">(</span><span class="n">Cart</span><span class="w"> </span><span class="n">cart</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">createdUser</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">createdTime</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">modifiedUser</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">modifiedTime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//查询当前商品是否在购物车存在</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">cart</span><span class="p">.</span><span class="na">getPid</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">cart</span><span class="p">.</span><span class="na">getUid</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Cart</span><span class="w"> </span><span class="n">destCart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartMapper</span><span class="p">.</span><span class="na">findCartByUidAndPid</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断查询结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">destCart</span><span class="o">==</span><span class="kc">null</span><span class="p">){</span><span class="c1">//如果不存在</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//补全四个字段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cart</span><span class="p">.</span><span class="na">setCreatedUser</span><span class="p">(</span><span class="n">createdUser</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cart</span><span class="p">.</span><span class="na">setModifiedUser</span><span class="p">(</span><span class="n">modifiedUser</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cart</span><span class="p">.</span><span class="na">setCreatedTime</span><span class="p">(</span><span class="n">createdTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cart</span><span class="p">.</span><span class="na">setModifiedTime</span><span class="p">(</span><span class="n">modifiedTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//执行插入操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Integer</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartMapper</span><span class="p">.</span><span class="na">addCart</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//判断插入结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">integer</span><span class="o">!=</span><span class="n">1</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InsertException</span><span class="p">(</span><span class="s">&#34;插入购物车数据时遭遇未知异常&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="c1">//表示该商品存在数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//取出查询的数据数量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Integer</span><span class="w"> </span><span class="n">destNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destCart</span><span class="p">.</span><span class="na">getNum</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//取出新添加产品的数量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Integer</span><span class="w"> </span><span class="n">cartNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cart</span><span class="p">.</span><span class="na">getNum</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//计算结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destNum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cartNum</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//设置需要更新的字段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cart</span><span class="p">.</span><span class="na">setNum</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cart</span><span class="p">.</span><span class="na">setModifiedUser</span><span class="p">(</span><span class="n">modifiedUser</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cart</span><span class="p">.</span><span class="na">setModifiedTime</span><span class="p">(</span><span class="n">modifiedTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//执行更新操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Integer</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartMapper</span><span class="p">.</span><span class="na">updateCartInfo</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">row</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">1</span><span class="w"> </span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UpdateException</span><span class="p">(</span><span class="s">&#34;更新购物车数据是遭遇未知异常&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-1">4.单元测试</h4>
 <hr>
 <h3 id="633-后端控制层">6.3.3 后端控制层</h3>
@@ -361,32 +363,32 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 处理购物车请求的控制类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/5
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/cart&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CartController</span> <span class="kd">extends</span> <span class="n">BaseController</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ICartService</span> <span class="n">cartService</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/add_cart&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">addCart</span><span class="o">(</span><span class="n">Integer</span> <span class="n">pid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">price</span><span class="o">,</span><span class="n">Integer</span> <span class="n">num</span><span class="o">,</span> <span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//从session获取uid和username
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">getUsernameFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Date</span> <span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//设置参数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Cart</span> <span class="n">cart</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cart</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cart</span><span class="o">.</span><span class="na">setUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cart</span><span class="o">.</span><span class="na">setPid</span><span class="o">(</span><span class="n">pid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cart</span><span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">price</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cart</span><span class="o">.</span><span class="na">setNum</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cart</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//执行插入操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">cartService</span><span class="o">.</span><span class="na">addCart</span><span class="o">(</span><span class="n">cart</span><span class="o">,</span><span class="n">username</span><span class="o">,</span><span class="n">currentTime</span><span class="o">,</span><span class="n">username</span><span class="o">,</span><span class="n">currentTime</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/cart&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CartController</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ICartService</span><span class="w"> </span><span class="n">cartService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/add_cart&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">POST</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">addCart</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//从session获取uid和username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUsernameFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUserIdFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Date</span><span class="w"> </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//设置参数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Cart</span><span class="w"> </span><span class="n">cart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cart</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cart</span><span class="p">.</span><span class="na">setUid</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cart</span><span class="p">.</span><span class="na">setPid</span><span class="p">(</span><span class="n">pid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cart</span><span class="p">.</span><span class="na">setPrice</span><span class="p">(</span><span class="n">Long</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">price</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cart</span><span class="p">.</span><span class="na">setNum</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">cart</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//执行插入操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cartService</span><span class="p">.</span><span class="na">addCart</span><span class="p">(</span><span class="n">cart</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">currentTime</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">currentTime</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面">4. 前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="c1">//将物品加入购物车
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">function</span> <span class="nx">addProductToCart</span><span class="p">(){</span>
@@ -424,21 +426,21 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zxl
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @description Cart表和Product表联合查询的结果映射实体类
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @date 2022/11/5
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@AllArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@NoArgsConstructor</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CartVo</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">cid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">pid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">uid</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">price</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">num</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">image</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">realPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@AllArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@NoArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CartVo</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">pid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">image</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">realPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="2-编写sql语句">2. 编写sql语句</h4>
 <p>由于购物车展示需要显示:</p>
 <p>        商品名称(product)</p>
@@ -460,13 +462,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">created_time</span><span class="w"> </span><span class="k">DESC</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="3编写对应的mapper接口的抽象方法">3.编写对应的Mapper接口的抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照用户uid 查询所有的购物车记录
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回购物车集合
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span> <span class="nf">findAllCartByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findAllCartByUid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4编写mapper接口对于的映射文件">4.编写Mapper接口对于的映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;CartVo&gt; findAllCartByUid(Integer uid);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findAllCartByUid&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.vo.CartVo&#34;</span><span class="nt">&gt;</span>
@@ -493,19 +495,19 @@
 <h4 id="1异常处理">1.异常处理</h4>
 <hr>
 <h4 id="2编写业务层抽象方法">2.编写业务层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据用户uid查询购物车数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param uid 用户uid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span> <span class="nf">findAllCartByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findAllCartByUid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写业务层方法的实现">3.编写业务层方法的实现</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span> <span class="nf">findAllCartByUid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">uid</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">cartMapper</span><span class="o">.</span><span class="na">findAllCartByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findAllCartByUid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cartMapper</span><span class="p">.</span><span class="na">findAllCartByUid</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-2">4.单元测试</h4>
 <hr>
 <h3 id="643-后端-控制层">6.4.3 后端-控制层</h3>
@@ -519,16 +521,16 @@
 <p>响应类型：JsonResult&lt; List&lt; Cart&raquo;</p>
 <hr>
 <h4 id="3处理请求编写控制方法">3.处理请求，编写控制方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/show_carts&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;&gt;</span> <span class="nf">showCarts</span><span class="o">(</span><span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//获取uid
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">getUserIdFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//获取数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">cartService</span><span class="o">.</span><span class="na">findAllCartByUid</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//返回数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">data</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/show_carts&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">GET</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">showCarts</span><span class="p">(</span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//获取uid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">uid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUserIdFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//获取数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartService</span><span class="p">.</span><span class="na">findAllCartByUid</span><span class="p">(</span><span class="n">uid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//返回数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">,</span><span class="n">data</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面-1">4.前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl">            <span class="kd">function</span> <span class="nx">showCarts</span><span class="p">(){</span>
@@ -587,13 +589,13 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_cart</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="n">cid</span><span class="err">}</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2编写mapper接口的抽象方法">2.编写Mapper接口的抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照购物车id 删除购物车内容物
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cid 购物车id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return 返回影响行数
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">deleteCartByCid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">deleteCartByCid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写mapper接口的映射文件-1">3.编写Mapper接口的映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    Integer deleteCartByCid(Integer cid);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">&#34;deleteCartByCid&#34;</span><span class="nt">&gt;</span>
@@ -607,23 +609,23 @@
 <p>删除异常已经被定义</p>
 <hr>
 <h4 id="2定义业务层抽象方法">2.定义业务层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照cid删除购物车数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cid cid
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">deleteCartByCid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteCartByCid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3定义抽象方法实现逻辑">3.定义抽象方法实现逻辑</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteCartByCid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//删除
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">cartMapper</span><span class="o">.</span><span class="na">deleteCartByCid</span><span class="o">(</span><span class="n">cid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断删除结果
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">DeleteException</span><span class="o">(</span><span class="s">&#34;购物车数据删除异常!&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteCartByCid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//删除</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartMapper</span><span class="p">.</span><span class="na">deleteCartByCid</span><span class="p">(</span><span class="n">cid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断删除结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DeleteException</span><span class="p">(</span><span class="s">&#34;购物车数据删除异常!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-4">4.单元测试</h4>
 <hr>
 <h3 id="653-后端-控制层">6.5.3 后端-控制层</h3>
@@ -636,12 +638,12 @@
 <p>响应类型：JsonResult<!-- raw HTML omitted --></p>
 <hr>
 <h4 id="3处理请求编写控制层方法">3,处理请求，编写控制层方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/delete_cart&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">showCarts</span><span class="o">(</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cartService</span><span class="o">.</span><span class="na">deleteCartByCid</span><span class="o">(</span><span class="n">cid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/delete_cart&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">GET</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">showCarts</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cartService</span><span class="p">.</span><span class="na">deleteCartByCid</span><span class="p">(</span><span class="n">cid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面-2">4.前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="c1">//给每个删除按钮绑定点击事件
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">function</span> <span class="nx">delCartItem</span><span class="p">(</span><span class="nx">cid</span><span class="p">){</span>
@@ -674,23 +676,23 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t_cart</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="n">cid</span><span class="err">}</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h4 id="2编写mapper接口抽象方法">2.编写Mapper接口抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照cid查询Cart
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Cart</span> <span class="nf">findCartByCid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Cart</span><span class="w"> </span><span class="nf">findCartByCid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照cid增减购物车商品的数量
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param num   数量
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cid   购物车id
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param modifiedUser 操作人
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param modifiedTime 操作时间
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Integer</span> <span class="nf">updateCartNumByCid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">num</span><span class="o">,</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">,</span><span class="n">String</span> <span class="n">modifiedUser</span><span class="o">,</span><span class="n">Date</span> <span class="n">modifiedTime</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="nf">updateCartNumByCid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="n">String</span><span class="w"> </span><span class="n">modifiedUser</span><span class="p">,</span><span class="n">Date</span><span class="w"> </span><span class="n">modifiedTime</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写mapper接口映射文件">3.编写Mapper接口映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    Cart findCartByCid(Integer cid);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findCartByCid&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.entity.Cart&#34;</span><span class="nt">&gt;</span>
@@ -709,30 +711,30 @@
 <h4 id="1处理异常-3">1.处理异常</h4>
 <hr>
 <h4 id="2编写业务层抽象方法-1">2.编写业务层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 更新购物车商品数量
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cid
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param num
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param modifiedUser
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">updateCartNumByCid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">num</span><span class="o">,</span><span class="n">String</span> <span class="n">modifiedUser</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateCartNumByCid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="n">String</span><span class="w"> </span><span class="n">modifiedUser</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写实现逻辑">3.编写实现逻辑</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateCartNumByCid</span><span class="o">(</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">modifiedUser</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//查询购物车数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Cart</span> <span class="n">res</span> <span class="o">=</span> <span class="n">cartMapper</span><span class="o">.</span><span class="na">findCartByCid</span><span class="o">(</span><span class="n">cid</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">CartInfoNotExistsException</span><span class="o">(</span><span class="s">&#34;购物车数据不存在&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//添加
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Integer</span> <span class="n">row</span> <span class="o">=</span> <span class="n">cartMapper</span><span class="o">.</span><span class="na">updateCartNumByCid</span><span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="n">cid</span><span class="o">,</span> <span class="n">modifiedUser</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">!=</span><span class="mi">1</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UpdateException</span><span class="o">(</span><span class="s">&#34;更新购物车商品数目出现未知异常&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateCartNumByCid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">modifiedUser</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//查询购物车数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Cart</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartMapper</span><span class="p">.</span><span class="na">findCartByCid</span><span class="p">(</span><span class="n">cid</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">res</span><span class="o">==</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CartInfoNotExistsException</span><span class="p">(</span><span class="s">&#34;购物车数据不存在&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//添加</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartMapper</span><span class="p">.</span><span class="na">updateCartNumByCid</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="n">modifiedUser</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">row</span><span class="o">!=</span><span class="n">1</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UpdateException</span><span class="p">(</span><span class="s">&#34;更新购物车商品数目出现未知异常&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-6">4.单元测试</h4>
 <hr>
 <h3 id="663-数目增减-控制层">6.6.3 数目增减-控制层</h3>
@@ -745,13 +747,13 @@
 <p>响应类型：JsonResult&lt; void&gt;</p>
 <hr>
 <h4 id="3处理请求编写控制类">3.处理请求，编写控制类</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/update_num&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">updateNum</span><span class="o">(</span><span class="n">Integer</span> <span class="n">cid</span><span class="o">,</span><span class="n">Integer</span> <span class="n">num</span><span class="o">,</span><span class="n">HttpSession</span> <span class="n">session</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">modifiedUser</span> <span class="o">=</span> <span class="n">getUsernameFromSession</span><span class="o">(</span><span class="n">session</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cartService</span><span class="o">.</span><span class="na">updateCartNumByCid</span><span class="o">(</span><span class="n">cid</span><span class="o">,</span><span class="n">num</span><span class="o">,</span><span class="n">modifiedUser</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/update_num&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">POST</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">updateNum</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="n">Integer</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">modifiedUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getUsernameFromSession</span><span class="p">(</span><span class="n">session</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cartService</span><span class="p">.</span><span class="na">updateCartNumByCid</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span><span class="n">num</span><span class="p">,</span><span class="n">modifiedUser</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4-前端页面">4. 前端页面</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">            <span class="cm">/*按加号数量增*/</span>
 </span></span><span class="line"><span class="cl">            <span class="kd">function</span> <span class="nx">addNum</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
@@ -833,13 +835,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">created_time</span><span class="w"> </span><span class="k">DESC</span><span class="w">
 </span></span></span></code></pre></div><hr>
 <h3 id="2编写mapper接口抽象方法-1">2.编写Mapper接口抽象方法</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照cids查询购物车数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cids 
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span> <span class="nf">findVoByCid</span><span class="o">(</span><span class="n">Integer</span><span class="o">[]</span> <span class="n">cids</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findVoByCid</span><span class="p">(</span><span class="n">Integer</span><span class="o">[]</span><span class="w"> </span><span class="n">cids</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写映射文件">3.编写映射文件</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--    List&lt;CartVo&gt; findVoByCid(Integer[] cids);--&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findVoByCid&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.zxl.store.vo.CartVo&#34;</span><span class="nt">&gt;</span>
@@ -870,22 +872,22 @@
 <h4 id="1编写异常">1.编写异常</h4>
 <hr>
 <h4 id="2编写业务层抽象方法-2">2.编写业务层抽象方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 按照cids查询购物车数据
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @param cids
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span> <span class="nf">getVoByCid</span><span class="o">(</span><span class="n">Integer</span><span class="o">[]</span> <span class="n">cids</span><span class="o">);</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getVoByCid</span><span class="p">(</span><span class="n">Integer</span><span class="o">[]</span><span class="w"> </span><span class="n">cids</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="3编写实现逻辑-1">3.编写实现逻辑</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span> <span class="nf">getVoByCid</span><span class="o">(</span><span class="n">Integer</span><span class="o">[]</span> <span class="n">cids</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//查询数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">cartMapper</span><span class="o">.</span><span class="na">findVoByCid</span><span class="o">(</span><span class="n">cids</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//传输数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">data</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getVoByCid</span><span class="p">(</span><span class="n">Integer</span><span class="o">[]</span><span class="w"> </span><span class="n">cids</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//查询数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartMapper</span><span class="p">.</span><span class="na">findVoByCid</span><span class="p">(</span><span class="n">cids</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//传输数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4单元测试-7">4.单元测试</h4>
 <hr>
 <h3 id="673-后端-控制层">6.7.3 后端-控制层</h3>
@@ -898,12 +900,12 @@
 <p>响应类型：JsonResult&lt;List<!-- raw HTML omitted -->&gt;</p>
 <hr>
 <h4 id="3处理请求编写处理方法">3.处理请求，编写处理方法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/list&#34;</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;&gt;</span> <span class="nf">getCartCids</span><span class="o">(</span><span class="n">Integer</span><span class="o">[]</span> <span class="n">cids</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">cartService</span><span class="o">.</span><span class="na">getVoByCid</span><span class="o">(</span><span class="n">cids</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">JsonResult</span><span class="o">&lt;&gt;(</span><span class="n">OK</span><span class="o">,</span><span class="n">data</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/list&#34;</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">GET</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">getCartCids</span><span class="p">(</span><span class="n">Integer</span><span class="o">[]</span><span class="w"> </span><span class="n">cids</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CartVo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cartService</span><span class="p">.</span><span class="na">getVoByCid</span><span class="p">(</span><span class="n">cids</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonResult</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">OK</span><span class="p">,</span><span class="n">data</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><hr>
 <h4 id="4前端页面-3">4.前端页面</h4>
 <p>1.将cart.html页面中结算按钮属性变更成type=“submit”</p>
 <p>2.orderConfirm.html页面中添加自动加载从上个页面中传递过来的cids数据，再去请求ajax中进行填充当前页面区域中</p>
@@ -985,7 +987,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

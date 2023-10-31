@@ -10,11 +10,13 @@
 <meta property="og:url" content="http://example.org/telephonymanager/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-06-06T22:03:00+08:00" />
 <meta property="article:modified_time" content="2023-06-06T22:03:00+08:00" /><meta property="og:site_name" content="Cyo&#39;s website" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
 <meta name="twitter:title" content="TelePhonyManager"/>
 <meta name="twitter:description" content="TelephonyManager类笔记 提供对有关设备上的电话服务的信息的访问。应用程序可以使用此类中的方法来确定电话服务和状态，以及访问某些"/>
+<meta name="twitter:site" content="@https://twitter.com/ZXLKG"/>
 <meta name="application-name" content="Cyo&#39;s website">
 <meta name="apple-mobile-web-app-title" content="Cyo&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -127,156 +129,156 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
             </div><div class="content" id="content"><h1 id="telephonymanager类笔记">TelephonyManager类笔记</h1>
 <p>提供对有关设备上的电话服务的信息的访问。应用程序可以使用此类中的方法来确定电话服务和状态，以及访问某些类型的用户信息。应用程序还可以注册一个侦听器以接收电话状态更改的通知。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//TelePhonyManager对象的获取
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">mTelephonyManager</span> <span class="o">=</span> <span class="o">(</span><span class="n">TelephonyManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">TELEPHONY_SERVICE</span><span class="o">);</span>
-</span></span></code></pre></div><p>需要注意的是,需要在AndroidManifest.xml内部声明权限。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//TelePhonyManager对象的获取</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">mTelephonyManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TelephonyManager</span><span class="p">)</span><span class="w"> </span><span class="n">getSystemService</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">TELEPHONY_SERVICE</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>需要注意的是,需要在AndroidManifest.xml内部声明权限。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--允许读取电话状态SIM的权限--&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.READ_PHONE_STATE&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 这个权限用于进行网络定位 --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.ACCESS_COARSE_LOCATION&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>部分TelephonyManager由于权限问题，无法输出显示。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="kd">implements</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="s">&#34;zhao&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Button</span> <span class="n">btn_click</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">TelephonyManager</span> <span class="n">mTelephonyManager</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">StringBuilder</span> <span class="n">sb</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">TextView</span> <span class="n">tv_message</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;MainActivity&#34;</span><span class="o">,</span> <span class="s">&#34;MainActivity onCreate&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">tv_message</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">tv_message</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">btn_click</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_click</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">mTelephonyManager</span> <span class="o">=</span> <span class="o">(</span><span class="n">TelephonyManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">TELEPHONY_SERVICE</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">btn_click</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setMessage</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//获取手机当前位置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//&lt;uses-permission android:name=&#34;android.permission.ACCESS_FINE_LOCATION&#34;/&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        String cellLocation = mTelephonyManager.getCellLocation().toString();
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        sb.append(&#34;CellLocation Info : &#34;).append(cellLocation).append(&#34;\n&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">            <span class="cm">/*
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;zhao&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="n">btn_click</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">sb</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">TextView</span><span class="w"> </span><span class="n">tv_message</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="nd">@Nullable</span><span class="w"> </span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&#34;MainActivity&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;MainActivity onCreate&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">tv_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">tv_message</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">btn_click</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">btn_click</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">mTelephonyManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TelephonyManager</span><span class="p">)</span><span class="w"> </span><span class="n">getSystemService</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">TELEPHONY_SERVICE</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">btn_click</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setMessage</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//获取手机当前位置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//&lt;uses-permission android:name=&#34;android.permission.ACCESS_FINE_LOCATION&#34;/&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        String cellLocation = mTelephonyManager.getCellLocation().toString();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        sb.append(&#34;CellLocation Info : &#34;).append(cellLocation).append(&#34;\n&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">            获取手机的卡槽个数
-</span></span></span><span class="line"><span class="cl"><span class="cm">             */</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">phoneCount</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getPhoneCount</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;phoneCount : &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">phoneCount</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">             */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">phoneCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getPhoneCount</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;phoneCount : &#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">phoneCount</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * 获取数据连接状态
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * DATA_CONNECTED 数据连接状态：已连接
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * DATA_CONNECTING 数据连接状态：正在连接
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * DATA_DISCONNECTED 数据连接状态：断开
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * DATA_SUSPENDED 数据连接状态：暂停
-</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">dataState</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getDataState</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">setDataState</span><span class="o">(</span><span class="n">dataState</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">dataState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getDataState</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">setDataState</span><span class="p">(</span><span class="n">dataState</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * 返回唯一的设备ID
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * 如果是GSM网络，返回IMEI；如果是CDMA网络，返回MEID；如果设备ID是不可用的返回null
-</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//        String deviceId = mTelephonyManager.getDeviceId();
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        sb.append(&#34;deviceId : &#34;).append(deviceId).append(&#34;\n&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        String deviceId = mTelephonyManager.getDeviceId();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        sb.append(&#34;deviceId : &#34;).append(deviceId).append(&#34;\n&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * 返回设备的软件版本号
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * 例如：GSM手机的IMEI/SV码，如果软件版本是返回null，如果不可用返回null
-</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//        String deviceSoftwareVersion = mTelephonyManager.getDeviceSoftwareVersion();
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        sb.append(&#34;deviceSoftwareVersion : &#34;).append(deviceSoftwareVersion).append(&#34;\n&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        String deviceSoftwareVersion = mTelephonyManager.getDeviceSoftwareVersion();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        sb.append(&#34;deviceSoftwareVersion : &#34;).append(deviceSoftwareVersion).append(&#34;\n&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * 返回手机号码
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * 对于GSM网络来说即MSISDN，如果不可用返回null
 </span></span></span><span class="line"><span class="cl"><span class="cm">         *
-</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//        @SuppressLint(&#34;MissingPermission&#34;) String line1Number = mTelephonyManager.getLine1Number();
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        sb.append(&#34;line1Number : &#34;).append(line1Number).append(&#34;\n&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回当前设备附近设备的信息
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * getNeighboringCellInfo() 在&gt;=29 被删除
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回ISO标准的国家码，即国际长途区号
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">networkCountryIso</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getNetworkCountryIso</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;networkCountryIso : &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">networkCountryIso</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回MCC+MNC代码 (SIM卡运营商国家代码和运营商网络代码)(IMSI)
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">networkOperator</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getNetworkOperator</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;networkOperator : &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">networkOperator</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回移动网络运营商的名字(SPN)
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">networkOperatorName</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getNetworkOperatorName</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;networkOperatorName : &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">networkOperatorName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 获取网络类型
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * NETWORK_TYPE_CDMA 网络类型为CDMA
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * NETWORK_TYPE_EDGE 网络类型为EDGE
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * NETWORK_TYPE_EVDO_0 网络类型为EVDO0
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * NETWORK_TYPE_EVDO_A 网络类型为EVDOA
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * NETWORK_TYPE_GPRS 网络类型为GPRS
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * NETWORK_TYPE_HSDPA 网络类型为HSDPA
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * NETWORK_TYPE_HSPA 网络类型为HSPA
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * NETWORK_TYPE_HSUPA 网络类型为HSUPA
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * NETWORK_TYPE_UMTS 网络类型为UMTS
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         *
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 在中国，联通的3G为UMTS或HSDPA，移动和联通的2G为GPRS或EGDE，电信的2G为CDMA，电信的3G为EVDO
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        @SuppressLint(&#34;MissingPermission&#34;) int networkType = mTelephonyManager.getNetworkType();
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        setNetWorkType(networkType);
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回设备的类型
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         *
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * PHONE_TYPE_CDMA 手机制式为CDMA，电信
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * PHONE_TYPE_GSM 手机制式为GSM，移动和联通
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * PHONE_TYPE_NONE 手机制式未知
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">phoneType</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getPhoneType</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">setPhoneType</span><span class="o">(</span><span class="n">phoneType</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回SIM卡提供商的国家代码
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">simCountryIso</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getSimCountryIso</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;simCountryIso : &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">simCountryIso</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回MCC+MNC代码 (SIM卡运营商国家代码和运营商网络代码)(IMSI)
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">simOperator</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getSimOperator</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;simOperator : &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">simOperator</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回服务提供者的名称(SPN)
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">simOperatorName</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getSimOperatorName</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;simOperatorName : &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">simOperatorName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回SIM卡的序列号(IMEI),如果是返回null为不可用。
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        String simSerialNumber = mTelephonyManager.getSimSerialNumber();
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        sb.append(&#34;simSerialNumber : &#34;).append(simSerialNumber).append(&#34;\n&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        @SuppressLint(&#34;MissingPermission&#34;) String line1Number = mTelephonyManager.getLine1Number();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        sb.append(&#34;line1Number : &#34;).append(line1Number).append(&#34;\n&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回当前设备附近设备的信息</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * getNeighboringCellInfo() 在&gt;=29 被删除</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回ISO标准的国家码，即国际长途区号</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">networkCountryIso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getNetworkCountryIso</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;networkCountryIso : &#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">networkCountryIso</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回MCC+MNC代码 (SIM卡运营商国家代码和运营商网络代码)(IMSI)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">networkOperator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getNetworkOperator</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;networkOperator : &#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">networkOperator</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回移动网络运营商的名字(SPN)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">networkOperatorName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getNetworkOperatorName</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;networkOperatorName : &#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">networkOperatorName</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 获取网络类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * NETWORK_TYPE_CDMA 网络类型为CDMA</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * NETWORK_TYPE_EDGE 网络类型为EDGE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * NETWORK_TYPE_EVDO_0 网络类型为EVDO0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * NETWORK_TYPE_EVDO_A 网络类型为EVDOA</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * NETWORK_TYPE_GPRS 网络类型为GPRS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * NETWORK_TYPE_HSDPA 网络类型为HSDPA</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * NETWORK_TYPE_HSPA 网络类型为HSPA</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * NETWORK_TYPE_HSUPA 网络类型为HSUPA</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * NETWORK_TYPE_UMTS 网络类型为UMTS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         *</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 在中国，联通的3G为UMTS或HSDPA，移动和联通的2G为GPRS或EGDE，电信的2G为CDMA，电信的3G为EVDO</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        @SuppressLint(&#34;MissingPermission&#34;) int networkType = mTelephonyManager.getNetworkType();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        setNetWorkType(networkType);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回设备的类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         *</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * PHONE_TYPE_CDMA 手机制式为CDMA，电信</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * PHONE_TYPE_GSM 手机制式为GSM，移动和联通</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * PHONE_TYPE_NONE 手机制式未知</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">phoneType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getPhoneType</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">setPhoneType</span><span class="p">(</span><span class="n">phoneType</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回SIM卡提供商的国家代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">simCountryIso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getSimCountryIso</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;simCountryIso : &#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">simCountryIso</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回MCC+MNC代码 (SIM卡运营商国家代码和运营商网络代码)(IMSI)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">simOperator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getSimOperator</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;simOperator : &#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">simOperator</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回服务提供者的名称(SPN)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">simOperatorName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getSimOperatorName</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;simOperatorName : &#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">simOperatorName</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回SIM卡的序列号(IMEI),如果是返回null为不可用。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        String simSerialNumber = mTelephonyManager.getSimSerialNumber();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        sb.append(&#34;simSerialNumber : &#34;).append(simSerialNumber).append(&#34;\n&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * 返回一个常数表示默认的SIM卡的状态。
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * SIM_STATE_ABSENT SIM卡未找到
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * SIM_STATE_NETWORK_LOCKED SIM卡网络被锁定，需要Network PIN解锁
@@ -284,155 +286,155 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * SIM_STATE_PUK_REQUIRED SIM卡PUK被锁定，需要User PUK解锁
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * SIM_STATE_READY SIM卡可用
 </span></span></span><span class="line"><span class="cl"><span class="cm">         * SIM_STATE_UNKNOWN SIM卡未知
-</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">simState</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">getSimState</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">setSimState</span><span class="o">(</span><span class="n">simState</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回唯一的用户ID,例如,IMSI为GSM手机。
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        String subscriberId = mTelephonyManager.getSubscriberId();
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        sb.append(&#34;subscriberId : &#34;).append(subscriberId).append(&#34;\n&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 获取语音信箱号码关联的字母标识
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        @SuppressLint(&#34;MissingPermission&#34;) String voiceMailAlphaTag = mTelephonyManager.getVoiceMailAlphaTag();
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        sb.append(&#34;voiceMailAlphaTag : &#34;).append(voiceMailAlphaTag).append(&#34;\n&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回语音邮件号码
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        @SuppressLint(&#34;MissingPermission&#34;) String voiceMailNumber = mTelephonyManager.getVoiceMailNumber();
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        sb.append(&#34;voiceMailNumber : &#34;).append(voiceMailNumber).append(&#34;\n&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        /*
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         * 返回手机是否处于漫游状态
-</span></span></span><span class="line"><span class="cl"><span class="c1">//         */
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">boolean</span> <span class="n">networkRoaming</span> <span class="o">=</span> <span class="n">mTelephonyManager</span><span class="o">.</span><span class="na">isNetworkRoaming</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;networkRoaming : &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">networkRoaming</span><span class="o">==</span><span class="kc">true</span><span class="o">?</span><span class="s">&#34;true&#34;</span><span class="o">:</span><span class="s">&#34;false&#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setSimState</span><span class="o">(</span><span class="kt">int</span> <span class="n">simState</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;simState : &#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="o">(</span><span class="n">simState</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">SIM_STATE_ABSENT</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;SIM_STATE_ABSENT&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">SIM_STATE_NETWORK_LOCKED</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;SIM_STATE_NETWORK_LOCKED&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">SIM_STATE_PIN_REQUIRED</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;SIM_STATE_NETWORK_LOCKED&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">SIM_STATE_PUK_REQUIRED</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;SIM_STATE_PUK_REQUIRED&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">SIM_STATE_READY</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;SIM_STATE_READY&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">SIM_STATE_UNKNOWN</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;SIM_STATE_UNKNOWN&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setPhoneType</span><span class="o">(</span><span class="kt">int</span> <span class="n">phoneType</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;phoneType : &#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="o">(</span><span class="n">phoneType</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">PHONE_TYPE_CDMA</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;PHONE_TYPE_CDMA&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">PHONE_TYPE_GSM</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;PHONE_TYPE_GSM&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">PHONE_TYPE_NONE</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;PHONE_TYPE_NONE&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">PHONE_TYPE_SIP</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;PHONE_TYPE_SIP&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setNetWorkType</span><span class="o">(</span><span class="kt">int</span> <span class="n">netWorkType</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;networkType : &#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="o">(</span><span class="n">netWorkType</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">NETWORK_TYPE_CDMA</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;NETWORK_TYPE_CDMA&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">NETWORK_TYPE_EDGE</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;NETWORK_TYPE_EDGE&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">NETWORK_TYPE_EVDO_0</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;NETWORK_TYPE_EVDO_0&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">NETWORK_TYPE_EVDO_A</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;NETWORK_TYPE_EVDO_A&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">NETWORK_TYPE_GPRS</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;NETWORK_TYPE_GPRS&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">NETWORK_TYPE_HSDPA</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;NETWORK_TYPE_HSDPA&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">NETWORK_TYPE_HSPA</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;NETWORK_TYPE_HSDPA&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">NETWORK_TYPE_HSUPA</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;NETWORK_TYPE_HSUPA&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">NETWORK_TYPE_UMTS</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;NETWORK_TYPE_UMTS&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setDataState</span><span class="o">(</span><span class="kt">int</span> <span class="n">dataState</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;dataState : &#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="o">(</span><span class="n">dataState</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">DATA_DISCONNECTED</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;DATA_DISCONNECTED&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">DATA_CONNECTING</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;DATA_CONNECTING&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">DATA_CONNECTED</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;DATA_CONNECTED&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">DATA_SUSPENDED</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;DATA_SUSPENDED&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">DATA_DISCONNECTING</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;DATA_DISCONNECTING&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">TelephonyManager</span><span class="o">.</span><span class="na">DATA_HANDOVER_IN_PROGRESS</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;DATA_HANDOVER_IN_PROGRESS&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">            <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">==</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_click</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">             <span class="n">setMessage</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">             <span class="n">tv_message</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">         <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>下面一些解释：
+</span></span></span><span class="line"><span class="cl"><span class="cm">         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">simState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">getSimState</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">setSimState</span><span class="p">(</span><span class="n">simState</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回唯一的用户ID,例如,IMSI为GSM手机。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        String subscriberId = mTelephonyManager.getSubscriberId();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        sb.append(&#34;subscriberId : &#34;).append(subscriberId).append(&#34;\n&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 获取语音信箱号码关联的字母标识</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        @SuppressLint(&#34;MissingPermission&#34;) String voiceMailAlphaTag = mTelephonyManager.getVoiceMailAlphaTag();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        sb.append(&#34;voiceMailAlphaTag : &#34;).append(voiceMailAlphaTag).append(&#34;\n&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回语音邮件号码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        @SuppressLint(&#34;MissingPermission&#34;) String voiceMailNumber = mTelephonyManager.getVoiceMailNumber();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        sb.append(&#34;voiceMailNumber : &#34;).append(voiceMailNumber).append(&#34;\n&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        /*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         * 返回手机是否处于漫游状态</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//         */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">networkRoaming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTelephonyManager</span><span class="p">.</span><span class="na">isNetworkRoaming</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;networkRoaming : &#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">networkRoaming</span><span class="o">==</span><span class="kc">true</span><span class="o">?</span><span class="s">&#34;true&#34;</span><span class="p">:</span><span class="s">&#34;false&#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSimState</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">simState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;simState : &#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">simState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">SIM_STATE_ABSENT</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;SIM_STATE_ABSENT&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">SIM_STATE_NETWORK_LOCKED</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;SIM_STATE_NETWORK_LOCKED&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">SIM_STATE_PIN_REQUIRED</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;SIM_STATE_NETWORK_LOCKED&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">SIM_STATE_PUK_REQUIRED</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;SIM_STATE_PUK_REQUIRED&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">SIM_STATE_READY</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;SIM_STATE_READY&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">SIM_STATE_UNKNOWN</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;SIM_STATE_UNKNOWN&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPhoneType</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">phoneType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;phoneType : &#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">phoneType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">PHONE_TYPE_CDMA</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;PHONE_TYPE_CDMA&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">PHONE_TYPE_GSM</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;PHONE_TYPE_GSM&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">PHONE_TYPE_NONE</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;PHONE_TYPE_NONE&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">PHONE_TYPE_SIP</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;PHONE_TYPE_SIP&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setNetWorkType</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">netWorkType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;networkType : &#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">netWorkType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">NETWORK_TYPE_CDMA</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;NETWORK_TYPE_CDMA&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">NETWORK_TYPE_EDGE</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;NETWORK_TYPE_EDGE&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">NETWORK_TYPE_EVDO_0</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;NETWORK_TYPE_EVDO_0&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">NETWORK_TYPE_EVDO_A</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;NETWORK_TYPE_EVDO_A&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">NETWORK_TYPE_GPRS</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;NETWORK_TYPE_GPRS&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">NETWORK_TYPE_HSDPA</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;NETWORK_TYPE_HSDPA&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">NETWORK_TYPE_HSPA</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;NETWORK_TYPE_HSDPA&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">NETWORK_TYPE_HSUPA</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;NETWORK_TYPE_HSUPA&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">NETWORK_TYPE_UMTS</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;NETWORK_TYPE_UMTS&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setDataState</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">dataState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;dataState : &#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">dataState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">DATA_DISCONNECTED</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;DATA_DISCONNECTED&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">DATA_CONNECTING</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;DATA_CONNECTING&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">DATA_CONNECTED</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;DATA_CONNECTED&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">DATA_SUSPENDED</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;DATA_SUSPENDED&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">DATA_DISCONNECTING</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;DATA_DISCONNECTING&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">TelephonyManager</span><span class="p">.</span><span class="na">DATA_HANDOVER_IN_PROGRESS</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;DATA_HANDOVER_IN_PROGRESS&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;\n&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="na">getId</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">btn_click</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="n">setMessage</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="n">tv_message</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>下面一些解释：
 (1)IMSI是国际移动用户识别码的简称(International Mobile Subscriber Identity)<br>
 IMSI共有15位，其结构如下：<br>
 MCC+MNC+MIN<br>
@@ -483,7 +485,7 @@ subId即为手机插入的SIM卡个数，通常从1,2表示。</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.119.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/zxlkgf" target="_blank">Cyo</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
